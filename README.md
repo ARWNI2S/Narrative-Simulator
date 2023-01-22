@@ -2,8 +2,7 @@
 Automated Game Mastering for Open World MMORPG
 
 ## Narrative Simulator
-
-
+NI2S main repository. 
 
 
 
