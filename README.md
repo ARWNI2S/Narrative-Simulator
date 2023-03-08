@@ -2,11 +2,11 @@
 Automated Game Mastering for Open World MMORPG
 
 ## NI2S main repository. 
-[![Build](https://img.shields.io/github/actions/workflow/status/arwni2s/Narrative-Simulator/build.yml?style=plastic)](https://github.com/arwni2s/Narrative-Simulator/actions?query=workflow%3Abuild)
-![GitHub issues](https://img.shields.io/github/issues/arwni2s/Narrative-Simulator?style=plastic)
-![GitHub](https://img.shields.io/github/license/arwni2s/Narrative-Simulator?style=plastic)
-![GitHub contributors](https://img.shields.io/github/contributors/arwni2s/Narrative-Simulator?style=plastic)
-![GitHub last commit](https://img.shields.io/github/last-commit/arwni2s/Narrative-Simulator?style=plastic)
+[![Build](https://img.shields.io/github/actions/workflow/status/arwni2s/narrative-simulator/build.yml?style=plastic)](https://github.com/arwni2s/narrative-simulator/actions?query=workflow%3Abuild)
+[![GitHub issues](https://img.shields.io/github/issues/arwni2s/narrative-simulator?style=plastic)](https://github.com/ARWNI2S/narrative-simulator/issues)
+![GitHub](https://img.shields.io/github/license/arwni2s/narrative-simulator?style=plastic)
+![GitHub contributors](https://img.shields.io/github/contributors/arwni2s/narrative-simulator?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/arwni2s/narrative-simulator?style=plastic)
 
 With the code in this repository, you can build the full Narrative Interactive Intelligent Simulator (NI2S) system for Windows (, and Linux, coming soon...); compile NI2S based game services for a variety of target engines, including Unreal Engine, Unity(coming soon...), and Cry Engine(coming soon...); and build tools like NI2S Knowledge and NI2S Frontline. Modify the code in any way you can imagine, and share your changes with others!
 
@@ -35,8 +35,13 @@ Orleans is compatible with .NET Standard 2.0 and above, running on Windows, Linu
 
 //TODO: Rewrite over time...
 
+![GitHub language count](https://img.shields.io/github/languages/count/arwni2s/narrative-simulator?style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/arwni2s/narrative-simulator?style=plastic)
+![GitHub all releases](https://img.shields.io/github/downloads/arwni2s/narrative-simulator/total?style=plastic)
+![GitHub release (including pre-releases)](https://img.shields.io/github/v/release/arwni2s/narrative-simulator?display-name=tag&include_prereleases&style=plastic)
+
 [![Join the chat at https://discord.com/channels/1082861111117889606/1082861257297764413](https://img.shields.io/discord/1082861111117889606?logo=discord&style=social)](https://discord.com/channels/1082861111117889606/1082861257297764413)
-![GitHub Repo stars](https://img.shields.io/github/stars/arwni2s/Narrative-Simulator?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/arwni2s/Narrative-Simulator?style=social)
-![GitHub forks](https://img.shields.io/github/forks/arwni2s/Narrative-Simulator?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/arwni2s/narrative-simulator?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/arwni2s/narrative-simulator?style=social)
+![GitHub forks](https://img.shields.io/github/forks/arwni2s/narrative-simulator?style=social)
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/arwni2s?logo=github&style=social)
