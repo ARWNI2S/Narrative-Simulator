@@ -1,9 +1,13 @@
 # Narrative Interactive Intelligent Simulator
 Automated Game Mastering for Open World MMORPG
 
-![This is an image](/../../../../ARWNI2S/.github/blob/main/assets/images/work-in-progress.png)
-
 ## NI2S main repository. 
+[![Build](https://img.shields.io/github/actions/workflow/status/arwni2s/Narrative-Simulator/build.yml?style=plastic)](https://github.com/arwni2s/Narrative-Simulator/actions?query=workflow%3Abuild)
+![GitHub issues](https://img.shields.io/github/issues/arwni2s/Narrative-Simulator?style=plastic)
+![GitHub](https://img.shields.io/github/license/arwni2s/Narrative-Simulator?style=plastic)
+![GitHub contributors](https://img.shields.io/github/contributors/arwni2s/Narrative-Simulator?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/arwni2s/Narrative-Simulator?style=plastic)
+
 With the code in this repository, you can build the full Narrative Interactive Intelligent Simulator (NI2S) system for Windows (, and Linux, coming soon...); compile NI2S based game services for a variety of target engines, including Unreal Engine, Unity(coming soon...), and Cry Engine(coming soon...); and build tools like NI2S Knowledge and NI2S Frontline. Modify the code in any way you can imagine, and share your changes with others!
 
 We are gathering any [available documentation](https://github.com/ARWNI2S/NI2S-Documentation) for the entire development process of NI2S. If you're looking for the answer to something, you may want to start in one of these places:
@@ -30,3 +34,9 @@ Frontend server clients call entities in the cluster using the client library wh
 Orleans is compatible with .NET Standard 2.0 and above, running on Windows, Linux, and macOS, in full .NET Framework or .NET Core.
 
 //TODO: Rewrite over time...
+
+[![Join the chat at https://discord.com/channels/1082861111117889606/1082861257297764413](https://img.shields.io/discord/1082861111117889606?logo=discord&style=social)](https://discord.com/channels/1082861111117889606/1082861257297764413)
+![GitHub Repo stars](https://img.shields.io/github/stars/arwni2s/Narrative-Simulator?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/arwni2s/Narrative-Simulator?style=social)
+![GitHub forks](https://img.shields.io/github/forks/arwni2s/Narrative-Simulator?style=social)
+![GitHub Sponsors](https://img.shields.io/github/sponsors/arwni2s?logo=github&style=social)
