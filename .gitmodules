@@ -1,0 +1,9 @@
+[submodule "NI2S-Node"]
+	path = NI2S-Node
+	url = https://github.com/ARWNI2S/NI2S-Node.git
+[submodule "NI2S-ThirdParty"]
+	path = NI2S-ThirdParty
+	url = https://github.com/ARWNI2S/NI2S-ThirdParty.git
+[submodule "NI2S-Unreal"]
+	path = NI2S-Unreal
+	url = https://github.com/ARWNI2S/NI2S-Unreal.git
