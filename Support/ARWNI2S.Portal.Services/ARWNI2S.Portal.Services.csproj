@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Authentication\Wallet\**" />
+    <EmbeddedResource Remove="Authentication\Wallet\**" />
+    <None Remove="Authentication\Wallet\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Common\CommonSettings.cs" />
+    <Compile Remove="Entities\Common\GenericAttribute.cs" />
+    <Compile Remove="Entities\Common\ISoftDeletedEntity.cs" />
+    <Compile Remove="Entities\Users\User.cs" />
+    <Compile Remove="Entities\Users\UserDefaults.cs" />
+    <Compile Remove="Entities\Users\UserExtensions.cs" />
+    <Compile Remove="Entities\Users\UserRole.cs" />
+    <Compile Remove="Entities\Users\UserRoleComparerByName.cs" />
+    <Compile Remove="Entities\Users\UserUserRoleMapping.cs" />
+    <Compile Remove="Entities\Users\WalletAuthenticationRecord.cs" />
+    <Compile Remove="Entities\Users\WalletAuthenticationSettings.cs" />
+    <Compile Remove="Mailing\SystemMessageService.cs" />
+    <Compile Remove="Media\AzurePictureService.cs" />
+    <Compile Remove="Users\IUserReportService.cs" />
+    <Compile Remove="Users\IUserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.8" />
+    <PackageReference Include="Svg.Skia" Version="2.0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Data\ARWNI2S.Node.Data.csproj" />
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Services\ARWNI2S.Node.Services.csproj" />
+  </ItemGroup>
+
+</Project>

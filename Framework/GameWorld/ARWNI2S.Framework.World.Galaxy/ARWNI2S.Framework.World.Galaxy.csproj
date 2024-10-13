@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Company>Dragon Corp Games, S.L.</Company>
+    <PackageProjectUrl>https://arwni2s.dragoncorp.org/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ARWNI2S/Narrative-Simulator</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <OutputPath>..\..\..\Bin\Modules\$(MSBuildProjectName)</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project. 
+    You need to set this parameter to true if your addon has a nuget package 
+    to ensure that the dlls copied from the NuGet cache to the output of your project-->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <LangVersion>12.0</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ClearAddonAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\NI2S-Node\src\tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="logo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!--<None Update="Views\Configure.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+  </ItemGroup>
+
+  <!-- This target execute after "Build" target -->
+  <Target Name="NI2SModulesTarget" AfterTargets="Build">
+    <!-- Delete unnecessary libraries from addons path -->
+    <MSBuild Projects="@(ClearAddonAssemblies)" Properties="AddonPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NI2SModulesClear" />
+  </Target>
+
+</Project>

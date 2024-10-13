@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Framework.World", "..\Framework\GameWorld\ARWNI2S.Framework.World\ARWNI2S.Framework.World.csproj", "{39EB463B-678D-4BFA-B9E8-15B64AE4F25A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameWorld", "GameWorld", "{C9F21611-7C5C-4E1E-A9EE-F7AFEE751CC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Framework.Commons", "..\Framework\ARWNI2S.Framework.Commons\ARWNI2S.Framework.Commons.csproj", "{4A090315-B1F7-4092-B967-4483AED93955}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39EB463B-678D-4BFA-B9E8-15B64AE4F25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39EB463B-678D-4BFA-B9E8-15B64AE4F25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39EB463B-678D-4BFA-B9E8-15B64AE4F25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39EB463B-678D-4BFA-B9E8-15B64AE4F25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A090315-B1F7-4092-B967-4483AED93955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A090315-B1F7-4092-B967-4483AED93955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A090315-B1F7-4092-B967-4483AED93955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A090315-B1F7-4092-B967-4483AED93955}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39EB463B-678D-4BFA-B9E8-15B64AE4F25A} = {C9F21611-7C5C-4E1E-A9EE-F7AFEE751CC0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37396C58-4AD1-4CDF-B333-708544E307B4}
+	EndGlobalSection
+EndGlobal

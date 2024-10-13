@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Core\ARWNI2S.Node.Core.csproj" />
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Data\ARWNI2S.Node.Data.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Portal.Services\ARWNI2S.Portal.Services.csproj" />
+  </ItemGroup>
+
+</Project>
