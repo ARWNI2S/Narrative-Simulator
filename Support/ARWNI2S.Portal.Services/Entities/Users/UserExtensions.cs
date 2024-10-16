@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ARWNI2S.Node.Core.Entities.Users;
+using ARWNI2S.Node.Data.Entities.Users;
 
-namespace DragonCorp.Metalink.Core.Domain.Users
+namespace ARWNI2S.Portal.Services.Entities.Users
 {
     /// <summary>
     /// User extensions

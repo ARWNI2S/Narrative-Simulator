@@ -1,5 +1,4 @@
 ﻿using ARWNI2S.Portal.Services.Entities.Media;
-using Microsoft.AspNetCore.Http;
 
 namespace ARWNI2S.Portal.Services.Media
 {

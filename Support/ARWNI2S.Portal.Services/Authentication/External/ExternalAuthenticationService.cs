@@ -9,9 +9,12 @@ using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Entities.Users;
+using ARWNI2S.Portal.Services.Http.Extensions;
 using ARWNI2S.Portal.Services.Mailing;
 using ARWNI2S.Portal.Services.Users;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using User = ARWNI2S.Node.Data.Entities.Users.User;
 
 namespace ARWNI2S.Portal.Services.Authentication.External
@@ -231,7 +234,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
 
             if (session != null)
             {
-                var existsErrors = (await session.GetAsync<IList<string>>(AuthenticationServicesDefaults.ExternalAuthenticationErrorsSessionKey))?.ToList() ?? new List<string>();
+                var existsErrors = (await session.GetAsync<IList<string>>(AuthenticationServicesDefaults.ExternalAuthenticationErrorsSessionKey))?.ToList() ?? [];
 
                 existsErrors.AddRange(errors);
 

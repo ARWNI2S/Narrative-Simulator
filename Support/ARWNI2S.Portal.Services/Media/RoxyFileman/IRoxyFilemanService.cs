@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace ARWNI2S.Portal.Services.Media.RoxyFileman
+﻿namespace ARWNI2S.Portal.Services.Media.RoxyFileman
 {
     /// <summary>
     /// RoxyFileman service interface

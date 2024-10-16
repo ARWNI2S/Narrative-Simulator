@@ -82,7 +82,7 @@ namespace ARWNI2S.Portal.Services
             _userService = userService;
             //    _genericAttributeService = genericAttributeService;
             //    _httpContextAccessor = httpContextAccessor;
-            //    _languageService = languageService;
+            _languageService = languageService;
             //    _blockchainService = blockchainService;
             _nodeContext = nodeContext;
             //    _nodeMappingService = nodeMappingService;

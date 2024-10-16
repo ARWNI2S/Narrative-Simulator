@@ -17,7 +17,7 @@ namespace ARWNI2S.Portal.Services.Entities.Users
 
         /// <summary>
         /// Gets or sets a value indicating whether email validation is required.
-        /// In most cases we can skip email validation for Facebook or any other third-party external authentication addons. I guess we can trust  Facebook for the validation.
+        /// In most cases we can skip email validation for Facebook or any other third-party external authentication modules. I guess we can trust  Facebook for the validation.
         /// </summary>
         public bool RequireEmailValidation { get; set; }
 

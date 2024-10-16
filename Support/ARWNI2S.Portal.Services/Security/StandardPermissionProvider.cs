@@ -54,14 +54,14 @@ namespace ARWNI2S.Portal.Services.Security
         public static readonly PermissionRecord ManageMaintenance = new() { Name = "Admin area. Manage Maintenance", SystemName = "ManageMaintenance", Category = "Configuration" };
         public static readonly PermissionRecord HtmlEditorManagePictures = new() { Name = "Admin area. HTML Editor. Manage pictures", SystemName = "HtmlEditor.ManagePictures", Category = "Configuration" };
         public static readonly PermissionRecord ManageScheduleTasks = new() { Name = "Admin area. Manage Schedule Tasks", SystemName = "ManageScheduleTasks", Category = "Configuration" };
-        public static readonly PermissionRecord ManageAppSettings = new() { Name = "Admin area. Manage App Settings", SystemName = "ManageAppSettings", Category = "Configuration" };
+        public static readonly PermissionRecord ManageNI2SSettings = new() { Name = "Admin area. Manage App Settings", SystemName = "ManageNI2SSettings", Category = "Configuration" };
 
         //public server permissions
-        public static readonly PermissionRecord DisplayPrices = new() { Name = "Public node. Display Prices", SystemName = "DisplayPrices", Category = "PublicNode" };
-        public static readonly PermissionRecord AccessGameplay = new() { Name = "Public node. Access gameplay contents", SystemName = "AccessGameplay", Category = "PublicNode" };
-        public static readonly PermissionRecord AccessOfflineNode = new() { Name = "Public node. Access a offline node", SystemName = "AccessOfflineNode", Category = "PublicNode" };
-        public static readonly PermissionRecord PublicNodeAllowNavigation = new() { Name = "Public node. Allow navigation", SystemName = "PublicNodeAllowNavigation", Category = "PublicNode" };
-        public static readonly PermissionRecord AccessProfiling = new() { Name = "Public node. Access MiniProfiler results", SystemName = "AccessProfiling", Category = "PublicNode" };
+        public static readonly PermissionRecord DisplayPrices = new() { Name = "Public node. Display Prices", SystemName = "DisplayPrices", Category = "PublicServer" };
+        public static readonly PermissionRecord AccessGameplay = new() { Name = "Public node. Access gameplay contents", SystemName = "AccessGameplay", Category = "PublicServer" };
+        public static readonly PermissionRecord AccessOfflineNode = new() { Name = "Public node. Access a offline node", SystemName = "AccessOfflineNode", Category = "PublicServer" };
+        public static readonly PermissionRecord PublicNodeAllowNavigation = new() { Name = "Public node. Allow navigation", SystemName = "PublicNodeAllowNavigation", Category = "PublicServer" };
+        public static readonly PermissionRecord AccessProfiling = new() { Name = "Public node. Access MiniProfiler results", SystemName = "AccessProfiling", Category = "PublicServer" };
 
         //Security
         public static readonly PermissionRecord EnableMultiFactorAuthentication = new() { Name = "Security. Enable Multi-factor authentication", SystemName = "EnableMultiFactorAuthentication", Category = "Security" };
@@ -124,7 +124,7 @@ namespace ARWNI2S.Portal.Services.Security
                 ManageMessageQueue,
                 ManageMaintenance,
                 ManageScheduleTasks,
-                ManageAppSettings,
+                ManageNI2SSettings,
                 PublicNodeAllowNavigation,
             };
         }
@@ -186,7 +186,7 @@ namespace ARWNI2S.Portal.Services.Security
                         ManageMaintenance,
                         HtmlEditorManagePictures,
                         ManageScheduleTasks,
-                        ManageAppSettings,
+                        ManageNI2SSettings,
                         DisplayPrices,
                         AccessGameplay,
                         PublicNodeAllowNavigation,

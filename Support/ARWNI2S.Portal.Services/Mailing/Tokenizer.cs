@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Mailing;
+using System.Linq.Dynamic.Core;
 using System.Net;
 using System.Text.RegularExpressions;
 

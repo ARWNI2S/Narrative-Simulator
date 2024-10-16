@@ -34,12 +34,12 @@ namespace ARWNI2S.Portal.Services.Configuration
             _configurationOrder ??= configurations.ToDictionary(config => config.Name, config => config.GetOrder());
 
             //create app settings
-            var appSettings = Singleton<AppSettings>.Instance ?? new AppSettings();
-            appSettings.Update(configurations);
-            Singleton<AppSettings>.Instance = appSettings;
+            var ni2sSettings = Singleton<AppSettings>.Instance ?? new AppSettings();
+            ni2sSettings.Update(configurations);
+            Singleton<AppSettings>.Instance = ni2sSettings;
 
             //create file if not exists
-            var filePath = fileProvider.MapPath(WebConfigurationDefaults.AppSettingsFilePath);
+            var filePath = fileProvider.MapPath(WebConfigurationDefaults.NI2SSettingsFilePath);
             var fileExists = fileProvider.FileExists(filePath);
             fileProvider.CreateFile(filePath);
 
@@ -53,7 +53,7 @@ namespace ARWNI2S.Portal.Services.Configuration
             }
 
             //sort configurations for display by order (e.g. data configuration with 0 will be the first)
-            appSettings.Configuration = configuration
+            ni2sSettings.Configuration = configuration
                 .SelectMany(outConfig => _configurationOrder.Where(inConfig => inConfig.Key == outConfig.Key).DefaultIfEmpty(),
                     (outConfig, inConfig) => new { OutConfig = outConfig, InConfig = inConfig })
                 .OrderBy(config => config.InConfig.Value)
@@ -63,11 +63,11 @@ namespace ARWNI2S.Portal.Services.Configuration
             //save app settings to the file
             if (!fileExists || overwrite)
             {
-                var text = JsonConvert.SerializeObject(appSettings, Formatting.Indented);//, new JsonSerializerSettings { ContractResolver = new SecretContractResolver() });
+                var text = JsonConvert.SerializeObject(ni2sSettings, Formatting.Indented);//, new JsonSerializerSettings { ContractResolver = new SecretContractResolver() });
                 fileProvider.WriteAllText(filePath, text, Encoding.UTF8);
             }
 
-            return appSettings;
+            return ni2sSettings;
         }
 
         #endregion

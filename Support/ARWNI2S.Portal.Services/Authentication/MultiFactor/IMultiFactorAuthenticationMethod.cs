@@ -15,7 +15,7 @@ namespace ARWNI2S.Portal.Services.Authentication.MultiFactor
         MultiFactorAuthenticationType Type { get; }
 
         /// <summary>
-        /// Gets a type of a view component for displaying addon in public server
+        /// Gets a type of a view component for displaying module in public server
         /// </summary>
         /// <returns>View component type</returns>
         Type GetPublicViewComponent();

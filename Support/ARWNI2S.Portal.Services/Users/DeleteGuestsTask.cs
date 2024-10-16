@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Node.Core.Entities.Users;
-using ARWNI2S.Node.Services.ScheduleTasks;
+﻿using ARWNI2S.Node.Services.ScheduleTasks;
 using ARWNI2S.Node.Services.Users;
+using ARWNI2S.Portal.Services.Entities.Users;
 
 namespace ARWNI2S.Portal.Services.Users
 {
@@ -11,14 +11,14 @@ namespace ARWNI2S.Portal.Services.Users
     {
         #region Fields
 
-        private readonly UserSettings _userSettings;
+        private readonly WebUserSettings _userSettings;
         private readonly IUserService _userService;
 
         #endregion
 
         #region Ctor
 
-        public DeleteGuestsTask(UserSettings userSettings,
+        public DeleteGuestsTask(WebUserSettings userSettings,
             IUserService userService)
         {
             _userSettings = userSettings;

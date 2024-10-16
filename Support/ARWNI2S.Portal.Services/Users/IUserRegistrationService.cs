@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Portal.Services.Entities.Users;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ARWNI2S.Portal.Services.Users
 {

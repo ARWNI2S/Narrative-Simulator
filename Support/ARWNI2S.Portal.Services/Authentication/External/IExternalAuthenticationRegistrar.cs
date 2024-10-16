@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 namespace ARWNI2S.Portal.Services.Authentication.External
 {
     /// <summary>
-    /// Interface to register (configure) an external authentication service (addon)
+    /// Interface to register (configure) an external authentication service (module)
     /// </summary>
     public interface IExternalAuthenticationRegistrar
     {

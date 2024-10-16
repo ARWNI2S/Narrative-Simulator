@@ -10,7 +10,6 @@ using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Entities.Blogs;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Entities.News;
-using ARWNI2S.Portal.Services.Mailing;
 using ARWNI2S.Portal.Services.Users;
 using System.Net;
 
@@ -38,7 +37,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //private readonly IProductService _productService;
         private readonly IQueuedEmailService _queuedEmailService;
         private readonly INodeContext _nodeContext;
-        private readonly IClusteringService _nodeService;
+        private readonly IClusteringService _clusteringService;
         private readonly ITokenizer _tokenizer;
         private readonly MessagesSettings _messagesSettings;
 
@@ -61,7 +60,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             //IProductService productService,
             IQueuedEmailService queuedEmailService,
             INodeContext nodeContext,
-            IClusteringService nodeService,
+            IClusteringService clusteringService,
             ITokenizer tokenizer,
             MessagesSettings messagesSettings)
         {
@@ -80,7 +79,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             //_productService = productService;
             _queuedEmailService = queuedEmailService;
             _nodeContext = nodeContext;
-            _nodeService = nodeService;
+            _clusteringService = clusteringService;
             _tokenizer = tokenizer;
             _messagesSettings = messagesSettings;
         }
@@ -417,7 +416,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (partner == null)
         //        throw new ArgumentNullException(nameof(partner));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPlacedPartnerNotification, node.Id);
@@ -461,7 +460,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPlacedNotification, node.Id);
@@ -509,7 +508,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (affiliate == null)
         //        throw new ArgumentNullException(nameof(affiliate));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPlacedAffiliateNotification, node.Id);
@@ -554,7 +553,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPaidNotification, node.Id);
@@ -602,7 +601,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (affiliate == null)
         //        throw new ArgumentNullException(nameof(affiliate));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPaidAffiliateNotification, node.Id);
@@ -650,7 +649,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPaidUserNotification, node.Id);
@@ -701,7 +700,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (partner == null)
         //        throw new ArgumentNullException(nameof(partner));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPaidPartnerNotification, node.Id);
@@ -748,7 +747,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderPlacedUserNotification, node.Id);
@@ -796,7 +795,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(shipment));
 
         //    var order = await _orderService.GetOrderByIdAsync(shipment.OrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ShipmentSentUserNotification, node.Id);
@@ -841,7 +840,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //public virtual async Task<IList<int>> SendShipmentReadyForPickupNotificationAsync(Shipment shipment, int languageId)
         //{
         //    var order = await _orderService.GetOrderByIdAsync(shipment.OrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ShipmentReadyForPickupUserNotification, node.Id);
@@ -889,7 +888,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(shipment));
 
         //    var order = await _orderService.GetOrderByIdAsync(shipment.OrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ShipmentDeliveredUserNotification, node.Id);
@@ -939,7 +938,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderProcessingUserNotification, node.Id);
@@ -989,7 +988,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderCompletedUserNotification, node.Id);
@@ -1036,7 +1035,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderCancelledUserNotification, node.Id);
@@ -1083,7 +1082,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderRefundedNotification, node.Id);
@@ -1128,7 +1127,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.OrderRefundedUserNotification, node.Id);
@@ -1176,7 +1175,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(orderNote));
 
         //    var order = await _orderService.GetOrderByIdAsync(orderNote.OrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewOrderNoteAddedUserNotification, node.Id);
@@ -1224,7 +1223,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(recurringPayment));
 
         //    var order = await _orderService.GetOrderByIdAsync(recurringPayment.InitialOrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.RecurringPaymentCancelledNotification, node.Id);
@@ -1269,7 +1268,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(recurringPayment));
 
         //    var order = await _orderService.GetOrderByIdAsync(recurringPayment.InitialOrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.RecurringPaymentCancelledUserNotification, node.Id);
@@ -1317,7 +1316,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //        throw new ArgumentNullException(nameof(recurringPayment));
 
         //    var order = await _orderService.GetOrderByIdAsync(recurringPayment.InitialOrderId) ?? throw new NodeException("Order cannot be loaded");
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.RecurringPaymentFailedUserNotification, node.Id);
@@ -1559,7 +1558,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewReturnRequestNotification, node.Id);
@@ -1610,7 +1609,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    var languageId = await EnsureLanguageIsActiveAsync(order.UserLanguageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewReturnRequestUserNotification, node.Id);
@@ -1670,7 +1669,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (order == null)
         //        throw new ArgumentNullException(nameof(order));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    var languageId = await EnsureLanguageIsActiveAsync(order.UserLanguageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ReturnRequestStatusChangedUserNotification, node.Id);
@@ -1822,7 +1821,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(systemMessage);
 
-            var node = await _nodeService.GetNodeByIdAsync(systemMessage.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+            var node = await _clusteringService.GetNodeByIdAsync(systemMessage.NodeId) ?? (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.SystemMessageNotification, node.Id);
             if (!messageTemplates.Any())
@@ -1958,7 +1957,7 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         //    var order = await _orderService.GetOrderByOrderItemAsync(giftCard.PurchasedWithOrderItemId ?? 0);
         //    var currentNode = await _nodeContext.GetCurrentNodeAsync();
-        //    var node = order != null ? await _nodeService.GetNodeByIdAsync(order.NodeId) ?? currentNode : currentNode;
+        //    var node = order != null ? await _clusteringService.GetNodeByIdAsync(order.NodeId) ?? currentNode : currentNode;
 
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
@@ -2045,7 +2044,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (productReview == null)
         //        throw new ArgumentNullException(nameof(productReview));
 
-        //    var node = await _nodeService.GetNodeByIdAsync(productReview.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(productReview.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ProductReviewReplyUserNotification, node.Id);
@@ -2322,7 +2321,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    if (!CommonHelper.IsValidEmail(user.Email))
         //        return new List<int>();
 
-        //    var node = await _nodeService.GetNodeByIdAsync(subscription.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(subscription.NodeId) ?? await _nodeContext.GetCurrentNodeAsync();
         //    languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
         //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.BackInStockNotification, node.Id);

@@ -1,13 +1,13 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Collections.Generic;
 using ARWNI2S.Node.Core.Caching;
-using ARWNI2S.Node.Core.Entities.Localization;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Data.Entities;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Entities.Seo;
+using ARWNI2S.Portal.Services.Localization;
 using System.Text;
 
 namespace ARWNI2S.Portal.Services.Seo
@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services.Seo
         private readonly IRepository<UrlRecord> _urlRecordRepository;
         private readonly IStaticCacheManager _staticCacheManager;
         private readonly PortalWorkContext _workContext;
-        private readonly LocalizationSettings _localizationSettings;
+        private readonly PortalLocalizationSettings _localizationSettings;
         private readonly SeoSettings _seoSettings;
 
         #endregion
@@ -37,7 +37,7 @@ namespace ARWNI2S.Portal.Services.Seo
             IRepository<UrlRecord> urlRecordRepository,
             IStaticCacheManager staticCacheManager,
             PortalWorkContext workContext,
-            LocalizationSettings localizationSettings,
+            PortalLocalizationSettings localizationSettings,
             SeoSettings seoSettings)
         {
             _languageService = languageService;

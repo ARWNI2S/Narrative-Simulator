@@ -10,9 +10,21 @@ using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Node.Services.Plugins;
 using ARWNI2S.Node.Services.ScheduleTasks;
-using ARWNI2S.Portal.Framework.Http;
+using ARWNI2S.Portal.Framework.Globalization;
+using ARWNI2S.Portal.Framework.Routing;
+using ARWNI2S.Portal.Services;
+using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Entities.Common;
+using ARWNI2S.Portal.Services.Http;
+using ARWNI2S.Portal.Services.Installation;
+using ARWNI2S.Portal.Services.Media.RoxyFileman;
+using ARWNI2S.Portal.Services.Security;
+using ARWNI2S.Portal.Services.Seo;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Net.Http.Headers;
 using System.Globalization;
@@ -75,9 +87,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UsePortalExceptionHandler(this IApplicationBuilder application)
         {
-            var appSettings = EngineContext.Current.Resolve<AppSettings>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
             var webHostEnvironment = EngineContext.Current.Resolve<IWebHostEnvironment>();
-            var useDetailedExceptionPage = appSettings.Get<CommonConfig>().DisplayFullErrorStack || webHostEnvironment.IsDevelopment();
+            var useDetailedExceptionPage = ni2sSettings.Get<CommonConfig>().DisplayFullErrorStack || webHostEnvironment.IsDevelopment();
             if (useDetailedExceptionPage)
             {
                 //get detailed exceptions for developing and testing purposes
@@ -227,12 +239,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         public static void UseDraCoStaticFiles(this IApplicationBuilder application)
         {
             var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
-            var appSettings = EngineContext.Current.Resolve<AppSettings>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
 
             void staticFileResponse(StaticFileResponseContext context)
             {
-                if (!string.IsNullOrEmpty(appSettings.Get<CommonConfig>().StaticFilesCacheControl))
-                    context.Context.Response.Headers.Append(HeaderNames.CacheControl, appSettings.Get<CommonConfig>().StaticFilesCacheControl);
+                if (!string.IsNullOrEmpty(ni2sSettings.Get<CommonConfig>().StaticFilesCacheControl))
+                    context.Context.Response.Headers.Append(HeaderNames.CacheControl, ni2sSettings.Get<CommonConfig>().StaticFilesCacheControl);
             }
 
             //add handling if sitemaps 
@@ -264,11 +276,11 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             };
 
             //exclude files in blacklist
-            if (!string.IsNullOrEmpty(appSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist))
+            if (!string.IsNullOrEmpty(ni2sSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist))
             {
                 var fileExtensionContentTypeProvider = new FileExtensionContentTypeProvider();
 
-                foreach (var ext in appSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist
+                foreach (var ext in ni2sSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist
                     .Split(';', ',')
                     .Select(e => e.Trim().ToLowerInvariant())
                     .Select(e => $"{(e.StartsWith('.') ? string.Empty : ".")}{e}")
@@ -325,7 +337,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 });
             }
 
-            if (appSettings.Get<CommonConfig>().ServeUnknownFileTypes)
+            if (ni2sSettings.Get<PortalConfig>().ServeUnknownFileTypes)
             {
                 application.UseStaticFiles(new StaticFileOptions
                 {
@@ -358,7 +370,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Adds the authentication middleware, which enables authentication capabilities.
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoAuthentication(this IApplicationBuilder application)
+        public static void UseNI2SAuthentication(this IApplicationBuilder application)
         {
             //check whether database is installed
             if (!DataSettingsManager.IsDatabaseInstalled())
@@ -418,9 +430,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UseDraCoProxy(this IApplicationBuilder application)
         {
-            var appSettings = EngineContext.Current.Resolve<AppSettings>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
 
-            if (appSettings.Get<HostingConfig>().UseProxy)
+            if (ni2sSettings.Get<HostingConfig>().UseProxy)
             {
                 var options = new ForwardedHeadersOptions
                 {
@@ -430,15 +442,15 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     ForwardLimit = 2
                 };
 
-                if (!string.IsNullOrEmpty(appSettings.Get<HostingConfig>().ForwardedForHeaderName))
-                    options.ForwardedForHeaderName = appSettings.Get<HostingConfig>().ForwardedForHeaderName;
+                if (!string.IsNullOrEmpty(ni2sSettings.Get<ProxyConfig>().ForwardedForHeaderName))
+                    options.ForwardedForHeaderName = ni2sSettings.Get<ProxyConfig>().ForwardedForHeaderName;
 
-                if (!string.IsNullOrEmpty(appSettings.Get<HostingConfig>().ForwardedProtoHeaderName))
-                    options.ForwardedProtoHeaderName = appSettings.Get<HostingConfig>().ForwardedProtoHeaderName;
+                if (!string.IsNullOrEmpty(ni2sSettings.Get<ProxyConfig>().ForwardedProtoHeaderName))
+                    options.ForwardedProtoHeaderName = ni2sSettings.Get<ProxyConfig>().ForwardedProtoHeaderName;
 
-                if (!string.IsNullOrEmpty(appSettings.Get<HostingConfig>().KnownProxies))
+                if (!string.IsNullOrEmpty(ni2sSettings.Get<ProxyConfig>().KnownProxies))
                 {
-                    foreach (var strIp in appSettings.Get<HostingConfig>().KnownProxies.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList())
+                    foreach (var strIp in ni2sSettings.Get<ProxyConfig>().KnownProxies.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList())
                     {
                         if (IPAddress.TryParse(strIp, out var ip))
                             options.KnownProxies.Add(ip);

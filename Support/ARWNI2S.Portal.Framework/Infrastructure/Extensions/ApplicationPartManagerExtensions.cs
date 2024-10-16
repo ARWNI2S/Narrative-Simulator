@@ -4,6 +4,7 @@ using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Data.Mapping;
 using ARWNI2S.Node.Services.Plugins;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System.Reflection;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions

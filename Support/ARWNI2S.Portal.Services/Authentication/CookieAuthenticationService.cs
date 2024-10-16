@@ -1,8 +1,7 @@
-﻿using ARWNI2S.Node.Core.Entities.Users;
-using ARWNI2S.Node.Data.Entities.Users;
+﻿using ARWNI2S.Node.Data.Entities.Users;
+using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace ARWNI2S.Portal.Services.Authentication
@@ -14,7 +13,7 @@ namespace ARWNI2S.Portal.Services.Authentication
     {
         #region Fields
 
-        private readonly UserSettings _userSettings;
+        private readonly WebUserSettings _userSettings;
         private readonly UserService _userService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -24,7 +23,7 @@ namespace ARWNI2S.Portal.Services.Authentication
 
         #region Ctor
 
-        public CookieAuthenticationService(UserSettings userSettings,
+        public CookieAuthenticationService(WebUserSettings userSettings,
             UserService userService,
             IHttpContextAccessor httpContextAccessor)
         {

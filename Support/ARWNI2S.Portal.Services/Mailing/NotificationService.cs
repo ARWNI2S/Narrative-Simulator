@@ -1,5 +1,4 @@
 ﻿using ARWNI2S.Node.Services.Logging;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace ARWNI2S.Portal.Services.Mailing
@@ -13,7 +12,6 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogService _logger;
-        private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly PortalWorkContext _workContext;
 
         #endregion
@@ -22,12 +20,11 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         public NotificationService(IHttpContextAccessor httpContextAccessor,
             ILogService logger,
-            ITempDataDictionaryFactory tempDataDictionaryFactory,
+            //ITempDataDictionaryFactory tempDataDictionaryFactory,
             PortalWorkContext workContext)
         {
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
-            _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _workContext = workContext;
         }
 
@@ -44,10 +41,9 @@ namespace ARWNI2S.Portal.Services.Mailing
         protected virtual void PrepareTempData(NotifyType type, string message, bool encode = true)
         {
             var context = _httpContextAccessor.HttpContext;
-            var tempData = _tempDataDictionaryFactory.GetTempData(context);
 
             //Messages have stored in a serialized list
-            var messages = tempData.TryGetValue(MessageServicesDefaults.NotificationListKey, out var value)
+            var messages = context.Items.TryGetValue(MessageServicesDefaults.NotificationListKey, out var value)
                 ? JsonConvert.DeserializeObject<IList<NotifyData>>(value.ToString())
                 : [];
 
@@ -58,7 +54,7 @@ namespace ARWNI2S.Portal.Services.Mailing
                 Encode = encode
             });
 
-            tempData[MessageServicesDefaults.NotificationListKey] = JsonConvert.SerializeObject(messages);
+            context.Items[MessageServicesDefaults.NotificationListKey] = JsonConvert.SerializeObject(messages);
         }
 
         /// <summary>

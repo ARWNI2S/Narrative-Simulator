@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Infrastructure.Collections.Generic;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 
 namespace ARWNI2S.Portal.Services.Mailing

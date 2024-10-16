@@ -6,7 +6,7 @@ using ARWNI2S.Node.Services.Configuration;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Portal.Services.Entities.Media;
 using ARWNI2S.Portal.Services.Seo;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.StaticFiles;
 using SkiaSharp;
 using Svg.Skia;
 

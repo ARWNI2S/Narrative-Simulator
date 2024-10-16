@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace ARWNI2S.Portal.Services
+﻿namespace ARWNI2S.Portal.Services
 {
     /// <summary>
     /// Represents a web helper

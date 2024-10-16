@@ -5,10 +5,15 @@ using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Portal.Framework.Http;
+using ARWNI2S.Portal.Services.Authentication;
+using ARWNI2S.Portal.Services.Authentication.External;
+using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
+using ARWNI2S.Portal.Services.Http;
 using Azure.Identity;
-using Newtonsoft.Json.Serialization;
+using Azure.Storage.Blobs;
+using DragonCorp.Metalink.Server.Framework.Security.Captcha;
+using Microsoft.AspNetCore.DataProtection;
 using System.Net;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
@@ -49,8 +54,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
             //TODO: READ SECRETS FROM KEYVAULT use SecretAttribute decorated properties
 
-            var appSettings = AppSettingsHelper.SaveAppSettings(configurations, CommonHelper.DefaultFileProvider, false);
-            services.AddSingleton(appSettings);
+            var ni2sSettings = NI2SSettingsHelper.SaveNodeSettings(configurations, CommonHelper.DefaultFileProvider, false);
+            services.AddSingleton(ni2sSettings);
+            //services.AddSingleton(ni2sSettings as );
         }
 
         /// <summary>
@@ -113,30 +119,14 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             });
         }
 
-        ///// <summary>
-        ///// Adds services required for themes support
-        ///// </summary>
-        ///// <param name="services">Collection of service descriptors</param>
-        //public static void AddThemes(this IServiceCollection services)
-        //{
-        //    if (!DataSettingsManager.IsDatabaseInstalled())
-        //        return;
-
-        //    //themes support
-        //    services.Configure<RazorViewEngineOptions>(options =>
-        //    {
-        //        options.ViewLocationExpanders.Add(new ThemeableViewLocationExpander());
-        //    });
-        //}
-
         /// <summary>
         /// Adds services required for distributed cache
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         public static void AddDistributedCache(this IServiceCollection services)
         {
-            var appSettings = Singleton<AppSettings>.Instance;
-            var distributedCacheConfig = appSettings.Get<DistributedCacheConfig>();
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
+            var distributedCacheConfig = ni2sSettings.Get<DistributedCacheConfig>();
 
             if (!distributedCacheConfig.Enabled)
                 return;
@@ -178,21 +168,21 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Adds data protection services
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoDataProtection(this IServiceCollection services)
+        public static void AddNI2SDataProtection(this IServiceCollection services)
         {
-            var appSettings = Singleton<AppSettings>.Instance;
-            if (appSettings.Get<AzureBlobConfig>().Enabled && appSettings.Get<AzureBlobConfig>().StoreDataProtectionKeys)
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
+            if (ni2sSettings.Get<AzureBlobConfig>().Enabled && ni2sSettings.Get<AzureBlobConfig>().StoreDataProtectionKeys)
             {
-                var blobServiceClient = new BlobServiceClient(appSettings.Get<AzureBlobConfig>().ConnectionString);
-                var blobContainerClient = blobServiceClient.GetBlobContainerClient(appSettings.Get<AzureBlobConfig>().DataProtectionKeysContainerName);
+                var blobServiceClient = new BlobServiceClient(ni2sSettings.Get<AzureBlobConfig>().ConnectionString);
+                var blobContainerClient = blobServiceClient.GetBlobContainerClient(ni2sSettings.Get<AzureBlobConfig>().DataProtectionKeysContainerName);
                 var blobClient = blobContainerClient.GetBlobClient(DataProtectionDefaults.AzureDataProtectionKeyFile);
 
                 var dataProtectionBuilder = services.AddDataProtection().PersistKeysToAzureBlobStorage(blobClient);
 
-                if (!appSettings.Get<AzureBlobConfig>().DataProtectionKeysEncryptWithVault)
+                if (!ni2sSettings.Get<AzureBlobConfig>().DataProtectionKeysEncryptWithVault)
                     return;
 
-                var keyIdentifier = appSettings.Get<AzureBlobConfig>().DataProtectionKeysVaultId;
+                var keyIdentifier = ni2sSettings.Get<AzureBlobConfig>().DataProtectionKeysVaultId;
                 var credentialOptions = new DefaultAzureCredentialOptions();
                 var tokenCredential = new DefaultAzureCredential(credentialOptions);
 
@@ -212,7 +202,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Adds authentication service
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoAuthentication(this IServiceCollection services)
+        public static void AddNI2SAuthentication(this IServiceCollection services)
         {
             //set default authentication schemes
             var authenticationBuilder = services.AddAuthentication(options =>
@@ -243,14 +233,14 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             });
 
             //add wallet authentication
-            authenticationBuilder.AddCookie(AuthenticationServicesDefaults.WalletAuthenticationScheme, options =>
-            {
-                options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.WalletAuthenticationCookie}";
-                options.Cookie.HttpOnly = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                options.LoginPath = AuthenticationServicesDefaults.LoginPath;
-                options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
-            });
+            //authenticationBuilder.AddCookie(AuthenticationServicesDefaults.WalletAuthenticationScheme, options =>
+            //{
+            //    options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.WalletAuthenticationCookie}";
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            //    options.LoginPath = AuthenticationServicesDefaults.LoginPath;
+            //    options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
+            //});
 
             //register and configure external authentication modules now
             var typeFinder = Singleton<ITypeFinder>.Instance;
@@ -261,12 +251,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             foreach (var instance in externalAuthInstances)
                 instance.Configure(authenticationBuilder);
 
-            var walletAuthConfigurations = typeFinder.FindClassesOfType<IWalletAuthenticationRegistrar>();
-            var walletAuthInstances = walletAuthConfigurations
-                .Select(x => (IWalletAuthenticationRegistrar)Activator.CreateInstance(x));
+            //var walletAuthConfigurations = typeFinder.FindClassesOfType<IWalletAuthenticationRegistrar>();
+            //var walletAuthInstances = walletAuthConfigurations
+            //    .Select(x => (IWalletAuthenticationRegistrar)Activator.CreateInstance(x));
 
-            foreach (var instance in walletAuthInstances)
-                instance.Configure(authenticationBuilder);
+            //foreach (var instance in walletAuthInstances)
+            //    instance.Configure(authenticationBuilder);
 
         }
 
@@ -282,8 +272,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
             mvcBuilder.AddRazorRuntimeCompilation();
 
-            var appSettings = Singleton<AppSettings>.Instance;
-            if (appSettings.Get<CommonConfig>().UseSessionStateTempDataProvider)
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
+            if (ni2sSettings.Get<PortalConfig>().UseSessionStateTempDataProvider)
             {
                 //use session-based temp data provider
                 mvcBuilder.AddSessionStateTempDataProvider();
@@ -353,13 +343,13 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             if (!DataSettingsManager.IsDatabaseInstalled())
                 return;
 
-            var appSettings = Singleton<AppSettings>.Instance;
-            if (appSettings.Get<CommonConfig>().MiniProfilerEnabled)
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
+            if (ni2sSettings.Get<PortalConfig>().MiniProfilerEnabled)
             {
                 services.AddMiniProfiler(miniProfilerOptions =>
                 {
                     //use memory cache provider for storing each result
-                    ((MemoryCacheStorage)miniProfilerOptions.Storage).CacheDuration = TimeSpan.FromMinutes(appSettings.Get<CacheConfig>().DefaultCacheTime);
+                    ((MemoryCacheStorage)miniProfilerOptions.Storage).CacheDuration = TimeSpan.FromMinutes(ni2sSettings.Get<CacheConfig>().DefaultCacheTime);
 
                     //determine who can access the MiniProfiler results
                     miniProfilerOptions.ResultsAuthorize = request => EngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
@@ -407,9 +397,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="services">Collection of service descriptors</param>
         public static void AddDraCoWebOptimizer(this IServiceCollection services)
         {
-            var appSettings = Singleton<AppSettings>.Instance;
-            var cssBundling = appSettings.Get<WebOptimizerConfig>().EnableCssBundling;
-            var jsBundling = appSettings.Get<WebOptimizerConfig>().EnableJavaScriptBundling;
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
+            var cssBundling = ni2sSettings.Get<WebOptimizerConfig>().EnableCssBundling;
+            var jsBundling = ni2sSettings.Get<WebOptimizerConfig>().EnableJavaScriptBundling;
 
             //add minification & bundling
             var cssSettings = new CssBundlingSettings

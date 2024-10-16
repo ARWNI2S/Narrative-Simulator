@@ -3,7 +3,6 @@ using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Portal.Services.Entities.Users;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
 
 namespace ARWNI2S.Portal.Services.Authentication
 {

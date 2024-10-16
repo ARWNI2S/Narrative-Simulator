@@ -2,6 +2,7 @@
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
+using ARWNI2S.Node.Data.Entities.Clustering;
 using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Clustering;
@@ -13,6 +14,9 @@ using ARWNI2S.Portal.Services.Authentication.MultiFactor;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.Mailing;
 using ARWNI2S.Portal.Services.Security;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace ARWNI2S.Portal.Services.Users
 {
@@ -23,7 +27,7 @@ namespace ARWNI2S.Portal.Services.Users
     {
         #region Fields
 
-        private readonly UserSettings _userSettings;
+        private readonly WebUserSettings _userSettings;
         private readonly IActionContextAccessor _actionContextAccessor;
         private readonly IAuthenticationService _authenticationService;
         private readonly IUserActivityService _userActivityService;
@@ -37,7 +41,7 @@ namespace ARWNI2S.Portal.Services.Users
         private readonly INotificationService _notificationService;
         private readonly IPermissionService _permissionService;
         private readonly INodeContext _nodeContext;
-        private readonly IClusteringService _nodeService;
+        private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
         private readonly IWorkflowMessageService _workflowMessageService;
@@ -46,7 +50,7 @@ namespace ARWNI2S.Portal.Services.Users
 
         #region Ctor
 
-        public UserRegistrationService(UserSettings userSettings,
+        public UserRegistrationService(WebUserSettings userSettings,
             IActionContextAccessor actionContextAccessor,
             IAuthenticationService authenticationService,
             IUserActivityService userActivityService,
@@ -60,7 +64,7 @@ namespace ARWNI2S.Portal.Services.Users
             INotificationService notificationService,
             IPermissionService permissionService,
             INodeContext nodeContext,
-            IClusteringService nodeService,
+            IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
             IWorkflowMessageService workflowMessageService
@@ -82,7 +86,7 @@ namespace ARWNI2S.Portal.Services.Users
             //_rewardPointService = rewardPointService;
             //_shoppingCartService = shoppingCartService;
             _nodeContext = nodeContext;
-            _nodeService = nodeService;
+            _clusteringService = clusteringService;
             _urlHelperFactory = urlHelperFactory;
             _workContext = workContext;
             _workflowMessageService = workflowMessageService;
@@ -177,7 +181,7 @@ namespace ARWNI2S.Portal.Services.Users
             var selectedProvider = await _permissionService.AuthorizeAsync(StandardPermissionProvider.EnableMultiFactorAuthentication, user)
                 ? await _genericAttributeService.GetAttributeAsync<string>(user, UserDefaults.SelectedMultiFactorAuthenticationProviderAttribute)
                 : null;
-            var node = await _nodeContext.GetCurrentNodeAsync();
+            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
             var methodIsActive = await _multiFactorAuthenticationModuleManager.IsModuleActiveAsync(selectedProvider, user, node.Id);
             if (methodIsActive)
                 return UserLoginResults.MultiFactorAuthenticationRequired;
@@ -432,8 +436,8 @@ namespace ARWNI2S.Portal.Services.Users
             await _eventPublisher.PublishAsync(new UserLoggedinEvent(user));
 
             //activity log
-            await _userActivityService.InsertActivityAsync(user, SystemKeywords.PublicNode.Login,
-                await _localizationService.GetResourceAsync("ActivityLog.PublicNode.Login"), user);
+            await _userActivityService.InsertActivityAsync(user, SystemKeywords.PublicServer.Login,
+                await _localizationService.GetResourceAsync("ActivityLog.PublicServer.Login"), user);
 
             var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
 
@@ -490,7 +494,7 @@ namespace ARWNI2S.Portal.Services.Users
                     return;
 
                 //update newsletter subscription (if required)
-                foreach (var node in await _nodeService.GetAllNodesAsync())
+                foreach (var node in await _clusteringService.GetAllNodesAsync())
                 {
                     var subscriptionOld = await _newsLetterSubscriptionService.GetNewsLetterSubscriptionByEmailAndNodeIdAsync(oldEmail, node.Id);
 

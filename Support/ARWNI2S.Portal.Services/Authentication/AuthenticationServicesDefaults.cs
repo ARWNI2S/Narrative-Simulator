@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace ARWNI2S.Portal.Services.Authentication
+﻿namespace ARWNI2S.Portal.Services.Authentication
 {
     /// <summary>
     /// Represents default values related to authentication services

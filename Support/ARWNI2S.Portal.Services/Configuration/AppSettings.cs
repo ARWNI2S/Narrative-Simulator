@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Infrastructure.Configuration;
+using ARWNI2S.Node.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -47,7 +48,7 @@ namespace ARWNI2S.Portal.Services.Configuration
         public TConfig Get<TConfig>() where TConfig : class, IConfig
         {
             if (_configurations[typeof(TConfig)] is not TConfig config)
-                throw new PortalException($"No configuration with type '{typeof(TConfig)}' found");
+                throw new NodeException($"No configuration with type '{typeof(TConfig)}' found");
 
             return config;
         }

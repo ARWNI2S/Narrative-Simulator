@@ -1,7 +1,7 @@
-using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Portal.Services.Entities.Media;
+using ARWNI2S.Portal.Services.Infrastructure;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using SkiaSharp;
@@ -17,19 +17,19 @@ namespace ARWNI2S.Portal.Services.Media.RoxyFileman
     {
         #region Fields
 
-        protected IEngineFileProvider _fileProvider;
+        protected IWebFileProvider _fileProvider;
         private readonly MediaSettings _mediaSettings;
 
         #endregion
 
         #region Ctor
 
-        public RoxyFilemanFileProvider(IEngineFileProvider fileProvider) : base(fileProvider.Combine(fileProvider.WebRootPath, RoxyFilemanServiceDefaults.DefaultRootDirectory))
+        public RoxyFilemanFileProvider(IWebFileProvider fileProvider) : base(fileProvider.Combine(fileProvider.WebRootPath, RoxyFilemanServiceDefaults.DefaultRootDirectory))
         {
             _fileProvider = fileProvider;
         }
 
-        public RoxyFilemanFileProvider(IEngineFileProvider defaultFileProvider, MediaSettings mediaSettings) : this(defaultFileProvider)
+        public RoxyFilemanFileProvider(IWebFileProvider defaultFileProvider, MediaSettings mediaSettings) : this(defaultFileProvider)
         {
             _mediaSettings = mediaSettings;
         }

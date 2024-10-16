@@ -6,11 +6,11 @@ using Autofac.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile(WebConfigurationDefaults.AppSettingsFilePath, true, true);
+builder.Configuration.AddJsonFile(WebConfigurationDefaults.NI2SSettingsFilePath, true, true);
 
 if (!string.IsNullOrEmpty(builder.Environment.EnvironmentName))
 {
-    var path = string.Format(WebConfigurationDefaults.AppSettingsEnvironmentFilePath, builder.Environment.EnvironmentName);
+    var path = string.Format(WebConfigurationDefaults.NI2SSettingsEnvironmentFilePath, builder.Environment.EnvironmentName);
     builder.Configuration.AddJsonFile(path, true, true);
 }
 
@@ -19,8 +19,8 @@ builder.Configuration.AddEnvironmentVariables();
 //load application settings
 builder.Services.ConfigureApplicationSettings(builder);
 
-var appSettings = Singleton<AppSettings>.Instance;
-var useAutofac = appSettings.Get<CommonConfig>().UseAutofac;
+var ni2sSettings = Singleton<NI2SSettings>.Instance;
+var useAutofac = ni2sSettings.Get<CommonConfig>().UseAutofac;
 
 if (useAutofac)
     builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());

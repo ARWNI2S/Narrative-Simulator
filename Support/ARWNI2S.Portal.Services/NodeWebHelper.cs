@@ -1,10 +1,13 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
-using Microsoft.AspNetCore.Http;
+using ARWNI2S.Portal.Services.Clustering;
+using ARWNI2S.Portal.Services.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
 using System.Net;
@@ -198,7 +201,7 @@ namespace ARWNI2S.Portal.Services
 
             //if host is empty (it is possible only when HttpContext is not available), use URL of a node entity configured in admin area
             if (string.IsNullOrEmpty(nodeHost))
-                nodeLocation = _nodeContext.Value.GetCurrentNode()?.Url
+                nodeLocation = _nodeContext.Value.GetCurrentNode()?.GetUrl()
                                 ?? throw new NodeException("Current node cannot be loaded");
 
             //ensure that URL is ended with slash

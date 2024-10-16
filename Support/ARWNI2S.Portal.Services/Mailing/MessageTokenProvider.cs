@@ -1,20 +1,25 @@
 ﻿using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Clustering;
+using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Node.Data.Entities.Clustering;
 using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Blogs;
+using ARWNI2S.Portal.Services.Clustering;
 using ARWNI2S.Portal.Services.Entities;
 using ARWNI2S.Portal.Services.Entities.Blogs;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Entities.News;
 using ARWNI2S.Portal.Services.Entities.Tax;
-using ARWNI2S.Portal.Services.Mailing;
 using ARWNI2S.Portal.Services.News;
 using ARWNI2S.Portal.Services.Users;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace ARWNI2S.Portal.Services.Mailing
 {
@@ -34,7 +39,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly ILocalizationService _localizationService;
         private readonly INewsService _newsService;
         private readonly INodeContext _nodeContext;
-        private readonly IClusteringService _nodeService;
+        private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         //private readonly IPartnerAttributeFormatter _partnerAttributeFormatter;
         private readonly PortalInfoSettings _nodeInformationSettings;
@@ -55,7 +60,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             ILocalizationService localizationService,
             INewsService newsService,
             INodeContext nodeContext,
-            IClusteringService nodeService,
+            IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             //IPartnerAttributeFormatter partnerAttributeFormatter,
             PortalInfoSettings nodeInformationSettings
@@ -70,9 +75,9 @@ namespace ARWNI2S.Portal.Services.Mailing
             _localizationService = localizationService;
             _newsService = newsService;
             _nodeContext = nodeContext;
-            _nodeService = nodeService;
+            _clusteringService = clusteringService;
             _urlHelperFactory = urlHelperFactory;
-            _partnerAttributeFormatter = partnerAttributeFormatter;
+            //_partnerAttributeFormatter = partnerAttributeFormatter;
             _nodeInformationSettings = nodeInformationSettings;
         }
 
@@ -238,11 +243,11 @@ namespace ARWNI2S.Portal.Services.Mailing
         protected virtual async Task<string> RouteUrlAsync(int nodeId = 0, string routeName = null, object routeValues = null)
         {
             //try to get a node by the passed identifier
-            var node = await _nodeService.GetNodeByIdAsync(nodeId) ?? await _nodeContext.GetCurrentNodeAsync()
+            var node = await _clusteringService.GetNodeByIdAsync(nodeId) ?? (NI2SNode)await _nodeContext.GetCurrentNodeAsync()
                 ?? throw new NodeException("No node could be loaded");
 
             //ensure that the node URL is specified
-            if (string.IsNullOrEmpty(node.Url))
+            if (string.IsNullOrEmpty(node.GetUrl()))
                 throw new NodeException("URL cannot be null");
 
             //generate the relative URL
@@ -250,7 +255,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             var url = urlHelper.RouteUrl(routeName, routeValues);
 
             //compose the result
-            return new Uri(new Uri(node.Url), url).AbsoluteUri;
+            return new Uri(new Uri(node.GetUrl()), url).AbsoluteUri;
         }
 
         #endregion
@@ -283,7 +288,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             tokens.Add(new Token("Instagram.URL", _nodeInformationSettings.InstagramLink));
 
             //event notification
-            await _eventPublisher.EntityTokensAddedAsync(node, tokens);
+            await _eventPublisher.EntityTokensAddedAsync(node as NI2SNode, tokens);
         }
 
         /// <summary>

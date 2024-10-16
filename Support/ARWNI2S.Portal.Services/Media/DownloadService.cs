@@ -1,7 +1,6 @@
 ﻿using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Portal.Services.Entities.Media;
-using Microsoft.AspNetCore.Http;
 
 namespace ARWNI2S.Portal.Services.Media
 {
