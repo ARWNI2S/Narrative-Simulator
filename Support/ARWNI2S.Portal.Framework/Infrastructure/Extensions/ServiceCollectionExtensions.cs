@@ -88,6 +88,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             mvcCoreBuilder.PartManager.InitializeModules(moduleConfig);
 
             //create engine and configure service provider
+            Singleton<IEngine>.Instance = new WebNodeEngine();
             var engine = EngineContext.Create();
 
             engine.ConfigureServices(services, builder.Configuration);
@@ -316,11 +317,11 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             //    options.ModelBinderProviders.Insert(0, new InvariantNumberModelBinderProvider());
             //    options.ModelBinderProviders.Insert(1, new CustomPropertiesModelBinderProvider());
             //    //add custom display metadata provider 
-            //    options.ModelMetadataDetailsProviders.Add(new DraCoMetadataProvider());
+            //    options.ModelMetadataDetailsProviders.Add(new NI2SMetadataProvider());
 
             //    //in .NET model binding for a non-nullable property may fail with an error message "The value '' is invalid"
             //    //here we set the locale name as the message, we'll replace it with the actual one later when not-null validation failed
-            //    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => DraCoValidationDefaults.NotNullValidationLocaleName);
+            //    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => NI2SValidationDefaults.NotNullValidationLocaleName);
             //});
 
             ////add fluent validation
@@ -379,11 +380,11 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         //        options.ModelBinderProviders.Insert(0, new InvariantNumberModelBinderProvider());
         //        options.ModelBinderProviders.Insert(1, new CustomPropertiesModelBinderProvider());
         //        //add custom display metadata provider 
-        //        options.ModelMetadataDetailsProviders.Add(new DraCoMetadataProvider());
+        //        options.ModelMetadataDetailsProviders.Add(new NI2SMetadataProvider());
 
         //        //in .NET model binding for a non-nullable property may fail with an error message "The value '' is invalid"
         //        //here we set the locale name as the message, we'll replace it with the actual one later when not-null validation failed
-        //        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => DraCoValidationDefaults.NotNullValidationLocaleName);
+        //        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => NI2SValidationDefaults.NotNullValidationLocaleName);
         //    });
 
         //    //add fluent validation

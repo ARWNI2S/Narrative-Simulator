@@ -145,7 +145,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="applicationPartManager">Application part manager</param>
         /// <param name="assemblyFile">Path to the module assembly file</param>
         /// <param name="moduleConfig">Module config</param>
-        /// <param name="fileProvider">DraCo file provider</param>
+        /// <param name="fileProvider">NI2S file provider</param>
         /// <returns>Assembly</returns>
         private static Assembly PerformFileDeploy(this ApplicationPartManager applicationPartManager,
             string assemblyFile, ModuleConfig moduleConfig, IEngineFileProvider fileProvider)

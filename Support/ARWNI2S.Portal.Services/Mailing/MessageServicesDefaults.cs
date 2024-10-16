@@ -22,7 +22,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// {0} : server ID
         /// {1} : is active?
         /// </remarks>
-        public static CacheKey MessageTemplatesAllCacheKey => new("DraCo.messagetemplate.all.{0}-{1}", EntityCacheDefaults<MessageTemplate>.AllPrefix);
+        public static CacheKey MessageTemplatesAllCacheKey => new("ni2s.messagetemplate.all.{0}-{1}", EntityCacheDefaults<MessageTemplate>.AllPrefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -31,7 +31,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// {0} : template name
         /// {1} : server ID
         /// </remarks>
-        public static CacheKey MessageTemplatesByNameCacheKey => new("DraCo.messagetemplate.byname.{0}-{1}", MessageTemplatesByNamePrefix);
+        public static CacheKey MessageTemplatesByNameCacheKey => new("ni2s.messagetemplate.byname.{0}-{1}", MessageTemplatesByNamePrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
@@ -39,7 +39,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <remarks>
         /// {0} : template name
         /// </remarks>
-        public static string MessageTemplatesByNamePrefix => "DraCo.messagetemplate.byname.{0}";
+        public static string MessageTemplatesByNamePrefix => "ni2s.messagetemplate.byname.{0}";
 
         #endregion
     }

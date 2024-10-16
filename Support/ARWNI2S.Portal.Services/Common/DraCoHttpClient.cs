@@ -97,7 +97,7 @@ namespace ARWNI2S.Portal.Services.Common
         //public virtual async Task<string> InstallationCompletedAsync(string email, string languageCode, string culture)
         //{
         //    //prepare URL to request
-        //    var url = string.Format(CommonServicesDefaults.DraCoInstallationCompletedPath,
+        //    var url = string.Format(CommonServicesDefaults.NI2SInstallationCompletedPath,
         //        NI2SVersion.FULL_VERSION,
         //        _webHelper.IsLocalRequest(_httpContextAccessor.HttpContext.Request),
         //        WebUtility.UrlEncode(email),
@@ -123,7 +123,7 @@ namespace ARWNI2S.Portal.Services.Common
         //{
         //    //prepare URL to request
         //    var language = _languageService.GetTwoLetterIsoLanguageName(await _workContext.GetWorkingLanguageAsync());
-        //    var url = string.Format(CommonServicesDefaults.DraCoExtensionsCategoriesPath, language).ToLowerInvariant();
+        //    var url = string.Format(CommonServicesDefaults.NI2SExtensionsCategoriesPath, language).ToLowerInvariant();
 
         //    //get XML response
         //    return await _httpClient.GetStringAsync(url);
@@ -140,7 +140,7 @@ namespace ARWNI2S.Portal.Services.Common
         //{
         //    //prepare URL to request
         //    var language = _languageService.GetTwoLetterIsoLanguageName(await _workContext.GetWorkingLanguageAsync());
-        //    var url = string.Format(CommonServicesDefaults.DraCoExtensionsVersionsPath, language).ToLowerInvariant();
+        //    var url = string.Format(CommonServicesDefaults.NI2SExtensionsVersionsPath, language).ToLowerInvariant();
 
         //    //get XML response
         //    return await _httpClient.GetStringAsync(url);
@@ -165,7 +165,7 @@ namespace ARWNI2S.Portal.Services.Common
         //{
         //    //prepare URL to request
         //    var language = _languageService.GetTwoLetterIsoLanguageName(await _workContext.GetWorkingLanguageAsync());
-        //    var url = string.Format(CommonServicesDefaults.DraCoExtensionsPath,
+        //    var url = string.Format(CommonServicesDefaults.NI2SExtensionsPath,
         //        categoryId, versionId, price, WebUtility.UrlEncode(searchTerm), pageIndex, pageSize, language).ToLowerInvariant();
 
         //    //get XML response

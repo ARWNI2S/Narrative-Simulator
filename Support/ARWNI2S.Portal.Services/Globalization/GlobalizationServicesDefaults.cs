@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// <remarks>
         /// {0} : Two letter ISO code
         /// </remarks>
-        public static CacheKey CountriesByTwoLetterCodeCacheKey => new("DraCo.country.bytwoletter.{0}", EntityCacheDefaults<Country>.Prefix);
+        public static CacheKey CountriesByTwoLetterCodeCacheKey => new("ni2s.country.bytwoletter.{0}", EntityCacheDefaults<Country>.Prefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// <remarks>
         /// {0} : Two letter ISO code
         /// </remarks>
-        public static CacheKey CountriesByThreeLetterCodeCacheKey => new("DraCo.country.bythreeletter.{0}", EntityCacheDefaults<Country>.Prefix);
+        public static CacheKey CountriesByThreeLetterCodeCacheKey => new("ni2s.country.bythreeletter.{0}", EntityCacheDefaults<Country>.Prefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -36,7 +36,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// {1} : show hidden records?
         /// {2} : current server ID
         /// </remarks>
-        public static CacheKey CountriesAllCacheKey => new("DraCo.country.all.{0}-{1}-{2}", EntityCacheDefaults<Country>.Prefix);
+        public static CacheKey CountriesAllCacheKey => new("ni2s.country.all.{0}-{1}-{2}", EntityCacheDefaults<Country>.Prefix);
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// {1} : language ID
         /// {2} : show hidden records?
         /// </remarks>
-        public static CacheKey StateProvincesByCountryCacheKey => new("DraCo.stateprovince.bycountry.{0}-{1}-{2}", EntityCacheDefaults<StateProvince>.Prefix);
+        public static CacheKey StateProvincesByCountryCacheKey => new("ni2s.stateprovince.bycountry.{0}-{1}-{2}", EntityCacheDefaults<StateProvince>.Prefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -58,7 +58,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// <remarks>
         /// {0} : show hidden records?
         /// </remarks>
-        public static CacheKey StateProvincesAllCacheKey => new("DraCo.stateprovince.all.{0}", EntityCacheDefaults<StateProvince>.Prefix);
+        public static CacheKey StateProvincesAllCacheKey => new("ni2s.stateprovince.all.{0}", EntityCacheDefaults<StateProvince>.Prefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -67,7 +67,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// {0} : abbreviation
         /// {1} : country ID
         /// </remarks>
-        public static CacheKey StateProvincesByAbbreviationCacheKey => new("DraCo.stateprovince.byabbreviation.{0}-{1}", EntityCacheDefaults<StateProvince>.Prefix);
+        public static CacheKey StateProvincesByAbbreviationCacheKey => new("ni2s.stateprovince.byabbreviation.{0}-{1}", EntityCacheDefaults<StateProvince>.Prefix);
 
         #endregion
 

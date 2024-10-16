@@ -17,7 +17,7 @@ namespace ARWNI2S.Portal.Services.Blogs
         /// {1} : server ID
         /// {2} : are only approved comments?
         /// </remarks>
-        public static CacheKey BlogCommentsNumberCacheKey => new("DraCo.blogcomment.number.{0}-{1}-{2}", BlogCommentsNumberPrefix);
+        public static CacheKey BlogCommentsNumberCacheKey => new("ni2s.blogcomment.number.{0}-{1}-{2}", BlogCommentsNumberPrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
@@ -25,7 +25,7 @@ namespace ARWNI2S.Portal.Services.Blogs
         /// <remarks>
         /// {0} : blog post ID
         /// </remarks>
-        public static string BlogCommentsNumberPrefix => "DraCo.blogcomment.number.{0}";
+        public static string BlogCommentsNumberPrefix => "ni2s.blogcomment.number.{0}";
 
         /// <summary>
         /// Key for blog tag list model
@@ -35,12 +35,12 @@ namespace ARWNI2S.Portal.Services.Blogs
         /// {1} : current server ID
         /// {2} : show hidden?
         /// </remarks>
-        public static CacheKey BlogTagsCacheKey => new("DraCo.blogpost.tags.{0}-{1}-{2}", BlogTagsPrefix);
+        public static CacheKey BlogTagsCacheKey => new("ni2s.blogpost.tags.{0}-{1}-{2}", BlogTagsPrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
         /// </summary>
-        public static string BlogTagsPrefix => "DraCo.blogpost.tags.";
+        public static string BlogTagsPrefix => "ni2s.blogpost.tags.";
 
         #endregion
     }

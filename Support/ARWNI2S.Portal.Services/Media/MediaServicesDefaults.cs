@@ -35,12 +35,12 @@ namespace ARWNI2S.Portal.Services.Media
         /// <remarks>
         /// {0} : thumb file name
         /// </remarks>
-        public static CacheKey ThumbExistsCacheKey => new("DraCo.azure.thumb.exists.{0}", ThumbsExistsPrefix);
+        public static CacheKey ThumbExistsCacheKey => new("ni2s.azure.thumb.exists.{0}", ThumbsExistsPrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
         /// </summary>
-        public static string ThumbsExistsPrefix => "DraCo.azure.thumb.exists.";
+        public static string ThumbsExistsPrefix => "ni2s.azure.thumb.exists.";
 
         #endregion
     }

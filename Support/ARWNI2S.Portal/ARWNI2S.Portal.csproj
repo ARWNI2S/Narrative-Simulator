@@ -6,7 +6,7 @@
     <UserSecretsId>aspnet-ARWNI2S.Portal-e40f3a56-ba3b-418e-92d0-8f9d822784de</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.10" />
@@ -15,10 +15,27 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <Folder Include="Areas\Admin\" />
+    <Folder Include="Components\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Components\WidgetViewComponent.cs" />
+    <Compile Remove="Infrastructure\GenericUrlRouteProvider.cs" />
+
+    <Content Remove="Data\**" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="Views\Shared\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Views\Shared\**" />
+    <None Remove="Data\**" />
+    <None Remove="Views\Shared\**" />
+
+    <Content Remove="Pages\FetchData.razor" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -31,23 +48,20 @@
     <!-- We copy the entire \Node_Data directory. But we ignore JSON files and data protection keys  -->
     <Content Include="Node_Data\**" CopyToPublishDirectory="PreserveNewest" Exclude="Node_Data\*.json" />
     <Content Remove="Framework\**" />
+    <Content Remove="Modules\**" />
     <Content Remove="Node_Data\*.json" />
+    <Content Remove="Views\Shared\**" />
     <Content Update="Node_Data\DataProtectionKeys\*.xml" CopyToPublishDirectory="Never" />
     <Compile Remove="Framework\**" />
     <Compile Remove="Modules\**" />
-    <Content Remove="Modules\**" />
     <EmbeddedResource Remove="Framework\**" />
     <EmbeddedResource Remove="Modules\**" />
     <None Remove="Framework\**" />
     <None Remove="Modules\**" />
+    <None Include="Framework\**" CopyToPublishDirectory="PreserveNewest" Exclude="Framework\**\runtimes\**;Framework\**\ref\**;Framework\**\*.pdb" />
     <None Include="Modules\**" CopyToPublishDirectory="PreserveNewest" Exclude="Modules\**\runtimes\**;Modules\**\ref\**;Modules\**\*.pdb" />
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
-    <None Remove="Modules\Uploaded\placeholder.txt" />
-    <Content Include="Modules\Uploaded\placeholder.txt">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

@@ -52,7 +52,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
     /// <summary>
     /// Represents the registering services on application startup
     /// </summary>
-    public partial class PortalStartup : IWebStartup
+    public partial class NodeStartup : IWebStartup
     {
         /// <summary>
         /// Add and configure any of the middleware
@@ -62,7 +62,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public virtual void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //file provider
-            services.AddScoped<IEngineFileProvider, EngineFileProvider>();
+            services.AddScoped<IEngineFileProvider, WebFileProvider>();
 
             //web helper
             services.AddScoped<IWebHelper, NodeWebHelper>();
@@ -175,7 +175,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<INewsService, NewsService>();
             //services.AddScoped<ISystemMessageService, SystemMessageService>();
             services.AddScoped<IDateTimeHelper, DateTimeHelper>();
-            //services.AddScoped<IDraCoHtmlHelper, DraCoHtmlHelper>();
+            //services.AddScoped<INI2SHtmlHelper, NI2SHtmlHelper>();
             services.AddScoped<IScheduleTaskService, ScheduleTaskService>();
             services.AddScoped<IExportManager, ExportManager>();
             services.AddScoped<IImportManager, ImportManager>();
@@ -188,7 +188,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IBBCodeHelper, BBCodeHelper>();
             services.AddScoped<IHtmlFormatter, HtmlFormatter>();
             services.AddScoped<IVideoService, VideoService>();
-            //services.AddScoped<IDraCoUrlHelper, DraCoUrlHelper>();
+            //services.AddScoped<INI2SUrlHelper, NI2SUrlHelper>();
 
             //services.AddScoped<IMetaverseService, MetaverseService>();
             //services.AddScoped<IBlockchainService, BlockchainService>();

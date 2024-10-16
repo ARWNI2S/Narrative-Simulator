@@ -40,7 +40,7 @@ namespace ARWNI2S.Portal.Framework.Routing
         {
             //first try to get a language code from the route values
             var routeValues = _httpContextAccessor.HttpContext.Request.RouteValues;
-            if (routeValues.TryGetValue(PortalRoutingDefaults.RouteValue.Language, out var routeValue))
+            if (routeValues.TryGetValue(NodeRoutingDefaults.RouteValue.Language, out var routeValue))
             {
                 //ensure this language is available
                 var code = routeValue?.ToString();

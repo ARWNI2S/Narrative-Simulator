@@ -13,7 +13,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
     /// <summary>
     /// Represents object for the configuring DB context on application startup
     /// </summary>
-    public partial class PortalDbStartup : IWebStartup
+    public partial class NodeDbStartup : IWebStartup
     {
         /// <summary>
         /// Add and configure any of the middleware

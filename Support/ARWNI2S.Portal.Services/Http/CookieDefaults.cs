@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets the cookie name prefix
         /// </summary>
-        public static string Prefix => ".DraCo";
+        public static string Prefix => ".NI2S";
 
         /// <summary>
         /// Gets a cookie name of the user

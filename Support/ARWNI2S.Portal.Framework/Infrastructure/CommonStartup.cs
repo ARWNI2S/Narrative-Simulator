@@ -34,7 +34,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddRouting(options =>
             {
                 //add constraint key for language
-                options.ConstraintMap[PortalRoutingDefaults.LanguageParameterTransformer] = typeof(LanguageParameterTransformer);
+                options.ConstraintMap[NodeRoutingDefaults.LanguageParameterTransformer] = typeof(LanguageParameterTransformer);
             });
         }
 

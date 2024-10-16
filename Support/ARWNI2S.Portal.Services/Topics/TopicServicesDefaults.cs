@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.Topics
         /// {1} : show hidden?
         /// {2} : include in top menu?
         /// </remarks>
-        public static CacheKey TopicsAllCacheKey => new("DraCo.topic.all.{0}-{1}-{2}", EntityCacheDefaults<Topic>.AllPrefix);
+        public static CacheKey TopicsAllCacheKey => new("ni2s.topic.all.{0}-{1}-{2}", EntityCacheDefaults<Topic>.AllPrefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -29,7 +29,7 @@ namespace ARWNI2S.Portal.Services.Topics
         /// {2} : include in top menu?
         /// {3} : user role IDs hash
         /// </remarks>
-        public static CacheKey TopicsAllWithACLCacheKey => new("DraCo.topic.all.withacl.{0}-{1}-{2}-{3}", EntityCacheDefaults<Topic>.AllPrefix);
+        public static CacheKey TopicsAllWithACLCacheKey => new("ni2s.topic.all.withacl.{0}-{1}-{2}-{3}", EntityCacheDefaults<Topic>.AllPrefix);
 
         /// <summary>
         /// Gets a key for caching
@@ -39,7 +39,7 @@ namespace ARWNI2S.Portal.Services.Topics
         /// {1} : server id
         /// {2} : user roles Ids hash
         /// </remarks>
-        public static CacheKey TopicBySystemNameCacheKey => new("DraCo.topic.bysystemname.{0}-{1}-{2}", TopicBySystemNamePrefix);
+        public static CacheKey TopicBySystemNameCacheKey => new("ni2s.topic.bysystemname.{0}-{1}-{2}", TopicBySystemNamePrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
@@ -47,7 +47,7 @@ namespace ARWNI2S.Portal.Services.Topics
         /// <remarks>
         /// {0} : topic system name
         /// </remarks>
-        public static string TopicBySystemNamePrefix => "DraCo.topic.bysystemname.{0}";
+        public static string TopicBySystemNamePrefix => "ni2s.topic.bysystemname.{0}";
 
         #endregion
     }

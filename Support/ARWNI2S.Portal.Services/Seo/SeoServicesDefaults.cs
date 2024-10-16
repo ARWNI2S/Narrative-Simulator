@@ -96,7 +96,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// {1} : entity name
         /// {2} : language ID
         /// </remarks>
-        public static CacheKey UrlRecordCacheKey => new("DraCo.urlrecord.{0}-{1}-{2}");
+        public static CacheKey UrlRecordCacheKey => new("ni2s.urlrecord.{0}-{1}-{2}");
 
         /// <summary>
         /// Gets a key for caching
@@ -104,12 +104,12 @@ namespace ARWNI2S.Portal.Services.Seo
         /// <remarks>
         /// {0} : slug
         /// </remarks>
-        public static CacheKey UrlRecordBySlugCacheKey => new("DraCo.urlrecord.byslug.{0}");
+        public static CacheKey UrlRecordBySlugCacheKey => new("ni2s.urlrecord.byslug.{0}");
 
         /// <summary>
         /// Gets a key for caching
         /// </summary>
-        public static CacheKey UrlRecordSlugLookupCacheKey => new("DraCo.urlrecord.sluglookup");
+        public static CacheKey UrlRecordSlugLookupCacheKey => new("ni2s.urlrecord.sluglookup");
 
         /// <summary>
         /// Gets a key for caching
@@ -117,7 +117,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// <remarks>
         /// {0} : language ID
         /// </remarks>
-        public static CacheKey UrlRecordEntityIdLookupCacheKey => new("DraCo.urlrecord.entityidlookup.{0}");
+        public static CacheKey UrlRecordEntityIdLookupCacheKey => new("ni2s.urlrecord.entityidlookup.{0}");
 
         #endregion
     }

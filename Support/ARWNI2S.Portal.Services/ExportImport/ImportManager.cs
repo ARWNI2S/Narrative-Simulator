@@ -987,7 +987,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var filePath = _fileProvider.Combine(tempDirectory, fileName);
         //    try
         //    {
-        //        var client = _httpClientFactory.CreateClient(DraCoHttpDefaults.DefaultHttpClient);
+        //        var client = _httpClientFactory.CreateClient(NI2SHttpDefaults.DefaultHttpClient);
         //        var fileData = await client.GetByteArrayAsync(urlString);
         //        await using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
         //            fs.Write(fileData, 0, fileData.Length);

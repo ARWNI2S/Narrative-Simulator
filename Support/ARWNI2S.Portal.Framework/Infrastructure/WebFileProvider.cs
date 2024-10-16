@@ -17,5 +17,24 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         }
 
         public string WebRootPath { get; }
+
+        /// <summary>
+        /// Returns the absolute path to the directory
+        /// </summary>
+        /// <param name="paths">An array of parts of the path</param>
+        /// <returns>The absolute path to the directory</returns>
+        public override string GetAbsolutePath(params string[] paths)
+        {
+            var allPaths = new List<string>();
+
+            if (paths.Length != 0 && !paths[0].Contains(WebRootPath, StringComparison.InvariantCulture))
+                allPaths.Add(WebRootPath);
+
+            allPaths.AddRange(paths);
+
+            return Combine(allPaths.ToArray());
+        }
+
+
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents default values related to routing
     /// </summary>
-    public static partial class PortalRoutingDefaults
+    public static partial class NodeRoutingDefaults
     {
         #region Route names
 

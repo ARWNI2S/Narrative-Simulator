@@ -43,7 +43,7 @@ namespace ARWNI2S.Portal.Services.Security
         /// {0} : entity ID
         /// {1} : entity name
         /// </remarks>
-        public static CacheKey AclRecordCacheKey => new("DraCo.aclrecord.{0}-{1}");
+        public static CacheKey AclRecordCacheKey => new("ni2s.aclrecord.{0}-{1}");
 
         /// <summary>
         /// Gets a key for caching
@@ -51,7 +51,7 @@ namespace ARWNI2S.Portal.Services.Security
         /// <remarks>
         /// {0} : entity name
         /// </remarks>
-        public static CacheKey EntityAclRecordExistsCacheKey => new("DraCo.aclrecord.exists.{0}");
+        public static CacheKey EntityAclRecordExistsCacheKey => new("ni2s.aclrecord.exists.{0}");
 
         #endregion
 
@@ -64,7 +64,7 @@ namespace ARWNI2S.Portal.Services.Security
         /// {0} : permission system name
         /// {1} : user role ID
         /// </remarks>
-        public static CacheKey PermissionAllowedCacheKey => new("DraCo.permissionrecord.allowed.{0}-{1}", PermissionAllowedPrefix);
+        public static CacheKey PermissionAllowedCacheKey => new("ni2s.permissionrecord.allowed.{0}-{1}", PermissionAllowedPrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
@@ -72,7 +72,7 @@ namespace ARWNI2S.Portal.Services.Security
         /// <remarks>
         /// {0} : permission system name
         /// </remarks>
-        public static string PermissionAllowedPrefix => "DraCo.permissionrecord.allowed.{0}";
+        public static string PermissionAllowedPrefix => "ni2s.permissionrecord.allowed.{0}";
 
         /// <summary>
         /// Gets a key for caching
@@ -80,7 +80,7 @@ namespace ARWNI2S.Portal.Services.Security
         /// <remarks>
         /// {0} : user role ID
         /// </remarks>
-        public static CacheKey PermissionRecordsAllCacheKey => new("DraCo.permissionrecord.all.{0}", EntityCacheDefaults<PermissionRecord>.AllPrefix);
+        public static CacheKey PermissionRecordsAllCacheKey => new("ni2s.permissionrecord.all.{0}", EntityCacheDefaults<PermissionRecord>.AllPrefix);
 
         #endregion
 

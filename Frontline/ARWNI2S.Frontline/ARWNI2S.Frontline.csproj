@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Host\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
+    <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Frontline.Scene\ARWNI2S.Frontline.Scene.csproj" />
+  </ItemGroup>
+
+</Project>

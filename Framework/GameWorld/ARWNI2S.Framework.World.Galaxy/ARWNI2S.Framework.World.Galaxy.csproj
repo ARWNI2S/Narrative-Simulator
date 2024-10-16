@@ -9,7 +9,7 @@
     <OutputPath>..\..\..\Bin\Modules\$(MSBuildProjectName)</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
     <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project. 
-    You need to set this parameter to true if your addon has a nuget package 
+    You need to set this parameter to true if your module has a nuget package 
     to ensure that the dlls copied from the NuGet cache to the output of your project-->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <LangVersion>12.0</LangVersion>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ClearAddonAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\NI2S-Node\src\tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
+    <ClearModuleAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\NI2S-Node\src\tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,8 +37,8 @@
 
   <!-- This target execute after "Build" target -->
   <Target Name="NI2SModulesTarget" AfterTargets="Build">
-    <!-- Delete unnecessary libraries from addons path -->
-    <MSBuild Projects="@(ClearAddonAssemblies)" Properties="AddonPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NI2SModulesClear" />
+    <!-- Delete unnecessary libraries from modules path -->
+    <MSBuild Projects="@(ClearModuleAssemblies)" Properties="ModulePath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NI2SModulesClear" />
   </Target>
 
 </Project>
