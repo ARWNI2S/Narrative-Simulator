@@ -15,7 +15,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //add WebMarkupMin services to the services container
-            services.AddDraCoWebMarkupMin();
+            services.AddNI2SWebMarkupMin();
         }
 
         /// <summary>
@@ -25,12 +25,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public void Configure(IApplicationBuilder application)
         {
             //use WebMarkupMin
-            application.UseDraCoWebMarkupMin();
+            application.UseNI2SWebMarkupMin();
         }
 
         /// <summary>
         /// Gets order of this startup configuration implementation
         /// </summary>
-        public int Order => 300; //Ensure that "UseDraCoWebMarkupMin" method is invoked before "UseRouting". Otherwise, HTML minification won't work
+        public int Order => 300; //Ensure that "UseNI2SWebMarkupMin" method is invoked before "UseRouting". Otherwise, HTML minification won't work
     }
 }

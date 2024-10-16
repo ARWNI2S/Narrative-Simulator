@@ -1,6 +1,7 @@
 ﻿using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Data.Extensions;
+using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Portal.Services.Entities.Common;
 
 namespace ARWNI2S.Portal.Services.Common

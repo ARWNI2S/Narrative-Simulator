@@ -1,5 +1,4 @@
-﻿using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Core.Infrastructure;
+﻿using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Portal.Services.Localization;
 using Microsoft.AspNetCore.Localization;
 
@@ -20,7 +19,7 @@ namespace ARWNI2S.Portal.Framework.Globalization
         /// </returns>
         public override async Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
         {
-            var localizationSettings = EngineContext.Current.Resolve<LocalizationSettings>();
+            var localizationSettings = EngineContext.Current.Resolve<PortalLocalizationSettings>();
 
             if (!localizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
                 return await NullProviderCultureResult;

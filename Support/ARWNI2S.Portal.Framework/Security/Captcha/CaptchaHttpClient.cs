@@ -1,7 +1,11 @@
-﻿using Microsoft.Net.Http.Headers;
+﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Portal.Services;
+using ARWNI2S.Portal.Services.Entities.Security;
+using ARWNI2S.Portal.Services.Security;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 
-namespace DragonCorp.Metalink.Server.Framework.Security.Captcha
+namespace ARWNI2S.Portal.Framework.Security.Captcha
 {
     /// <summary>
     /// Represents the HTTP client to request reCAPTCHA service
@@ -28,7 +32,7 @@ namespace DragonCorp.Metalink.Server.Framework.Security.Captcha
 
             //configure client
             client.BaseAddress = new Uri(captchaSettings.ReCaptchaApiUrl);
-            client.DefaultRequestHeaders.Add(HeaderNames.UserAgent, $"dragonCorp-{MetalinkVersion.CURRENT_VERSION}");
+            client.DefaultRequestHeaders.Add(HeaderNames.UserAgent, $"dragonCorp-{NI2SVersion.CURRENT_VERSION}");
 
             if (captchaSettings.ReCaptchaRequestTimeout is int timeout && timeout > 0)
                 client.Timeout = TimeSpan.FromSeconds(timeout);

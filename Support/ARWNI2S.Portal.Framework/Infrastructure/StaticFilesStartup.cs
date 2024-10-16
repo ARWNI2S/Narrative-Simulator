@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddResponseCompression();
 
             //middleware for bundling and minification of CSS and JavaScript files.
-            services.AddDraCoWebOptimizer();
+            services.AddNI2SWebOptimizer();
         }
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            //use response compression before UseDraCoStaticFiles to support compress for it
-            application.UseDraCoResponseCompression();
+            //use response compression before UseNI2SStaticFiles to support compress for it
+            application.UseNI2SResponseCompression();
 
             //WebOptimizer should be placed before configuring static files
-            application.UseDraCoWebOptimizer();
+            application.UseNI2SWebOptimizer();
 
             //use static files feature
-            application.UseDraCoStaticFiles();
+            application.UseNI2SStaticFiles();
         }
 
         /// <summary>

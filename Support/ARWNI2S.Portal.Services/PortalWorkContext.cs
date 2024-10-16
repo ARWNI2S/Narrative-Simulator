@@ -33,7 +33,7 @@ namespace ARWNI2S.Portal.Services
         //private readonly IPlayerService _playerService;
         //private readonly IPartnerService _partnerService;
         //private readonly IWebHelper _webHelper;
-        //private readonly LocalizationSettings _localizationSettings;
+        //private readonly PortalLocalizationSettings _localizationSettings;
         //private readonly TaxSettings _taxSettings;
 
         private CultureInfo _workingCulture;
@@ -69,7 +69,7 @@ namespace ARWNI2S.Portal.Services
             //    IPartnerService partnerService,
             //    IPlayerService playerService,
             //    IWebHelper webHelper,
-            //    LocalizationSettings localizationSettings,
+            //    PortalLocalizationSettings localizationSettings,
             //    TaxSettings taxSettings
             )
         {

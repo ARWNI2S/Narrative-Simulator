@@ -7,35 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Authentication\Wallet\**" />
-    <EmbeddedResource Remove="Authentication\Wallet\**" />
-    <None Remove="Authentication\Wallet\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Authentication\AuthenticationResult.cs" />
-    <Compile Remove="Common\GenericAttributeService.cs" />
-    <Compile Remove="Configuration\AppSettings.cs" />
-    <Compile Remove="Configuration\AppSettingsHelper.cs" />
-    <Compile Remove="Configuration\NI2SSettings.cs" />
-    <Compile Remove="Configuration\NI2SSettingsHelper.cs" />
+    <Compile Remove="Entities\Mailing\SystemMessage.cs" />
     <Compile Remove="Globalization\GeoLookupService.cs" />
     <Compile Remove="Globalization\IGeoLookupService.cs" />
-    <Compile Remove="Entities\Common\CommonSettings.cs" />
-    <Compile Remove="Entities\Common\GenericAttribute.cs" />
-    <Compile Remove="Entities\Common\ISoftDeletedEntity.cs" />
-    <Compile Remove="Entities\Users\User.cs" />
-    <Compile Remove="Entities\Users\UserDefaults.cs" />
-    <Compile Remove="Entities\Users\UserRole.cs" />
-    <Compile Remove="Entities\Users\UserRoleComparerByName.cs" />
-    <Compile Remove="Entities\Users\UserUserRoleMapping.cs" />
-    <Compile Remove="Entities\Users\WalletAuthenticationRecord.cs" />
-    <Compile Remove="Entities\Users\WalletAuthenticationSettings.cs" />
-    <Compile Remove="Mailing\SystemMessageService.cs" />
-    <Compile Remove="Media\AzurePictureService.cs" />
-    <Compile Remove="SystemKeywords.cs" />
-    <Compile Remove="Users\IUserReportService.cs" />
-    <Compile Remove="Users\IUserService.cs" />
+    <Compile Remove="Localization\ITranslationService.cs" />
+    <Compile Remove="Localization\TranslationService.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +21,7 @@
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.8" />
     <PackageReference Include="Svg.Skia" Version="2.0.0.1" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.6" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.22.2" />
   </ItemGroup>
 
   <ItemGroup>

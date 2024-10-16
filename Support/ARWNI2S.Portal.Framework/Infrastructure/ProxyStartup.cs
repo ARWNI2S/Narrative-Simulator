@@ -20,7 +20,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            application.UseDraCoProxy();
+            application.UseNI2SProxy();
         }
 
         /// <summary>

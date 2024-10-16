@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace DragonCorp.Metalink.Server.Framework.Security.Captcha
+namespace ARWNI2S.Portal.Framework.Security.Captcha
 {
     /// <summary>
     /// Google reCAPTCHA response

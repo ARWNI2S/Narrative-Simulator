@@ -2,7 +2,7 @@
 using System.Runtime.Versioning;
 using System.Security.Principal;
 
-namespace DragonCorp.Metalink.Server.Framework.Security
+namespace ARWNI2S.Portal.Framework.Security
 {
     /// <summary>
     /// Represent information about current OS user 

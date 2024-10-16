@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Portal.Framework.Infrastructure.Extensions;
+using ARWNI2S.Portal.Framework.Routing;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure
 {
@@ -24,7 +25,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddHttpSession();
 
             //add default HTTP clients
-            services.AddDraCoHttpClients();
+            services.AddNI2SHttpClients();
 
             //add anti-forgery
             services.AddAntiForgery();
@@ -33,7 +34,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddRouting(options =>
             {
                 //add constraint key for language
-                options.ConstraintMap[MetalinkRoutingDefaults.LanguageParameterTransformer] = typeof(LanguageParameterTransformer);
+                options.ConstraintMap[PortalRoutingDefaults.LanguageParameterTransformer] = typeof(LanguageParameterTransformer);
             });
         }
 
@@ -53,7 +54,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             application.UseSession();
 
             //use request localization
-            application.UseDraCoRequestLocalization();
+            application.UseNI2SRequestLocalization();
         }
 
         /// <summary>

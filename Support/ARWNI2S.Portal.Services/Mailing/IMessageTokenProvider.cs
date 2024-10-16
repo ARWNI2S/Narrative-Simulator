@@ -74,7 +74,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="tokens">List of already added tokens</param>
         /// <param name="systemMessage">System message</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task AddSystemMessageTokensAsync(IList<Token> tokens, SystemMessage systemMessage);
+        //Task AddSystemMessageTokensAsync(IList<Token> tokens, SystemMessage systemMessage);
 
         /// <summary>
         /// Get collection of allowed (supported) message tokens for campaigns

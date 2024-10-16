@@ -1808,48 +1808,48 @@ namespace ARWNI2S.Portal.Services.Mailing
         //    }).ToListAsync();
         //}
 
-        /// <summary>
-        /// Sends a system message notification
-        /// </summary>
-        /// <param name="systemMessage">System message</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>
-        /// A task that represents the asynchronous operation
-        /// The task result contains the queued email identifier
-        /// </returns>
-        public virtual async Task<IList<int>> SendSystemMessageNotificationAsync(SystemMessage systemMessage, int languageId)
-        {
-            ArgumentNullException.ThrowIfNull(systemMessage);
+        ///// <summary>
+        ///// Sends a system message notification
+        ///// </summary>
+        ///// <param name="systemMessage">System message</param>
+        ///// <param name="languageId">Message language identifier</param>
+        ///// <returns>
+        ///// A task that represents the asynchronous operation
+        ///// The task result contains the queued email identifier
+        ///// </returns>
+        //public virtual async Task<IList<int>> SendSystemMessageNotificationAsync(SystemMessage systemMessage, int languageId)
+        //{
+        //    ArgumentNullException.ThrowIfNull(systemMessage);
 
-            var node = await _clusteringService.GetNodeByIdAsync(systemMessage.NodeId) ?? (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+        //    var node = await _clusteringService.GetNodeByIdAsync(systemMessage.NodeId) ?? (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
 
-            var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.SystemMessageNotification, node.Id);
-            if (!messageTemplates.Any())
-                return [];
+        //    var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.SystemMessageNotification, node.Id);
+        //    if (!messageTemplates.Any())
+        //        return [];
 
-            //tokens
-            var commonTokens = new List<Token>();
-            await _messageTokenProvider.AddSystemMessageTokensAsync(commonTokens, systemMessage);
-            await _messageTokenProvider.AddUserTokensAsync(commonTokens, systemMessage.ToUserId);
+        //    //tokens
+        //    var commonTokens = new List<Token>();
+        //    await _messageTokenProvider.AddSystemMessageTokensAsync(commonTokens, systemMessage);
+        //    await _messageTokenProvider.AddUserTokensAsync(commonTokens, systemMessage.ToUserId);
 
-            return await messageTemplates.SelectAwait(async messageTemplate =>
-            {
-                //email account
-                var emailAccount = await GetEmailAccountOfMessageTemplateAsync(messageTemplate, languageId);
+        //    return await messageTemplates.SelectAwait(async messageTemplate =>
+        //    {
+        //        //email account
+        //        var emailAccount = await GetEmailAccountOfMessageTemplateAsync(messageTemplate, languageId);
 
-                var tokens = new List<Token>(commonTokens);
-                await _messageTokenProvider.AddNodeTokensAsync(tokens, node, emailAccount);
+        //        var tokens = new List<Token>(commonTokens);
+        //        await _messageTokenProvider.AddNodeTokensAsync(tokens, node, emailAccount);
 
-                //event notification
-                await _eventPublisher.MessageTokensAddedAsync(messageTemplate, tokens);
+        //        //event notification
+        //        await _eventPublisher.MessageTokensAddedAsync(messageTemplate, tokens);
 
-                var user = await _userService.GetUserByIdAsync(systemMessage.ToUserId);
-                var toEmail = user.Email;
-                var toName = await _userService.GetUserFullNameAsync(user);
+        //        var user = await _userService.GetUserByIdAsync(systemMessage.ToUserId);
+        //        var toEmail = user.Email;
+        //        var toName = await _userService.GetUserFullNameAsync(user);
 
-                return await SendNotificationAsync(messageTemplate, emailAccount, languageId, tokens, toEmail, toName);
-            }).ToListAsync();
-        }
+        //        return await SendNotificationAsync(messageTemplate, emailAccount, languageId, tokens, toEmail, toName);
+        //    }).ToListAsync();
+        //}
 
         #endregion
 

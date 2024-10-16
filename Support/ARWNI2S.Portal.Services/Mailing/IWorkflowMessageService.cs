@@ -130,20 +130,20 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         #endregion
 
-        #region Message Notifications
+        //#region Message Notifications
 
-        /// <summary>
-        /// Sends a system message notification
-        /// </summary>
-        /// <param name="systemMessage">System message</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>
-        /// A task that represents the asynchronous operation
-        /// The task result contains the queued email identifier
-        /// </returns>
-        Task<IList<int>> SendSystemMessageNotificationAsync(SystemMessage systemMessage, int languageId);
+        ///// <summary>
+        ///// Sends a system message notification
+        ///// </summary>
+        ///// <param name="systemMessage">System message</param>
+        ///// <param name="languageId">Message language identifier</param>
+        ///// <returns>
+        ///// A task that represents the asynchronous operation
+        ///// The task result contains the queued email identifier
+        ///// </returns>
+        //Task<IList<int>> SendSystemMessageNotificationAsync(SystemMessage systemMessage, int languageId);
 
-        #endregion
+        //#endregion
 
         #region Misc
 

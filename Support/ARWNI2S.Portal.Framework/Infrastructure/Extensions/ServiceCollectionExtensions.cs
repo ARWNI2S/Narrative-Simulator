@@ -5,6 +5,7 @@ using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Portal.Framework.Security.Captcha;
 using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Authentication.External;
 using ARWNI2S.Portal.Services.Common;
@@ -12,7 +13,6 @@ using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Http;
 using Azure.Identity;
 using Azure.Storage.Blobs;
-using DragonCorp.Metalink.Server.Framework.Security.Captcha;
 using Microsoft.AspNetCore.DataProtection;
 using System.Net;
 
@@ -265,7 +265,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         /// <returns>A builder for configuring MVC services</returns>
-        public static IMvcBuilder AddDraCoMvc(this IServiceCollection services)
+        public static IMvcBuilder AddNI2SMvc(this IServiceCollection services)
         {
             //add basic MVC feature
             var mvcBuilder = services.AddControllersWithViews();
@@ -327,7 +327,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Register custom RedirectResultExecutor
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoRedirectResultExecutor(this IServiceCollection services)
+        public static void AddNI2SRedirectResultExecutor(this IServiceCollection services)
         {
             //we use custom redirect executor as a workaround to allow using non-ASCII characters in redirect URLs
             services.AddScoped<IActionResultExecutor<RedirectResult>, MetalinkRedirectResultExecutor>();
@@ -337,7 +337,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Add and configure MiniProfiler service
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoMiniProfiler(this IServiceCollection services)
+        public static void AddNI2SMiniProfiler(this IServiceCollection services)
         {
             //whether database is already installed
             if (!DataSettingsManager.IsDatabaseInstalled())
@@ -361,7 +361,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Add and configure WebMarkupMin service
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoWebMarkupMin(this IServiceCollection services)
+        public static void AddNI2SWebMarkupMin(this IServiceCollection services)
         {
             //check whether database is installed
             if (!DataSettingsManager.IsDatabaseInstalled())
@@ -395,7 +395,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Adds WebOptimizer to the specified <see cref="IServiceCollection"/> and enables CSS and JavaScript minification.
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoWebOptimizer(this IServiceCollection services)
+        public static void AddNI2SWebOptimizer(this IServiceCollection services)
         {
             var ni2sSettings = Singleton<NI2SSettings>.Instance;
             var cssBundling = ni2sSettings.Get<WebOptimizerConfig>().EnableCssBundling;
@@ -421,7 +421,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Add and configure default HTTP clients
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddDraCoHttpClients(this IServiceCollection services)
+        public static void AddNI2SHttpClients(this IServiceCollection services)
         {
             //default client
             services.AddHttpClient(HttpDefaults.DefaultHttpClient).WithProxy();
@@ -430,7 +430,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             services.AddHttpClient<NodeHttpClient>();
 
             //client to request dragonCorp official site
-            services.AddHttpClient<MetalinkHttpClient>().WithProxy();
+            services.AddHttpClient<DraCoHttpClient>().WithProxy();
 
             //client to request reCAPTCHA service
             services.AddHttpClient<CaptchaHttpClient>().WithProxy();

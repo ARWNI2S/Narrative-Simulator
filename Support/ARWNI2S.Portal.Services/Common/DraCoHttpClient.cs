@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Rss;
@@ -9,7 +10,7 @@ namespace ARWNI2S.Portal.Services.Common
     /// <summary>
     /// Represents the HTTP client to request dragonCorp official site
     /// </summary>
-    public partial class MetalinkHttpClient
+    public partial class DraCoHttpClient
     {
         #region Fields
 
@@ -24,7 +25,7 @@ namespace ARWNI2S.Portal.Services.Common
 
         #region Ctor
 
-        public MetalinkHttpClient(AdminAreaSettings adminAreaSettings,
+        public DraCoHttpClient(AdminAreaSettings adminAreaSettings,
             HttpClient client,
             IHttpContextAccessor httpContextAccessor,
             ILanguageService languageService,
@@ -71,7 +72,7 @@ namespace ARWNI2S.Portal.Services.Common
         {
             //prepare URL to request
             var language = _languageService.GetTwoLetterIsoLanguageName(await _workContext.GetWorkingLanguageAsync());
-            var url = string.Format(CommonServicesDefaults.DraCoNewsRssPath,
+            var url = string.Format(CommonServicesDefaults.DragonCorpNewsRssPath,
                 NI2SVersion.FULL_VERSION,
                 _webHelper.IsLocalRequest(_httpContextAccessor.HttpContext.Request),
                 _adminAreaSettings.HideAdvertisementsOnAdminArea,

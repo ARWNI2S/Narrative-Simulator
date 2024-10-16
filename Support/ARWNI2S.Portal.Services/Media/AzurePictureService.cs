@@ -1,13 +1,14 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
+using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Services.Configuration;
 using ARWNI2S.Node.Services.Logging;
-using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Entities.Media;
 using ARWNI2S.Portal.Services.Seo;
-using Microsoft.AspNetCore.Http;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace ARWNI2S.Portal.Services.Media
 {
@@ -35,7 +36,7 @@ namespace ARWNI2S.Portal.Services.Media
 
         #region Ctor
 
-        public AzurePictureService(AppSettings appSettings,
+        public AzurePictureService(NI2SSettings ni2sSettings,
             IDownloadService downloadService,
             IHttpContextAccessor httpContextAccessor,
             ILogService logger,
@@ -67,7 +68,7 @@ namespace ARWNI2S.Portal.Services.Media
             _staticCacheManager = staticCacheManager;
             _mediaSettings = mediaSettings;
 
-            OneTimeInit(appSettings);
+            OneTimeInit(ni2sSettings);
         }
 
         #endregion
@@ -77,19 +78,19 @@ namespace ARWNI2S.Portal.Services.Media
         /// <summary>
         /// Initialize cloud container
         /// </summary>
-        /// <param name="appSettings">App settings</param>
-        protected void OneTimeInit(AppSettings appSettings)
+        /// <param name="ni2sSettings">App settings</param>
+        protected void OneTimeInit(NI2SSettings ni2sSettings)
         {
             if (_isInitialized)
                 return;
 
-            if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().ConnectionString))
+            if (string.IsNullOrEmpty(ni2sSettings.Get<AzureBlobConfig>().ConnectionString))
                 throw new NodeException("Azure connection string for Blob is not specified");
 
-            if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().ContainerName))
+            if (string.IsNullOrEmpty(ni2sSettings.Get<AzureBlobConfig>().ContainerName))
                 throw new NodeException("Azure container name for Blob is not specified");
 
-            if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().EndPoint))
+            if (string.IsNullOrEmpty(ni2sSettings.Get<AzureBlobConfig>().EndPoint))
                 throw new NodeException("Azure end point for Blob is not specified");
 
             lock (_locker)
@@ -97,10 +98,10 @@ namespace ARWNI2S.Portal.Services.Media
                 if (_isInitialized)
                     return;
 
-                _azureBlobStorageAppendContainerName = appSettings.Get<AzureBlobConfig>().AppendContainerName;
-                _azureBlobStorageConnectionString = appSettings.Get<AzureBlobConfig>().ConnectionString;
-                _azureBlobStorageContainerName = appSettings.Get<AzureBlobConfig>().ContainerName.Trim().ToLowerInvariant();
-                _azureBlobStorageEndPoint = appSettings.Get<AzureBlobConfig>().EndPoint.Trim().ToLowerInvariant().TrimEnd('/');
+                _azureBlobStorageAppendContainerName = ni2sSettings.Get<AzureBlobConfig>().AppendContainerName;
+                _azureBlobStorageConnectionString = ni2sSettings.Get<AzureBlobConfig>().ConnectionString;
+                _azureBlobStorageContainerName = ni2sSettings.Get<AzureBlobConfig>().ContainerName.Trim().ToLowerInvariant();
+                _azureBlobStorageEndPoint = ni2sSettings.Get<AzureBlobConfig>().EndPoint.Trim().ToLowerInvariant().TrimEnd('/');
 
                 _blobServiceClient = new BlobServiceClient(_azureBlobStorageConnectionString);
                 _blobContainerClient = _blobServiceClient.GetBlobContainerClient(_azureBlobStorageContainerName);

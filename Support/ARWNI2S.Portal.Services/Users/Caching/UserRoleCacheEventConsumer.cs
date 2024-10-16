@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Caching;
+using ARWNI2S.Node.Services.Users;
 
 namespace ARWNI2S.Portal.Services.Users.Caching
 {

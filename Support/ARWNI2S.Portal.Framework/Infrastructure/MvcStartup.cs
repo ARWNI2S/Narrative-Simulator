@@ -15,12 +15,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //add and configure MVC feature
-            services.AddDraCoMvc();
+            services.AddNI2SMvc();
 
             services.AddWebEncoders();
 
             //add custom redirect result executor
-            services.AddDraCoRedirectResultExecutor();
+            services.AddNI2SRedirectResultExecutor();
         }
 
         /// <summary>

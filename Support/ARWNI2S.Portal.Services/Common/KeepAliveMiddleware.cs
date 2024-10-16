@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Services.Common;
 
 namespace ARWNI2S.Portal.Services.Common
 {

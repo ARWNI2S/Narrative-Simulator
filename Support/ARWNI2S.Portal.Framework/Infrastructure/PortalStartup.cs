@@ -3,9 +3,12 @@ using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
+using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Data.Entities.Clustering;
+using ARWNI2S.Node.Runtime;
 using ARWNI2S.Node.Services.Caching;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
@@ -17,12 +20,19 @@ using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Node.Services.Plugins;
 using ARWNI2S.Node.Services.ScheduleTasks;
 using ARWNI2S.Node.Services.Users;
+using ARWNI2S.Portal.Framework.Menu;
 using ARWNI2S.Portal.Framework.Routing;
+using ARWNI2S.Portal.Services;
 using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Authentication.External;
 using ARWNI2S.Portal.Services.Authentication.MultiFactor;
 using ARWNI2S.Portal.Services.Blogs;
+using ARWNI2S.Portal.Services.Cms;
+using ARWNI2S.Portal.Services.Common;
+using ARWNI2S.Portal.Services.ExportImport;
+using ARWNI2S.Portal.Services.Gdpr;
 using ARWNI2S.Portal.Services.Globalization;
+using ARWNI2S.Portal.Services.Helpers;
 using ARWNI2S.Portal.Services.Html;
 using ARWNI2S.Portal.Services.Installation;
 using ARWNI2S.Portal.Services.Mailing;
@@ -35,12 +45,8 @@ using ARWNI2S.Portal.Services.Seo;
 using ARWNI2S.Portal.Services.Topics;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using UserService = ARWNI2S.Portal.Services.Users.UserService;
 using TaskScheduler = ARWNI2S.Node.Services.ScheduleTasks.TaskScheduler;
-using ARWNI2S.Node.Core.Events;
-using ARWNI2S.Portal.Services;
-using ARWNI2S.Node.Data.Entities.Clustering;
-using ARWNI2S.Portal.Services.Cms;
+using UserService = ARWNI2S.Portal.Services.Users.UserService;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure
 {
@@ -108,7 +114,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IWorkContext, PortalWorkContext>();
 
             //node context
-            services.AddScoped<INodeContext, WebNodeContext>();
+            services.AddScoped<INodeContext, NI2SPortalContext>();
 
             //services
             services.AddScoped<ITopicTemplateService, TopicTemplateService>();
@@ -116,7 +122,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IAddressAttributeParser, AddressAttributeParser>();
             services.AddScoped<IAddressAttributeService, AddressAttributeService>();
             services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<IAffiliateService, AffiliateService>();
+            //services.AddScoped<IAffiliateService, AffiliateService>();
             //services.AddScoped<IPartnerService, PartnerService>();
             //services.AddScoped<IGamesService, GamesService>();
             //services.AddScoped<IGamePublisherService, GamePublisherService>();
@@ -134,7 +140,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IUserReportService, UserReportService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IAclService, AclService>();
-            services.AddScoped<IGeoLookupService, GeoLookupService>();
+            //services.AddScoped<IGeoLookupService, GeoLookupService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<IMeasureService, MeasureService>();
@@ -159,18 +165,18 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<IAuthenticationService, CookieAuthenticationService>();
             services.AddScoped<IUrlRecordService, UrlRecordService>();
-            services.AddScoped<ITaxCategoryService, TaxCategoryService>();
-            services.AddScoped<ITaxService, TaxService>();
+            //services.AddScoped<ITaxCategoryService, TaxCategoryService>();
+            //services.AddScoped<ITaxService, TaxService>();
             services.AddScoped<ILogService, DefaultLogger>();
             services.AddScoped<IUserActivityService, UserActivityService>();
             services.AddScoped<IGdprService, GdprService>();
-            services.AddScoped<IPollService, PollService>();
+            //services.AddScoped<IPollService, PollService>();
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<ITopicService, TopicService>();
             services.AddScoped<INewsService, NewsService>();
             //services.AddScoped<ISystemMessageService, SystemMessageService>();
             services.AddScoped<IDateTimeHelper, DateTimeHelper>();
-            services.AddScoped<IDraCoHtmlHelper, DraCoHtmlHelper>();
+            //services.AddScoped<IDraCoHtmlHelper, DraCoHtmlHelper>();
             services.AddScoped<IScheduleTaskService, ScheduleTaskService>();
             services.AddScoped<IExportManager, ExportManager>();
             services.AddScoped<IImportManager, ImportManager>();
@@ -183,7 +189,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IBBCodeHelper, BBCodeHelper>();
             services.AddScoped<IHtmlFormatter, HtmlFormatter>();
             services.AddScoped<IVideoService, VideoService>();
-            services.AddScoped<IDraCoUrlHelper, DraCoUrlHelper>();
+            //services.AddScoped<IDraCoUrlHelper, DraCoUrlHelper>();
 
             //services.AddScoped<IMetaverseService, MetaverseService>();
             //services.AddScoped<IBlockchainService, BlockchainService>();
@@ -223,7 +229,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             //services.AddScoped<IWalletExtensionModuleManager, WalletExtensionModuleManager>();
             services.AddScoped<IWidgetModuleManager, WidgetModuleManager>();
             services.AddScoped<IExchangeRateModuleManager, ExchangeRateModuleManager>();
-            services.AddScoped<ITaxModuleManager, TaxModuleManager>();
+            //services.AddScoped<ITaxModuleManager, TaxModuleManager>();
             //services.AddScoped<ITournamentModuleManager, TournamentModuleManager>();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -237,7 +243,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
                 services.AddScoped(setting, serviceProvider =>
                 {
                     var nodeId = DataSettingsManager.IsDatabaseInstalled()
-                        ? (NI2SNode)serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode()?.Id ?? 0
+                        ? ((NI2SNode)serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode())?.Id ?? 0
                         : 0;
 
                     return serviceProvider.GetRequiredService<ISettingService>().LoadSettingAsync(setting, nodeId).Result;
@@ -257,9 +263,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             //installation service
             services.AddScoped<IInstallationService, InstallationService>();
 
-            //slug route transformer
-            if (DataSettingsManager.IsDatabaseInstalled())
-                services.AddScoped<SlugRouteTransformer>();
+            ////slug route transformer
+            //if (DataSettingsManager.IsDatabaseInstalled())
+            //    services.AddScoped<SlugRouteTransformer>();
 
             //schedule tasks
             services.AddSingleton<ITaskScheduler, TaskScheduler>();

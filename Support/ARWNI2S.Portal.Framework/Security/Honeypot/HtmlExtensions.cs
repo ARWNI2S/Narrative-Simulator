@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Portal.Services.Entities.Security;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text;
 
-namespace DragonCorp.Metalink.Server.Framework.Security.Honeypot
+namespace ARWNI2S.Portal.Framework.Security.Honeypot
 {
     /// <summary>
     /// HTML extensions

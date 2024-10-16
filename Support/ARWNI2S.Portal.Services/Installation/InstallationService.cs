@@ -2,7 +2,6 @@
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Common;
 using ARWNI2S.Node.Core.Entities.Clustering;
-using ARWNI2S.Node.Core.Entities.Localization;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
@@ -20,6 +19,8 @@ using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Configuration;
 using ARWNI2S.Node.Services.Localization;
+using ARWNI2S.Node.Services.Users;
+using ARWNI2S.Portal.Services.Entities;
 using ARWNI2S.Portal.Services.Entities.Blogs;
 using ARWNI2S.Portal.Services.Entities.Cms;
 using ARWNI2S.Portal.Services.Entities.Common;
@@ -35,6 +36,7 @@ using ARWNI2S.Portal.Services.Entities.Topics;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.ExportImport;
 using ARWNI2S.Portal.Services.Http;
+using ARWNI2S.Portal.Services.Localization;
 using ARWNI2S.Portal.Services.Seo;
 using ARWNI2S.Portal.Services.Users;
 using System.Globalization;
@@ -887,7 +889,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				//UNDONE MORE NODE SETTINGS
 			});
 
-			await settingService.SaveSettingAsync(new LocalizationSettings
+			await settingService.SaveSettingAsync(new PortalLocalizationSettings
 			{
 				DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.LanguageCulture == CommonServicesDefaults.DefaultLanguageCulture).Id,
 				UseImagesForLanguageSelection = false,
@@ -1031,7 +1033,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				VideoIframeHeight = 150,
 			});
 
-			await settingService.SaveSettingAsync(new NodeInformationSettings
+			await settingService.SaveSettingAsync(new PortalInfoSettings
 			{
 				NodeOffline = false,
 				DisplayEuCookieLawWarning = isEurope,
@@ -1269,8 +1271,8 @@ namespace ARWNI2S.Portal.Services.Installation
 			await settingService.SaveSettingAsync(new RobotsTxtSettings
 			{
 				DisallowPaths =
-                [
-                    "/admin",
+				[
+					"/admin",
 					"/bin/",
 					"/files/",
 					"/files/exportimport/",
@@ -1280,8 +1282,8 @@ namespace ARWNI2S.Portal.Services.Installation
 					"/*?*returnUrl="
 				],
 				LocalizableDisallowPaths =
-                [
-                    "/changecurrency",
+				[
+					"/changecurrency",
 					"/changetoken",
 					"/changelanguage",
 					"/changetaxtype",
@@ -1871,12 +1873,12 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Add a new address attribute value"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewAffiliate,
+					SystemKeyword = PortalKeywords.AdminArea.AddNewAffiliate,
 					Enabled = true,
 					Name = "Add a new affiliate"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewBlogPost,
+					SystemKeyword = PortalKeywords.AdminArea.AddNewBlogPost,
 					Enabled = true,
 					Name = "Add a new blog post"
 				},
@@ -1936,7 +1938,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Add a new measure weight"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewNews,
+					SystemKeyword = PortalKeywords.AdminArea.AddNewNews,
 					Enabled = true,
 					Name = "Add a new news"
 				},
@@ -1956,125 +1958,125 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Add a new node"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewTopic,
+					SystemKeyword = PortalKeywords.AdminArea.AddNewTopic,
 					Enabled = true,
 					Name = "Add a new topic"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPartner,
+				//	Enabled = true,
+				//	Name = "Add a new partner"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPartnerAttribute,
+				//	Enabled = true,
+				//	Name = "Add a new partner attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPartnerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Add a new partner attribute value"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPartner,
-					Enabled = true,
-					Name = "Add a new partner"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPartnerAttribute,
-					Enabled = true,
-					Name = "Add a new partner attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPartnerAttributeValue,
-					Enabled = true,
-					Name = "Add a new partner attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewWidget,
+					SystemKeyword = PortalKeywords.AdminArea.AddNewWidget,
 					Enabled = true,
 					Name = "Add a new widget"
 				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewToken,
-					Enabled = true,
-					Name = "Add a new token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPlayer,
-					Enabled = true,
-					Name = "Add a new player"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPlayerAttribute,
-					Enabled = true,
-					Name = "Add a new player attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPlayerAttributeValue,
-					Enabled = true,
-					Name = "Add a new player attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewBlockchain,
-					Enabled = true,
-					Name = "Add a new blockchain"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewGenre,
-					Enabled = true,
-					Name = "Add a new game genre"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPlatform,
-					Enabled = true,
-					Name = "Add a new game platform"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewPublisher,
-					Enabled = true,
-					Name = "Add a new game publisher"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewTitle,
-					Enabled = true,
-					Name = "Add a new game title"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewRank,
-					Enabled = true,
-					Name = "Add a new rank"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewInventoryItem,
-					Enabled = true,
-					Name = "Add a new inventory item"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewNonFungibleToken,
-					Enabled = true,
-					Name = "Add a new non fungible token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewQuest,
-					Enabled = true,
-					Name = "Add a new quest"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewQuestGoal,
-					Enabled = true,
-					Name = "Add a new quest goal"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewQuestReward,
-					Enabled = true,
-					Name = "Add a new quest reward"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewSmartContract,
-					Enabled = true,
-					Name = "Add a new smart contract"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewTournament,
-					Enabled = true,
-					Name = "Add a new tournament"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewGoalAttribute,
-					Enabled = true,
-					Name = "Add a new goal attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.AddNewGoalAttributeValue,
-					Enabled = true,
-					Name = "Add a new goal attribute value"
-				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewToken,
+				//	Enabled = true,
+				//	Name = "Add a new token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPlayer,
+				//	Enabled = true,
+				//	Name = "Add a new player"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPlayerAttribute,
+				//	Enabled = true,
+				//	Name = "Add a new player attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPlayerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Add a new player attribute value"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewBlockchain,
+				//	Enabled = true,
+				//	Name = "Add a new blockchain"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewGenre,
+				//	Enabled = true,
+				//	Name = "Add a new game genre"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPlatform,
+				//	Enabled = true,
+				//	Name = "Add a new game platform"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewPublisher,
+				//	Enabled = true,
+				//	Name = "Add a new game publisher"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewTitle,
+				//	Enabled = true,
+				//	Name = "Add a new game title"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewRank,
+				//	Enabled = true,
+				//	Name = "Add a new rank"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewInventoryItem,
+				//	Enabled = true,
+				//	Name = "Add a new inventory item"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewNonFungibleToken,
+				//	Enabled = true,
+				//	Name = "Add a new non fungible token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewQuest,
+				//	Enabled = true,
+				//	Name = "Add a new quest"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewQuestGoal,
+				//	Enabled = true,
+				//	Name = "Add a new quest goal"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewQuestReward,
+				//	Enabled = true,
+				//	Name = "Add a new quest reward"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewSmartContract,
+				//	Enabled = true,
+				//	Name = "Add a new smart contract"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewTournament,
+				//	Enabled = true,
+				//	Name = "Add a new tournament"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewGoalAttribute,
+				//	Enabled = true,
+				//	Name = "Add a new goal attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.AddNewGoalAttributeValue,
+				//	Enabled = true,
+				//	Name = "Add a new goal attribute value"
+				//},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.DeleteActivityLog,
 					Enabled = true,
@@ -2090,18 +2092,18 @@ namespace ARWNI2S.Portal.Services.Installation
 					Enabled = true,
 					Name = "Delete an address attribute value"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteAffiliate,
+				//	Enabled = true,
+				//	Name = "Delete an affiliate"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteAffiliate,
-					Enabled = true,
-					Name = "Delete an affiliate"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteBlogPost,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteBlogPost,
 					Enabled = true,
 					Name = "Delete a blog post"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteBlogPostComment,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteBlogPostComment,
 					Enabled = true,
 					Name = "Delete a blog post comment"
 				},
@@ -2135,16 +2137,16 @@ namespace ARWNI2S.Portal.Services.Installation
 					Enabled = true,
 					Name = "Delete a user attribute value"
 				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteGoalAttribute,
-					Enabled = true,
-					Name = "Delete a goal attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteGoalAttributeValue,
-					Enabled = true,
-					Name = "Delete a goal attribute value"
-				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteGoalAttribute,
+				//	Enabled = true,
+				//	Name = "Delete a goal attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteGoalAttributeValue,
+				//	Enabled = true,
+				//	Name = "Delete a goal attribute value"
+				//},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.DeleteUserRole,
 					Enabled = true,
@@ -2176,12 +2178,12 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Delete a message template"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteNews,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteNews,
 					Enabled = true,
 					Name = "Delete a news"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteNewsComment,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteNewsComment,
 					Enabled = true,
 					Name = "Delete a news comment"
 				},
@@ -2211,115 +2213,115 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Delete system log"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteTopic,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteTopic,
 					Enabled = true,
 					Name = "Delete a topic"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePartner,
+				//	Enabled = true,
+				//	Name = "Delete a partner"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePartnerAttribute,
+				//	Enabled = true,
+				//	Name = "Delete a partner attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePartnerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Delete a partner attribute value"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePartner,
-					Enabled = true,
-					Name = "Delete a partner"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePartnerAttribute,
-					Enabled = true,
-					Name = "Delete a partner attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePartnerAttributeValue,
-					Enabled = true,
-					Name = "Delete a partner attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteWidget,
+					SystemKeyword = PortalKeywords.AdminArea.DeleteWidget,
 					Enabled = true,
 					Name = "Delete a widget"
 				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteToken,
-					Enabled = true,
-					Name = "Delete a token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePlayer,
-					Enabled = true,
-					Name = "Delete a player"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePlayerAttribute,
-					Enabled = true,
-					Name = "Delete a player attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePlayerAttributeValue,
-					Enabled = true,
-					Name = "Delete a player attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteBlockchain,
-					Enabled = true,
-					Name = "Delete a blockchain"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteGenre,
-					Enabled = true,
-					Name = "Delete a game genre"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePlatform,
-					Enabled = true,
-					Name = "Delete a game platform"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeletePublisher,
-					Enabled = true,
-					Name = "Delete a game publisher"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteTitle,
-					Enabled = true,
-					Name = "Delete a game title"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteRank,
-					Enabled = true,
-					Name = "Delete a rank"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteNonFungibleToken,
-					Enabled = true,
-					Name = "Delete a non fungible token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteQuest,
-					Enabled = true,
-					Name = "Delete a quest"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteQuestGoal,
-					Enabled = true,
-					Name = "Delete a quest goal"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteQuestReward,
-					Enabled = true,
-					Name = "Delete a quest reward"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteSmartContract,
-					Enabled = true,
-					Name = "Delete a smart contract"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteTournament,
-					Enabled = true,
-					Name = "Delete a tournament"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteInventoryItem,
-					Enabled = true,
-					Name = "Delete a inventory item"
-				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteToken,
+				//	Enabled = true,
+				//	Name = "Delete a token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePlayer,
+				//	Enabled = true,
+				//	Name = "Delete a player"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePlayerAttribute,
+				//	Enabled = true,
+				//	Name = "Delete a player attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePlayerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Delete a player attribute value"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteBlockchain,
+				//	Enabled = true,
+				//	Name = "Delete a blockchain"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteGenre,
+				//	Enabled = true,
+				//	Name = "Delete a game genre"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePlatform,
+				//	Enabled = true,
+				//	Name = "Delete a game platform"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeletePublisher,
+				//	Enabled = true,
+				//	Name = "Delete a game publisher"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteTitle,
+				//	Enabled = true,
+				//	Name = "Delete a game title"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteRank,
+				//	Enabled = true,
+				//	Name = "Delete a rank"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteNonFungibleToken,
+				//	Enabled = true,
+				//	Name = "Delete a non fungible token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteQuest,
+				//	Enabled = true,
+				//	Name = "Delete a quest"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteQuestGoal,
+				//	Enabled = true,
+				//	Name = "Delete a quest goal"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteQuestReward,
+				//	Enabled = true,
+				//	Name = "Delete a quest reward"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteSmartContract,
+				//	Enabled = true,
+				//	Name = "Delete a smart contract"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteTournament,
+				//	Enabled = true,
+				//	Name = "Delete a tournament"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.DeleteInventoryItem,
+				//	Enabled = true,
+				//	Name = "Delete a inventory item"
+				//},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.EditActivityLogTypes,
 					Enabled = true,
@@ -2335,13 +2337,13 @@ namespace ARWNI2S.Portal.Services.Installation
 					Enabled = true,
 					Name = "Edit an address attribute value"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditAffiliate,
+				//	Enabled = true,
+				//	Name = "Edit an affiliate"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditAffiliate,
-					Enabled = true,
-					Name = "Edit an affiliate"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditBlogPost,
+					SystemKeyword = PortalKeywords.AdminArea.EditBlogPost,
 					Enabled = true,
 					Name = "Edit a blog post"
 				},
@@ -2375,16 +2377,16 @@ namespace ARWNI2S.Portal.Services.Installation
 					Enabled = true,
 					Name = "Edit a user attribute value"
 				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditGoalAttribute,
-					Enabled = true,
-					Name = "Edit a goal attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditGoalAttributeValue,
-					Enabled = true,
-					Name = "Edit a goal attribute value"
-				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditGoalAttribute,
+				//	Enabled = true,
+				//	Name = "Edit a goal attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditGoalAttributeValue,
+				//	Enabled = true,
+				//	Name = "Edit a goal attribute value"
+				//},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.EditUserRole,
 					Enabled = true,
@@ -2416,7 +2418,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Edit a message template"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditNews,
+					SystemKeyword = PortalKeywords.AdminArea.EditNews,
 					Enabled = true,
 					Name = "Edit a news"
 				},
@@ -2445,131 +2447,131 @@ namespace ARWNI2S.Portal.Services.Installation
 					Enabled = true,
 					Name = "Edit a task"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPartner,
+				//	Enabled = true,
+				//	Name = "Edit a partner"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPartnerAttribute,
+				//	Enabled = true,
+				//	Name = "Edit a partner attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPartnerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Edit a partner attribute value"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPartner,
-					Enabled = true,
-					Name = "Edit a partner"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPartnerAttribute,
-					Enabled = true,
-					Name = "Edit a partner attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPartnerAttributeValue,
-					Enabled = true,
-					Name = "Edit a partner attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditTopic,
+					SystemKeyword = PortalKeywords.AdminArea.EditTopic,
 					Enabled = true,
 					Name = "Edit a topic"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditWidget,
+					SystemKeyword = PortalKeywords.AdminArea.EditWidget,
 					Enabled = true,
 					Name = "Edit a widget"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditToken,
+				//	Enabled = true,
+				//	Name = "Edit a token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPlayer,
+				//	Enabled = true,
+				//	Name = "Edit a player"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPlayerAttribute,
+				//	Enabled = true,
+				//	Name = "Edit a player attribute"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPlayerAttributeValue,
+				//	Enabled = true,
+				//	Name = "Edit a player attribute value"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditBlockchain,
+				//	Enabled = true,
+				//	Name = "Edit a blockchain"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditToken,
-					Enabled = true,
-					Name = "Edit a token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPlayer,
-					Enabled = true,
-					Name = "Edit a player"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPlayerAttribute,
-					Enabled = true,
-					Name = "Edit a player attribute"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPlayerAttributeValue,
-					Enabled = true,
-					Name = "Edit a player attribute value"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditBlockchain,
-					Enabled = true,
-					Name = "Edit a blockchain"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditBlogComment,
+					SystemKeyword = PortalKeywords.AdminArea.EditBlogComment,
 					Enabled = true,
 					Name = "Edit a blog comment"
 				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditGenre,
+				//	Enabled = true,
+				//	Name = "Edit a game genre"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPlatform,
+				//	Enabled = true,
+				//	Name = "Edit a game platform"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditPublisher,
+				//	Enabled = true,
+				//	Name = "Edit a game publisher"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditTitle,
+				//	Enabled = true,
+				//	Name = "Edit a game title"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditGoalTypes,
+				//	Enabled = true,
+				//	Name = "Edit goal types"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditRank,
+				//	Enabled = true,
+				//	Name = "Edit a rank"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditInventoryItem,
+				//	Enabled = true,
+				//	Name = "Edit a inventory item"
+				//},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditGenre,
-					Enabled = true,
-					Name = "Edit a game genre"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPlatform,
-					Enabled = true,
-					Name = "Edit a game platform"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditPublisher,
-					Enabled = true,
-					Name = "Edit a game publisher"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditTitle,
-					Enabled = true,
-					Name = "Edit a game title"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditGoalTypes,
-					Enabled = true,
-					Name = "Edit goal types"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditRank,
-					Enabled = true,
-					Name = "Edit a rank"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditInventoryItem,
-					Enabled = true,
-					Name = "Edit a inventory item"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditNewsComment,
+					SystemKeyword = PortalKeywords.AdminArea.EditNewsComment,
 					Enabled = true,
 					Name = "Edit a news item comment"
 				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditNonFungibleToken,
-					Enabled = true,
-					Name = "Edit a non fungible token"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditQuest,
-					Enabled = true,
-					Name = "Edit a quest"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditQuestGoal,
-					Enabled = true,
-					Name = "Edit a quest goal"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditQuestReward,
-					Enabled = true,
-					Name = "Edit a quest reward"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditSmartContract,
-					Enabled = true,
-					Name = "Edit a smart contract"
-				},
-				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditTournament,
-					Enabled = true,
-					Name = "Edit a tournament"
-				},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditNonFungibleToken,
+				//	Enabled = true,
+				//	Name = "Edit a non fungible token"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditQuest,
+				//	Enabled = true,
+				//	Name = "Edit a quest"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditQuestGoal,
+				//	Enabled = true,
+				//	Name = "Edit a quest goal"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditQuestReward,
+				//	Enabled = true,
+				//	Name = "Edit a quest reward"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditSmartContract,
+				//	Enabled = true,
+				//	Name = "Edit a smart contract"
+				//},
+				//new() {
+				//	SystemKeyword = SystemKeywords.AdminArea.EditTournament,
+				//	Enabled = true,
+				//	Name = "Edit a tournament"
+				//},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.ImpersonationStarted,
 					Enabled = true,
@@ -2642,12 +2644,12 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Public node. Logout"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.PublicServer.AddNewsComment,
+					SystemKeyword = PortalKeywords.PublicServer.AddNewsComment,
 					Enabled = false,
 					Name = "Public node. Add news comment"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.PublicServer.AddBlogComment,
+					SystemKeyword = PortalKeywords.PublicServer.AddBlogComment,
 					Enabled = false,
 					Name = "Public node. Add blog comment"
 				},

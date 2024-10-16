@@ -409,25 +409,25 @@ namespace ARWNI2S.Portal.Services.Mailing
             await _eventPublisher.EntityTokensAddedAsync(newsComment, tokens);
         }
 
-        /// <summary>
-        /// Add system message tokens
-        /// </summary>
-        /// <param name="tokens">List of already added tokens</param>
-        /// <param name="systemMessage">Private message</param>
-        /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task AddSystemMessageTokensAsync(IList<Token> tokens, SystemMessage systemMessage)
-        {
-            //attributes
-            //we cannot inject ISystemMessageService into constructor because it'll cause circular references.
-            //that's why we resolve it here this way
-            var systemMessageService = EngineContext.Current.Resolve<ISystemMessageService>();
+        ///// <summary>
+        ///// Add system message tokens
+        ///// </summary>
+        ///// <param name="tokens">List of already added tokens</param>
+        ///// <param name="systemMessage">Private message</param>
+        ///// <returns>A task that represents the asynchronous operation</returns>
+        //public virtual async Task AddSystemMessageTokensAsync(IList<Token> tokens, SystemMessage systemMessage)
+        //{
+        //    //attributes
+        //    //we cannot inject ISystemMessageService into constructor because it'll cause circular references.
+        //    //that's why we resolve it here this way
+        //    var systemMessageService = EngineContext.Current.Resolve<ISystemMessageService>();
 
-            tokens.Add(new Token("SystemMessage.Subject", systemMessage.Subject));
-            tokens.Add(new Token("SystemMessage.Text", systemMessageService.FormatSystemMessageText(systemMessage), true));
+        //    tokens.Add(new Token("SystemMessage.Subject", systemMessage.Subject));
+        //    tokens.Add(new Token("SystemMessage.Text", systemMessageService.FormatSystemMessageText(systemMessage), true));
 
-            //event notification
-            await _eventPublisher.EntityTokensAddedAsync(systemMessage, tokens);
-        }
+        //    //event notification
+        //    await _eventPublisher.EntityTokensAddedAsync(systemMessage, tokens);
+        //}
 
         /// <summary>
         /// Get collection of allowed (supported) message tokens for campaigns

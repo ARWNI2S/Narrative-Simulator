@@ -14,6 +14,7 @@ using ARWNI2S.Portal.Framework.Globalization;
 using ARWNI2S.Portal.Framework.Routing;
 using ARWNI2S.Portal.Services;
 using ARWNI2S.Portal.Services.Authentication;
+using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Http;
@@ -31,6 +32,7 @@ using System.Globalization;
 using System.Net;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using WebOptimizer;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 {
@@ -203,7 +205,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure middleware for dynamically compressing HTTP responses
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoResponseCompression(this IApplicationBuilder application)
+        public static void UseNI2SResponseCompression(this IApplicationBuilder application)
         {
             if (!DataSettingsManager.IsDatabaseInstalled())
                 return;
@@ -217,7 +219,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Adds WebOptimizer to the <see cref="IApplicationBuilder"/> request execution pipeline
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoWebOptimizer(this IApplicationBuilder application)
+        public static void UseNI2SWebOptimizer(this IApplicationBuilder application)
         {
             var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
             var webHostEnvironment = EngineContext.Current.Resolve<IWebHostEnvironment>();
@@ -236,7 +238,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure static file serving
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoStaticFiles(this IApplicationBuilder application)
+        public static void UseNI2SStaticFiles(this IApplicationBuilder application)
         {
             var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
             var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
@@ -383,7 +385,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure the request localization feature
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoRequestLocalization(this IApplicationBuilder application)
+        public static void UseNI2SRequestLocalization(this IApplicationBuilder application)
         {
             application.UseRequestLocalization(options =>
             {
@@ -414,7 +416,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure Endpoints routing
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoEndpoints(this IApplicationBuilder application)
+        public static void UseNI2SEndpoints(this IApplicationBuilder application)
         {
             //Execute the endpoint selected by the routing middleware
             application.UseEndpoints(endpoints =>
@@ -428,7 +430,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure applying forwarded headers to their matching fields on the current request.
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoProxy(this IApplicationBuilder application)
+        public static void UseNI2SProxy(this IApplicationBuilder application)
         {
             var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
 
@@ -469,7 +471,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Configure WebMarkupMin
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseDraCoWebMarkupMin(this IApplicationBuilder application)
+        public static void UseNI2SWebMarkupMin(this IApplicationBuilder application)
         {
             //check whether database is installed
             if (!DataSettingsManager.IsDatabaseInstalled())

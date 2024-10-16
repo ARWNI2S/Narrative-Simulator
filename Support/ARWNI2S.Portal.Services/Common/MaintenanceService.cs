@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
+using ARWNI2S.Node.Services.Common;
 
 namespace ARWNI2S.Portal.Services.Common
 {

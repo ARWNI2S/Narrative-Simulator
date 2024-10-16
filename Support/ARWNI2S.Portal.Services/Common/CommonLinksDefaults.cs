@@ -305,7 +305,7 @@
             /// <summary>
             /// Gets a URL of the app settings docs page
             /// </summary>
-            public static string AppSettings => "https://docs.dragoncorp.org/developer/tutorials/description-of-settings-from-appsettings-json-file-and-DraCoConfig-class.html";
+            public static string NI2SSettings => "https://docs.dragoncorp.org/developer/tutorials/description-of-settings-from-appsettings-json-file-and-DraCoConfig-class.html";
 
             /// <summary>
             /// Gets a URL of the themes docs page

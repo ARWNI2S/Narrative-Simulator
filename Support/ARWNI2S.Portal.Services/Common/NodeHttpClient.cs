@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.Portal.Services.Common
+﻿using ARWNI2S.Node.Services.Common;
+
+namespace ARWNI2S.Portal.Services.Common
 {
     /// <summary>
     /// Represents the HTTP client to request current node

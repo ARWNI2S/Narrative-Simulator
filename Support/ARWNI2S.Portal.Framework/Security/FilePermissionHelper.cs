@@ -7,7 +7,7 @@ using System.Runtime.Versioning;
 using System.Security.AccessControl;
 using System.Security.Principal;
 
-namespace DragonCorp.Metalink.Server.Framework.Security
+namespace ARWNI2S.Portal.Framework.Security
 {
     /// <summary>
     /// File permission helper

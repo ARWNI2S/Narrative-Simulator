@@ -15,7 +15,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //add MiniProfiler services
-            services.AddDraCoMiniProfiler();
+            services.AddNI2SMiniProfiler();
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            //use MiniProfiler must come before UseDraCoEndpoints
+            //use MiniProfiler must come before UseNI2SEndpoints
             application.UseMiniProfiler();
 
             //Add the RoutingMiddleware

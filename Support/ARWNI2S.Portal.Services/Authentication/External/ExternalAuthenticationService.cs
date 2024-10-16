@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
-using ARWNI2S.Node.Core.Entities.Localization;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Data;
@@ -10,6 +9,7 @@ using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.Http.Extensions;
+using ARWNI2S.Portal.Services.Localization;
 using ARWNI2S.Portal.Services.Mailing;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +41,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
         private readonly IWorkflowMessageService _workflowMessageService;
-        private readonly LocalizationSettings _localizationSettings;
+        private readonly PortalLocalizationSettings _localizationSettings;
         private static readonly string[] stringArray = new[] { "Registration is disabled" };
 
         #endregion
@@ -63,7 +63,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
             IWorkflowMessageService workflowMessageService,
-            LocalizationSettings localizationSettings)
+            PortalLocalizationSettings localizationSettings)
         {
             _userSettings = userSettings;
             _externalAuthenticationSettings = externalAuthenticationSettings;
