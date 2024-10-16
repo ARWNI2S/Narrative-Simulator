@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Copyright>Copyright © Dragon Corp Games, S.L.</Copyright>
+    <Company>Dragon Corp Games, S.L.</Company>
+    <Authors>ManOguaR</Authors>
+    <PackageLicenseUrl>http://www.dragoncorp.org/licensev3.aspx</PackageLicenseUrl> 
+    <PackageProjectUrl>http://www.dragoncorp.org/</PackageProjectUrl> 
+    <RepositoryUrl>https://github.com/ARWNI2S/NI2S-Node</RepositoryUrl> 
+    <RepositoryType>Git</RepositoryType>
+
+    <OutputPath>$(MSBuildProjectDirectory)\..\..\ARWNI2S.Node\bin\$(Configuration)</OutputPath>
+  </PropertyGroup> 
+
+  <Target Name="NI2SModulesClear">
+    
+    <!-- When .NET Core builds a project, it copies all referenced libraries to the output folder.
+    For modules it creates too many unnecessary files that just take up space.
+    At the moment you can't disable this behavior. That's why we have to manually delete all unnecessary libraries from module output directories. -->  
+    <Exec Command='dotnet "ClearModuleAssemblies.dll" "OutputPath=$(OutputPath)|ModulePath=$(ModulePath)|SaveLocalesFolders=$(SaveLocalesFolders)"' />
+  </Target> 
+      
+</Project>

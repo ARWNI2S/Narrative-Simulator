@@ -10,17 +10,17 @@ namespace ARWNI2S.Portal.Services.Configuration
         /// <summary>
         /// Gets or sets path to database with user agent strings
         /// </summary>
-        public string UserAgentStringsPath { get; private set; } = "~/App_Data/browscap.xml";
+        public string UserAgentStringsPath { get; private set; } = "~/Node_Data/browscap.xml";
 
         /// <summary>
         /// Gets or sets path to database with crawler only user agent strings
         /// </summary>
-        public string CrawlerOnlyUserAgentStringsPath { get; private set; } = "~/App_Data/browscap.crawlersonly.xml";
+        public string CrawlerOnlyUserAgentStringsPath { get; private set; } = "~/Node_Data/browscap.crawlersonly.xml";
 
         /// <summary>
         /// Gets or sets path to additional database with crawler only user agent strings
         /// </summary>
-        public string CrawlerOnlyAdditionalUserAgentStringsPath { get; private set; } = "~/App_Data/additional.crawlers.xml";
+        public string CrawlerOnlyAdditionalUserAgentStringsPath { get; private set; } = "~/Node_Data/additional.crawlers.xml";
 
         /// <summary>
         /// Gets or sets a value indicating whether to store TempData in the session state. By default the cookie-based TempData provider is used to store TempData in cookies.

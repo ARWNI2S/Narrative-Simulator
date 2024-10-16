@@ -1,7 +1,6 @@
 ﻿using ARWNI2S.Node.Services.Caching;
 using ARWNI2S.Node.Services.Users;
 using ARWNI2S.Portal.Services.Entities.Common;
-using ARWNI2S.Portal.Services.Users;
 
 namespace ARWNI2S.Portal.Services.Common.Caching
 {

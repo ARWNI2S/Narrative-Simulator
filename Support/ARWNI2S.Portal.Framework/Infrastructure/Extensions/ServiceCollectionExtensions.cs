@@ -1,20 +1,31 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Core.Caching;
+using ARWNI2S.Node.Core.Common;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Portal.Framework.Profiling;
 using ARWNI2S.Portal.Framework.Security.Captcha;
+using ARWNI2S.Portal.Framework.WebOptimizer;
 using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Authentication.External;
 using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Http;
+using ARWNI2S.Portal.Services.Security;
 using Azure.Identity;
 using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Options;
+using StackExchange.Profiling;
+using StackExchange.Profiling.Internal;
+using StackExchange.Profiling.Storage;
 using System.Net;
+using WebMarkupMin.AspNetCore8;
+using WebMarkupMin.Core;
+using WebMarkupMin.NUglify;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 {
@@ -261,77 +272,145 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         }
 
         /// <summary>
-        /// Add and configure MVC for the application
+        /// Add and configure Blazor for the application
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        /// <returns>A builder for configuring MVC services</returns>
-        public static IMvcBuilder AddNI2SMvc(this IServiceCollection services)
+        /// <returns>A builder for configuring Blazor services</returns>
+        public static IServiceCollection AddNI2SBlazor(this IServiceCollection services)
         {
-            //add basic MVC feature
-            var mvcBuilder = services.AddControllersWithViews();
+            services.AddRazorComponents();  // Configuración básica para Blazor Server
 
-            mvcBuilder.AddRazorRuntimeCompilation();
+            services.AddServerSideBlazor();  // Configuración adicional para Blazor Server
+
 
             var ni2sSettings = Singleton<NI2SSettings>.Instance;
             if (ni2sSettings.Get<PortalConfig>().UseSessionStateTempDataProvider)
             {
                 //use session-based temp data provider
-                mvcBuilder.AddSessionStateTempDataProvider();
+                services.AddSession();
             }
             else
             {
                 //use cookie-based temp data provider
-                mvcBuilder.AddCookieTempDataProvider(options =>
-                {
-                    options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
-                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                });
+                //mvcBuilder.AddCookieTempDataProvider(options =>
+                //{
+                //    options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
+                //    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                //});
             }
 
             services.AddRazorPages();
 
-            //MVC now serializes JSON with camel case names by default, use this code to avoid it
-            mvcBuilder.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            //// Serialización JSON si necesitas manipular datos
+            //services.AddControllers().AddNewtonsoftJson(options =>
+            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver()
+            //);
 
-            //set some options
-            mvcBuilder.AddMvcOptions(options =>
-            {
-                //we'll use this until https://github.com/dotnet/aspnetcore/issues/6566 is solved 
-                options.ModelBinderProviders.Insert(0, new InvariantNumberModelBinderProvider());
-                options.ModelBinderProviders.Insert(1, new CustomPropertiesModelBinderProvider());
-                //add custom display metadata provider 
-                options.ModelMetadataDetailsProviders.Add(new DraCoMetadataProvider());
+            ////MVC now serializes JSON with camel case names by default, use this code to avoid it
+            //mvcBuilder.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-                //in .NET model binding for a non-nullable property may fail with an error message "The value '' is invalid"
-                //here we set the locale name as the message, we'll replace it with the actual one later when not-null validation failed
-                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => DraCoValidationDefaults.NotNullValidationLocaleName);
-            });
+            ////set some options
+            //mvcBuilder.AddMvcOptions(options =>
+            //{
+            //    //we'll use this until https://github.com/dotnet/aspnetcore/issues/6566 is solved 
+            //    options.ModelBinderProviders.Insert(0, new InvariantNumberModelBinderProvider());
+            //    options.ModelBinderProviders.Insert(1, new CustomPropertiesModelBinderProvider());
+            //    //add custom display metadata provider 
+            //    options.ModelMetadataDetailsProviders.Add(new DraCoMetadataProvider());
 
-            //add fluent validation
-            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+            //    //in .NET model binding for a non-nullable property may fail with an error message "The value '' is invalid"
+            //    //here we set the locale name as the message, we'll replace it with the actual one later when not-null validation failed
+            //    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => DraCoValidationDefaults.NotNullValidationLocaleName);
+            //});
 
-            //register all available validators from DragonCorp assemblies
-            var assemblies = mvcBuilder.PartManager.ApplicationParts
-                .OfType<AssemblyPart>()
-                .Where(part => part.Name.StartsWith("DragonCorp", StringComparison.InvariantCultureIgnoreCase))
-                .Select(part => part.Assembly);
-            services.AddValidatorsFromAssemblies(assemblies);
+            ////add fluent validation
+            //services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
-            //register controllers as services, it'll allow to override them
-            mvcBuilder.AddControllersAsServices();
+            ////register all available validators from DragonCorp assemblies
+            //var assemblies = mvcBuilder.PartManager.ApplicationParts
+            //    .OfType<AssemblyPart>()
+            //    .Where(part => part.Name.StartsWith("DragonCorp", StringComparison.InvariantCultureIgnoreCase))
+            //    .Select(part => part.Assembly);
+            //services.AddValidatorsFromAssemblies(assemblies);
 
-            return mvcBuilder;
+            ////register controllers as services, it'll allow to override them
+            //mvcBuilder.AddControllersAsServices();
+
+            return services;
         }
 
-        /// <summary>
-        /// Register custom RedirectResultExecutor
-        /// </summary>
-        /// <param name="services">Collection of service descriptors</param>
-        public static void AddNI2SRedirectResultExecutor(this IServiceCollection services)
-        {
-            //we use custom redirect executor as a workaround to allow using non-ASCII characters in redirect URLs
-            services.AddScoped<IActionResultExecutor<RedirectResult>, MetalinkRedirectResultExecutor>();
-        }
+        ///// <summary>
+        ///// Add and configure MVC for the application
+        ///// </summary>
+        ///// <param name="services">Collection of service descriptors</param>
+        ///// <returns>A builder for configuring MVC services</returns>
+        //public static IMvcBuilder AddNI2SMvc(this IServiceCollection services)
+        //{
+        //    //add basic MVC feature
+        //    var mvcBuilder = services.AddControllersWithViews();
+
+        //    mvcBuilder.AddRazorRuntimeCompilation();
+
+        //    var ni2sSettings = Singleton<NI2SSettings>.Instance;
+        //    if (ni2sSettings.Get<PortalConfig>().UseSessionStateTempDataProvider)
+        //    {
+        //        //use session-based temp data provider
+        //        mvcBuilder.AddSessionStateTempDataProvider();
+        //    }
+        //    else
+        //    {
+        //        //use cookie-based temp data provider
+        //        mvcBuilder.AddCookieTempDataProvider(options =>
+        //        {
+        //            options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
+        //            options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+        //        });
+        //    }
+
+        //    services.AddRazorPages();
+
+        //    //MVC now serializes JSON with camel case names by default, use this code to avoid it
+        //    mvcBuilder.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+        //    //set some options
+        //    mvcBuilder.AddMvcOptions(options =>
+        //    {
+        //        //we'll use this until https://github.com/dotnet/aspnetcore/issues/6566 is solved 
+        //        options.ModelBinderProviders.Insert(0, new InvariantNumberModelBinderProvider());
+        //        options.ModelBinderProviders.Insert(1, new CustomPropertiesModelBinderProvider());
+        //        //add custom display metadata provider 
+        //        options.ModelMetadataDetailsProviders.Add(new DraCoMetadataProvider());
+
+        //        //in .NET model binding for a non-nullable property may fail with an error message "The value '' is invalid"
+        //        //here we set the locale name as the message, we'll replace it with the actual one later when not-null validation failed
+        //        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => DraCoValidationDefaults.NotNullValidationLocaleName);
+        //    });
+
+        //    //add fluent validation
+        //    services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+
+        //    //register all available validators from DragonCorp assemblies
+        //    var assemblies = mvcBuilder.PartManager.ApplicationParts
+        //        .OfType<AssemblyPart>()
+        //        .Where(part => part.Name.StartsWith("DragonCorp", StringComparison.InvariantCultureIgnoreCase))
+        //        .Select(part => part.Assembly);
+        //    services.AddValidatorsFromAssemblies(assemblies);
+
+        //    //register controllers as services, it'll allow to override them
+        //    mvcBuilder.AddControllersAsServices();
+
+        //    return mvcBuilder;
+        //}
+
+        ///// <summary>
+        ///// Register custom RedirectResultExecutor
+        ///// </summary>
+        ///// <param name="services">Collection of service descriptors</param>
+        //public static void AddNI2SRedirectResultExecutor(this IServiceCollection services)
+        //{
+        //    //we use custom redirect executor as a workaround to allow using non-ASCII characters in redirect URLs
+        //    services.AddScoped<IActionResultExecutor<RedirectResult>, MetalinkRedirectResultExecutor>();
+        //}
 
         /// <summary>
         /// Add and configure MiniProfiler service
@@ -355,6 +434,29 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     miniProfilerOptions.ResultsAuthorize = request => EngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
                 });
             }
+        }
+
+
+        /// <summary>
+        /// Adds MiniProfiler timings for actions and views.
+        /// </summary>
+        /// <param name="services">The services collection to configure.</param>
+        /// <param name="configureOptions">An <see cref="Action{MiniProfilerOptions}"/> to configure options for MiniProfiler.</param>
+        private static IMiniProfilerBuilder AddMiniProfiler(this IServiceCollection services, Action<MiniProfilerOptions> configureOptions = null)
+        {
+            services.AddMemoryCache(); // Unconditionally register an IMemoryCache since it's the most common and default case
+            services.AddSingleton<IConfigureOptions<MiniProfilerOptions>, MiniProfilerOptionsDefaults>();
+            if (configureOptions != null)
+            {
+                services.Configure(configureOptions);
+            }
+            // Set background statics
+            services.Configure<MiniProfilerOptions>(o => MiniProfiler.Configure(o));
+            services.AddSingleton<DiagnosticInitializer>(); // For any IMiniProfilerDiagnosticListener registration
+
+            services.AddSingleton<IMiniProfilerDiagnosticListener, MiniProfilerDiagnosticListener>(); // For view and action profiling
+
+            return new MiniProfilerBuilder(services);
         }
 
         /// <summary>

@@ -13,7 +13,7 @@
         /// <summary>
         /// Gets a path to the localization resources file
         /// </summary>
-        public static string LocalizationResourcesPath => "~/App_Data/Localization/";
+        public static string LocalizationResourcesPath => "~/Node_Data/Localization/";
 
         /// <summary>
         /// Gets a localization resources file extension

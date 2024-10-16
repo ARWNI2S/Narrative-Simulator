@@ -9,7 +9,7 @@ using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 
-namespace ARWNI2S.Node.Runtime
+namespace ARWNI2S.Portal.Framework
 {
     /// <summary>
     /// NI2SNode context for web application

@@ -255,7 +255,7 @@ namespace ARWNI2S.Portal.Framework.Security
 
             var dirsToCheck = new List<string>
             {
-                fileProvider.Combine(rootDir, "App_Data"),
+                fileProvider.Combine(rootDir, "Node_Data"),
                 fileProvider.Combine(rootDir, "bin"),
                 fileProvider.Combine(rootDir, "logs"),
                 fileProvider.Combine(rootDir, "Modules"),

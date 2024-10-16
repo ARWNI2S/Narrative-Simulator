@@ -32,6 +32,7 @@ using System.Globalization;
 using System.Net;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using WebMarkupMin.AspNetCore8;
 using WebOptimizer;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions

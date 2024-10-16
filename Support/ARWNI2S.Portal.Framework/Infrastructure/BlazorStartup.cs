@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
     /// <summary>
     /// Represents object for the configuring MVC on application startup
     /// </summary>
-    public partial class MvcStartup : IWebStartup
+    public partial class BlazorStartup : IWebStartup
     {
         /// <summary>
         /// Add and configure any of the middleware
@@ -15,12 +15,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //add and configure MVC feature
-            services.AddNI2SMvc();
+            services.AddNI2SBlazor();
 
             services.AddWebEncoders();
 
             //add custom redirect result executor
-            services.AddNI2SRedirectResultExecutor();
+            //services.AddNI2SRedirectResultExecutor();
         }
 
         /// <summary>

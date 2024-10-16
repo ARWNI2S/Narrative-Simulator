@@ -16,6 +16,6 @@
         /// <summary>
         /// Gets the path to temporary files
         /// </summary>
-        public static string UploadsTempPath => "~/App_Data/TempUploads";
+        public static string UploadsTempPath => "~/Node_Data/TempUploads";
     }
 }
