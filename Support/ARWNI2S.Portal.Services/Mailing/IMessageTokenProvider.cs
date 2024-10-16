@@ -68,12 +68,12 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <returns>A task that represents the asynchronous operation</returns>
         Task AddNewsCommentTokensAsync(IList<Token> tokens, NewsComment newsComment);
 
-        /// <summary>
-        /// Add system message tokens
-        /// </summary>
-        /// <param name="tokens">List of already added tokens</param>
-        /// <param name="systemMessage">System message</param>
-        /// <returns>A task that represents the asynchronous operation</returns>
+        ///// <summary>
+        ///// Add system message tokens
+        ///// </summary>
+        ///// <param name="tokens">List of already added tokens</param>
+        ///// <param name="systemMessage">System message</param>
+        ///// <returns>A task that represents the asynchronous operation</returns>
         //Task AddSystemMessageTokensAsync(IList<Token> tokens, SystemMessage systemMessage);
 
         /// <summary>

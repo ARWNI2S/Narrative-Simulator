@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Documentation", "00 - Documentation", "{8A3C0934-929E-4F45-9398-EC1198B21CCB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Build", "00 - Build", "{8A3C0934-929E-4F45-9398-EC1198B21CCB}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Infrastructure", "10 - Infrastructure", "{4F34F2C8-1A2D-49D5-81A9-F9569518FB76}"
 EndProject
@@ -69,11 +74,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80 - Extras", "80 - Extras"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - Cluster", "91 - Cluster", "{DC32D1C9-A88C-4BA0-9D30-3EC860AEEF01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Connector.Framework", "Frontline\Connector\ARWNI2S.Connector.Framework\ARWNI2S.Connector.Framework.csproj", "{9845DAAC-46C9-4D7E-A1A4-60267CC8B822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Connector.Framework", "Frontline\Connector\ARWNI2S.Connector.Framework\ARWNI2S.Connector.Framework.csproj", "{9845DAAC-46C9-4D7E-A1A4-60267CC8B822}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "51 - Services", "51 - Services", "{00722E2C-572F-4F5E-AD95-A81528AFAC53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Frontline.Services", "Frontline\ARWNI2S.Frontline.Services\ARWNI2S.Frontline.Services.csproj", "{0B560B0E-6CAD-461F-BC37-3E4D796328ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Frontline.Services", "Frontline\ARWNI2S.Frontline.Services\ARWNI2S.Frontline.Services.csproj", "{0B560B0E-6CAD-461F-BC37-3E4D796328ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Connector", "Frontline\Connector\ARWNI2S.Connector\ARWNI2S.Connector.csproj", "{928BD736-49D2-4759-864C-94E6DBF48352}"
 EndProject
@@ -81,11 +86,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.EditorNode", "Front
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.SceneNode", "Frontline\SceneNode\ARWNI2S.SceneNode\ARWNI2S.SceneNode.csproj", "{B56B7FB9-58AB-4222-96DA-F17B4EB16052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Frontline.Identity", "Frontline\ARWNI2S.Frontline.Identity\ARWNI2S.Frontline.Identity.csproj", "{D63F16B7-3E99-4D0B-9283-BAB6AA4065CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Frontline.Identity", "Frontline\ARWNI2S.Frontline.Identity\ARWNI2S.Frontline.Identity.csproj", "{D63F16B7-3E99-4D0B-9283-BAB6AA4065CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.EditorNode.Framework", "Frontline\Editor\ARWNI2S.EditorNode.Framework\ARWNI2S.EditorNode.Framework.csproj", "{57CCB1F6-D178-4885-A465-4A9C17C8125E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.EditorNode.Framework", "Frontline\Editor\ARWNI2S.EditorNode.Framework\ARWNI2S.EditorNode.Framework.csproj", "{57CCB1F6-D178-4885-A465-4A9C17C8125E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.SceneNode.Framework", "Frontline\SceneNode\ARWNI2S.SceneNode.Framework\ARWNI2S.SceneNode.Framework.csproj", "{059790CC-6F35-4525-A1DF-E92C4A053857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.SceneNode.Framework", "Frontline\SceneNode\ARWNI2S.SceneNode.Framework\ARWNI2S.SceneNode.Framework.csproj", "{059790CC-6F35-4525-A1DF-E92C4A053857}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontline", "Frontline", "{352F5846-0D40-47BB-B0BF-3749DFF8D4F8}"
+	ProjectSection(SolutionItems) = preProject
+		Frontline\Directory.Build.props = Frontline\Directory.Build.props
+		Frontline\Directory.Build.targets = Frontline\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portal", "Portal", "{3F9296C9-3381-429E-90FA-E003B64A5F5E}"
+	ProjectSection(SolutionItems) = preProject
+		Support\Directory.Build.props = Support\Directory.Build.props
+		Support\Directory.Build.targets = Support\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Narrator.Framework", "Cluster\ARWNI2S.Narrator.Framework\ARWNI2S.Narrator.Framework.csproj", "{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Narrator", "Cluster\ARWNI2S.Narrator\ARWNI2S.Narrator.csproj", "{9293406A-BF06-4610-88FE-03842C7E768D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Sdk", "NI2SSdk\ARWNI2S.Sdk\ARWNI2S.Sdk.csproj", "{C774A508-42BB-4D74-A7FD-3693A73BD687}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,6 +212,18 @@ Global
 		{059790CC-6F35-4525-A1DF-E92C4A053857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059790CC-6F35-4525-A1DF-E92C4A053857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059790CC-6F35-4525-A1DF-E92C4A053857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9293406A-BF06-4610-88FE-03842C7E768D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9293406A-BF06-4610-88FE-03842C7E768D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9293406A-BF06-4610-88FE-03842C7E768D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9293406A-BF06-4610-88FE-03842C7E768D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C774A508-42BB-4D74-A7FD-3693A73BD687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C774A508-42BB-4D74-A7FD-3693A73BD687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C774A508-42BB-4D74-A7FD-3693A73BD687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C774A508-42BB-4D74-A7FD-3693A73BD687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,6 +262,11 @@ Global
 		{D63F16B7-3E99-4D0B-9283-BAB6AA4065CA} = {00722E2C-572F-4F5E-AD95-A81528AFAC53}
 		{57CCB1F6-D178-4885-A465-4A9C17C8125E} = {EAFAAC4F-97F5-4D5A-B185-73EA1353EA8D}
 		{059790CC-6F35-4525-A1DF-E92C4A053857} = {0482FE9C-77CF-436C-972F-FF991FBF73D3}
+		{352F5846-0D40-47BB-B0BF-3749DFF8D4F8} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{3F9296C9-3381-429E-90FA-E003B64A5F5E} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{4C8EA8DC-3C28-468B-9CE0-4F287D3522B9} = {822679F5-FAA5-4688-869F-04C0BDBD4BC4}
+		{9293406A-BF06-4610-88FE-03842C7E768D} = {822679F5-FAA5-4688-869F-04C0BDBD4BC4}
+		{C774A508-42BB-4D74-A7FD-3693A73BD687} = {64862007-F36C-4C06-A61A-ED9AA9D266B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65605281-5AFC-48F1-A1E0-D1648E0CBA35}

@@ -3,10 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IsFrameworkPart>false</IsFrameworkPart>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
-  </ItemGroup>
 
 </Project>

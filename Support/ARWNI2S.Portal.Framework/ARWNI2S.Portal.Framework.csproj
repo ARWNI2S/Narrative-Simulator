@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.3.4" />
-    <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.2.4" />
-    <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.426" />
-    <PackageReference Include="MiniProfiler.AspNetCore" Version="4.3.8" />
-    <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.17.0" />
-    <PackageReference Include="WebMarkupMin.NUglify" Version="2.17.0" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" />
+    <PackageReference Include="LigerShark.WebOptimizer.Core" />
+    <PackageReference Include="MiniProfiler.AspNetCore" />
+    <PackageReference Include="WebMarkupMin.AspNetCore8" />
+    <PackageReference Include="WebMarkupMin.NUglify" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-ARWNI2S.SceneNode-6a1987bb-92c0-4356-bedb-63aa69b9a9d2</UserSecretsId>
+    <UserSecretsId>dotnet-ARWNI2S.Narrator-172d4455-7d2a-4abe-8b76-0cd44129bbc9</UserSecretsId>
     <IsFrameworkPart>false</IsFrameworkPart>
   </PropertyGroup>
 
@@ -12,6 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ARWNI2S.SceneNode.Framework\ARWNI2S.SceneNode.Framework.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Narrator.Framework\ARWNI2S.Narrator.Framework.csproj" />
   </ItemGroup>
 </Project>

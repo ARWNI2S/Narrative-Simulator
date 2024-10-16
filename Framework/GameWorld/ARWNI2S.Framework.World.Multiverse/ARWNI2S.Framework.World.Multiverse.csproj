@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ARWNI2S.Framework.Commons\ARWNI2S.Framework.Commons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="module.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

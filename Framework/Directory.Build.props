@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <_ParentDirectoryBuildPropsPath Condition="'$(_DirectoryBuildPropsFile)' != ''">$([System.IO.Path]::Combine('..', '$(_DirectoryBuildPropsFile)'))</_ParentDirectoryBuildPropsPath>
+  </PropertyGroup>
+
+  <Import Project="$(_ParentDirectoryBuildPropsPath)" Condition="Exists('$(_ParentDirectoryBuildPropsPath)')"/>
+
+  <PropertyGroup>
+    <WarningLevel>3</WarningLevel>
+    <AnalysisLevel>preview</AnalysisLevel>
+    <Features>strict</Features>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefaultTargetFrameworks>net8.0</DefaultTargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable Condition=" '$(IsPackable)'=='' ">false</IsPackable>
+    <IsFrameworkPart Condition=" '$(IsFrameworkPart)'=='' ">true</IsFrameworkPart>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SourceLinkCreate>true</SourceLinkCreate>
+    <SourceLinkOriginUrl>https://github.com/ARWNI2S/NI2S-Node</SourceLinkOriginUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsFrameworkPart)'=='true' ">
+    <AssemblyAttribute Include="ARWNI2S.Infrastructure.Metadata.FrameworkPartAttribute" />
+  </ItemGroup>
+
+</Project>

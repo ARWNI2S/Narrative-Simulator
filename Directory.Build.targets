@@ -1,0 +1,26 @@
+<Project>
+  <!-- Set InformationVersion here, since $(Version) is already set at this point. -->
+  <PropertyGroup>
+    <InformationalVersion>$(Version). Commit Hash: $(GitHeadSha)</InformationalVersion>
+  </PropertyGroup>
+
+  <!--<Import Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Node.CodeGenerator/build/ARWNI2S.Node.CodeGenerator.props" />
+  <Import Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Node.Sdk/build/ARWNI2S.Node.Sdk.targets" />
+  <ItemGroup> -->
+    <!-- Enable code generator -->
+  <!--<ProjectReference
+      Include="$(SourceRoot)src/ARWNI2S.Node.CodeGenerator/ARWNI2S.Node.CodeGenerator.csproj"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' "/>
+    <ProjectReference
+      Include="$(SourceRoot)src/ARWNI2S.Node.Analyzers/ARWNI2S.Node.Analyzers.csproj"
+      ReferenceOutputAssembly="false"
+      AssetTargetFallback="net6.0"
+      UndefineProperties="TargetFramework"
+      SkipGetTargetFrameworkProperties="true"
+      OutputItemType="Analyzer"
+      Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' "/>
+  </ItemGroup> -->
+
+</Project>
