@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-ARWNI2S.Frontline.TestNode-5389c0f2-f0c3-4572-8ce5-2ac05ede6843</UserSecretsId>
+    <UserSecretsId>dotnet-ARWNI2S.EditorNode-85e3d5d0-6f22-4df0-8603-61ba1a0d52fd</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Frontline\ARWNI2S.Frontline\ARWNI2S.Frontline.csproj" />
+    <ProjectReference Include="..\ARWNI2S.EditorNode.Framework\ARWNI2S.EditorNode.Framework.csproj" />
   </ItemGroup>
 </Project>

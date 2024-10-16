@@ -1,4 +1,4 @@
-namespace ARWNI2S.Frontline.TestNode
+namespace ARWNI2S.Connector
 {
     public class Worker : BackgroundService
     {
