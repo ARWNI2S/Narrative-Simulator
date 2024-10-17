@@ -6,7 +6,7 @@
     <PackageProjectUrl>https://arwni2s.dragoncorp.org/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ARWNI2S/Narrative-Simulator</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <OutputPath>..\..\..\Bin\Modules\$(MSBuildProjectName)</OutputPath>
+    <OutputPath>..\..\..\Bin\Framework\$(MSBuildProjectName)</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
     <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project. 
     You need to set this parameter to true if your module has a nuget package 
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ClearModuleAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\NI2S-Node\src\tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
+    <ClearModuleAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\Tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
   </ItemGroup>
 
   <ItemGroup>

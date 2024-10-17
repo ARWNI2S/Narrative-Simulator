@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
+    <ProjectReference Include="..\Libraries\ARWNI2S.Narrator.Core\ARWNI2S.Narrator.Core.csproj" />
+    <ProjectReference Include="..\Libraries\ARWNI2S.Narrator.Data\ARWNI2S.Narrator.Data.csproj" />
+    <ProjectReference Include="..\Libraries\ARWNI2S.Narrator.Services\ARWNI2S.Narrator.Services.csproj" />
   </ItemGroup>
 
 </Project>
