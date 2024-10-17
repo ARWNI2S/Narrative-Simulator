@@ -7,15 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" />
     <PackageReference Include="Microsoft.Orleans.Server" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>

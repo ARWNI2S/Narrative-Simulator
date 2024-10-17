@@ -15,10 +15,12 @@
     "DataProtectionKeysVaultId": ""
   },
   "ClusterConfig": {
-    "UseFrontline": true,
-    "EnableEditor": true,
+    "UseFrontline": false,
+    "EnableEditor": false,
     "AutoScale": false,
-    "IsDevelopment": true,
+    "IsDevelopment": false,
+    "ClusterId": "ni2s-primary",
+    "ServiceId": "ni2s",
     "KnownNodes": ""
   },
   "CommonConfig": {
@@ -51,5 +53,8 @@
     "SchemaName": "dbo",
     "TableName": "DistributedCache",
     "InstanceName": "metalink"
+  },
+  "OrleansSiloConfig": {
+    "SimulationClusteringType": "localhost"
   }
 }

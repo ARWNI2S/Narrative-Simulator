@@ -16,9 +16,11 @@
   },
   "ClusterConfig": {
     "UseFrontline": true,
-    "EnableEditor": true,
+    "EnableEditor": false,
     "AutoScale": false,
     "IsDevelopment": true,
+    "ClusterId": "ni2s-primary",
+    "ServiceId": "ni2s",
     "KnownNodes": ""
   },
   "CommonConfig": {
