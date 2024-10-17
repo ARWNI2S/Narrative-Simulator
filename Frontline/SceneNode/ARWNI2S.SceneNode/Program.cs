@@ -1,14 +1,17 @@
+using ARWNI2S.Frontline;
+
 namespace ARWNI2S.SceneNode
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var builder = Host.CreateApplicationBuilder(args);
-            builder.Services.AddHostedService<Worker>();
+            await EntryPoints.CreateStartAsync(args);
+            //var builder = Host.CreateApplicationBuilder(args);
+            //builder.Services.AddHostedService<Worker>();
 
-            var host = builder.Build();
-            host.Run();
+            //var host = builder.Build();
+            //host.Run();
         }
     }
 }

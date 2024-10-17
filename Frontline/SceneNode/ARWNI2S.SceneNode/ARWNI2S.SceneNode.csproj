@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ARWNI2S.Frontline.Hosting\ARWNI2S.Frontline.Hosting.csproj" />
     <ProjectReference Include="..\ARWNI2S.SceneNode.Framework\ARWNI2S.SceneNode.Framework.csproj" />
   </ItemGroup>
 </Project>

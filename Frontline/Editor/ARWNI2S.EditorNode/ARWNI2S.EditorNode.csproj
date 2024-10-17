@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ARWNI2S.Frontline.Hosting\ARWNI2S.Frontline.Hosting.csproj" />
     <ProjectReference Include="..\ARWNI2S.EditorNode.Framework\ARWNI2S.EditorNode.Framework.csproj" />
   </ItemGroup>
 </Project>
