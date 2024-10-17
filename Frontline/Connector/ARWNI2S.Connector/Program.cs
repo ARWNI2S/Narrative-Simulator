@@ -1,4 +1,4 @@
-using ARWNI2S.Frontline;
+using ARWNI2S.Node.Runtime;
 
 namespace ARWNI2S.Connector
 {
