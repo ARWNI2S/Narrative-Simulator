@@ -45,7 +45,7 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
             _defaultProperties = [];
             _nodeSettings = nodeSettings;
             _localizedProperties = [];
-            _languages = new List<L>();
+            _languages = [];
 
             if (languages != null)
                 _languages = languages;

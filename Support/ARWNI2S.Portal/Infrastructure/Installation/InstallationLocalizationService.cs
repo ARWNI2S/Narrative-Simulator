@@ -143,7 +143,7 @@ namespace ARWNI2S.Portal.Infrastructure.Installation
             if (_availableLanguages != null)
                 return _availableLanguages;
 
-            _availableLanguages = new List<InstallationLanguage>();
+            _availableLanguages = [];
             foreach (var filePath in _fileProvider.EnumerateFiles(_fileProvider.MapPath("~/Node_Data/Localization/Installation/"), "*.xml"))
             {
                 var xmlDocument = new XmlDocument();

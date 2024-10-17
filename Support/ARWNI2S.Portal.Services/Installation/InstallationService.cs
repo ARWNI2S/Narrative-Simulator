@@ -1197,7 +1197,7 @@ namespace ARWNI2S.Portal.Services.Installation
 
 			await settingService.SaveSettingAsync(new WidgetSettings
 			{
-				ActiveWidgetSystemNames = new List<string> { "Widgets.NivoSlider" }
+				ActiveWidgetSystemNames = ["Widgets.NivoSlider"]
 			});
 
 			await settingService.SaveSettingAsync(new MenuDisplaySettings

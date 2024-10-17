@@ -28,7 +28,7 @@ namespace ARWNI2S.Portal.Framework.Security
                     break;
                 default:
                     UserId = Name;
-                    Groups = new List<string>();
+                    Groups = [];
                     break;
             }
         }

@@ -11,8 +11,8 @@ namespace ARWNI2S.Portal.Framework.Menu
         /// </summary>
         public SiteMapNode()
         {
-            RouteValues = new RouteValueDictionary();
-            ChildNodes = new List<SiteMapNode>();
+            RouteValues = [];
+            ChildNodes = [];
         }
 
         /// <summary>
