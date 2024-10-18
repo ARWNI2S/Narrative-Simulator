@@ -1,0 +1,11 @@
+﻿{
+  "Group": "AISpeech",
+  "FriendlyName": "Convai AISpeech",
+  "SystemName": "AISpeech.Convai",
+  "Version": "0.10",
+  "SupportedVersions": [ "0.10" ],
+  "Author": "ManOguaR",
+  "DisplayOrder": 20,
+  "FileName": "ARWNI2S.Modules.AISpeech.Convai.dll",
+  "Description": "This module add Convai API capabilities for character AI speech"
+}

@@ -44,6 +44,12 @@
     <Content Update="**\*.config;**\*.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Modules\ARWNI2S.Modules.AISpeech.Convai\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <!-- This target execute after "Build" target.
     We use it to clean up folder with modules from unnecessary and obsolete libraries. -->
   <Target Name="NI2SModulesTarget" AfterTargets="Build">

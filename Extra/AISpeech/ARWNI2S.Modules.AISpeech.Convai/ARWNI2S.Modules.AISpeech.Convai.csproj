@@ -28,6 +28,7 @@
   <ItemGroup>
     <None Update="module.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
     <None Update="logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -59,6 +59,9 @@
     <None Update="Framework\ARWNI2S.Framework.World\module.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Modules\ARWNI2S.Modules.AISpeech.Convai\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <!-- This target execute after "Build" target.
