@@ -18,18 +18,8 @@
   <ItemGroup>
     <!-- We copy the entire \Node_Data directory. But we ignore JSON files and data protection keys  -->
     <Content Include="Node_Data\**" CopyToPublishDirectory="PreserveNewest" Exclude="Node_Data\*.json" />
-    <Content Remove="Framework\**" />
-    <Content Remove="Modules\**" />
     <Content Remove="Node_Data\*.json" />
     <Content Update="Node_Data\DataProtectionKeys\*.xml" CopyToPublishDirectory="Never" />
-    <Compile Remove="Framework\**" />
-    <Compile Remove="Modules\**" />
-    <EmbeddedResource Remove="Framework\**" />
-    <EmbeddedResource Remove="Modules\**" />
-    <None Remove="Framework\**" />
-    <None Remove="Modules\**" />
-    <None Include="Framework\**" CopyToPublishDirectory="PreserveNewest" Exclude="Framework\**\runtimes\**;Framework\**\ref\**;Framework\**\*.pdb" />
-    <None Include="Modules\**" CopyToPublishDirectory="PreserveNewest" Exclude="Modules\**\runtimes\**;Modules\**\ref\**;Modules\**\*.pdb" />
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
@@ -41,12 +31,6 @@
     in order to avoid the "Duplicate dll" error during publication. 
     We can also use “ExcludeConfigFilesFromBuildOutput” according to https://github.com/aspnet/AspNetCore/issues/14017 -->
     <Content Update="**\*.config;**\*.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Modules\ARWNI2S.Modules.AISpeech.Convai\module.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <!-- This target execute after "Build" target.
