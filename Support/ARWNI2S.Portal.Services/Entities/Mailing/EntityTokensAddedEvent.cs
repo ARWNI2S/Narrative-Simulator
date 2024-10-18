@@ -1,4 +1,4 @@
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// </summary>
     /// <typeparam name="T">Entity type</typeparam>
     /// <typeparam name="U"></typeparam>
-    public partial class EntityTokensAddedEvent<T, U> where T : BaseDataEntity
+    public partial class EntityTokensAddedEvent<T, U> where T : BaseEntity
     {
         /// <summary>
         /// Ctor

@@ -51,8 +51,8 @@
       <ModulesDescription Include="$(MSBuildProjectDirectory)\Modules\**\module.json;" />
       <!-- Get paths for all modules -->
       <ModulesFolders Include="@(ModulesDescription->'%(relativedir)')" />
-      <!-- Get paths for ClearModuleAssemblies project -->
-      <ClearModuleAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\Tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
+      <!-- Get paths for FrameworkAssembliesTasks project -->
+      <FrameworkAssembliesTasks Include="$(MSBuildProjectDirectory)\..\..\..\Tools\FrameworkAssembliesTasks\FrameworkAssembliesTasks.proj" />
     </ItemGroup>
     <PropertyGroup>
       <ModulesFolders>@(ModulesFolders)</ModulesFolders>
@@ -60,7 +60,7 @@
     <!-- When .NET Core builds a project, it copies all referenced libraries to the output folder.
       For modules it creates too many unnecessary files that just take up space.
       At the moment you can't disable this behavior. That's why we have to manually delete all unnecessary libraries from module output directories. -->
-    <MSBuild Projects="@(ClearModuleAssemblies)" Properties="ModulePath=$(ModulesFolders)" Targets="NI2SModulesClear" />
+    <MSBuild Projects="@(FrameworkAssembliesTasks)" Properties="ModulePath=$(ModulesFolders)" Targets="NI2SModulesClear" />
   </Target>
 
   <PropertyGroup>

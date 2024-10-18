@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Users;
+using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Users;
 using ARWNI2S.Portal.Services.Entities.Topics;

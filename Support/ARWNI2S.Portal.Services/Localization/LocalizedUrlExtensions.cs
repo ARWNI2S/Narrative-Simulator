@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Node.Data.Entities.Localization;
+using ARWNI2S.Node.Core.Entities.Localization;
 using ARWNI2S.Node.Services.Localization;
 using System.Net;
 

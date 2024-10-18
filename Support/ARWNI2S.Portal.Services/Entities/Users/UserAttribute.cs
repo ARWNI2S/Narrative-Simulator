@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Portal.Services.Entities.Common;
 
 namespace ARWNI2S.Portal.Services.Entities.Users
@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Users
     /// <summary>
     /// Represents a user attribute
     /// </summary>
-    public partial class UserAttribute : BaseDataEntity, ILocalizedEntity
+    public partial class UserAttribute : BaseEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the name

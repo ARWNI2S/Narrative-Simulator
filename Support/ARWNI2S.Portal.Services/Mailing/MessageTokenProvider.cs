@@ -2,8 +2,6 @@
 using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
-using ARWNI2S.Node.Data.Entities.Clustering;
-using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;

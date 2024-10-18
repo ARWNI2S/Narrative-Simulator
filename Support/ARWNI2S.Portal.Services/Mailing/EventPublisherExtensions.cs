@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Node.Core.Events;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 
 namespace ARWNI2S.Portal.Services.Mailing
@@ -40,7 +40,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="entity">Entity</param>
         /// <param name="tokens">Tokens</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public static async Task EntityTokensAddedAsync<T, U>(this INodeEventPublisher eventPublisher, T entity, IList<U> tokens) where T : BaseDataEntity
+        public static async Task EntityTokensAddedAsync<T, U>(this INodeEventPublisher eventPublisher, T entity, IList<U> tokens) where T : BaseEntity
         {
             await eventPublisher.PublishAsync(new EntityTokensAddedEvent<T, U>(entity, tokens));
         }

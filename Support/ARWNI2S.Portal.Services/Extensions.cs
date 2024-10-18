@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Collections.Rendering;
 using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Localization;
 
@@ -55,7 +55,7 @@ namespace ARWNI2S.Portal.Services
         /// <param name="objList">List of objects</param>
         /// <param name="selector">Selector for name</param>
         /// <returns>SelectList</returns>
-        public static SelectList ToSelectList<T>(this T objList, Func<BaseDataEntity, string> selector) where T : IEnumerable<BaseDataEntity>
+        public static SelectList ToSelectList<T>(this T objList, Func<BaseEntity, string> selector) where T : IEnumerable<BaseEntity>
         {
             return new SelectList(objList.Select(p => new { ID = p.Id, Name = selector(p) }), "ID", "Name");
         }

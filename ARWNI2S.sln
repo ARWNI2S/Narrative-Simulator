@@ -132,6 +132,38 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Framework.Services"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Modules.AISpeech.Convai", "Extra\AISpeech\ARWNI2S.Modules.AISpeech.Convai\ARWNI2S.Modules.AISpeech.Convai.csproj", "{102B7001-47A2-4C67-96D7-EB15684D4CEC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Tools", "90 - Tools", "{095F8A7B-24C6-4535-927E-ADCEE8A67650}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - NI2S Build", "91 - NI2S Build", "{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Node", "Node", "{F913EAE3-EF55-4332-BE88-7B2488939ECA}"
+	ProjectSection(SolutionItems) = preProject
+		NI2S-Node\Directory.Build.props = NI2S-Node\Directory.Build.props
+		NI2S-Node\Directory.Build.targets = NI2S-Node\Directory.Build.targets
+		NI2S-Node\Directory.Packages.props = NI2S-Node\Directory.Packages.props
+		NI2S-Node\nuget.config = NI2S-Node\nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulator", "Simulator", "{3178534B-9558-47C5-96F2-4A581C589EA0}"
+	ProjectSection(SolutionItems) = preProject
+		Cluster\Directory.Build.props = Cluster\Directory.Build.props
+		Cluster\Directory.Build.targets = Cluster\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{AA6527A5-8CB6-4B12-8A95-548619ECC4E3}"
+	ProjectSection(SolutionItems) = preProject
+		Framework\Directory.Build.props = Framework\Directory.Build.props
+		Framework\Directory.Build.targets = Framework\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE647BA5-9444-40EF-902D-35A0CB20C501}"
+	ProjectSection(SolutionItems) = preProject
+		NI2S-Node\src\Directory.Build.props = NI2S-Node\src\Directory.Build.props
+		NI2S-Node\src\Directory.Build.targets = NI2S-Node\src\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameworkAssembliesTasks", "Tools\FrameworkAssembliesTasks\FrameworkAssembliesTasks.csproj", "{E36682EF-80DA-44C9-8594-794FF362FFDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +306,8 @@ Global
 		{102B7001-47A2-4C67-96D7-EB15684D4CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{102B7001-47A2-4C67-96D7-EB15684D4CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{102B7001-47A2-4C67-96D7-EB15684D4CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36682EF-80DA-44C9-8594-794FF362FFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36682EF-80DA-44C9-8594-794FF362FFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -328,6 +362,12 @@ Global
 		{2E1BDEFD-39D2-478B-A619-69DB10C14894} = {C22E7AE1-EF2D-4BEA-B944-E010885CC5B6}
 		{5E0D3F45-4EA4-47E2-B4B2-40443C58CB2C} = {59E1708E-4536-4ACD-A131-ED554E2EE796}
 		{102B7001-47A2-4C67-96D7-EB15684D4CEC} = {49792570-6AC3-42C2-B74A-C68267347A2A}
+		{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2} = {095F8A7B-24C6-4535-927E-ADCEE8A67650}
+		{F913EAE3-EF55-4332-BE88-7B2488939ECA} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{3178534B-9558-47C5-96F2-4A581C589EA0} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{AA6527A5-8CB6-4B12-8A95-548619ECC4E3} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{CE647BA5-9444-40EF-902D-35A0CB20C501} = {F913EAE3-EF55-4332-BE88-7B2488939ECA}
+		{E36682EF-80DA-44C9-8594-794FF362FFDE} = {B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65605281-5AFC-48F1-A1E0-D1648E0CBA35}

@@ -1,19 +1,16 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
-using ARWNI2S.Node.Core.Common;
 using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities;
-using ARWNI2S.Node.Data.Entities.Clustering;
-using ARWNI2S.Node.Data.Entities.Common;
-using ARWNI2S.Node.Data.Entities.Directory;
-using ARWNI2S.Node.Data.Entities.Localization;
-using ARWNI2S.Node.Data.Entities.Logging;
-using ARWNI2S.Node.Data.Entities.ScheduleTasks;
-using ARWNI2S.Node.Data.Entities.Users;
+using ARWNI2S.Node.Core.Entities;
+using ARWNI2S.Node.Core.Entities.Common;
+using ARWNI2S.Node.Core.Entities.Directory;
+using ARWNI2S.Node.Core.Entities.Localization;
+using ARWNI2S.Node.Core.Entities.Logging;
+using ARWNI2S.Node.Core.Entities.ScheduleTasks;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Common;
@@ -44,10 +41,10 @@ using System.Text;
 
 namespace ARWNI2S.Portal.Services.Installation
 {
-	/// <summary>
-	/// Installation service
-	/// </summary>
-	public partial class InstallationService : IInstallationService
+    /// <summary>
+    /// Installation service
+    /// </summary>
+    public partial class InstallationService : IInstallationService
 	{
 		#region Fields
 
@@ -130,19 +127,19 @@ namespace ARWNI2S.Portal.Services.Installation
 		#region Utilities
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task<T> InsertInstallationDataAsync<T>(T entity) where T : BaseDataEntity
+		protected virtual async Task<T> InsertInstallationDataAsync<T>(T entity) where T : BaseEntity
 		{
 			return await _dataProvider.InsertEntityAsync(entity);
 		}
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task InsertInstallationDataAsync<T>(params T[] entities) where T : BaseDataEntity
+		protected virtual async Task InsertInstallationDataAsync<T>(params T[] entities) where T : BaseEntity
 		{
 			await _dataProvider.BulkInsertEntitiesAsync(entities);
 		}
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task InsertInstallationDataAsync<T>(IList<T> entities) where T : BaseDataEntity
+		protected virtual async Task InsertInstallationDataAsync<T>(IList<T> entities) where T : BaseEntity
 		{
 			if (!entities.Any())
 				return;
@@ -151,13 +148,13 @@ namespace ARWNI2S.Portal.Services.Installation
 		}
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task UpdateInstallationDataAsync<T>(T entity) where T : BaseDataEntity
+		protected virtual async Task UpdateInstallationDataAsync<T>(T entity) where T : BaseEntity
 		{
 			await _dataProvider.UpdateEntityAsync(entity);
 		}
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task UpdateInstallationDataAsync<T>(IList<T> entities) where T : BaseDataEntity
+		protected virtual async Task UpdateInstallationDataAsync<T>(IList<T> entities) where T : BaseEntity
 		{
 			if (!entities.Any())
 				return;
@@ -167,9 +164,9 @@ namespace ARWNI2S.Portal.Services.Installation
 		}
 
 		/// <returns>A task that represents the asynchronous operation</returns>
-		protected virtual async Task<string> ValidateSeNameAsync<T>(T entity, string seName) where T : BaseDataEntity
+		protected virtual async Task<string> ValidateSeNameAsync<T>(T entity, string seName) where T : BaseEntity
 		{
-			//duplicate of ValidateSeName method of \DragonCorp.Metalink.Services\Seo\UrlRecordService.cs (we cannot inject it here)
+			//duplicate of ValidateSeName method of \ARWNI2S.Node.Services\Seo\UrlRecordService.cs (we cannot inject it here)
 			ArgumentNullException.ThrowIfNull(entity);
 
 			//validation
@@ -821,11 +818,16 @@ namespace ARWNI2S.Portal.Services.Installation
 				SitemapBuildOperationDelay = 60
 			});
 
-			await settingService.SaveSettingAsync(new CommonSettings
+			await settingService.SaveSettingAsync(new Node.Core.Common.CommonSettings
+			{
+				LogAllErrors = true,
+				RestartTimeout = CommonServicesDefaults.RestartTimeout,
+			});
+
+			await settingService.SaveSettingAsync(new Entities.Common.CommonSettings
 			{
 				UseSystemEmailForContactUsForm = true,
 				DisplayJavaScriptDisabledWarning = true,
-				Log404Errors = true,
 				BreadcrumbDelimiter = "/",
 				BbcodeEditorOpenLinksInNewWindow = false,
 				PopupForTermsOfServiceLinks = true,
@@ -833,7 +835,6 @@ namespace ARWNI2S.Portal.Services.Installation
 				UseResponseCompression = true,
 				FaviconAndAppIconsHeadCode = "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/icons/icons_0/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/icons/icons_0/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/icons/icons_0/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/icons/icons_0/favicon-16x16.png\"><link rel=\"manifest\" href=\"/icons/icons_0/site.webmanifest\"><link rel=\"mask-icon\" href=\"/icons/icons_0/safari-pinned-tab.svg\" color=\"#5bbad5\"><link rel=\"shortcut icon\" href=\"/icons/icons_0/favicon.ico\"><meta name=\"msapplication-TileColor\" content=\"#2d89ef\"><meta name=\"msapplication-TileImage\" content=\"/icons/icons_0/mstile-144x144.png\"><meta name=\"msapplication-config\" content=\"/icons/icons_0/browserconfig.xml\"><meta name=\"theme-color\" content=\"#ffffff\">",
 				EnableHtmlMinification = true,
-				RestartTimeout = CommonServicesDefaults.RestartTimeout,
 				HeaderCustomHtml = string.Empty,
 				FooterCustomHtml = string.Empty
 			});
@@ -2668,7 +2669,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Send emails",
 					//1 minute
 					Seconds = 60,
-					Type = "DragonCorp.Metalink.Services.Messages.QueuedMessagesSendTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Messages.QueuedMessagesSendTask, ARWNI2S.Node.Services",
 					Enabled = true,
 					LastEnabledUtc = lastEnabledUtc,
 					StopOnError = false
@@ -2677,7 +2678,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Keep alive",
 					//5 minutes
 					Seconds = 300,
-					Type = "DragonCorp.Metalink.Services.Common.KeepAliveTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Common.KeepAliveTask, ARWNI2S.Node.Services",
 					Enabled = true,
 					LastEnabledUtc = lastEnabledUtc,
 					StopOnError = false
@@ -2686,7 +2687,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Delete guests",
 					//10 minutes
 					Seconds = 600,
-					Type = "DragonCorp.Metalink.Services.Users.DeleteGuestsTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Users.DeleteGuestsTask, ARWNI2S.Node.Services",
 					Enabled = true,
 					LastEnabledUtc = lastEnabledUtc,
 					StopOnError = false
@@ -2695,7 +2696,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Clear cache",
 					//10 minutes
 					Seconds = 600,
-					Type = "DragonCorp.Metalink.Services.Caching.ClearCacheTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Caching.ClearCacheTask, ARWNI2S.Node.Services",
 					Enabled = false,
 					StopOnError = false
 				},
@@ -2703,7 +2704,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Clear log",
 					//60 minutes
 					Seconds = 3600,
-					Type = "DragonCorp.Metalink.Services.Logging.ClearLogTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Logging.ClearLogTask, ARWNI2S.Node.Services",
 					Enabled = false,
 					StopOnError = false
 				},
@@ -2711,7 +2712,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Update currency exchange rates",
 					//60 minutes
 					Seconds = 3600,
-					Type = "DragonCorp.Metalink.Services.Directory.UpdateExchangeRateTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Directory.UpdateExchangeRateTask, ARWNI2S.Node.Services",
 					Enabled = true,
 					LastEnabledUtc = lastEnabledUtc,
 					StopOnError = false
@@ -2720,7 +2721,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Delete inactive users (GDPR)",
 					//24 hours
 					Seconds = 86400,
-					Type = "DragonCorp.Metalink.Services.Gdpr.DeleteInactiveUsersTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Gdpr.DeleteInactiveUsersTask, ARWNI2S.Node.Services",
 					Enabled = false,
 					StopOnError = false
 				},
@@ -2728,7 +2729,7 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Update blocks (Web3)",
 					//10 minutes
 					Seconds = 600,
-					Type = "DragonCorp.Metalink.Services.Metalink.UpdateBlockchainBlocksTask, DragonCorp.Metalink.Services",
+					Type = "ARWNI2S.Node.Services.Metalink.UpdateBlockchainBlocksTask, ARWNI2S.Node.Services",
 					Enabled = false,
 					StopOnError = false
 				}

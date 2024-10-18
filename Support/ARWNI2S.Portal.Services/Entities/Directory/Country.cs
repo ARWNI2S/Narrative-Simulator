@@ -1,13 +1,13 @@
 ﻿using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Directory
 {
     /// <summary>
     /// Represents a country
     /// </summary>
-    public partial class Country : BaseDataEntity, ILocalizedEntity, INodeMappingSupported
+    public partial class Country : BaseEntity, ILocalizedEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the name

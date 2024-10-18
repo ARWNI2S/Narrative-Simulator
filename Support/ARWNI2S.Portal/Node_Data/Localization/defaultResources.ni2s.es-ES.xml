@@ -717,7 +717,7 @@
   <LocaleResource Name="ActivityLog.DeleteNewsComment">
     <Value>Se ha eliminado un comentario de noticia (ID = {0})</Value>
   </LocaleResource>
-  <LocaleResource Name="ActivityLog.DeleteAddon">
+  <LocaleResource Name="ActivityLog.DeleteModule">
     <Value>Se ha eliminado un complemento (FriendlyName: '{0}')</Value>
   </LocaleResource>
   <LocaleResource Name="ActivityLog.DeleteSetting">
@@ -819,7 +819,7 @@
   <LocaleResource Name="ActivityLog.EditNewsComment">
     <Value>Se ha editado un comentario de noticias (ID = {0})</Value>
   </LocaleResource>
-  <LocaleResource Name="ActivityLog.EditAddon">
+  <LocaleResource Name="ActivityLog.EditModule">
     <Value>Se ha editado un complemento (FriendlyName: '{0}')</Value>
   </LocaleResource>
   <LocaleResource Name="ActivityLog.EditSettings">
@@ -876,7 +876,7 @@
   <LocaleResource Name="ActivityLog.ImportNewsLetterSubscriptions">
     <Value>{0} se importaron las suscripciones al boletín</Value>
   </LocaleResource>
-  <LocaleResource Name="ActivityLog.InstallNewAddon">
+  <LocaleResource Name="ActivityLog.InstallNewModule">
     <Value>Se ha instalado un nuevo complemento (FriendlyName: '{0}')</Value>
   </LocaleResource>
   <LocaleResource Name="ActivityLog.PublicNode.AddBlogComment">
@@ -894,14 +894,14 @@
   <LocaleResource Name="ActivityLog.PublicNode.Logout">
     <Value>Cerrar sesión</Value>
   </LocaleResource>
-  <LocaleResource Name="ActivityLog.UninstallAddon">
+  <LocaleResource Name="ActivityLog.UninstallModule">
     <Value>Desinstalado un complemento (FriendlyName: '{0}')</Value>
   </LocaleResource>
   <LocaleResource Name="ActivityLog.UploadNewIcons">
     <Value>Se ha cargado un nuevo favicon e iconos de aplicaciones para el nodo (ID = '{0}')</Value>
   </LocaleResource>
-  <LocaleResource Name="ActivityLog.UploadNewAddon">
-    <Value>Subido un nuevo addon (FriendlyName: '{0}')</Value>
+  <LocaleResource Name="ActivityLog.UploadNewModule">
+    <Value>Subido un nuevo module (FriendlyName: '{0}')</Value>
   </LocaleResource>
   <LocaleResource Name="Address">
     <Value>Dirección</Value>
@@ -1317,211 +1317,211 @@
   <LocaleResource Name="User.Guest">
     <Value>Invitado</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.Checkboxes">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.Checkboxes">
     <Value>Casillas de verificación</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.ColorSquares">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ColorSquares">
     <Value>Cuadrados de color</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.Datepicker">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.Datepicker">
     <Value>Selector de fecha</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.DropdownList">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.DropdownList">
     <Value>Lista desplegable</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.FileUpload">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.FileUpload">
     <Value>Carga de archivos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.ImageSquares">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ImageSquares">
     <Value>Cuadrados de imagen</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.MultilineTextbox">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.MultilineTextbox">
     <Value>Cuadro de texto multilínea</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.RadioList">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.RadioList">
     <Value>Lista de botones de opción</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.ReadonlyCheckboxes">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ReadonlyCheckboxes">
     <Value>Casillas de verificación de solo lectura</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Common.AttributeControlType.TextBox">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.TextBox">
     <Value>Cuadro de texto</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding001">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding001">
     <Value>Redondeo por defecto</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding005Down">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding005Down">
     <Value>Redondeo hacia abajo con intervalos de 0,05 (0,06 redondeo a 0,05)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding005Up">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding005Up">
     <Value>Redondeo hacia arriba con intervalos de 0,05 (0,06 redondeo a 0,10)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding01Down">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding01Down">
     <Value>Redondeo hacia abajo con intervalos de 0,10 (1,05 redondeo a 1,00)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding01Up">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding01Up">
     <Value>Redondeo hacia arriba con intervalos de 0,10 (1,05 redondeo a 1,10)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding05">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding05">
     <Value>Redondeo con intervalos de 0,50</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding1">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding1">
     <Value>Redondeo con intervalos de 1.00 (1.01-1.49 ronda a 1.00, ronda 1.50-1.99 a 2.00)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Directory.RoundingType.Rounding1Up">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding1Up">
     <Value>Redondeo hacia arriba con intervalos de 1,00 (1,01–1,99 redondeo a 2,00)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gameplay.Tournaments.TournamentType.Default">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.Default">
     <Value>Predeterminado</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gameplay.Tournaments.TournamentType.Ladder">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.Ladder">
     <Value>Escalera</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gameplay.Tournaments.TournamentType.GroupedLadder">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.GroupedLadder">
     <Value>Escalera agrupada</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gameplay.Tournaments.TournamentType.External">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.External">
     <Value>Externo</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gdpr.GdprRequestType.ConsentAgree">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ConsentAgree">
     <Value>Consentimiento (de acuerdo)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gdpr.GdprRequestType.ConsentDisagree">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ConsentDisagree">
     <Value>Consentimiento (en desacuerdo)</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gdpr.GdprRequestType.DeleteUser">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.DeleteUser">
     <Value>Eliminar usuario</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gdpr.GdprRequestType.ExportData">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ExportData">
     <Value>Exportar datos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Gdpr.GdprRequestType.ProfileChanged">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ProfileChanged">
     <Value>Perfil cambiado por el usuario</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Logging.LogLevel.Debug">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Debug">
     <Value>Depurar</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Logging.LogLevel.Error">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Error">
     <Value>Error</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Logging.LogLevel.Fatal">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Fatal">
     <Value>Fatal</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Logging.LogLevel.Information">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Information">
     <Value>Información</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Logging.LogLevel.Warning">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Warning">
     <Value>Advertencia</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Messages.MessageDelayPeriod.Days">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.MessageDelayPeriod.Days">
     <Value>Días</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Messages.MessageDelayPeriod.Hours">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.MessageDelayPeriod.Hours">
     <Value>Horas</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Messages.QueuedEmailPriority.High">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.QueuedEmailPriority.High">
     <Value>Alto</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Messages.QueuedEmailPriority.Low">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.QueuedEmailPriority.Low">
     <Value>Bajo</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Security.CaptchaType.CheckBoxReCaptchaV2">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Security.CaptchaType.CheckBoxReCaptchaV2">
     <Value>reCAPTCHA v2 (casilla de verificación "No soy un robot")</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Security.CaptchaType.ReCaptchaV3">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Security.CaptchaType.ReCaptchaV3">
     <Value>reCAPTCHA v3</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Seo.PageTitleSeoAdjustment.PagenameAfterNodename">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.PageTitleSeoAdjustment.PagenameAfterNodename">
     <Value>El nombre de la página viene después del nombre del nodo</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Seo.PageTitleSeoAdjustment.NodenameAfterPagename">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.PageTitleSeoAdjustment.NodenameAfterPagename">
     <Value>El nombre del nodo viene después del nombre de la página</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Seo.WwwRequirement.NoMatter">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.NoMatter">
     <Value>No importa</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Seo.WwwRequirement.WithoutWww">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.WithoutWww">
     <Value>Las páginas no deben tener el prefijo WWW</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Seo.WwwRequirement.WithWww">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.WithWww">
     <Value>Las páginas deben tener el prefijo WWW</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.TaxBasedOn.BillingAddress">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxBasedOn.BillingAddress">
     <Value>Dirección de facturación</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.TaxBasedOn.DefaultAddress">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxBasedOn.DefaultAddress">
     <Value>Dirección predeterminada</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.TaxDisplayType.ExcludingTax">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxDisplayType.ExcludingTax">
     <Value>Sin impuestos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.TaxDisplayType.IncludingTax">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxDisplayType.IncludingTax">
     <Value>Impuestos incluidos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.VatNumberStatus.Empty">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Empty">
     <Value>Vacío</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.VatNumberStatus.Invalid">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Invalid">
     <Value>No válido</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.VatNumberStatus.Unknown">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Unknown">
     <Value>Desconocido</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Tax.VatNumberStatus.Valid">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Valid">
     <Value>Válido</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.PasswordFormat.Clear">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Clear">
     <Value>Claro</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserNameFormat.ShowEmails">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowEmails">
     <Value>Mostrar correos electrónicos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserNameFormat.ShowFirstName">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowFirstName">
     <Value>Mostrar nombre</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserNameFormat.ShowFullNames">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowFullNames">
     <Value>Mostrar nombres completos</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserNameFormat.ShowUsernames">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowUsernames">
     <Value>Mostrar nombres de usuario</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.PasswordFormat.Encrypted">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Encrypted">
     <Value>Encriptado</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.PasswordFormat.Hashed">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Hashed">
     <Value>Hash</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserRegistrationType.AdminApproval">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.AdminApproval">
     <Value>Un usuario debe ser aprobado por el administrador</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserRegistrationType.Disabled">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.Disabled">
     <Value>El registro está deshabilitado</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserRegistrationType.EmailValidation">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.EmailValidation">
     <Value>Se requiere validación por correo electrónico después del registro</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Core.Domain.Users.UserRegistrationType.Standard">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.Standard">
     <Value>Creación de cuenta estándar</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Data.DataProviderType.MySql">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.MySql">
     <Value>MySQL</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Data.DataProviderType.PostgreSQL">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.PostgreSQL">
     <Value>PostgreSQL</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Data.DataProviderType.SqlServer">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.SqlServer">
     <Value>Microsoft SQL Server</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Data.DataProviderType.Unknown">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.Unknown">
     <Value>Desconocido</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Services.Addons.LoadAddonsMode.All">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.All">
     <Value>Todo</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Services.Addons.LoadAddonsMode.InstalledOnly">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.InstalledOnly">
     <Value>Instalado</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.DragonCorp.Metalink.Services.Addons.LoadAddonsMode.NotInstalledOnly">
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.NotInstalledOnly">
     <Value>No instalado</Value>
   </LocaleResource>
   <LocaleResource Name="EUCookieLaw.Description">
@@ -2034,7 +2034,7 @@
   <LocaleResource Name="Permission.ManageActivityLog">
     <Value>Área de administración. Administrar registro de actividad</Value>
   </LocaleResource>
-  <LocaleResource Name="Permission.ManageAddons">
+  <LocaleResource Name="Permission.ManageModules">
     <Value>Área de administración. Administrar complementos</Value>
   </LocaleResource>
   <LocaleResource Name="Permission.ManageAffiliates">

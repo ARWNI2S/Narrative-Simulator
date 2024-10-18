@@ -16,7 +16,7 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
             //narrator node
             var ni2sSettings = Singleton<NI2SSettings>.Instance;
             var clusterConfig = ni2sSettings.Get<ClusterConfig>();
-            var siloConfig = ni2sSettings.Get<OrleansSiloConfig>();
+            //var siloConfig = ni2sSettings.Get<OrleansSiloConfig>();
 
             services.AddOrleans(siloBuilder =>
             {
@@ -28,7 +28,7 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
 
                 if (!clusterConfig.IsDevelopment)
                 {
-                    switch (siloConfig.SimulationClusteringType)
+                    switch (clusterConfig.SiloStorageClustering)
                     {
                         case SimulationClusteringType.AzureStorage:
                             {
@@ -62,6 +62,6 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
             // Orleans normalmente no necesita configuraciones adicionales aquí
         }
 
-        public int Order => 150;    // Puedes ajustar el orden según sea necesario
+        public int Order => 149;    // Puedes ajustar el orden según sea necesario
     }
 }

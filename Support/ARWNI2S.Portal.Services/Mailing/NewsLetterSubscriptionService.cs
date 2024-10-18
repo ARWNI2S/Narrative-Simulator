@@ -4,7 +4,6 @@ using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Users;

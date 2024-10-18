@@ -1,10 +1,9 @@
-﻿//using DragonCorp.Metalink.Services.Catalog;
-//using DragonCorp.Metalink.Services.Orders;
+﻿//using ARWNI2S.Node.Services.Catalog;
+//using ARWNI2S.Node.Services.Orders;
 using ARWNI2S.Infrastructure.Collections.Generic;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Portal.Services.Authentication.External;

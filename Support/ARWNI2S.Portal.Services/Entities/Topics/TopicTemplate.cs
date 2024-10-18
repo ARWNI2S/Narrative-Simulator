@@ -1,11 +1,11 @@
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Topics
 {
     /// <summary>
     /// Represents a topic template
     /// </summary>
-    public partial class TopicTemplate : BaseDataEntity
+    public partial class TopicTemplate : BaseEntity
     {
         /// <summary>
         /// Gets or sets the template name

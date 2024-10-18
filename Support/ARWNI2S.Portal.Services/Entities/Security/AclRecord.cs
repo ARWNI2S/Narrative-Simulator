@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Security
 {
     /// <summary>
     /// Represents an ACL record
     /// </summary>
-    public partial class AclRecord : BaseDataEntity
+    public partial class AclRecord : BaseEntity
     {
         /// <summary>
         /// Gets or sets the entity identifier

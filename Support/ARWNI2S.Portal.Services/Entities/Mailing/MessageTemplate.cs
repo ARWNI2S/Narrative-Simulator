@@ -1,13 +1,13 @@
 ﻿using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
     /// <summary>
     /// Represents a message template
     /// </summary>
-    public partial class MessageTemplate : BaseDataEntity, ILocalizedEntity, INodeMappingSupported
+    public partial class MessageTemplate : BaseEntity, ILocalizedEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the name

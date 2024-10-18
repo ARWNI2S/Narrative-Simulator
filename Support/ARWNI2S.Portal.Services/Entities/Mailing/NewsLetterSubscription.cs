@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
     /// <summary>
     /// Represents NewsLetterSubscription entity
     /// </summary>
-    public partial class NewsLetterSubscription : BaseDataEntity
+    public partial class NewsLetterSubscription : BaseEntity
     {
         /// <summary>
         /// Gets or sets the newsletter subscription GUID

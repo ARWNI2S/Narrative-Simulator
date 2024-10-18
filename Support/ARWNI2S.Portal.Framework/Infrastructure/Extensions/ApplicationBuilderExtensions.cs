@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
-using ARWNI2S.Node.Core.Common;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Data;
@@ -154,9 +153,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
                         if (DataSettingsManager.IsDatabaseInstalled())
                         {
-                            var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
+                            var commonSettings = EngineContext.Current.Resolve<Node.Core.Common.CommonSettings>();
 
-                            if (commonSettings.Log404Errors)
+                            if (commonSettings.LogAllErrors)
                             {
                                 var logger = EngineContext.Current.Resolve<ILogService>();
                                 var workContext = EngineContext.Current.Resolve<IWorkContext>();
@@ -212,7 +211,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 return;
 
             //whether to use compression (gzip by default)
-            if (EngineContext.Current.Resolve<CommonSettings>().UseResponseCompression)
+            if (EngineContext.Current.Resolve<Services.Entities.Common.CommonSettings>().UseResponseCompression)
                 application.UseResponseCompression();
         }
 

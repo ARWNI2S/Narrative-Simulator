@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.News
 {
     /// <summary>
     /// Represents a news comment
     /// </summary>
-    public partial class NewsComment : BaseDataEntity
+    public partial class NewsComment : BaseEntity
     {
         /// <summary>
         /// Gets or sets the comment title

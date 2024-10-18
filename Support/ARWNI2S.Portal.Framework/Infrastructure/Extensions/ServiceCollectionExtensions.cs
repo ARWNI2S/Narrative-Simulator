@@ -1,7 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Core.Caching;
-using ARWNI2S.Node.Core.Common;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Security;
@@ -13,6 +12,7 @@ using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Authentication.External;
 using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
+using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Http;
 using ARWNI2S.Portal.Services.Security;
 using Azure.Identity;

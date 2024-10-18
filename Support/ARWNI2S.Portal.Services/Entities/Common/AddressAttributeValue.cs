@@ -1,12 +1,12 @@
 ﻿using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Common
 {
     /// <summary>
     /// Represents an address attribute value
     /// </summary>
-    public partial class AddressAttributeValue : BaseDataEntity, ILocalizedEntity
+    public partial class AddressAttributeValue : BaseEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the address attribute identifier

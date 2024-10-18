@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Security
 {
     /// <summary>
     /// Represents a permission record
     /// </summary>
-    public partial class PermissionRecord : BaseDataEntity
+    public partial class PermissionRecord : BaseEntity
     {
         /// <summary>
         /// Gets or sets the permission name

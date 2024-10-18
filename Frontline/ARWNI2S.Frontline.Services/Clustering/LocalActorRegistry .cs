@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Node.Runtime.Clustering;
+﻿using ARWNI2S.Node.Runtime.Services.Clustering;
 
-namespace ARWNI2S.Node.Services.Clustering
+namespace ARWNI2S.Frontline.Services.Clustering
 {
     // Implementation of the Local Actor Registry
     public class LocalActorRegistry : ILocalActorRegistry

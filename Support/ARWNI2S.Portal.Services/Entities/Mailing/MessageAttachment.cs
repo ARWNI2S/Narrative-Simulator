@@ -1,8 +1,8 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
-    public partial class MessageAttachment : BaseDataEntity
+    public partial class MessageAttachment : BaseEntity
     {
         public int SystemMessageId { get; set; }
 

@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
     /// <summary>
     /// Represents an email item
     /// </summary>
-    public partial class QueuedEmail : BaseDataEntity
+    public partial class QueuedEmail : BaseEntity
     {
         /// <summary>
         /// Gets or sets the priority

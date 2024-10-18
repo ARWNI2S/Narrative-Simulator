@@ -1,11 +1,11 @@
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Tax
 {
     /// <summary>
     /// Represents a tax category
     /// </summary>
-    public partial class TaxCategory : BaseDataEntity
+    public partial class TaxCategory : BaseEntity
     {
         /// <summary>
         /// Gets or sets the name

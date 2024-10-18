@@ -606,11 +606,11 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Common.MiniProfilerEnabled.Hint">
     <Value>Enable this setting to display the performance indicator by MiniProfiler. By default, the performance indicator can see only Administrators, to change this behavior set ACL rules in the admin area.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Common.AddonStaticFileExtensionsBlacklist">
-    <Value>Addon static file extensions blacklist</Value>
+  <LocaleResource Name="Admin.Configuration.AppSettings.Common.ModuleStaticFileExtensionsBlacklist">
+    <Value>Module static file extensions blacklist</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Common.AddonStaticFileExtensionsBlacklist.Hint">
-    <Value>Specify the blacklist of static file extension for addon directories.</Value>
+  <LocaleResource Name="Admin.Configuration.AppSettings.Common.ModuleStaticFileExtensionsBlacklist.Hint">
+    <Value>Specify the blacklist of static file extension for module directories.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.Common.ScheduleTaskRunTimeout">
     <Value>Schedule task run timeout</Value>
@@ -744,11 +744,11 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation">
     <Value>Installation configuration</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledAddons">
-    <Value>Disabled addons</Value>
+  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledModules">
+    <Value>Disabled modules</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledAddons.Hint">
-    <Value>Specify a list of addons (comma separated) ignored during installation.</Value>
+  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledModules.Hint">
+    <Value>Specify a list of modules (comma separated) ignored during installation.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation.InstallRegionalResources">
     <Value>Install regional resources</Value>
@@ -756,13 +756,13 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation.InstallRegionalResources.Hint">
     <Value>Enable this setting to download and setup the regional language pack during installation.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon">
-    <Value>Addon configuration</Value>
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module">
+    <Value>Module configuration</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon.UseUnsafeLoadAssembly">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module.UseUnsafeLoadAssembly">
     <Value>Use unsafe load assembly</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon.UseUnsafeLoadAssembly.Hint">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module.UseUnsafeLoadAssembly.Hint">
     <Value>Enable this setting to load an assembly into the load-from context, bypassing some security checks.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.WebOptimizer">
@@ -2026,182 +2026,182 @@
   <LocaleResource Name="Admin.Configuration.Languages.XmlFile.Note2">
     <Value>NOTE: DO NOT click twice.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.AdditionalInfo">
+  <LocaleResource Name="Admin.Configuration.Modules.AdditionalInfo">
     <Value>Additional info</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ApplyChanges">
+  <LocaleResource Name="Admin.Configuration.Modules.ApplyChanges">
     <Value>Restart application to apply changes</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ApplyChanges.Progress">
-    <Value>Applying changes on addons...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.ApplyChanges.Progress">
+    <Value>Applying changes on modules...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Author">
+  <LocaleResource Name="Admin.Configuration.Modules.Author">
     <Value>Author</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Author.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Author.Hint">
     <Value>Search by author.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ChangesApplyAfterReboot">
+  <LocaleResource Name="Admin.Configuration.Modules.ChangesApplyAfterReboot">
     <Value>Changes will be applied after restart application</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description">
-    <Value>Manual addon installation</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description">
+    <Value>Manual module installation</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step1">
-    <Value>Upload the addon to the /addons folder in your dragonCorp directory.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step1">
+    <Value>Upload the module to the /modules folder in your dragonCorp directory.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step2">
-    <Value>Restart your application (or click 'Reload list of addons' button).</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step2">
+    <Value>Restart your application (or click 'Reload list of modules' button).</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step3">
-    <Value>Scroll down through the list of addons to find the newly installed addon.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step3">
+    <Value>Scroll down through the list of modules to find the newly installed module.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step4">
-    <Value>Click on the 'Install' link to choose the addon for install.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step4">
+    <Value>Click on the 'Install' link to choose the module for install.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step5">
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step5">
     <Value>Click on the 'Restart application to apply changes' button on the top panel to finish the installation process.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.DiscardChanges">
+  <LocaleResource Name="Admin.Configuration.Modules.DiscardChanges">
     <Value>Discard changes</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.DiscardChanges.Progress">
-    <Value>Discarding changes on addons...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.DiscardChanges.Progress">
+    <Value>Discarding changes on modules...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.EditDetails">
-    <Value>Edit addon details</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.EditDetails">
+    <Value>Edit module details</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.AclUserRoles">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.AclUserRoles">
     <Value>Limited to user roles</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.AclUserRoles.Hint">
-    <Value>Choose one or several user roles i.e. administrators, partners, guests, who will be able to use this addon. If you don't need this option just leave this field empty.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.AclUserRoles.Hint">
+    <Value>Choose one or several user roles i.e. administrators, partners, guests, who will be able to use this module. If you don't need this option just leave this field empty.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Author">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Author">
     <Value>Author</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Configure">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Configure">
     <Value>Configure</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Delete">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Delete">
     <Value>Delete</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Delete.Progress">
-    <Value>Deleting addon...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Delete.Progress">
+    <Value>Deleting module...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.DisplayOrder">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.DisplayOrder">
     <Value>Display order</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.DisplayOrder.Hint">
-    <Value>The Display order of the addon. 1 represents the top of the list.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.DisplayOrder.Hint">
+    <Value>The Display order of the module. 1 represents the top of the list.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName">
     <Value>Friendly name</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName.Hint">
-    <Value>The friendly name of the addon.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName.Hint">
+    <Value>The friendly name of the module.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName.Required">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName.Required">
     <Value>Friendly name is required.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Group">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Group">
     <Value>Group</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Install">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Install">
     <Value>Install</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Install.Progress">
-    <Value>Installing addon...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Install.Progress">
+    <Value>Installing module...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Installation">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Installation">
     <Value>Installation</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Installed">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Installed">
     <Value>Installed</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.IsEnabled">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.IsEnabled">
     <Value>Enabled</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.IsEnabled.Hint">
-    <Value>Indicates whether the addon is enabled/active.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.IsEnabled.Hint">
+    <Value>Indicates whether the module is enabled/active.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.LimitedToNodes">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.LimitedToNodes">
     <Value>Limited to nodes</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.LimitedToNodes.Hint">
-    <Value>Option to limit this addon to a certain node. If you have multiple nodes, choose one or several from the list. If you don't use this option just leave this field empty.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.LimitedToNodes.Hint">
+    <Value>Option to limit this module to a certain node. If you have multiple nodes, choose one or several from the list. If you don't use this option just leave this field empty.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Logo">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Logo">
     <Value>Logo</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.SystemName">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.SystemName">
     <Value>System name</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Uninstall">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Uninstall">
     <Value>Uninstall</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Uninstall.Progress">
-    <Value>Uninstalling addon...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Uninstall.Progress">
+    <Value>Uninstalling module...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Version">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Version">
     <Value>Version</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.FriendlyName">
-    <Value>Addon name</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.FriendlyName">
+    <Value>Module name</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.FriendlyName.Hint">
-    <Value>Search by a addon name.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.FriendlyName.Hint">
+    <Value>Search by a module name.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Group">
+  <LocaleResource Name="Admin.Configuration.Modules.Group">
     <Value>Group</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Group.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Group.Hint">
     <Value>Search by a group.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Info">
-    <Value>Addon Info</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Info">
+    <Value>Module Info</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.LoadMode">
+  <LocaleResource Name="Admin.Configuration.Modules.LoadMode">
     <Value>Load mode</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.LoadMode.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.LoadMode.Hint">
     <Value>Search by a load mode.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Local">
-    <Value>Local addons</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Local">
+    <Value>Local modules</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Misc.BackToList">
-    <Value>back to addon list</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Misc.BackToList">
+    <Value>back to module list</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Misc.Configure">
+  <LocaleResource Name="Admin.Configuration.Modules.Misc.Configure">
     <Value>Configure</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ReloadList">
-    <Value>Reload list of addons</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.ReloadList">
+    <Value>Reload list of modules</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ReloadList.Progress">
-    <Value>Reloading addon list...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.ReloadList.Progress">
+    <Value>Reloading module list...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload">
-    <Value>Upload addon</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload">
+    <Value>Upload module</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint1">
-    <Value>The archive should contain only one root addon directory (already compiled for addon). For example, Payments.PayPalDirect.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint1">
+    <Value>The archive should contain only one root module directory (already compiled for module). For example, Payments.PayPalDirect.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint2">
-    <Value>Or it should have the '{0}' file with the archive structure (in case if the archive has many addons).</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint2">
+    <Value>Or it should have the '{0}' file with the archive structure (in case if the archive has many modules).</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint3">
-    <Value>Please note that if the addon directory already exists, it will be overwritten.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint3">
+    <Value>Please note that if the module directory already exists, it will be overwritten.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint4">
-    <Value>You can also manually upload a addon using FTP if this method doesn't work for you.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint4">
+    <Value>You can also manually upload a module using FTP if this method doesn't work for you.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Progress">
-    <Value>Uploading addons...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Progress">
+    <Value>Uploading modules...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Uploaded">
-    <Value>{0} addons have been uploaded</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Uploaded">
+    <Value>{0} modules have been uploaded</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings">
     <Value>Settings</Value>
@@ -4761,7 +4761,7 @@
     <Value>Avalara tax provider</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.ConfigurationSteps.TaxProviders.Configure.Text">
-    <Value><![CDATA[Now we’ll configure the Manual tax provider. Click the <b>Edit</b> button to proceed to the addon configuration page.]]></Value>
+    <Value><![CDATA[Now we’ll configure the Manual tax provider. Click the <b>Edit</b> button to proceed to the module configuration page.]]></Value>
   </LocaleResource>
   <LocaleResource Name="Admin.ConfigurationSteps.TaxProviders.Configure.Title">
     <Value>Configure Manual</Value>
@@ -4779,7 +4779,7 @@
     <Value>Mark as a primary provider</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.ConfigurationSteps.TaxProviders.TaxProviders.Text">
-    <Value><![CDATA[You can see all the tax providers (addons) allowed to use in your node on this page. However, you can always find much more in our <a href="{0}" target="_blank">marketplace</a>.]]></Value>
+    <Value><![CDATA[You can see all the tax providers (modules) allowed to use in your node on this page. However, you can always find much more in our <a href="{0}" target="_blank">marketplace</a>.]]></Value>
   </LocaleResource>
   <LocaleResource Name="Admin.ConfigurationSteps.TaxProviders.TaxProviders.Title">
     <Value>Tax providers</Value>
@@ -5774,8 +5774,8 @@
   <LocaleResource Name="Admin.Documentation.Reference.ActivityLog">
     <Value><![CDATA[Learn more about <a target="_blank" href="{0}">activity log</a>]]></Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Documentation.Reference.Addons">
-    <Value><![CDATA[Learn more about <a target="_blank" href="{0}">addons in dragonCorp</a>]]></Value>
+  <LocaleResource Name="Admin.Documentation.Reference.Modules">
+    <Value><![CDATA[Learn more about <a target="_blank" href="{0}">modules in dragonCorp</a>]]></Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Documentation.Reference.Affiliates">
     <Value><![CDATA[Learn more about <a target="_blank" href="{0}">affiliates</a>]]></Value>
@@ -7232,26 +7232,26 @@
   <LocaleResource Name="Admin.Picture.RemovePicture">
     <Value>Remove picture</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons">
-    <Value>Addons</Value>
+  <LocaleResource Name="Admin.Modules">
+    <Value>Modules</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.InstallDependsOn">
-    <Value>The "{0}" addon depends on the following addons which must be installed beforehand: "{1}"</Value>
+  <LocaleResource Name="Admin.Modules.Errors.InstallDependsOn">
+    <Value>The "{0}" module depends on the following modules which must be installed beforehand: "{1}"</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotDeleted">
-    <Value>The addon "{0}" not deleted</Value>
+  <LocaleResource Name="Admin.Modules.Errors.NotDeleted">
+    <Value>The module "{0}" not deleted</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotInstalled">
-    <Value>The addon "{0}" not installed</Value>
+  <LocaleResource Name="Admin.Modules.Errors.NotInstalled">
+    <Value>The module "{0}" not installed</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotUninstalled">
-    <Value>The addon "{0}" not uninstalled</Value>
+  <LocaleResource Name="Admin.Modules.Errors.NotUninstalled">
+    <Value>The module "{0}" not uninstalled</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.UninstallDependsOn">
-    <Value>The following addons depend on the "{0}" addon and must be uninstalled beforehand: "{1}"</Value>
+  <LocaleResource Name="Admin.Modules.Errors.UninstallDependsOn">
+    <Value>The following modules depend on the "{0}" module and must be uninstalled beforehand: "{1}"</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Saved">
-    <Value>The addon has been updated successfully.</Value>
+  <LocaleResource Name="Admin.Modules.Saved">
+    <Value>The module has been updated successfully.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Promotions">
     <Value>Promotions</Value>
@@ -8228,28 +8228,28 @@
   <LocaleResource Name="Admin.System.Warnings.Performance.IgnoreNodeLimitations.Notification">
     <Value>In order to use this functionality, you have to disable the following setting: Node settings &gt; Ignore "limit per node" rules.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonMainAssemblyNotFound">
-    <Value>{0}: The main assembly isn't found. Hence this addon can't be loaded.</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleMainAssemblyNotFound">
+    <Value>{0}: The main assembly isn't found. Hence this module can't be loaded.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotCompatibleWithCurrentVersion">
-    <Value>{0}: The addon isn't compatible with the current version. Hence this addon can't be loaded.</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotCompatibleWithCurrentVersion">
+    <Value>{0}: The module isn't compatible with the current version. Hence this module can't be loaded.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotEnabled">
-    <Value>Uninstall and delete the addon(s) that you don't use</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotEnabled">
+    <Value>Uninstall and delete the module(s) that you don't use</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotEnabled.AutoFixAndRestart">
-    <Value>Uninstall and delete all not used addons automatically (site will be restarted)</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotEnabled.AutoFixAndRestart">
+    <Value>Uninstall and delete all not used modules automatically (site will be restarted)</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotInstalled">
-    <Value>You haven't installed the following addon(s)</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotInstalled">
+    <Value>You haven't installed the following module(s)</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotInstalled.HelpText">
-    <Value>You may delete the addons you don't use in order to decrease startup time</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotInstalled.HelpText">
+    <Value>You may delete the modules you don't use in order to decrease startup time</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonRequiredAssembly">
-    <Value>the '{0}' addon required the '{1}' assembly</Value>
+  <LocaleResource Name="Admin.System.Warnings.ModuleRequiredAssembly">
+    <Value>the '{0}' module required the '{1}' assembly</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonsOverrideSameService">
+  <LocaleResource Name="Admin.System.Warnings.ModulesOverrideSameService">
     <Value>The "{0}" interface/class has been overridden in those assemblies: {1}. This situation may cause errors because there is only one of them will be used (Please contact the assembly(ies) developers to solve this problem.)</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.System.Warnings.PrimaryCurrency.NotSet">

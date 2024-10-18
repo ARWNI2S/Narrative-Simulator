@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Users
 {
     /// <summary>
     /// Represents a user password
     /// </summary>
-    public partial class UserPassword : BaseDataEntity
+    public partial class UserPassword : BaseEntity
     {
         public UserPassword()
         {

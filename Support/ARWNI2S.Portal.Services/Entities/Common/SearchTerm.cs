@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Common
 {
     /// <summary>
     /// Search term record (for statistics)
     /// </summary>
-    public partial class SearchTerm : BaseDataEntity
+    public partial class SearchTerm : BaseEntity
     {
         /// <summary>
         /// Gets or sets the keyword

@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ClearModuleAssemblies Include="$(MSBuildProjectDirectory)\..\..\..\Tools\ClearModuleAssemblies\ClearModuleAssemblies.proj" />
+    <FrameworkAssembliesTasks Include="$(MSBuildProjectDirectory)\..\..\..\Tools\FrameworkAssembliesTasks\FrameworkAssembliesTasks.proj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,18 +33,12 @@
     <None Update="logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <!--<None Update="Views\Configure.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\_ViewImports.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>-->
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->
   <Target Name="NI2SModulesTarget" AfterTargets="Build">
     <!-- Delete unnecessary libraries from modules path -->
-    <MSBuild Projects="@(ClearModuleAssemblies)" Properties="ModulePath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NI2SModulesClear" />
+    <MSBuild Projects="@(FrameworkAssembliesTasks)" Properties="ModulePath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NI2SModulesClear" />
   </Target>
 
 </Project>

@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
     /// <summary>
     /// Represents a campaign
     /// </summary>
-    public partial class Campaign : BaseDataEntity
+    public partial class Campaign : BaseEntity
     {
         /// <summary>
         /// Gets or sets the name

@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Infrastructure.Collections.Generic;
-using ARWNI2S.Node.Data.Entities.Users;
+using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Portal.Services.Entities.Gdpr;
 
 namespace ARWNI2S.Portal.Services.Gdpr

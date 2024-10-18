@@ -1,5 +1,4 @@
-﻿using ARWNI2S.Node.Runtime.Clustering;
-using ARWNI2S.Node.Runtime.Services.Clustering;
+﻿using ARWNI2S.Node.Runtime.Services.Clustering;
 
 namespace ARWNI2S.Node.Services.Clustering
 {

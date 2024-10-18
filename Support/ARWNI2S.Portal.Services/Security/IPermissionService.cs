@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Node.Data.Entities.Users;
+﻿using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Portal.Services.Entities.Security;
 
 namespace ARWNI2S.Portal.Services.Security

@@ -3,7 +3,7 @@ using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Clustering;
+using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
@@ -15,7 +15,7 @@ using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
-using User = ARWNI2S.Node.Data.Entities.Users.User;
+using User = ARWNI2S.Node.Core.Entities.Users.User;
 
 namespace ARWNI2S.Portal.Services.Authentication.External
 {

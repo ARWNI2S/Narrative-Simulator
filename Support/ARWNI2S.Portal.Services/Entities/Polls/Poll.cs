@@ -1,12 +1,12 @@
 ﻿using ARWNI2S.Node.Core.Entities.Clustering;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Polls
 {
     /// <summary>
     /// Represents a poll
     /// </summary>
-    public partial class Poll : BaseDataEntity, INodeMappingSupported
+    public partial class Poll : BaseEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the language identifier

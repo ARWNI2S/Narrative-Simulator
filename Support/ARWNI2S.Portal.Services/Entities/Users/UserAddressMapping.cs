@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Users
 {
     /// <summary>
     /// Represents a user-address mapping class
     /// </summary>
-    public partial class UserAddressMapping : BaseDataEntity
+    public partial class UserAddressMapping : BaseEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

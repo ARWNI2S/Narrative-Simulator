@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Polls
 {
     /// <summary>
     /// Represents a poll voting record
     /// </summary>
-    public partial class PollVotingRecord : BaseDataEntity
+    public partial class PollVotingRecord : BaseEntity
     {
         /// <summary>
         /// Gets or sets the poll answer identifier

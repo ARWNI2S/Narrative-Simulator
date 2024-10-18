@@ -2,7 +2,7 @@
 using ARWNI2S.Infrastructure.Collections.Generic;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Localization;
@@ -1293,7 +1293,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// <param name="slug">Slug</param>
         /// <param name="languageId">Language ID</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task SaveSlugAsync<T>(T entity, string slug, int languageId) where T : BaseDataEntity, ISlugSupported
+        public virtual async Task SaveSlugAsync<T>(T entity, string slug, int languageId) where T : BaseEntity, ISlugSupported
         {
             ArgumentNullException.ThrowIfNull(entity);
 
@@ -1398,7 +1398,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// The task result contains the search engine  name (slug)
         /// </returns>
         public virtual async Task<string> GetSeNameAsync<T>(T entity, int? languageId = null, bool returnDefaultValue = true,
-            bool ensureTwoPublishedLanguages = true) where T : BaseDataEntity, ISlugSupported
+            bool ensureTwoPublishedLanguages = true) where T : BaseEntity, ISlugSupported
         {
             ArgumentNullException.ThrowIfNull(entity);
 
@@ -1510,7 +1510,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// A task that represents the asynchronous operation
         /// The task result contains the valid seName
         /// </returns>
-        public virtual async Task<string> ValidateSeNameAsync<T>(T entity, string seName, string name, bool ensureNotEmpty) where T : BaseDataEntity, ISlugSupported
+        public virtual async Task<string> ValidateSeNameAsync<T>(T entity, string seName, string name, bool ensureNotEmpty) where T : BaseEntity, ISlugSupported
         {
             ArgumentNullException.ThrowIfNull(entity);
 

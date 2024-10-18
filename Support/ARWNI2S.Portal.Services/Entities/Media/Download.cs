@@ -1,11 +1,11 @@
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Media
 {
     /// <summary>
     /// Represents a download
     /// </summary>
-    public partial class Download : BaseDataEntity
+    public partial class Download : BaseEntity
     {
         /// <summary>
         /// Gets or sets a GUID

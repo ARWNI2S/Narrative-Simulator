@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Infrastructure.Collections.Generic;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Portal.Services.Entities.Seo;
 
 namespace ARWNI2S.Portal.Services.Seo
@@ -84,7 +84,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// <param name="slug">Slug</param>
         /// <param name="languageId">Language ID</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task SaveSlugAsync<T>(T entity, string slug, int languageId) where T : BaseDataEntity, ISlugSupported;
+        Task SaveSlugAsync<T>(T entity, string slug, int languageId) where T : BaseEntity, ISlugSupported;
 
         /// <summary>
         ///  Get search engine friendly name (slug)
@@ -99,7 +99,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// The task result contains the search engine  name (slug)
         /// </returns>
         Task<string> GetSeNameAsync<T>(T entity, int? languageId = null, bool returnDefaultValue = true,
-            bool ensureTwoPublishedLanguages = true) where T : BaseDataEntity, ISlugSupported;
+            bool ensureTwoPublishedLanguages = true) where T : BaseEntity, ISlugSupported;
 
         /// <summary>
         /// Get search engine friendly name (slug)
@@ -139,7 +139,7 @@ namespace ARWNI2S.Portal.Services.Seo
         /// A task that represents the asynchronous operation
         /// The task result contains the valid seName
         /// </returns>
-        Task<string> ValidateSeNameAsync<T>(T entity, string seName, string name, bool ensureNotEmpty) where T : BaseDataEntity, ISlugSupported;
+        Task<string> ValidateSeNameAsync<T>(T entity, string seName, string name, bool ensureNotEmpty) where T : BaseEntity, ISlugSupported;
 
         /// <summary>
         /// Validate search engine name

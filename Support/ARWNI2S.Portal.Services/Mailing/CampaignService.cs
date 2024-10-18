@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Clustering;
+using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Users;
 

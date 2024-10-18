@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Blogs
 {
     /// <summary>
     /// Represents a blog comment
     /// </summary>
-    public partial class BlogComment : BaseDataEntity
+    public partial class BlogComment : BaseEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

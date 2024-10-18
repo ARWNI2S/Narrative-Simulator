@@ -1,12 +1,12 @@
 ﻿using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Users
 {
     /// <summary>
     /// Represents a user attribute value
     /// </summary>
-    public partial class UserAttributeValue : BaseDataEntity, ILocalizedEntity
+    public partial class UserAttributeValue : BaseEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the user attribute identifier

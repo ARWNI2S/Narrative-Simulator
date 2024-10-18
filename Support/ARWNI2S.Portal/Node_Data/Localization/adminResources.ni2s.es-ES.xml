@@ -606,10 +606,10 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Common.MiniProfilerEnabled.Hint">
     <Value>Habilita esta configuración para mostrar el indicador de rendimiento de MiniProfiler. De forma predeterminada, el indicador de rendimiento solo puede ver Administradores, para cambiar este comportamiento, establezca reglas de ACL en el área de administración.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Common.AddonStaticFileExtensionsBlacklist">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Common.ModuleStaticFileExtensionsBlacklist">
     <Value>Lista negra de extensiones de archivo estáticas de complementos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Common.AddonStaticFileExtensionsBlacklist.Hint">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Common.ModuleStaticFileExtensionsBlacklist.Hint">
     <Value>Especifique la lista negra de extensiones de archivo estáticas para directorios adicionales.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.Common.ScheduleTaskRunTimeout">
@@ -744,10 +744,10 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation">
     <Value>Configuración de la instalación</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledAddons">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledModules">
     <Value>Complementos deshabilitados</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledAddons.Hint">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Installation.DisabledModules.Hint">
     <Value>Especifique una lista de complementos (separados por comas) ignorados durante la instalación.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation.InstallRegionalResources">
@@ -756,13 +756,13 @@
   <LocaleResource Name="Admin.Configuration.AppSettings.Installation.InstallRegionalResources.Hint">
     <Value>Habilite esta opción para descargar y configurar el paquete de idioma regional durante la instalación.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module">
     <Value>Configuración del complemento</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon.UseUnsafeLoadAssembly">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module.UseUnsafeLoadAssembly">
     <Value>Usar un ensamblaje de carga no seguro</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.AppSettings.Addon.UseUnsafeLoadAssembly.Hint">
+  <LocaleResource Name="Admin.Configuration.AppSettings.Module.UseUnsafeLoadAssembly.Hint">
     <Value>Habilite esta configuración para cargar un ensamblado en el contexto de carga desde, omitiendo algunas comprobaciones de seguridad.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.AppSettings.WebOptimizer">
@@ -2019,181 +2019,181 @@
   <LocaleResource Name="Admin.Configuration.Languages.XmlFile.Note2">
     <Value>NOTA: NO haga clic dos veces.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.AdditionalInfo">
+  <LocaleResource Name="Admin.Configuration.Modules.AdditionalInfo">
     <Value>Información adicional</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ApplyChanges">
+  <LocaleResource Name="Admin.Configuration.Modules.ApplyChanges">
     <Value>Reinicie la aplicación para aplicar los cambios</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ApplyChanges.Progress">
+  <LocaleResource Name="Admin.Configuration.Modules.ApplyChanges.Progress">
     <Value>Aplicando cambios en los complementos...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Author">
+  <LocaleResource Name="Admin.Configuration.Modules.Author">
     <Value>Autor</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Author.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Author.Hint">
     <Value>Búsqueda por autor.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ChangesApplyAfterReboot">
+  <LocaleResource Name="Admin.Configuration.Modules.ChangesApplyAfterReboot">
     <Value>Los cambios se aplicarán después de reiniciar la aplicación</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description">
+  <LocaleResource Name="Admin.Configuration.Modules.Description">
     <Value>Instalación manual del complemento</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step1">
-    <Value>Sube el complemento a la carpeta /addons en tu directorio dragonCorp.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step1">
+    <Value>Sube el complemento a la carpeta /modules en tu directorio dragonCorp.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step2">
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step2">
     <Value>Reinicie su aplicación (o haga clic en el botón 'Volver a cargar la lista de complementos').</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step3">
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step3">
     <Value>Desplácese hacia abajo por la lista de complementos para encontrar el complemento recién instalado.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step4">
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step4">
     <Value>Haga clic en el enlace 'Instalar' para elegir el complemento para instalar.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Description.Step5">
+  <LocaleResource Name="Admin.Configuration.Modules.Description.Step5">
     <Value>Haga clic en el botón 'Reiniciar aplicación para aplicar cambios' en el panel superior para finalizar el proceso de instalación.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.DiscardChanges">
+  <LocaleResource Name="Admin.Configuration.Modules.DiscardChanges">
     <Value>Descartar cambios</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.DiscardChanges.Progress">
+  <LocaleResource Name="Admin.Configuration.Modules.DiscardChanges.Progress">
     <Value>Descartando cambios en los complementos...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.EditDetails">
+  <LocaleResource Name="Admin.Configuration.Modules.EditDetails">
     <Value>Editar detalles del complemento</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.AclUserRoles">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.AclUserRoles">
     <Value>Limitado a roles de usuario</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.AclUserRoles.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.AclUserRoles.Hint">
     <Value>Elija uno o varios roles de usuario, es decir, administradores, socios, invitados, que podrán usar este complemento. Si no necesita esta opción, simplemente deje este campo vacío.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Author">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Author">
     <Value>Autor</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Configure">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Configure">
     <Value>Configurar</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Delete">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Delete">
     <Value>Borrar</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Delete.Progress">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Delete.Progress">
     <Value>Eliminando complemento...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.DisplayOrder">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.DisplayOrder">
     <Value>Orden de visualización</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.DisplayOrder.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.DisplayOrder.Hint">
     <Value>El orden de visualización del complemento. 1 representa la parte superior de la lista.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName">
     <Value>Nombre descriptivo</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName.Hint">
     <Value>Nombre descriptivo del complemento.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.FriendlyName.Required">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.FriendlyName.Required">
     <Value>Se requiere un nombre descriptivo.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Group">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Group">
     <Value>Grupo</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Install">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Install">
     <Value>Instalar</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Install.Progress">
-    <Value>Instalando addon...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Install.Progress">
+    <Value>Instalando module...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Installation">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Installation">
     <Value>Instalación</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Installed">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Installed">
     <Value>Instalado</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.IsEnabled">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.IsEnabled">
     <Value>Habilitado</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.IsEnabled.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.IsEnabled.Hint">
     <Value>Indica si el complemento está habilitado/activo.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.LimitedToNodes">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.LimitedToNodes">
     <Value>Limitado a nodos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.LimitedToNodes.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.LimitedToNodes.Hint">
     <Value>Opción para limitar este complemento a un determinado nodo. Si tiene varios nodos, elija uno o varios de la lista. Si no utiliza esta opción, simplemente deje este campo vacío.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Logo">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Logo">
     <Value>Logotipo</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.SystemName">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.SystemName">
     <Value>Nombre del sistema</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Uninstall">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Uninstall">
     <Value>Desinstalar</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Uninstall.Progress">
-    <Value>Desinstalando addon...</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Uninstall.Progress">
+    <Value>Desinstalando module...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Fields.Version">
+  <LocaleResource Name="Admin.Configuration.Modules.Fields.Version">
     <Value>Versión</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.FriendlyName">
+  <LocaleResource Name="Admin.Configuration.Modules.FriendlyName">
     <Value>Nombre del complemento</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.FriendlyName.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.FriendlyName.Hint">
     <Value>Buscar por un nombre adicional.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Group">
+  <LocaleResource Name="Admin.Configuration.Modules.Group">
     <Value>Grupo</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Group.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.Group.Hint">
     <Value>Buscar por grupo.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Info">
+  <LocaleResource Name="Admin.Configuration.Modules.Info">
     <Value>Información adicional</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.LoadMode">
+  <LocaleResource Name="Admin.Configuration.Modules.LoadMode">
     <Value>Modo de carga</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.LoadMode.Hint">
+  <LocaleResource Name="Admin.Configuration.Modules.LoadMode.Hint">
     <Value>Buscar por un modo de carga.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Local">
+  <LocaleResource Name="Admin.Configuration.Modules.Local">
     <Value>Complementos locales</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Misc.BackToList">
+  <LocaleResource Name="Admin.Configuration.Modules.Misc.BackToList">
     <Value>Volver a la lista de complementos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Misc.Configure">
+  <LocaleResource Name="Admin.Configuration.Modules.Misc.Configure">
     <Value>Configurar</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ReloadList">
+  <LocaleResource Name="Admin.Configuration.Modules.ReloadList">
     <Value>Volver a cargar la lista de complementos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.ReloadList.Progress">
+  <LocaleResource Name="Admin.Configuration.Modules.ReloadList.Progress">
     <Value>Recargando la lista de complementos...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload">
-    <Value>Subir addon</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload">
+    <Value>Subir module</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint1">
-    <Value>El archivo debe contener solo un directorio de addon raíz (ya compilado para el complemento). Por ejemplo, Payments.PayPalDirect.</Value>
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint1">
+    <Value>El archivo debe contener solo un directorio de module raíz (ya compilado para el complemento). Por ejemplo, Payments.PayPalDirect.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint2">
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint2">
     <Value>O debe tener el archivo '{0}' con la estructura del archivo (en caso de que el archivo tenga muchos complementos).</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint3">
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint3">
     <Value>Tenga en cuenta que si el directorio adicional ya existe, se sobrescribirá.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Hint4">
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Hint4">
     <Value>También puede cargar manualmente un complemento usando FTP si este método no funciona para usted.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Upload.Progress">
+  <LocaleResource Name="Admin.Configuration.Modules.Upload.Progress">
     <Value>Subiendo complementos...</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Addons.Uploaded">
+  <LocaleResource Name="Admin.Configuration.Modules.Uploaded">
     <Value>{0} se han subido los complementos</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings">
@@ -5766,8 +5766,8 @@
   <LocaleResource Name="Admin.Documentation.Reference.ActivityLog">
     <Value><![CDATA[Más información sobre <a target="_blank" href="{0}">activity log</a>]]></Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Documentation.Reference.Addons">
-    <Value><![CDATA[Learn more about <a target="_blank" href="{0}">addons in dragonCorp</a>]]></Value>
+  <LocaleResource Name="Admin.Documentation.Reference.Modules">
+    <Value><![CDATA[Learn more about <a target="_blank" href="{0}">modules in dragonCorp</a>]]></Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Documentation.Reference.Affiliates">
     <Value><![CDATA[Más información sobre <a target="_blank" href="{0}">affiliates</a>]]></Value>
@@ -7191,25 +7191,25 @@
   <LocaleResource Name="Admin.Picture.RemovePicture">
     <Value>Eliminar imagen</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons">
+  <LocaleResource Name="Admin.Modules">
     <Value>Complementos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.InstallDependsOn">
-    <Value>El addon "{0}" depende de los siguientes complementos que deben ser instalados previamente: "{1}"</Value>
+  <LocaleResource Name="Admin.Modules.Errors.InstallDependsOn">
+    <Value>El module "{0}" depende de los siguientes complementos que deben ser instalados previamente: "{1}"</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotDeleted">
+  <LocaleResource Name="Admin.Modules.Errors.NotDeleted">
     <Value>El complemento "{0}" no eliminado</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotInstalled">
+  <LocaleResource Name="Admin.Modules.Errors.NotInstalled">
     <Value>El complemento "{0}" no instalado</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.NotUninstalled">
+  <LocaleResource Name="Admin.Modules.Errors.NotUninstalled">
     <Value>El complemento "{0}" no desinstalado</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Errors.UninstallDependsOn">
+  <LocaleResource Name="Admin.Modules.Errors.UninstallDependsOn">
     <Value>Los siguientes complementos dependen del complemento "{0}" y deben desinstalarse de antemano: "{1}"</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Addons.Saved">
+  <LocaleResource Name="Admin.Modules.Saved">
     <Value>El complemento se ha actualizado correctamente.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Promotions">
@@ -8187,28 +8187,28 @@
   <LocaleResource Name="Admin.System.Warnings.Performance.IgnoreNodeLimitations.Notification">
     <Value>Para utilizar esta funcionalidad, debe deshabilitar la siguiente configuración: Configuración de nodo &gt; Ignorar reglas de "límite por nodo".</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonMainAssemblyNotFound">
+  <LocaleResource Name="Admin.System.Warnings.ModuleMainAssemblyNotFound">
     <Value>{0}: No se encuentra el ensamblaje principal. Por lo tanto, este complemento no se puede cargar.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotCompatibleWithCurrentVersion">
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotCompatibleWithCurrentVersion">
     <Value>{0}: El complemento no es compatible con la versión actual. Por lo tanto, este complemento no se puede cargar.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotEnabled">
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotEnabled">
     <Value>Desinstale y elimine los complementos que no utiliza</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotEnabled.AutoFixAndRestart">
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotEnabled.AutoFixAndRestart">
     <Value>Desinstale y elimine todos los complementos no utilizados automáticamente (el sitio se reiniciará)</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotInstalled">
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotInstalled">
     <Value>No ha instalado los siguientes complementos</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonNotInstalled.HelpText">
+  <LocaleResource Name="Admin.System.Warnings.ModuleNotInstalled.HelpText">
     <Value>Puede eliminar los complementos que no utiliza para disminuir el tiempo de inicio</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonRequiredAssembly">
+  <LocaleResource Name="Admin.System.Warnings.ModuleRequiredAssembly">
     <Value>El complemento '{0}' requería el ensamblado '{1}'</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.System.Warnings.AddonsOverrideSameService">
+  <LocaleResource Name="Admin.System.Warnings.ModulesOverrideSameService">
     <Value>La interfaz/clase "{0}" se ha invalidado en esos ensamblados: {1}. Esta situación puede causar errores porque solo se utilizará uno de ellos (póngase en contacto con los desarrolladores de ensambladores para resolver este problema).</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.System.Warnings.PrimaryCurrency.NotSet">

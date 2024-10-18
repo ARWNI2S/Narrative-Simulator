@@ -4,8 +4,6 @@ using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Runtime;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Clustering;
-using ARWNI2S.Node.Data.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 

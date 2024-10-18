@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Node.Data.Entities.Users;
+﻿using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Plugins;
 using ARWNI2S.Node.Services.Users;

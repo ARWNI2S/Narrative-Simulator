@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Users
 {
     /// <summary>
     /// Represents an external authentication record
     /// </summary>
-    public partial class ExternalAuthenticationRecord : BaseDataEntity
+    public partial class ExternalAuthenticationRecord : BaseEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

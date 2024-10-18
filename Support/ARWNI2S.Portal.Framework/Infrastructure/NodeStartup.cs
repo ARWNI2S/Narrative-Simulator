@@ -7,7 +7,7 @@ using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Data.Entities.Clustering;
+using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Services.Caching;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;

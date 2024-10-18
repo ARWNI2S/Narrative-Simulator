@@ -1,12 +1,12 @@
 ﻿using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Directory
 {
     /// <summary>
     /// Represents a state/province
     /// </summary>
-    public partial class StateProvince : BaseDataEntity, ILocalizedEntity
+    public partial class StateProvince : BaseEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the country identifier

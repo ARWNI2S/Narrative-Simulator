@@ -18,7 +18,9 @@
     "UseFrontline": false,
     "EnableEditor": false,
     "AutoScale": false,
-    "IsDevelopment": false,
+    "IsDevelopment": true,
+    "ClusterId": "ni2s-primary",
+    "ServiceId": "ni2s",
     "KnownNodes": ""
   },
   "CommonConfig": {
@@ -31,6 +33,10 @@
   "HostingConfig": {
     "UseProxy": false,
     "KnownNodes": ""
+  },
+  "InstallationConfig": {
+    "DisabledModules": "*",
+    "InstallRegionalResources": true
   },
   "ModuleConfig": {
     "UseUnsafeLoadAssembly": true

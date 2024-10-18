@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Node.Core.Common;
+﻿using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Html.CodeFormatter;
 using System.Text.RegularExpressions;
 

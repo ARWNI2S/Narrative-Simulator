@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Common
 {
     /// <summary>
     /// Address
     /// </summary>
-    public partial class Address : BaseDataEntity
+    public partial class Address : BaseEntity
     {
         /// <summary>
         /// Gets or sets the first name

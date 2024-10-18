@@ -1,6 +1,6 @@
 using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Data.Entities;
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Portal.Services.Entities.Security;
 using ARWNI2S.Portal.Services.Entities.Seo;
 
@@ -9,7 +9,7 @@ namespace ARWNI2S.Portal.Services.Entities.Topics
     /// <summary>
     /// Represents a topic
     /// </summary>
-    public partial class Topic : BaseDataEntity, ILocalizedEntity, ISlugSupported, INodeMappingSupported, IAclSupported
+    public partial class Topic : BaseEntity, ILocalizedEntity, ISlugSupported, INodeMappingSupported, IAclSupported
     {
         /// <summary>
         /// Gets or sets the name

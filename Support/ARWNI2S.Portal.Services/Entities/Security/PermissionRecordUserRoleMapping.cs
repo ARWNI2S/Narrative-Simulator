@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Data.Entities;
+﻿using ARWNI2S.Node.Core.Entities;
 
 namespace ARWNI2S.Portal.Services.Entities.Security
 {
     /// <summary>
     /// Represents a permission record-user role mapping class
     /// </summary>
-    public partial class PermissionRecordUserRoleMapping : BaseDataEntity
+    public partial class PermissionRecordUserRoleMapping : BaseEntity
     {
         /// <summary>
         /// Gets or sets the permission record identifier
