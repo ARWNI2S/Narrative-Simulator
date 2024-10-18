@@ -1,0 +1,12 @@
+﻿{
+  "Group": "Framework",
+  "FriendlyName": "Unreal Server To Server",
+  "SystemName": "Framework.UnrealServer",
+  "Version": "0.10",
+  "SupportedVersions": [ "0.10" ],
+  "Author": "ManOguaR",
+  "DisplayOrder": 20,
+  "FileName": "ARWNI2S.Framework.UnrealServer.dll",
+  "Description": "This module adds support to Unreal engine within all framework modules",
+  "DependsOnSystemNames": [ "Framework.World", "Framework.Scene" ]
+}

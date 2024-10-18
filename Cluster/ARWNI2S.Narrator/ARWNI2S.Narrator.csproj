@@ -43,6 +43,24 @@
     <Content Update="**\*.config;**\*.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Framework\ARWNI2S.Framework.Scene\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Framework\ARWNI2S.Framework.UnrealServer\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Framework\ARWNI2S.Framework.World.Galaxy\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Framework\ARWNI2S.Framework.World.Multiverse\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Framework\ARWNI2S.Framework.World\module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <!-- This target execute after "Build" target.
     We use it to clean up folder with modules from unnecessary and obsolete libraries. -->
   <Target Name="NI2SModulesTarget" AfterTargets="Build">

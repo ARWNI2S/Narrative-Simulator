@@ -1,0 +1,12 @@
+﻿{
+  "Group": "Framework",
+  "FriendlyName": "Galaxy Composer",
+  "SystemName": "Framework.World.Galaxy",
+  "Version": "0.10",
+  "SupportedVersions": [ "0.10" ],
+  "Author": "ManOguaR",
+  "DisplayOrder": 20,
+  "FileName": "ARWNI2S.Framework.World.Galaxy.dll",
+  "Description": "This module contains the open galaxy extension for world composer engine",
+  "DependsOnSystemNames": [ "Framework.World" ]
+}
