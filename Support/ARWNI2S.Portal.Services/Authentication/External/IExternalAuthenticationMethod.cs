@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Node.Core.Services.Plugins;
+﻿using ARWNI2S.Node.Services.Plugins;
 
 namespace ARWNI2S.Portal.Services.Authentication.External
 {

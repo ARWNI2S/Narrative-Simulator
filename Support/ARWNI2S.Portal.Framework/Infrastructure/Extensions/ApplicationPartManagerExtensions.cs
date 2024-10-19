@@ -2,7 +2,6 @@
 using ARWNI2S.Node.Core.ComponentModel;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Node.Core.Services.Plugins;
 using ARWNI2S.Node.Data.Mapping;
 using ARWNI2S.Node.Services.Plugins;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -45,7 +44,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     _baseAppLibraries.Add(new KeyValuePair<string, Version>(_fileProvider.GetFileName(file), GetAssemblyVersion(file)));
 
             //get all libraries from refs directory
-            var refsPathName = _fileProvider.Combine(Environment.CurrentDirectory, ModuleServicesDefaults.RefsPathName);
+            var refsPathName = _fileProvider.Combine(Environment.CurrentDirectory, NI2SModuleDefaults.RefsPathName);
             if (_fileProvider.DirectoryExists(refsPathName))
                 foreach (var file in _fileProvider.GetFiles(refsPathName, "*.dll"))
                     _baseAppLibraries.Add(new KeyValuePair<string, Version>(_fileProvider.GetFileName(file), GetAssemblyVersion(file)));
@@ -241,11 +240,11 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 try
                 {
                     //ensure modules directory is created
-                    var modulesDirectory = _fileProvider.MapPath(ModuleServicesDefaults.Path);
+                    var modulesDirectory = _fileProvider.MapPath(NI2SModuleDefaults.Path);
                     _fileProvider.CreateDirectory(modulesDirectory);
 
                     //ensure uploaded directory is created
-                    var uploadedPath = _fileProvider.MapPath(ModuleServicesDefaults.UploadedPath);
+                    var uploadedPath = _fileProvider.MapPath(NI2SModuleDefaults.UploadedPath);
                     _fileProvider.CreateDirectory(uploadedPath);
 
                     foreach (var directory in _fileProvider.GetDirectories(uploadedPath))

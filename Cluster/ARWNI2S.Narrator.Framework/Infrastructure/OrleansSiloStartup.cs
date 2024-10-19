@@ -2,7 +2,7 @@
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Node.Runtime.Data;
+using ARWNI2S.Runtime.Data;
 using Azure.Data.Tables;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

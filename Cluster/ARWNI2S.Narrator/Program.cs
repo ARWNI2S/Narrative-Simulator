@@ -1,4 +1,4 @@
-using ARWNI2S.Node.Runtime;
+using ARWNI2S.Runtime;
 
 namespace ARWNI2S.Narrator
 {
