@@ -52,7 +52,7 @@ namespace ARWNI2S.Portal.Services.Media.RoxyFileman
         /// </returns>
         protected static string GetLocalizedMessage(string key)
         {
-            var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
+            var fileProvider = NodeEngineContext.Current.Resolve<IEngineFileProvider>();
 
             var roxyConfig = Singleton<RoxyFilemanConfig>.Instance;
             var languageFile = fileProvider.GetAbsolutePath($"{RoxyFilemanServiceDefaults.LanguageDirectory}/{roxyConfig.LANG}.json");

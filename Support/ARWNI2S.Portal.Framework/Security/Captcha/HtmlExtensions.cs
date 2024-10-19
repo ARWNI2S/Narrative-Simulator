@@ -29,8 +29,8 @@ namespace ARWNI2S.Portal.Framework.Security.Captcha
                 //but we use languages only with two letters in the code
                 var supportedLanguageCodes = new List<string> { "af", "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "eu", "fa", "fi", "fil", "fr", "gl", "gu", "hi", "hr", "hu", "hy", "id", "is", "it", "iw", "ja", "ka", "kn", "ko", "lo", "lt", "lv", "ml", "mn", "mr", "ms", "nl", "no", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tr", "uk", "ur", "vi", "zu" };
 
-                var languageService = EngineContext.Current.Resolve<ILanguageService>();
-                var workContext = EngineContext.Current.Resolve<PortalWorkContext>();
+                var languageService = NodeEngineContext.Current.Resolve<ILanguageService>();
+                var workContext = NodeEngineContext.Current.Resolve<PortalWorkContext>();
 
                 var currentLanguage = await workContext.GetWorkingLanguageAsync();
                 var twoLetterIsoCode = currentLanguage != null

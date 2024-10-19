@@ -52,7 +52,7 @@ namespace ARWNI2S.Portal.Services.Authentication
             });
 
             // Give any IAuthenticationRequestHandler schemes a chance to handle the request
-            var handlers = EngineContext.Current.Resolve<IAuthenticationHandlerProvider>();
+            var handlers = NodeEngineContext.Current.Resolve<IAuthenticationHandlerProvider>();
             foreach (var scheme in await Schemes.GetRequestHandlerSchemesAsync())
             {
                 try
@@ -66,13 +66,13 @@ namespace ARWNI2S.Portal.Services.Authentication
                         continue;
 
                     var externalAuthenticationSettings =
-                        EngineContext.Current.Resolve<ExternalAuthenticationSettings>();
+                        NodeEngineContext.Current.Resolve<ExternalAuthenticationSettings>();
 
                     if (!externalAuthenticationSettings.LogErrors)
                         continue;
 
                     var logger =
-                        EngineContext.Current.Resolve<ILogService>();
+                        NodeEngineContext.Current.Resolve<ILogService>();
 
                     await logger.ErrorAsync(ex.Message, ex);
                 }

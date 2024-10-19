@@ -26,7 +26,6 @@ namespace ARWNI2S.Portal.Services.Users
         private readonly IRepository<Address> _userAddressRepository;
         private readonly IRepository<BlogComment> _blogCommentRepository;
         private readonly IRepository<UserAddressMapping> _userAddressMappingRepository;
-        private readonly IRepository<GenericAttribute> _gaRepository;
         //private readonly IRepository<CryptoAddress> _cryptoAddressRepository;
         private readonly IRepository<NewsComment> _newsCommentRepository;
         private readonly IRepository<PollVotingRecord> _pollVotingRecordRepository;
@@ -47,19 +46,16 @@ namespace ARWNI2S.Portal.Services.Users
             IRepository<UserPassword> userPasswordRepository,
             IRepository<UserRole> userRoleRepository,
             IRepository<GenericAttribute> gaRepository,
-            //IRepository<CryptoAddress> cryptoAddressRepository,
             IRepository<NewsComment> newsCommentRepository,
             IRepository<PollVotingRecord> pollVotingRecordRepository,
             IShortTermCacheManager shortTermCacheManager,
             IStaticCacheManager staticCacheManager,
             INodeContext nodeContext
-            ) : base(userSettings, genericAttributeService, dataProvider, userRepository, userUserRoleMappingRepository, userPasswordRepository, userRoleRepository, shortTermCacheManager, staticCacheManager, nodeContext)
+            ) : base(userSettings, genericAttributeService, dataProvider, userRepository, userUserRoleMappingRepository, userPasswordRepository, userRoleRepository, gaRepository, shortTermCacheManager, staticCacheManager, nodeContext)
         {
             _userAddressRepository = userAddressRepository;
             _blogCommentRepository = blogCommentRepository;
             _userAddressMappingRepository = userAddressMappingRepository;
-            _gaRepository = gaRepository;
-            //_cryptoAddressRepository = cryptoAddressRepository;
             _newsCommentRepository = newsCommentRepository;
             _pollVotingRecordRepository = pollVotingRecordRepository;
         }

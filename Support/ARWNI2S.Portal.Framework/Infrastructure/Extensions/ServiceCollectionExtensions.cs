@@ -3,6 +3,7 @@ using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Node.Core.Runtime;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Services.Security;
@@ -79,7 +80,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             WebApplicationBuilder builder)
         {
             //add accessor to HttpContext
-            services.AddHttpContextAccessor();
+            services.AddContextAccessor();
 
             //initialize modules
             var mvcCoreBuilder = services.AddMvcCore();
@@ -89,7 +90,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
             //create engine and configure service provider
             Singleton<IEngine>.Instance = new WebNodeEngine();
-            var engine = EngineContext.Create();
+            var engine = NodeEngineContext.Create();
 
             engine.ConfigureServices(services, builder.Configuration);
         }
@@ -98,9 +99,10 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Register HttpContextAccessor
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void AddHttpContextAccessor(this IServiceCollection services)
+        public static void AddContextAccessor(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IRuntimeContextAccessor, PortalContextAccessor>();
         }
 
         /// <summary>
@@ -432,7 +434,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     ((MemoryCacheStorage)miniProfilerOptions.Storage).CacheDuration = TimeSpan.FromMinutes(ni2sSettings.Get<CacheConfig>().DefaultCacheTime);
 
                     //determine who can access the MiniProfiler results
-                    miniProfilerOptions.ResultsAuthorize = request => EngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
+                    miniProfilerOptions.ResultsAuthorize = request => NodeEngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
                 });
             }
         }
@@ -475,7 +477,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 {
                     options.AllowMinificationInDevelopmentEnvironment = true;
                     options.AllowCompressionInDevelopmentEnvironment = true;
-                    options.DisableMinification = !EngineContext.Current.Resolve<CommonSettings>().EnableHtmlMinification;
+                    options.DisableMinification = !NodeEngineContext.Current.Resolve<CommonSettings>().EnableHtmlMinification;
                     options.DisableCompression = true;
                     options.DisablePoweredByHttpHeaders = true;
                 })

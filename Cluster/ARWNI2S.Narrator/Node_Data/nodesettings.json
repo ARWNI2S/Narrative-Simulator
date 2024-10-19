@@ -1,7 +1,8 @@
 ﻿{
   "NodeConfig": {
-    "NodeName": "GRIMOIRE:20344",
-    "NodeId": "e207b366-b90f-39ee-c806-f1796d35e252",
+    "NodeName": "GRIMOIRE:33924",
+    "NodeId": "b8a8cd68-abf7-50d1-4d21-9d38105f4cf3",
+    "Port": 46600,
     "NodeType": "other",
     "EnableEditor": false,
     "AutoScale": false,
@@ -26,7 +27,8 @@
     "ScheduleTaskRunTimeout": null,
     "StaticFilesCacheControl": "public,max-age=31536000",
     "ModuleStaticFileExtensionsBlacklist": "",
-    "UseAutofac": true
+    "UseAutofac": true,
+    "MiniProfilerEnabled": false
   },
   "HostingConfig": {
     "UseProxy": false,

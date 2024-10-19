@@ -1,0 +1,2388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+  <LocaleResource Name="Account.AccountActivation">
+    <Value>Account activation</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AccountActivation.Activated">
+    <Value>Your account has been activated</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AccountActivation.AlreadyActivated">
+    <Value>Your account already has been activated</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Administration">
+    <Value>Administration</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth">
+    <Value>External authentication</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.AccountAlreadyAssigned">
+    <Value>Account is already assigned</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.AddMoreRecords">
+    <Value>You can associate your account with some external authentication systems on the following page (login once using them):</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.AuthMethodName">
+    <Value>Authentication method</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.EmailAlreadyExists">
+    <Value>A user with the specified email has been already registered. If this is your account, and you want to associate it with '{0}' external record, please login firstly.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.ExternalIdentifier">
+    <Value>External identifier</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.Title">
+    <Value>Use external account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AssociatedExternalAuth.Remove">
+    <Value>Remove</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Avatar">
+    <Value>Avatar</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Avatar.MaximumUploadedFileSize">
+    <Value>Maximum avatar size is {0} bytes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Avatar.RemoveAvatar">
+    <Value>Remove avatar</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Avatar.UploadRules">
+    <Value>Avatar must be in GIF, PNG or JPEG format with the maximum size of 20 KB</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword">
+    <Value>Change password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Button">
+    <Value>Change password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Errors.EmailIsNotProvided">
+    <Value>Email is not entered</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Errors.EmailNotFound">
+    <Value>The specified email could not be found</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Errors.OldPasswordDoesntMatch">
+    <Value>Old password doesn't match</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Errors.PasswordIsNotProvided">
+    <Value>Password is not entered</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Errors.PasswordMatchesWithPrevious">
+    <Value>You entered the password that is the same as one of the last passwords you used. Please create a new password.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.ConfirmNewPassword">
+    <Value>Confirm password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.ConfirmNewPassword.Required">
+    <Value>Password is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.NewPassword">
+    <Value>New password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.NewPassword.EnteredPasswordsDoNotMatch">
+    <Value>The new password and confirmation password do not match.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.OldPassword">
+    <Value>Old password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Fields.OldPassword.Required">
+    <Value>Old password is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.PasswordIsExpired">
+    <Value>Your password has expired, please create a new one</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ChangePassword.Success">
+    <Value>Password was changed</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CheckUsernameAvailability.Available">
+    <Value>Username available</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CheckUsernameAvailability.Button">
+    <Value>Check Availability</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CheckUsernameAvailability.CurrentUsername">
+    <Value>Current username</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CheckUsernameAvailability.EnterUsername">
+    <Value>Please enter username</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CheckUsernameAvailability.NotAvailable">
+    <Value>Username not available</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.CompanyDetails">
+    <Value>Company Details</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailRevalidation">
+    <Value>Email validation</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailRevalidation.AlreadyChanged">
+    <Value>Your email already has been validated</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailRevalidation.Changed">
+    <Value>Your email has been validated</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailUsernameErrors.EmailAlreadyExists">
+    <Value>The e-mail address is already in use</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailUsernameErrors.EmailTooLong">
+    <Value>E-mail address is too long</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailUsernameErrors.NewEmailIsNotValid">
+    <Value>New email is not valid</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailUsernameErrors.UsernameAlreadyExists">
+    <Value>The username is already in use</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.EmailUsernameErrors.UsernameTooLong">
+    <Value>Username is too long</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ExternalAuthenticationMethod.LoadError">
+    <Value>External authentication method cannot be loaded</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.WalletAuthenticationMethod.LoadError">
+    <Value>Wallet authentication method cannot be loaded</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.AcceptPrivacyPolicy">
+    <Value>I accept privacy policy</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.AcceptPrivacyPolicy.Read">
+    <Value>(read)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.AcceptPrivacyPolicy.Required">
+    <Value>Please accept privacy policy</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.City">
+    <Value>City</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.City.Required">
+    <Value>City is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Company">
+    <Value>Company name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Company.Required">
+    <Value>Company name is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ConfirmEmail">
+    <Value>Confirm email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ConfirmEmail.Required">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ConfirmPassword">
+    <Value>Confirm password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ConfirmPassword.Required">
+    <Value>Password is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Country">
+    <Value>Country</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Country.Required">
+    <Value>Country is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.County">
+    <Value>County/region</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.County.Required">
+    <Value>County/region is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.DateOfBirth">
+    <Value>Date of birth</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.DateOfBirth.MinimumAge">
+    <Value>You have to be {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.DateOfBirth.Required">
+    <Value>Date of birth is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Email.EnteredEmailsDoNotMatch">
+    <Value>The email and confirmation email do not match.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Email.Required">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.EmailToRevalidate">
+    <Value>New email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.EmailToRevalidate.Note">
+    <Value>(not validated yet)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Fax">
+    <Value>Fax</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Fax.Required">
+    <Value>Fax is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.FirstName">
+    <Value>First name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.FirstName.Required">
+    <Value>First name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Gender">
+    <Value>Gender</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Gender.Female">
+    <Value>Female</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Gender.Male">
+    <Value>Male</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.LastName">
+    <Value>Last name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.LastName.Required">
+    <Value>Last name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Newsletter">
+    <Value>Newsletter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Password">
+    <Value>Password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Password.EnteredPasswordsDoNotMatch">
+    <Value>The password and confirmation password do not match.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Phone">
+    <Value>Phone</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Phone.NotValid">
+    <Value>Phone number is not valid</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Phone.Required">
+    <Value>Phone is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Signature">
+    <Value>Signature</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StateProvince">
+    <Value>State/province</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StateProvince.Required">
+    <Value>State/province is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StreetAddress">
+    <Value>Street address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StreetAddress.Required">
+    <Value>Street address is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StreetAddress2">
+    <Value>Street address 2</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.StreetAddress2.Required">
+    <Value>Street address 2 is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.TimeZone">
+    <Value>Time zone</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Username">
+    <Value>Username</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Username.NotValid">
+    <Value>Username is not valid</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.Username.Required">
+    <Value>Username is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ZipPostalCode">
+    <Value>Zip/postal code</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Fields.ZipPostalCode.Required">
+    <Value>Zip/postal code is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr">
+    <Value>GDPR tools</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Delete">
+    <Value>Right to be Forgotten</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Delete.Button">
+    <Value>Delete account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Delete.Hint">
+    <Value>You can use the button below to remove your personal and other data from our server. Keep in mind that this process will delete your account, so you will no longer be able to access or use it anymore.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Export">
+    <Value>Export personal Data</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Export.Button">
+    <Value>Export</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Gdpr.Export.Hint">
+    <Value>You can use the button below to download all the data we store and use for a better experience in our server.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ImpersonatedAs">
+    <Value>Impersonated as {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ImpersonatedAs.Finish">
+    <Value>finish impersonated session</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.ImpersonatedAs.Finish.Hint">
+    <Value>Click here to finish impersonated session.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login">
+    <Value>Log in</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.AlreadyLogin">
+    <Value>You are already logged in as {0}. You may log in with another account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.AlreadyRegistered">
+    <Value>Already registered?</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Fields.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Fields.Email.Required">
+    <Value>Please enter your email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Fields.Password">
+    <Value>Password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Fields.RememberMe">
+    <Value>Remember me?</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Fields.Username">
+    <Value>Username</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.ForgotPassword">
+    <Value>Forgot password?</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.LoginButton">
+    <Value>Log in</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.NewUser">
+    <Value>New User</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.NewUserText">
+    <Value>By creating an account on our website, you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.NotAnUser">
+    <Value>Not an user? Register</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.ReturningUser">
+    <Value>Dragon Corp Games User</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Unsuccessful">
+    <Value>Login was unsuccessful. Please correct the errors and try again.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.Welcome">
+    <Value>Welcome, Please Sign In!</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials">
+    <Value>The credentials provided are incorrect</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials.UserNotExist">
+    <Value>No user account found</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials.Deleted">
+    <Value>User is deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials.LockedOut">
+    <Value>User is locked out</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials.NotActive">
+    <Value>Account is not active</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Login.WrongCredentials.NotRegistered">
+    <Value>Account is not registered</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Logout">
+    <Value>Log out</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Description">
+    <Value><![CDATA[<p>To activate multi-factor authentication for your account, you need: </p></br><ol><li>1. Activate the 'Is enabled' setting.</li><li>2. Choose one of the multi-factor authentication providers.</li><li>3. Save.</li><li>4. Configure the selected multi-factor authentication provider by following the instructions on the individual settings page of the selected provider.</li></ol></br><p> WARNING. After saving the selected provider, be sure to configure it, otherwise you will be denied access the next time you try to enter your account.</p>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Fields.IsEnabled">
+    <Value>Is enabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Providers">
+    <Value>Authentication providers</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Providers.NoActive">
+    <Value>No active providers</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Settings">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MultiFactorAuthentication.Warning.ForceActivation">
+    <Value>Enforce multi-factor authentication for all users is enabled.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.MyAccount">
+    <Value>My account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Navigation">
+    <Value>My account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Options">
+    <Value>Options</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo">
+    <Value>Partner info</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Description">
+    <Value>Description</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Email.Required">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Name">
+    <Value>Name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Name.Required">
+    <Value>Partner name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Picture">
+    <Value>Picture</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Picture.ErrorMessage">
+    <Value>You can add only picture file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PartnerInfo.Picture.Remove">
+    <Value>Remove picture</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery">
+    <Value>Password recovery</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.ChangePasswordButton">
+    <Value>Recover</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.ConfirmNewPassword">
+    <Value>Confirm password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.ConfirmNewPassword.Required">
+    <Value>Password is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.Email">
+    <Value>Your email address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.Email.Required">
+    <Value>Enter your email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.EmailHasBeenSent">
+    <Value>Email with instructions has been sent to you.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.EmailNotFound">
+    <Value>Email not found.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.LinkExpired">
+    <Value>Your password recovery link is expired</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.NewPassword">
+    <Value>New password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.NewPassword.EnteredPasswordsDoNotMatch">
+    <Value>The new password and confirmation password do not match.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.PasswordAlreadyHasBeenChanged">
+    <Value>Your password already has been changed. For changing it once more, you need to again recover the password.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.PasswordHasBeenChanged">
+    <Value>Your password has been changed</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.RecoverButton">
+    <Value>Recover</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.Tooltip">
+    <Value>Please enter your email address below. You will receive a link to reset your password.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.WrongToken">
+    <Value>Wrong password recovery token</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Preferences">
+    <Value>Preferences</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register">
+    <Value>Register</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Button">
+    <Value>Register</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Error">
+    <Value>Error on registration</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Errors.EmailAlreadyExists">
+    <Value>The specified email already exists</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Errors.EmailIsNotProvided">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Errors.PasswordIsNotProvided">
+    <Value>Password is not provided</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Errors.UsernameAlreadyExists">
+    <Value>The specified username already exists</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Errors.UsernameIsNotProvided">
+    <Value>Username is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Result.AdminApproval">
+    <Value>Your account will be activated after approving by administrator.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Result.Continue">
+    <Value>Continue</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Result.Disabled">
+    <Value>Registration not allowed. You can edit this in the admin area.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Result.EmailValidation">
+    <Value>Your registration has been successfully completed. You have just been sent an email containing activation instructions.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.Register.Result.Standard">
+    <Value>Your registration completed</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses">
+    <Value>Addresses</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses.AddNew">
+    <Value>Add new address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses.Added">
+    <Value>The new address has been added successfully.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses.Edit">
+    <Value>Edit address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses.Updated">
+    <Value>The address has been updated successfully.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAddresses.NoAddresses">
+    <Value>No addresses</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserAgreement">
+    <Value>User agreement</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserInfo">
+    <Value>User info</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserInfo.Updated">
+    <Value>The user info has been updated successfully.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets">
+    <Value>Wallets</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets.AddNew">
+    <Value>Add a new wallet</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets.NoWallets">
+    <Value>No wallets</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets.Wallet.DefaultBlockchain">
+    <Value>Default Blockchain</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets.Wallet.PublicAddress">
+    <Value>Public Address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.UserWallets.Wallet.WalletProvider">
+    <Value>Wallet</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.YourAddress">
+    <Value>Your Address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.YourContactInformation">
+    <Value>Your Contact Information</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.YourPassword">
+    <Value>Your Password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.YourPersonalDetails">
+    <Value>Your Personal Details</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewAddressAttribute">
+    <Value>Added a new address attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewAddressAttributeValue">
+    <Value>Added a new address attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewAffiliate">
+    <Value>Added a new affiliate (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewBlogPost">
+    <Value>Added a new blog post (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewCampaign">
+    <Value>Added a new campaign (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewCountry">
+    <Value>Added a new country (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewCurrency">
+    <Value>Added a new currency (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewEmailAccount">
+    <Value>Added a new email account (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewLanguage">
+    <Value>Added a new language (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewMeasureDimension">
+    <Value>Added a new measure dimension (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewMeasureWeight">
+    <Value>Added a new measure weight (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewNews">
+    <Value>Added a new news (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewNode">
+    <Value>Added a new node (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewPartner">
+    <Value>Added a new partner (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewPartnerAttribute">
+    <Value>Added a new partner attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewPartnerAttributeValue">
+    <Value>Added a new partner attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewQuest">
+    <Value>Added a new quest (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewQuestGoal">
+    <Value>Added a new quest goal (ID = {0}, QuestId = {1}, GoalId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewQuestReward">
+    <Value>Added a new quest reward (ID = {0}, QuestId = {1}, RewardId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewRank">
+    <Value>Added a new rank (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewSetting">
+    <Value>Added a new setting ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewStateProvince">
+    <Value>Added a new state or province (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewTopic">
+    <Value>Added a new topic ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewUser">
+    <Value>Added a new user (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewUserAttribute">
+    <Value>Added a new user attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewUserAttributeValue">
+    <Value>Added a new user attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.AddNewUserRole">
+    <Value>Added a new user role ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteActivityLog">
+    <Value>Deleted activity log</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteAddressAttribute">
+    <Value>Deleted an address attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteAddressAttributeValue">
+    <Value>Deleted an address attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteAffiliate">
+    <Value>Deleted an affiliate (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteBlogPost">
+    <Value>Deleted a blog post (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteBlogPostComment">
+    <Value>Deleted a blog post comment (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteCampaign">
+    <Value>Deleted a campaign (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteCountry">
+    <Value>Deleted a country (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteCurrency">
+    <Value>Deleted a currency (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteEmailAccount">
+    <Value>Deleted an email account (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteLanguage">
+    <Value>Deleted a language (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteMeasureDimension">
+    <Value>Deleted a measure dimension (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteMeasureWeight">
+    <Value>Deleted a measure weight (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteMessageTemplate">
+    <Value>Deleted a message template (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteNews">
+    <Value>Deleted a news (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteNewsComment">
+    <Value>Deleted a news comment (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteModule">
+    <Value>Deleted a module (FriendlyName: '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteSetting">
+    <Value>Deleted a setting ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteStateProvince">
+    <Value>Deleted a state or province (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteNode">
+    <Value>Deleted a node (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteSystemLog">
+    <Value>Deleted system log</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteTopic">
+    <Value>Deleted a topic ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteUser">
+    <Value>Deleted a user (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteUserAttribute">
+    <Value>Deleted a user attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteUserAttributeValue">
+    <Value>Deleted a user attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteUserRole">
+    <Value>Deleted a user role ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeletePartner">
+    <Value>Deleted a partner (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeletePartnerAttribute">
+    <Value>Deleted a partner attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeletePartnerAttributeValue">
+    <Value>Deleted a partner attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteQuest">
+    <Value>Deleted a quest (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteQuestGoal">
+    <Value>Deleted a quest goal (ID = {0}, QuestId = {1}, GoalId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteQuestReward">
+    <Value>Deleted a quest reward (ID = {0}, QuestId = {1}, RewardId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.DeleteRank">
+    <Value>Deleted a rank (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditActivityLogTypes">
+    <Value>Edited activity log types</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditAddressAttribute">
+    <Value>Edited an address attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditAddressAttributeValue">
+    <Value>Edited an address attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditAffiliate">
+    <Value>Edited an affiliate (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditBlogComment">
+    <Value>Edited a blog comment (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditBlogPost">
+    <Value>Edited a blog post (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditCampaign">
+    <Value>Edited a campaign (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditCountry">
+    <Value>Edited a country (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditCurrency">
+    <Value>Edited a currency (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditUser">
+    <Value>Edited a user (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditUserAttribute">
+    <Value>Edited a user attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditUserAttributeValue">
+    <Value>Edited a user attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditUserRole">
+    <Value>Edited a user role ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditEmailAccount">
+    <Value>Edited an email account (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditLanguage">
+    <Value>Edited a language (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditMeasureDimension">
+    <Value>Edited a measure dimension (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditMeasureWeight">
+    <Value>Edited a measure weight (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditMessageTemplate">
+    <Value>Edited a message template (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditNews">
+    <Value>Edited a news (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditNewsComment">
+    <Value>Edited a news comment (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditModule">
+    <Value>Edited a module (FriendlyName: '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditSettings">
+    <Value>Edited settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditStateProvince">
+    <Value>Edited a state or province (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditNode">
+    <Value>Edited a node (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditTask">
+    <Value>Edited a task (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditTopic">
+    <Value>Edited a topic ('{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditPartner">
+    <Value>Edited a partner (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditPartnerAttribute">
+    <Value>Edited a partner attribute (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditPartnerAttributeValue">
+    <Value>Edited a partner attribute value (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditQuest">
+    <Value>Edited a quest (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditQuestGoal">
+    <Value>Edited a quest goal (ID = {0}, QuestId = {1}, GoalId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditQuestGoal">
+    <Value>Edited a quest reward (ID = {0}, QuestId = {1}, RewardId = {2})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.EditRank">
+    <Value>Edited a rank (ID = {0})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.ExportUsers">
+    <Value>{0} users were exported</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.ExportNewsLetterSubscriptions">
+    <Value>{0} newsletter subscriptions were exported</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.ExportStates">
+    <Value>{0} states and provinces were exported</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.Impersonation.Finished.User">
+    <Value>Impersonation by administrator was finished (Email: {0}, ID = {1})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.Impersonation.Finished.Admin">
+    <Value>Finished user impersonation (Email: {0}, ID = {1})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.Impersonation.Started.User">
+    <Value>Impersonated by administrator (Email: {0}, ID = {1})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.Impersonation.Started.Admin">
+    <Value>Started user impersonation (Email: {0}, ID = {1})</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.ImportStates">
+    <Value>{0} states and provinces were imported</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.ImportNewsLetterSubscriptions">
+    <Value>{0} newsletter subscriptions were imported</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.InstallNewModule">
+    <Value>Installed a new module (FriendlyName: '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.PublicNode.AddBlogComment">
+    <Value>Added a blog comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.PublicNode.AddNewsComment">
+    <Value>Added a news comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.PublicNode.ContactUs">
+    <Value>Used contact us form</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.PublicNode.Login">
+    <Value>Login</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.PublicNode.Logout">
+    <Value>Logout</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.UninstallModule">
+    <Value>Uninstalled a module (FriendlyName: '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.UploadNewIcons">
+    <Value>Uploaded a new favicon and app icons for node (ID = '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="ActivityLog.UploadNewModule">
+    <Value>Uploaded a new module (FriendlyName: '{0}')</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address">
+    <Value>Address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Address1">
+    <Value>Address 1</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Address1.Required">
+    <Value>Address 1 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Address2">
+    <Value>Address 2</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Address2.Required">
+    <Value>Address 2 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.City">
+    <Value>City</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.City.Required">
+    <Value>City is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Company">
+    <Value>Company</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Company.Required">
+    <Value>Company is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Country">
+    <Value>Country</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Country.Required">
+    <Value>Country is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.County">
+    <Value>County/region</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.County.Required">
+    <Value>County/region is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.Email.Required">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.FaxNumber">
+    <Value>Fax number</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.FaxNumber.Required">
+    <Value>Fax number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.FirstName">
+    <Value>First name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.FirstName.Required">
+    <Value>First name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.LastName">
+    <Value>Last name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.LastName.Required">
+    <Value>Last name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.PhoneNumber">
+    <Value>Phone number</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.PhoneNumber.Required">
+    <Value>Phone number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.StateProvince">
+    <Value>State/province</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.StateProvince.Required">
+    <Value>State/province is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.ZipPostalCode">
+    <Value>Zip/postal code</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Fields.ZipPostalCode.Required">
+    <Value>Zip/postal code is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.Other">
+    <Value>Other</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.SelectCountry">
+    <Value>Select country</Value>
+  </LocaleResource>
+  <LocaleResource Name="Address.SelectState">
+    <Value>Select state</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.AccountActivation">
+    <Value>Account activation</Value>
+  </LocaleResource>
+  <LocaleResource Name="AlphaVersion.Warning.Message">
+    <Value>### WARNING ### Metalink is currently under development, this release is a test dummy alpha version. Everything in the database, including player level annd progress, can be deleted without any warning, at developers will. It's not intended to be a production build. Use at your own risk. </Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog">
+    <Value>Blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Archive">
+    <Value>Blog archive</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments">
+    <Value>Comments</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.CommentText">
+    <Value>Comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.CommentText.Required">
+    <Value>Enter comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.CreatedOn">
+    <Value>Created on</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.LeaveYourComment">
+    <Value>Leave your comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.OnlyRegisteredUsersLeaveComments">
+    <Value>Only registered users can leave comments.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.SeeAfterApproving">
+    <Value>Blog comment is successfully added. You will see it after approving by a node administrator.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.SubmitButton">
+    <Value>New comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Comments.SuccessfullyAdded">
+    <Value>Blog comment is successfully added.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.CommentsLink">
+    <Value>Comments ({0:d})</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.FilteredByMonth">
+    <Value>Blog posts of '{0}' '{1}'</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.MoreInfo">
+    <Value>details</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.RSS">
+    <Value>RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.RSS.Hint">
+    <Value>Click here to be informed automatically when we add new items to our site.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.RssFeed.Description">
+    <Value>RssFeed News Description Message</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.RssFeed.Title">
+    <Value>Blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.TagCloud">
+    <Value>Popular blog tags</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.TaggedWith">
+    <Value>Blog posts tagged with '{0}'</Value>
+  </LocaleResource>
+  <LocaleResource Name="Blog.Tags">
+    <Value>Tags</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.AddNew">
+    <Value>Add new</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.All">
+    <Value>All</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.AreYouSure">
+    <Value>Are you sure?</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Back">
+    <Value>Back</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Cancel">
+    <Value>Cancel</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Close">
+    <Value>Close</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Config">
+    <Value>Config</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Confirm">
+    <Value>Confirm</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Continue">
+    <Value>Continue</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Day">
+    <Value>Day</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Delete">
+    <Value>Delete</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.DeleteConfirmation">
+    <Value>Are you sure you want to delete this item?</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Edit">
+    <Value>Edit</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Error">
+    <Value>Error</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Cancel">
+    <Value>Cancel</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Delete">
+    <Value>Delete</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.DownloadUploadedFile">
+    <Value>Download</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.DropFiles">
+    <Value>Drop files here to upload</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Processing">
+    <Value>Processing dropped files...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.RemoveDownload">
+    <Value>Remove</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Retry">
+    <Value>Retry</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Upload">
+    <Value>Upload a file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.FileUploader.Upload.Files">
+    <Value>Upload files</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Hide">
+    <Value>Hide</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.LoadingNextStep">
+    <Value>Loading next step...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.ManagePage">
+    <Value>Manage this page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Month">
+    <Value>Month</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.No">
+    <Value>No</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.NoCancel">
+    <Value>No, cancel</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Notification">
+    <Value>Notification</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.OK">
+    <Value>OK</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.RelativeDateTime.Past">
+    <Value>{0} ago</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Remove">
+    <Value>Remove</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Roles.Administrator">
+    <Value>Administrator</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Roles.Guest">
+    <Value>Guest</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Roles.Registered">
+    <Value>Registered</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Roles.Moderator">
+    <Value>Moderator</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Save">
+    <Value>Save</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Search">
+    <Value>Search</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.SelectAttribute">
+    <Value>Please select {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Show">
+    <Value>Show</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Upload">
+    <Value>Upload</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Unknown">
+    <Value>Unknown</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.View">
+    <Value>View</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Wait">
+    <Value>Wait...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Warning">
+    <Value>Warning</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Warning.UnauthorizedAccess">
+    <Value>Unauthorized Access</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.WrongCaptchaMessage">
+    <Value>The reCAPTCHA response is invalid or malformed. Please try again.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.WrongEmail">
+    <Value>Wrong email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Year">
+    <Value>Year</Value>
+  </LocaleResource>
+  <LocaleResource Name="Common.Yes">
+    <Value>Yes</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs">
+    <Value>Contact us</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Button">
+    <Value>Submit</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Email">
+    <Value>Your email</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Email.Hint">
+    <Value>Enter your email address.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Email.Required">
+    <Value>Enter email</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Enquiry">
+    <Value>Enquiry</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Enquiry.Hint">
+    <Value>Enter your enquiry.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Enquiry.Required">
+    <Value>Enter enquiry</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.FullName">
+    <Value>Your name</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.FullName.Hint">
+    <Value>Enter your name.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.FullName.Required">
+    <Value>Enter your name</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Subject">
+    <Value>Subject</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Subject.Hint">
+    <Value>Enter subject.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.Subject.Required">
+    <Value>Please enter subject</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactUs.YourEnquiryHasBeenSent">
+    <Value>Your enquiry has been successfully sent to the administrator.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner">
+    <Value>Contact partner</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Button">
+    <Value>Submit</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Email">
+    <Value>Your email</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Email.Hint">
+    <Value>Enter your email address.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Email.Required">
+    <Value>Enter email</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Enquiry">
+    <Value>Enquiry</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Enquiry.Hint">
+    <Value>Enter your enquiry.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Enquiry.Required">
+    <Value>Enter enquiry</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.FullName">
+    <Value>Your name</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.FullName.Hint">
+    <Value>Enter your name.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.FullName.Required">
+    <Value>Enter your name</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Subject">
+    <Value>Subject</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Subject.Hint">
+    <Value>Enter subject.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.Subject.Required">
+    <Value>Please enter subject</Value>
+  </LocaleResource>
+  <LocaleResource Name="ContactPartner.YourEnquiryHasBeenSent">
+    <Value>Your enquiry has been successfully sent to the partner.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Content.CopyrightNotice">
+    <Value>Copyright &amp;copy; {0} {1}. All rights reserved.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Content.VersionNotice">
+    <Value>{0} version {1}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Currencies">
+    <Value>Currencies</Value>
+  </LocaleResource>
+  <LocaleResource Name="Currency.Selector.Label">
+    <Value>Currency selector</Value>
+  </LocaleResource>
+  <LocaleResource Name="User.FullNameFormat">
+    <Value>{0} {1}</Value>
+  </LocaleResource>
+  <LocaleResource Name="User.Guest">
+    <Value>Guest</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.Checkboxes">
+    <Value>Checkboxes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ColorSquares">
+    <Value>Color squares</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.Datepicker">
+    <Value>Date picker</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.DropdownList">
+    <Value>Drop-down list</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.FileUpload">
+    <Value>File upload</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ImageSquares">
+    <Value>Image squares</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.MultilineTextbox">
+    <Value>Multiline textbox</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.RadioList">
+    <Value>Radio button list</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.ReadonlyCheckboxes">
+    <Value>Read-only checkboxes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Common.AttributeControlType.TextBox">
+    <Value>Textbox</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding001">
+    <Value>Default rounding</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding005Down">
+    <Value>Rounding down with 0.05 intervals (0.06 round to 0.05)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding005Up">
+    <Value>Rounding up with 0.05 intervals (0.06 round to 0.10)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding01Down">
+    <Value>Rounding down with 0.10 intervals (1.05 round to 1.00)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding01Up">
+    <Value>Rounding up with 0.10 intervals (1.05 round to 1.10)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding05">
+    <Value>Rounding with 0.50 intervals</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding1">
+    <Value>Rounding with 1.00 intervals (1.01-1.49 round to 1.00, 1.50-1.99 round to 2.00)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Directory.RoundingType.Rounding1Up">
+    <Value>Rounding up with 1.00 intervals (1.01–1.99 round to 2.00)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.Default">
+    <Value>Default</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.Ladder">
+    <Value>Ladder</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.GroupedLadder">
+    <Value>Grouped ladder</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gameplay.Tournaments.TournamentType.External">
+    <Value>External</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ConsentAgree">
+    <Value>Consent (agree)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ConsentDisagree">
+    <Value>Consent (disagree)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.DeleteUser">
+    <Value>Delete user</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ExportData">
+    <Value>Export data</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Gdpr.GdprRequestType.ProfileChanged">
+    <Value>User changed profile</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Debug">
+    <Value>Debug</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Error">
+    <Value>Error</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Fatal">
+    <Value>Fatal</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Information">
+    <Value>Information</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Logging.LogLevel.Warning">
+    <Value>Warning</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.MessageDelayPeriod.Days">
+    <Value>Days</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.MessageDelayPeriod.Hours">
+    <Value>Hours</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.QueuedEmailPriority.High">
+    <Value>High</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Messages.QueuedEmailPriority.Low">
+    <Value>Low</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Security.CaptchaType.CheckBoxReCaptchaV2">
+    <Value>reCAPTCHA v2 ("I'm not a robot" Checkbox)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Security.CaptchaType.ReCaptchaV3">
+    <Value>reCAPTCHA v3</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.PageTitleSeoAdjustment.PagenameAfterNodename">
+    <Value>Page name comes after node name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.PageTitleSeoAdjustment.NodenameAfterPagename">
+    <Value>Node name comes after page name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.NoMatter">
+    <Value>Doesn't matter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.WithoutWww">
+    <Value>Pages should not have WWW prefix</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Seo.WwwRequirement.WithWww">
+    <Value>Pages should have WWW prefix</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxBasedOn.BillingAddress">
+    <Value>Billing address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxBasedOn.DefaultAddress">
+    <Value>Default address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxDisplayType.ExcludingTax">
+    <Value>Excluding tax</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.TaxDisplayType.IncludingTax">
+    <Value>Including tax</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Empty">
+    <Value>Empty</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Invalid">
+    <Value>Invalid</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Unknown">
+    <Value>Unknown</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Tax.VatNumberStatus.Valid">
+    <Value>Valid</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Clear">
+    <Value>Clear</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowEmails">
+    <Value>Show emails</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowFirstName">
+    <Value>Show first name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowFullNames">
+    <Value>Show full names</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserNameFormat.ShowUsernames">
+    <Value>Show usernames</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Clear">
+    <Value>Clear</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Encrypted">
+    <Value>Encrypted</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.PasswordFormat.Hashed">
+    <Value>Hashed</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.AdminApproval">
+    <Value>A user should be approved by administrator</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.Disabled">
+    <Value>Registration is disabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.EmailValidation">
+    <Value>Email validation is required after registration</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Core.Entities.Users.UserRegistrationType.Standard">
+    <Value>Standard account creation</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.MySql">
+    <Value>MySQL</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.PostgreSQL">
+    <Value>PostgreSQL</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.SqlServer">
+    <Value>Microsoft SQL Server</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Data.DataProviderType.Unknown">
+    <Value>Unknown</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.All">
+    <Value>All</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.InstalledOnly">
+    <Value>Installed</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.ARWNI2S.Node.Services.Modules.LoadModulesMode.NotInstalledOnly">
+    <Value>Not installed</Value>
+  </LocaleResource>
+  <LocaleResource Name="EUCookieLaw.Description">
+    <Value>On 26 May 2011, the rules about cookies on websites changed. This site uses cookies. One or more of the cookies we use is essential for parts of this website to operate and has already been set. You may delete and block all cookies from this site, but parts of the site will not work. To find out more about cookies used on this website and how to delete cookies, see our privacy policy</Value>
+  </LocaleResource>
+  <LocaleResource Name="EUCookieLaw.Description2">
+    <Value>Cookies help us deliver our services. By using our services, you agree to our use of cookies.</Value>
+  </LocaleResource>
+  <LocaleResource Name="EUCookieLaw.LearnMore">
+    <Value>Learn more</Value>
+  </LocaleResource>
+  <LocaleResource Name="Footer.FollowUs.Discord">
+    <Value>Join our Discord server</Value>
+  </LocaleResource>
+  <LocaleResource Name="Footer.FollowUs.Instagram">
+    <Value>Follow us on Instagram</Value>
+  </LocaleResource>
+  <LocaleResource Name="Footer.FollowUs.RSS">
+    <Value>Subscribe RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="Footer.FollowUs.Twitter">
+    <Value>Follow us on Twitter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Games">
+    <Value>Games</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notifications.Errors.PlayerCreation">
+    <Value>There was an error with yout player account creation, please contact us and we solve this in a short time.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notifications.PlayerActivation.MissingOrInvalidAccessToken">
+    <Value>Your user account is incomplete. Thre're {0} missing access tokens:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notifications.PlayerActivation.MissingOrInvalidCryptoAddress">
+    <Value>Your user account is incomplete. Thre're {0} missing crypto address requeriments:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notifications.PlayerActivation.MissingOrInvalidUserInformation">
+    <Value>Your user account is incomplete. Thre're {0} missing or invalid fields:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notifications.PlayerActivation.PendingAdminTasks">
+    <Value>Your user account has {0} pending administrator checks:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notification.Warnings.AccessTokenMissingOrInvalid">
+    <Value>You need a valid acces token (nft) owned by one of your main carypto addresses (wallet linked) to enable full access to Metalink.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notification.Warnings.AdminApprovalPending">
+    <Value>You have to wait until an administrator activates your account to enable full access to Metalink.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notification.Warnings.CryptoAddressMissing">
+    <Value>You need a valid crypto address wallet linked to your account to enable full access to Metalink.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Notification.Warnings.UserInfoMissing">
+    <Value>You have some missing account information. Please fill in correctly to enable full access to Metalink.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.AccessNftRequired">
+    <Value>Metalink can't found your corporate contract with Dragon Corp. Games S.L.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.AdminApprovalRequired">
+    <Value>You have to wait until an administrator manually approves your account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.CityRequired">
+    <Value>A city is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.CountryRequired">
+    <Value>Please select your country.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.CountyRequired">
+    <Value>A county is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.CompanyRequired">
+    <Value>Please provide valid company information.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.DateOfBirthRequired">
+    <Value>Date of birth is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.EmailRequired">
+    <Value>Provide a valid email.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.EmailToRevalidate">
+    <Value>Confirm your email account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.FaxRequired">
+    <Value>A fax number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.FirstNameRequired">
+    <Value>Your first name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.LastNameRequired">
+    <Value>Your last name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.PhoneRequired">
+    <Value>A valid phone number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.StateProvinceRequired">
+    <Value>Please select your state/province.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.StreetAddressRequired">
+    <Value>Street address is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.StreetAddress2Required">
+    <Value>Street address (second field) is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.UsernameRequired">
+    <Value>Enter a valid username.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.WalletRequired">
+    <Value>Must associate a public address to activate your account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.UserValidator.Activation.Message.ZipPostalCodeRequired">
+    <Value>Zip or postal code is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.PlayerStatus.Inactve">
+    <Value>Your account is inactive.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Quests.RSS">
+    <Value>.RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Quests.RssFeed.Description">
+    <Value>RssFeed Quests Description Message</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gameplay.Quests.RssFeed.Title">
+    <Value>Quests</Value>
+  </LocaleResource>
+  <LocaleResource Name="GameTitle.MoreInfo">
+    <Value>More info...</Value>
+  </LocaleResource>
+  <LocaleResource Name="GameTitles">
+    <Value>Games</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gdpr.Consent.Newsletter">
+    <Value>Newsletter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gdpr.Consent.PrivacyPolicy">
+    <Value>Privacy policy</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gdpr.DeleteRequested">
+    <Value>Requested to delete account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gdpr.DeleteRequested.Success">
+    <Value>We'll process your request as soon as possible</Value>
+  </LocaleResource>
+  <LocaleResource Name="Gdpr.Exported">
+    <Value>Exported personal data</Value>
+  </LocaleResource>
+  <LocaleResource Name="Homepage">
+    <Value>Home page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Inventory">
+    <Value>Inventory</Value>
+  </LocaleResource>
+  <LocaleResource Name="Languages">
+    <Value>Languages</Value>
+  </LocaleResource>
+  <LocaleResource Name="Languages.Selector.Label">
+    <Value>Languages selector</Value>
+  </LocaleResource>
+  <LocaleResource Name="MainMenu.AjaxFailure">
+    <Value>Failed to open menu. Please refresh the page and try one more time.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Marquee.Header.Info">
+    <Value>Notice</Value>
+  </LocaleResource>
+  <LocaleResource Name="Marquee.Header.Warning">
+    <Value>Warning</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.MagnificPopup.Close">
+    <Value>Close (Esc)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.MagnificPopup.Counter">
+    <Value>%curr% of %total%</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.MagnificPopup.Loading">
+    <Value>Loading...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.MagnificPopup.Next">
+    <Value>Next (Right arrow key)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.MagnificPopup.Previous">
+    <Value>Previous (Left arrow key)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.Partner.ImageAlternateTextFormat">
+    <Value>Picture for partner {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Media.Partner.ImageLinkTitleFormat">
+    <Value>Show products of partner {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Menu">
+    <Value>Menu</Value>
+  </LocaleResource>
+  <LocaleResource Name="Menu.Homepage">
+    <Value>Home</Value>
+  </LocaleResource>
+  <LocaleResource Name="Menu.Metaverses">
+    <Value>Metaverses</Value>
+  </LocaleResource>
+  <LocaleResource Name="Menu.Governance">
+    <Value>Governance</Value>
+  </LocaleResource>
+  <LocaleResource Name="MultiFactorAuthentication.Notification.SelectedMethodIsNotActive">
+    <Value>The multi-factor authentication provider specified in your account settings has been deactivated. Please contact your administrator.</Value>
+  </LocaleResource>
+  <LocaleResource Name="News">
+    <Value>News</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments">
+    <Value>Comments</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CommentText">
+    <Value>Comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CommentText.Required">
+    <Value>Enter comment text</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CommentTitle">
+    <Value>Title</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CommentTitle.MaxLengthValidation">
+    <Value>Max length of comment title is {0} chars</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CommentTitle.Required">
+    <Value>Enter comment title</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.CreatedOn">
+    <Value>Created on</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.LeaveYourComment">
+    <Value>Leave your comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.OnlyRegisteredUsersLeaveComments">
+    <Value>Only registered users can leave comments.</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.SeeAfterApproving">
+    <Value>News comment is successfully added. You will see it after approving by a node administrator.</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.SubmitButton">
+    <Value>New comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.Comments.SuccessfullyAdded">
+    <Value>News comment is successfully added.</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.MoreInfo">
+    <Value>details</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.RSS">
+    <Value>RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.RSS.Hint">
+    <Value>Click here to be informed automatically when we add new items to our site.</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.RssFeed.Description">
+    <Value>RssFeed News Description Message</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.RssFeed.Title">
+    <Value>News</Value>
+  </LocaleResource>
+  <LocaleResource Name="News.ViewAll">
+    <Value>View News Archive</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Email.Placeholder">
+    <Value>Enter your email here...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Email.Wrong">
+    <Value>Enter valid email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Options.Send">
+    <Value>Send</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Options.Subscribe">
+    <Value>Subscribe</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Options.Unsubscribe">
+    <Value>Unsubscribe</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.ResultActivated">
+    <Value>Your subscription has been activated.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.ResultDeactivated">
+    <Value>Your subscription has been deactivated.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Subscribe">
+    <Value>Sign up for our newsletter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.SubscribeEmailSent">
+    <Value>Thank you for signing up! A verification email has been sent. We appreciate your interest.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Title">
+    <Value>Newsletter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.UnsubscribeEmailSent">
+    <Value>A verification email has been sent. Thank you!</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline">
+    <Value>Metalink is growing at evolutive stage</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.Hint">
+    <Value>DraCoTech is analizyng your verse data and building compatibility transformations based on your reality.</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress1.Title">
+    <Value>Verse Data Analytics</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress1.Value">
+    <Value>847</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress1.Diff">
+    <Value>+36%</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress2.Title">
+    <Value>Pending Metaverse Links</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress2.Value">
+    <Value>2339</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress2.Diff">
+    <Value>-18.68%</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress3.Title">
+    <Value>Transformations Found</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress3.Value">
+    <Value>51.148</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress3.Diff">
+    <Value>+12.56%</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress4.Title">
+    <Value>Node Progress</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress4.Value">
+    <Value>73.31%</Value>
+  </LocaleResource>
+  <LocaleResource Name="NodeOffline.ProjectProgress4.Diff">
+    <Value>+8.36%</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.CurrentPage">
+    <Value>Page {0} of {1} ({2} total)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.First">
+    <Value>First</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.FirstPageTitle">
+    <Value>First Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.Last">
+    <Value>Last</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.LastPageTitle">
+    <Value>Last Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.Next">
+    <Value>Next</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.NextPageTitle">
+    <Value>Next Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.PageLinkTitle">
+    <Value>Page {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.Previous">
+    <Value>Previous</Value>
+  </LocaleResource>
+  <LocaleResource Name="Pager.PreviousPageTitle">
+    <Value>Previous Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Account">
+    <Value>Account</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.AccountActivation">
+    <Value>Account Activation</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Blog">
+    <Value>Blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.ContactUs">
+    <Value>Contact Us</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.ContactPartner">
+    <Value>Contact Partner - {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Login">
+    <Value>Login</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.MultiFactorAuthentication">
+    <Value>Multi-factor authentication</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.MultiFactorVerification">
+    <Value>Multi-factor verification</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.NewsArchive">
+    <Value>News Archive</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.NodeOffline">
+    <Value>Node offline - Under Development</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.PageNotFound">
+    <Value>Page not found</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.PartnerInfo">
+    <Value>Partner info</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Partners">
+    <Value>Partners</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Partners.Apply">
+    <Value>Apply for partner account</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.PasswordRecovery">
+    <Value>Password Recovery</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Profile">
+    <Value>Profile</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Register">
+    <Value>Register</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Search">
+    <Value>Search</Value>
+  </LocaleResource>
+  <LocaleResource Name="PageTitle.Sitemap">
+    <Value>Sitemap</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners">
+    <Value>Partners</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount">
+    <Value>Apply for partner account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.AcceptTermsOfService">
+    <Value>I accept terms of service</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.AcceptTermsOfService.Read">
+    <Value>(read)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.AcceptTermsOfService.Required">
+    <Value>Please accept terms of service</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.AlreadyApplied">
+    <Value>You already applied for a partner account. Please register as a new user in order to apply for one more partner account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Button">
+    <Value>Submit</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Description">
+    <Value>Description</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Email">
+    <Value>Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Email.Hint">
+    <Value>Enter your email address.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Email.Required">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.IsAdmin">
+    <Value>Administrator cannot apply for partner account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Name">
+    <Value>Partner name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Name.Hint">
+    <Value>Enter partner name.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Name.Required">
+    <Value>Partner name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Picture">
+    <Value>Picture</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Picture.ErrorMessage">
+    <Value>You can add only picture file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ApplyAccount.Submitted">
+    <Value>Your request has been submitted successfully. We'll contact you soon.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.List">
+    <Value>Partner List</Value>
+  </LocaleResource>
+  <LocaleResource Name="Partners.ViewAll">
+    <Value>View all</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.AccessAdminPanel">
+    <Value>Access admin area</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.AccessProfiling">
+    <Value>Public node. Access MiniProfiler results</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.AccessWebService">
+    <Value>Modules. Access Web Service</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.AllowUserImpersonation">
+    <Value>Admin area. Allow User Impersonation</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.Authentication.EnableMultiFactorAuthentication">
+    <Value>Security. Enable Multi-factor authentication</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.Authentication.ManageExternalMethods">
+    <Value>Admin area. Manage External Authentication Methods</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.Authentication.ManageMultifactorMethods">
+    <Value>Admin area. Manage Multi-factor Authentication Methods</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.DisplayPrices">
+    <Value>Public node. Display Prices</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.HtmlEditor.ManagePictures">
+    <Value>Admin area. HTML Editor. Manage pictures</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageACL">
+    <Value>Admin area. Manage ACL</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageActivityLog">
+    <Value>Admin area. Manage Activity Log</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageModules">
+    <Value>Admin area. Manage Modules</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageAffiliates">
+    <Value>Admin area. Manage Affiliates</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageAppSettings">
+    <Value>Admin area. Manage App Setting</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageAttributes">
+    <Value>Admin area. Manage Attributes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageBlog">
+    <Value>Admin area. Manage Blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageCampaigns">
+    <Value>Admin area. Manage Campaigns</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageCountries">
+    <Value>Admin area. Manage Countries</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageCurrencies">
+    <Value>Admin area. Manage Currencies</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageUsers">
+    <Value>Admin area. Manage Users</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageEmailAccounts">
+    <Value>Admin area. Manage Email Accounts</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageExternalAuthenticationMethods">
+    <Value>Admin area. Manage External Authentication Methods</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageGameplay">
+    <Value>Área de administración. Administrar la jugabilidad.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageLanguages">
+    <Value>Admin area. Manage Languages</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageMaintenance">
+    <Value>Admin area. Manage Maintenance</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageMessageQueue">
+    <Value>Admin area. Manage Message Queue</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageMessageTemplates">
+    <Value>Admin area. Manage Message Templates</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageMultifactorAuthenticationMethods">
+    <Value>Admin area. Manage Multifactor Authentication Methods</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageNews">
+    <Value>Admin area. Manage News</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageNewsletterSubscribers">
+    <Value>Admin area. Manage Newsletter Subscribers</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManagePlayers">
+    <Value>Área de administración. Administrar jugadores</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManagePolls">
+    <Value>Admin area. Manage Polls</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageScheduleTasks">
+    <Value>Admin area. Manage Schedule Tasks</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageSettings">
+    <Value>Admin area. Manage Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageNodes">
+    <Value>Admin area. Manage Nodes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageSystemLog">
+    <Value>Admin area. Manage System Log</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageTaxSettings">
+    <Value>Admin area. Manage Tax Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageTopics">
+    <Value>Admin area. Manage Topics</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManagePartners">
+    <Value>Admin area. Manage Partners</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.ManageWidgets">
+    <Value>Admin area. Manage Widgets</Value>
+  </LocaleResource>
+  <LocaleResource Name="Permission.PublicNodeAllowNavigation">
+    <Value>Public node. Allow navigation</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.OnlyRegisteredUsersVote">
+    <Value>Only registered users can vote.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.SelectAnswer">
+    <Value>Please select an answer</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.Title">
+    <Value>Community poll</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.TotalVotes">
+    <Value>{0} vote(s)...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.Vote">
+    <Value>Vote</Value>
+  </LocaleResource>
+  <LocaleResource Name="Polls.VotesResultLine">
+    <Value>{0} ({1} vote(s) - {2}%)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.Country">
+    <Value>Country</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.DateOfBirth">
+    <Value>Date Of Birth</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.JoinDate">
+    <Value>Join Date</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.LatestActivities">
+    <Value>Latest Activities</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.LatestActivities.NoActivities">
+    <Value>No activities found</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.PersonalInfo">
+    <Value>Profile Info</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.PostedOn">
+    <Value>Posted</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.ProfileOf">
+    <Value>Profile: {0}</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.Statistics">
+    <Value>Statistics</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.Topic">
+    <Value>Topic</Value>
+  </LocaleResource>
+  <LocaleResource Name="Profile.TotalActivities">
+    <Value>Total Activities</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.CurrentExperience">
+    <Value>Experience</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.CurrentLevel">
+    <Value>Your level</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.NoBadges">
+    <Value>Start a job!</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.NoExperience">
+    <Value>Inactive player</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.NoProfileMessage">
+    <Value>Nothing here!</Value>
+  </LocaleResource>
+  <LocaleResource Name="ProfileInfo.Wallets.Disabled">
+    <Value>Wallets are disabled!</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests">
+    <Value>Quests</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests.MoreInfo">
+    <Value>Quest details</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests.RSS">
+    <Value>RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests.RSS.Hint">
+    <Value>Click here to be informed automatically when we add new quests to metalink.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests.RssFeed.Description">
+    <Value>RssFeed Quests Description Message</Value>
+  </LocaleResource>
+  <LocaleResource Name="Quests.RssFeed.Title">
+    <Value>Quests</Value>
+  </LocaleResource>
+  <LocaleResource Name="ScheduleTasks.Error">
+    <Value>The "{0}" scheduled task failed with the "{1}" error (Task type: "{2}". Node name: "{3}". Task run address: "{4}").</Value>
+  </LocaleResource>
+  <LocaleResource Name="ScheduleTasks.TimeoutError">
+    <Value>A scheduled task canceled. Timeout expired.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search">
+    <Value>Search</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.AdvancedSearch">
+    <Value>Advanced search</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.Button">
+    <Value>Search</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.EnterSearchTerms">
+    <Value>Please enter some search keyword</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchBox.SearchPageLink">
+    <Value>View all results...</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchBox.Text.Label">
+    <Value>Search node</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchBox.Tooltip">
+    <Value>Search node</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchInDescriptions">
+    <Value>Search In product descriptions</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchTerm">
+    <Value>Search keyword</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.SearchTermMinimumLengthIsNCharacters">
+    <Value>Search term minimum length is {0} characters</Value>
+  </LocaleResource>
+  <LocaleResource Name="Search.Partner">
+    <Value>Partner</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sitemap">
+    <Value>Sitemap</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sitemap.BlogPosts">
+    <Value>Blog posts</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sitemap.Description">
+    <Value>View the sitemap for this website below, with links to each of the pages and brief descriptions of what to find in each section</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sitemap.General">
+    <Value>General</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sitemap.News">
+    <Value>News</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.FollowUs">
+    <Value>Follow us</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.Facebook">
+    <Value>Facebook</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.Discord">
+    <Value>Discord</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.Instagram">
+    <Value>Instagram</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.RSS">
+    <Value>RSS</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.Twitter">
+    <Value>Twitter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Social.YouTube">
+    <Value>YouTube</Value>
+  </LocaleResource>
+  <LocaleResource Name="Tax.Exclusive">
+    <Value>Show prices tax exclusive</Value>
+  </LocaleResource>
+  <LocaleResource Name="Tax.Inclusive">
+    <Value>Show prices tax inclusive</Value>
+  </LocaleResource>
+  <LocaleResource Name="Tax.Selector.Label">
+    <Value>Tax selector</Value>
+  </LocaleResource>
+  <LocaleResource Name="Topic.Button">
+    <Value>Enter</Value>
+  </LocaleResource>
+  <LocaleResource Name="Topic.EnterPassword">
+    <Value>Please enter password to access this content:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Topic.WrongPassword">
+    <Value>Wrong password</Value>
+  </LocaleResource>
+  <LocaleResource Name="Tournaments">
+    <Value>Tournaments</Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.IsNotEmpty">
+    <Value>Password is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.LengthValidation">
+    <Value><![CDATA[<li>must have at least {0} characters and not greater than {1} characters</li>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.RequireDigit">
+    <Value><![CDATA[<li>must have at least one digit</li>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.RequireLowercase">
+    <Value><![CDATA[<li>must have at least one lowercase</li>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.RequireNonAlphanumeric">
+    <Value><![CDATA[<li>must have at least one special character (e.g. #?!@$%^&*-)</li>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.RequireUppercase">
+    <Value><![CDATA[<li>must have at least one uppercase</li>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Validation.Password.Rule">
+    <Value><![CDATA[<p>must meet the following rules: </p><ul>{0}{1}{2}{3}{4}</ul>]]></Value>
+  </LocaleResource>
+  <LocaleResource Name="Views.Shared.JavaScriptDisabledWarning">
+    <Value>JavaScript seems to be disabled in your browser.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Views.Shared.JavaScriptDisabledWarning.Hint">
+    <Value>You must have JavaScript enabled in your browser to utilize the functionality of this website.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Views.Shared.OldInternetExplorerWarning">
+    <Value>You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Wallet.Fields.Blockchain">
+    <Value>Blockchain name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Wallet.Fields.WalletProvider">
+    <Value>Wallet provider</Value>
+  </LocaleResource>
+  <LocaleResource Name="Wallet.Fields.PublicAddress">
+    <Value>Public address</Value>
+  </LocaleResource>
+  <LocaleResource Name="Wallet.SelectBlockchain">
+    <Value>Select blockchain</Value>
+  </LocaleResource>
+</Language>
