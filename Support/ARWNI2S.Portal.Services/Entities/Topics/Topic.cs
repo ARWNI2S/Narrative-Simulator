@@ -1,7 +1,7 @@
+using ARWNI2S.Node.Core.Entities;
 using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
-using ARWNI2S.Node.Core.Entities;
-using ARWNI2S.Portal.Services.Entities.Security;
+using ARWNI2S.Node.Core.Entities.Security;
 using ARWNI2S.Portal.Services.Entities.Seo;
 
 namespace ARWNI2S.Portal.Services.Entities.Topics

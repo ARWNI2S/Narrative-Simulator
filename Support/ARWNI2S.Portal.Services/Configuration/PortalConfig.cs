@@ -28,14 +28,11 @@ namespace ARWNI2S.Portal.Services.Configuration
         public bool UseSessionStateTempDataProvider { get; private set; } = false;
 
         /// <summary>
-        /// Gets or sets a value that indicates whether to use MiniProfiler services
-        /// </summary>
-        public bool MiniProfilerEnabled { get; private set; } = false;
-
-        /// <summary>
         /// Get or set a value indicating whether to serve files that don't have a recognized content-type
         /// </summary>
         public bool ServeUnknownFileTypes { get; private set; } = false;
 
+        /// <inheritdoc/>
+        public int GetOrder() => 5;
     }
 }

@@ -54,8 +54,7 @@ namespace ARWNI2S.Portal.Services.Common
             if (!_fileProvider.DirectoryExists(path))
                 throw new NodeException("Backup directory not exists");
 
-            return _fileProvider.GetFiles(path, $"*.{CommonServicesDefaults.DbBackupFileExtension}")
-                .OrderByDescending(p => _fileProvider.GetLastWriteTime(p)).ToList();
+            return [.. _fileProvider.GetFiles(path, $"*.{CommonServicesDefaults.DbBackupFileExtension}").OrderByDescending(p => _fileProvider.GetLastWriteTime(p))];
         }
 
         /// <summary>

@@ -21,5 +21,9 @@ namespace ARWNI2S.Portal.Services.Configuration
         /// Gets or sets addresses of known proxies to accept forwarded headers from
         /// </summary>
         public string KnownProxies { get; private set; } = string.Empty;
+
+        /// <inheritdoc/>
+        public int GetOrder() => 5;
+
     }
 }

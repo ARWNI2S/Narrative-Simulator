@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Infrastructure.Collections.Rendering;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
+using ARWNI2S.Portal.Services.Clustering;
 using ClosedXML.Excel;
 using System.Drawing;
 
@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
         /// <summary>
         /// Node settings
         /// </summary>
-        private readonly NodeSettings _nodeSettings;
+        private readonly PortalSettings _portalSettings;
 
         /// <summary>
         /// Languages
@@ -37,13 +37,13 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
         /// Ctor
         /// </summary>
         /// <param name="defaultProperties">Default access properties</param>
-        /// <param name="nodeSettings">Node settings</param>
+        /// <param name="portalSettings">Node settings</param>
         /// <param name="localizedProperties">Localized access properties</param>
         /// <param name="languages">Languages</param>
-        public PropertyManager(IEnumerable<PropertyByName<T, L>> defaultProperties, NodeSettings nodeSettings, IEnumerable<PropertyByName<T, L>> localizedProperties = null, IList<L> languages = null)
+        public PropertyManager(IEnumerable<PropertyByName<T, L>> defaultProperties, PortalSettings portalSettings, IEnumerable<PropertyByName<T, L>> localizedProperties = null, IList<L> languages = null)
         {
             _defaultProperties = [];
-            _nodeSettings = nodeSettings;
+            _portalSettings = portalSettings;
             _localizedProperties = [];
             _languages = [];
 
@@ -179,7 +179,7 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
             foreach (var prop in _defaultProperties.Values)
             {
                 var cell = xlRrow.Cell(prop.PropertyOrderPosition + cellOffset);
-                if (prop.IsDropDownCell && _nodeSettings.ExportImportRelatedEntitiesByName)
+                if (prop.IsDropDownCell && _portalSettings.ExportImportRelatedEntitiesByName)
                 {
                     var dropDownElements = prop.GetDropDownElements();
                     if (dropDownElements.Length == 0)
@@ -241,7 +241,7 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
             foreach (var prop in _localizedProperties.Values)
             {
                 var cell = xlRrow.Cell(prop.PropertyOrderPosition + cellOffset);
-                if (prop.IsDropDownCell && _nodeSettings.ExportImportRelatedEntitiesByName)
+                if (prop.IsDropDownCell && _portalSettings.ExportImportRelatedEntitiesByName)
                 {
                     var dropDownElements = prop.GetDropDownElements();
                     if (dropDownElements.Length == 0)
@@ -392,12 +392,12 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
         /// <summary>
         /// Get default property array
         /// </summary>
-        public PropertyByName<T, L>[] GetDefaultProperties => _defaultProperties.Values.ToArray();
+        public PropertyByName<T, L>[] GetDefaultProperties => [.. _defaultProperties.Values];
 
         /// <summary>
         /// Get localized property array
         /// </summary>
-        public PropertyByName<T, L>[] GetLocalizedProperties => _localizedProperties.Values.ToArray();
+        public PropertyByName<T, L>[] GetLocalizedProperties => [.. _localizedProperties.Values];
 
         /// <summary>
         /// Set SelectList
@@ -419,6 +419,6 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
         /// <summary>
         /// Gets a value indicating whether need create dropdown list for export
         /// </summary>
-        public bool UseDropdownLists => _nodeSettings.ExportImportUseDropdownlistsForAssociatedEntities && _nodeSettings.ExportImportRelatedEntitiesByName;
+        public bool UseDropdownLists => _portalSettings.ExportImportUseDropdownlistsForAssociatedEntities && _portalSettings.ExportImportRelatedEntitiesByName;
     }
 }

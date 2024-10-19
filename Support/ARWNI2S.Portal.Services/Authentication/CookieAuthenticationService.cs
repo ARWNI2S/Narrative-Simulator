@@ -14,7 +14,7 @@ namespace ARWNI2S.Portal.Services.Authentication
         #region Fields
 
         private readonly WebUserSettings _userSettings;
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         private User _cachedUser;
@@ -24,7 +24,7 @@ namespace ARWNI2S.Portal.Services.Authentication
         #region Ctor
 
         public CookieAuthenticationService(WebUserSettings userSettings,
-            UserService userService,
+            PortalUserService userService,
             IHttpContextAccessor httpContextAccessor)
         {
             _userSettings = userSettings;

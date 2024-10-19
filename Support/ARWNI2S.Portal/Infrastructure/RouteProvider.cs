@@ -423,7 +423,7 @@ namespace ARWNI2S.Portal.Infrastructure
 
             //install
             endpointRouteBuilder.MapControllerRoute(name: "Installation",
-                pattern: $"{InstallationServiceDefaults.InstallPath}",
+                pattern: $"{PortalInstallationDefaults.InstallPath}",
                 defaults: new { controller = "Install", action = "Index" });
 
             //page not found

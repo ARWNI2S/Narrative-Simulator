@@ -48,7 +48,7 @@ namespace ARWNI2S.Portal.Framework.WebOptimizer
         /// Gets an order of configuration
         /// </summary>
         /// <returns>Order</returns>
-        public int GetOrder() => 2;
+        public int GetOrder() => 20;
 
         #endregion
     }

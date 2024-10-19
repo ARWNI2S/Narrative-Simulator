@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Security
     /// <summary>
     /// Security settings
     /// </summary>
-    public partial class SecuritySettings : ISettings
+    public partial class PortalSecuritySettings : ISettings
     {
         /// <summary>
         /// Gets or sets an encryption key

@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly EmailAccountSettings _emailAccountSettings;
         //private readonly IAddressService _addressService;
         //private readonly IAffiliateService _affiliateService;
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly IEmailAccountService _emailAccountService;
         private readonly INodeEventPublisher _eventPublisher;
         private readonly ILanguageService _languageService;
@@ -49,7 +49,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             EmailAccountSettings emailAccountSettings,
             //IAddressService addressService,
             //IAffiliateService affiliateService,
-            UserService userService,
+            PortalUserService userService,
             IEmailAccountService emailAccountService,
             INodeEventPublisher eventPublisher,
             ILanguageService languageService,

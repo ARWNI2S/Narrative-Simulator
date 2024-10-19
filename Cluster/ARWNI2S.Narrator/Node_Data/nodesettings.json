@@ -1,26 +1,24 @@
 ﻿{
+  "NodeConfig": {
+    "NodeName": "GRIMOIRE:20344",
+    "NodeId": "e207b366-b90f-39ee-c806-f1796d35e252",
+    "NodeType": "other",
+    "EnableEditor": false,
+    "AutoScale": false,
+    "IsDevelopment": true
+  },
   "ConnectionStrings": {
-    "ConnectionString": "",
+    "ConnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ni2s.local;Integrated Security=True;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;",
     "DataProvider": "sqlserver",
     "SQLCommandTimeout": null,
     "WithNoLock": false
   },
-  "AzureBlobConfig": {
-    "ConnectionString": "",
-    "ContainerName": "",
-    "EndPoint": "",
-    "AppendContainerName": true,
-    "StoreDataProtectionKeys": false,
-    "DataProtectionKeysContainerName": "",
-    "DataProtectionKeysVaultId": ""
-  },
   "ClusterConfig": {
-    "UseFrontline": false,
-    "EnableEditor": false,
-    "AutoScale": false,
     "IsDevelopment": true,
     "ClusterId": "ni2s-primary",
     "ServiceId": "ni2s",
+    "SiloStorageClustering": "localhost",
+    "ConnectionString": "",
     "KnownNodes": ""
   },
   "CommonConfig": {
@@ -34,12 +32,14 @@
     "UseProxy": false,
     "KnownNodes": ""
   },
-  "InstallationConfig": {
-    "DisabledModules": "*",
-    "InstallRegionalResources": true
-  },
-  "ModuleConfig": {
-    "UseUnsafeLoadAssembly": true
+  "AzureBlobConfig": {
+    "ConnectionString": "",
+    "ContainerName": "",
+    "EndPoint": "",
+    "AppendContainerName": true,
+    "StoreDataProtectionKeys": false,
+    "DataProtectionKeysContainerName": "",
+    "DataProtectionKeysVaultId": ""
   },
   "CacheConfig": {
     "DefaultCacheTime": 60,
@@ -52,9 +52,15 @@
     "ConnectionString": "127.0.0.1:6379,ssl=False",
     "SchemaName": "dbo",
     "TableName": "DistributedCache",
-    "InstanceName": "metalink"
+    "InstanceName": "ni2s"
   },
-  "OrleansSiloConfig": {
-    "SimulationClusteringType": "localhost"
-  }
+  "InstallationConfig": {
+    "DisabledModules": "*",
+    "InstallRegionalResources": true
+  },
+  "ModuleConfig": {
+    "UseUnsafeLoadAssembly": true
+  },
+  "RuntimeConfig": {},
+  "OrleansSiloConfig": {}
 }

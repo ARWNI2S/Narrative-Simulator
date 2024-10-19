@@ -53,7 +53,7 @@ namespace ARWNI2S.Portal.Framework.Security.Captcha
         public virtual async Task<CaptchaResponse> ValidateCaptchaAsync(string responseValue)
         {
             //prepare URL to request
-            var url = string.Format(SecurityServicesDefaults.RecaptchaValidationPath,
+            var url = string.Format(PortalSecurityDefaults.RecaptchaValidationPath,
                 _captchaSettings.ReCaptchaPrivateKey,
                 responseValue,
                 _webHelper.GetCurrentIpAddress());

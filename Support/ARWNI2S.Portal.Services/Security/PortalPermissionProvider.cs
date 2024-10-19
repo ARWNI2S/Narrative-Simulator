@@ -1,12 +1,13 @@
-﻿using ARWNI2S.Node.Core.Entities.Users;
-using ARWNI2S.Portal.Services.Entities.Security;
+﻿using ARWNI2S.Node.Core.Entities.Security;
+using ARWNI2S.Node.Core.Entities.Users;
+using ARWNI2S.Node.Services.Security;
 
 namespace ARWNI2S.Portal.Services.Security
 {
     /// <summary>
     /// Standard permission provider
     /// </summary>
-    public partial class StandardPermissionProvider : IPermissionProvider
+    public partial class PortalPermissionProvider : IPermissionProvider
     {
         //admin area permissions
         public static readonly PermissionRecord AccessAdminPanel = new() { Name = "Access admin area", SystemName = "AccessAdminPanel", Category = "Standard" };

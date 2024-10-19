@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using User = ARWNI2S.Node.Core.Entities.Users.User;
+using UserService = ARWNI2S.Portal.Services.Users.PortalUserService;
 
 namespace ARWNI2S.Portal.Services.Authentication.External
 {

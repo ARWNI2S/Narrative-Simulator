@@ -32,7 +32,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
 
             allPaths.AddRange(paths);
 
-            return Combine(allPaths.ToArray());
+            return Combine([.. allPaths]);
         }
 
 

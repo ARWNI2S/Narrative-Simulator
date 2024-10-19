@@ -30,7 +30,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly IActionContextAccessor _actionContextAccessor;
         private readonly IBlogService _blogService;
         private readonly IUserAttributeFormatter _userAttributeFormatter;
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly INodeEventPublisher _eventPublisher;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ILocalizationService _localizationService;
@@ -51,7 +51,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             IActionContextAccessor actionContextAccessor,
             IBlogService blogService,
             IUserAttributeFormatter userAttributeFormatter,
-            UserService userService,
+            PortalUserService userService,
             INodeEventPublisher eventPublisher,
             IGenericAttributeService genericAttributeService,
             ILocalizationService localizationService,
@@ -266,7 +266,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="node">Node</param>
         /// <param name="emailAccount">Email account</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task AddNodeTokensAsync(IList<Token> tokens, INI2SNode node, EmailAccount emailAccount)
+        public virtual async Task AddNodeTokensAsync(IList<Token> tokens, NI2SNode node, EmailAccount emailAccount)
         {
             ArgumentNullException.ThrowIfNull(emailAccount);
 

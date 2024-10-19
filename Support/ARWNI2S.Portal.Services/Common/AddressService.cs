@@ -103,8 +103,7 @@ namespace ARWNI2S.Portal.Services.Common
         /// </returns>
         public virtual async Task<Address> GetAddressByIdAsync(int addressId)
         {
-            return await _addressRepository.GetByIdAsync(addressId,
-                cache => cache.PrepareKeyForShortTermCache(EntityCacheDefaults<Address>.ByIdCacheKey, addressId));
+            return await _addressRepository.GetByIdAsync(addressId, cache => default, useShortTermCache: true);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services.Gdpr
         private readonly IAddressService _addressService;
         //private readonly IBackInStockSubscriptionService _backInStockSubscriptionService;
         private readonly IBlogService _blogService;
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly IExternalAuthenticationService _externalAuthenticationService;
         private readonly INodeEventPublisher _eventPublisher;
         //private readonly IForumService _forumService;
@@ -46,7 +46,7 @@ namespace ARWNI2S.Portal.Services.Gdpr
         public GdprService(IAddressService addressService,
             //IBackInStockSubscriptionService backInStockSubscriptionService,
             IBlogService blogService,
-            UserService userService,
+            PortalUserService userService,
             IExternalAuthenticationService externalAuthenticationService,
             INodeEventPublisher eventPublisher,
             //IForumService forumService,

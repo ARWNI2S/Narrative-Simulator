@@ -17,7 +17,7 @@ namespace ARWNI2S.Portal.Services.Mailing
     {
         #region Fields
 
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly INodeEventPublisher _eventPublisher;
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<UserUserRoleMapping> _userUserRoleMappingRepository;
@@ -27,7 +27,7 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         #region Ctor
 
-        public NewsLetterSubscriptionService(UserService userService,
+        public NewsLetterSubscriptionService(PortalUserService userService,
             INodeEventPublisher eventPublisher,
             IRepository<User> userRepository,
             IRepository<UserUserRoleMapping> userUserRoleMappingRepository,

@@ -10,7 +10,6 @@
     <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" />
     <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" />
     <PackageReference Include="LigerShark.WebOptimizer.Core" />
-    <PackageReference Include="MiniProfiler.AspNetCore" />
     <PackageReference Include="WebMarkupMin.AspNetCore8" />
     <PackageReference Include="WebMarkupMin.NUglify" />
   </ItemGroup>

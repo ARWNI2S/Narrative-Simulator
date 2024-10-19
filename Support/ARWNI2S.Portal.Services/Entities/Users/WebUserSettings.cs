@@ -38,25 +38,25 @@ namespace ARWNI2S.Portal.Services.Entities.Users
         ///// </summary>
         //public string UsernameValidationRule { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether phone number will be validated (when registering or changing on the 'My Account' page)
-        ///// </summary>
-        //public bool PhoneNumberValidationEnabled { get; set; }
-
-        ///// <summary>
-        ///// Gets or sets a value indicating whether phone number will be validated using regex (when registering or changing on the 'My Account' page)
-        ///// </summary>
-        //public bool PhoneNumberValidationUseRegex { get; set; }
-
-        ///// <summary>
-        ///// Gets or sets a phone number validation rule
-        ///// </summary>
-        //public string PhoneNumberValidationRule { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether phone number will be validated (when registering or changing on the 'My Account' page)
+        /// </summary>
+        public bool PhoneNumberValidationEnabled { get; set; }
 
         /// <summary>
-        /// Default password format for users
+        /// Gets or sets a value indicating whether phone number will be validated using regex (when registering or changing on the 'My Account' page)
         /// </summary>
-        public PasswordFormat DefaultPasswordFormat { get; set; }
+        public bool PhoneNumberValidationUseRegex { get; set; }
+
+        /// <summary>
+        /// Gets or sets a phone number validation rule
+        /// </summary>
+        public string PhoneNumberValidationRule { get; set; }
+
+        ///// <summary>
+        ///// Default password format for users
+        ///// </summary>
+        //public PasswordFormat DefaultPasswordFormat { get; set; }
 
         ///// <summary>
         ///// Gets or sets a user password format (SHA1, MD5) when passwords are hashed (DO NOT edit in production environment)
@@ -178,35 +178,35 @@ namespace ARWNI2S.Portal.Services.Entities.Users
         /// </summary>
         public UserNameFormat UserNameFormat { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether 'Newsletter' form field is enabled
-        ///// </summary>
-        //public bool NewsletterEnabled { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether 'Newsletter' form field is enabled
+        /// </summary>
+        public bool NewsletterEnabled { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether 'Newsletter' checkbox is ticked by default on the registration page
-        ///// </summary>
-        //public bool NewsletterTickedByDefault { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether 'Newsletter' checkbox is ticked by default on the registration page
+        /// </summary>
+        public bool NewsletterTickedByDefault { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether to hide newsletter box
-        ///// </summary>
-        //public bool HideNewsletterBlock { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether to hide newsletter box
+        /// </summary>
+        public bool HideNewsletterBlock { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether newsletter block should allow to unsubscribe
-        ///// </summary>
-        //public bool NewsletterBlockAllowToUnsubscribe { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether newsletter block should allow to unsubscribe
+        /// </summary>
+        public bool NewsletterBlockAllowToUnsubscribe { get; set; }
 
         ///// <summary>
         ///// Gets or sets a value indicating the number of minutes for 'online users' module
         ///// </summary>
         //public int OnlineUserMinutes { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating we should store last visited page URL for each user
-        ///// </summary>
-        //public bool StoreLastVisitedPage { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating we should store last visited page URL for each user
+        /// </summary>
+        public bool StoreLastVisitedPage { get; set; }
 
         ///// <summary>
         ///// Gets or sets a value indicating we should store IP addresses of users
@@ -223,15 +223,15 @@ namespace ARWNI2S.Portal.Services.Entities.Users
         ///// </summary>
         //public bool SuffixDeletedUsers { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether to force entering email twice
-        ///// </summary>
-        //public bool EnteringEmailTwice { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether to force entering email twice
+        /// </summary>
+        public bool EnteringEmailTwice { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether registration is required for downloadable products
-        ///// </summary>
-        //public bool RequireRegistrationForDownloadableProducts { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether registration is required for downloadable products
+        /// </summary>
+        public bool RequireRegistrationForDownloadableProducts { get; set; }
 
         /////// <summary>
         /////// Gets or sets a value indicating whether to check gift card balance

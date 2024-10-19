@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="node">Node</param>
         /// <param name="emailAccount">Email account</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task AddNodeTokensAsync(IList<Token> tokens, INI2SNode node, EmailAccount emailAccount);
+        Task AddNodeTokensAsync(IList<Token> tokens, NI2SNode node, EmailAccount emailAccount);
 
         /// <summary>
         /// Add user tokens

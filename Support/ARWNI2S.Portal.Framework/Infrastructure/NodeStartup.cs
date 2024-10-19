@@ -39,13 +39,14 @@ using ARWNI2S.Portal.Services.Media;
 using ARWNI2S.Portal.Services.Media.RoxyFileman;
 using ARWNI2S.Portal.Services.Messages;
 using ARWNI2S.Portal.Services.News;
-using ARWNI2S.Portal.Services.Security;
 using ARWNI2S.Portal.Services.Seo;
 using ARWNI2S.Portal.Services.Topics;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using TaskScheduler = ARWNI2S.Node.Services.ScheduleTasks.TaskScheduler;
-using UserService = ARWNI2S.Portal.Services.Users.UserService;
+using UserService = ARWNI2S.Portal.Services.Users.PortalUserService;
+using ARWNI2S.Node.Services.Security;
+using ARWNI2S.Node.Services.Installation;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure
 {
@@ -260,7 +261,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IRoxyFilemanFileProvider, RoxyFilemanFileProvider>();
 
             //installation service
-            services.AddScoped<IInstallationService, InstallationService>();
+            services.AddScoped<IInstallationService, PortalInstallationService>();
 
             ////slug route transformer
             //if (DataSettingsManager.IsDatabaseInstalled())

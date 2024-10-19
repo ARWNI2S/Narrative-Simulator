@@ -35,16 +35,18 @@ using ARWNI2S.Portal.Services.ExportImport;
 using ARWNI2S.Portal.Services.Http;
 using ARWNI2S.Portal.Services.Localization;
 using ARWNI2S.Portal.Services.Seo;
-using ARWNI2S.Portal.Services.Users;
 using System.Globalization;
 using System.Text;
+using ARWNI2S.Portal.Services.Clustering;
+using ARWNI2S.Node.Services.Installation;
+using ARWNI2S.Portal.Services.Users;
 
 namespace ARWNI2S.Portal.Services.Installation
 {
-    /// <summary>
-    /// Installation service
-    /// </summary>
-    public partial class InstallationService : IInstallationService
+	/// <summary>
+	/// Installation service
+	/// </summary>
+	public partial class PortalInstallationService : IInstallationService
 	{
 		#region Fields
 
@@ -75,7 +77,7 @@ namespace ARWNI2S.Portal.Services.Installation
 
 		#region Ctor
 
-		public InstallationService(INI2SDataProvider dataProvider,
+		public PortalInstallationService(INI2SDataProvider dataProvider,
 			IEngineFileProvider fileProvider,
 			IRepository<ActivityLogType> activityLogTypeRepository,
 			IRepository<Address> addressRepository,
@@ -219,7 +221,7 @@ namespace ARWNI2S.Portal.Services.Installation
 
 		protected virtual string GetContentPath()
 		{
-			return _fileProvider.GetAbsolutePath(InstallationServiceDefaults.DefaultImagesPath);
+			return _fileProvider.GetAbsolutePath(PortalInstallationDefaults.DefaultImagesPath);
 		}
 
 		#endregion
@@ -352,8 +354,8 @@ namespace ARWNI2S.Portal.Services.Installation
 			await InsertInstallationDataAsync(defaultLanguage);
 
 			//Install locale resources for default culture
-			var directoryPath = _fileProvider.MapPath(InstallationServiceDefaults.LocalizationResourcesPath);
-			var pattern = $"*.{InstallationServiceDefaults.LocalizationResourcesFileExtension}";
+			var directoryPath = _fileProvider.MapPath(InstallationDefaults.LocalizationResourcesPath);
+			var pattern = $"*.{InstallationDefaults.LocalizationResourcesFileExtension}";
 			foreach (var filePath in _fileProvider.EnumerateFiles(directoryPath, pattern))
 			{
 				using var streamReader = new StreamReader(filePath);
@@ -407,7 +409,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			else
 			{
 				//Install locale resources for default culture
-				var patternLocale = $"*.{InstallationServiceDefaults.LocalizationResourcesFileExtension.Split('.')[0]}.{cultureInfo.Name}.{InstallationServiceDefaults.LocalizationResourcesFileExtension.Split('.')[1]}";
+				var patternLocale = $"*.{InstallationDefaults.LocalizationResourcesFileExtension.Split('.')[0]}.{cultureInfo.Name}.{InstallationDefaults.LocalizationResourcesFileExtension.Split('.')[1]}";
 				foreach (var filePath in _fileProvider.EnumerateFiles(directoryPath, patternLocale))
 				{
 					using var streamReader = new StreamReader(filePath);
@@ -623,7 +625,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			await InsertInstallationDataAsync(countries.ToArray());
 
 			//Import states for all countries
-			var directoryPath = _fileProvider.MapPath(InstallationServiceDefaults.LocalizationResourcesPath);
+			var directoryPath = _fileProvider.MapPath(InstallationDefaults.LocalizationResourcesPath);
 			var pattern = "*.txt";
 
 			//we use different scope to prevent creating wrong settings in DI, because the settings data not exists yet
@@ -818,7 +820,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				SitemapBuildOperationDelay = 60
 			});
 
-			await settingService.SaveSettingAsync(new Node.Core.Common.CommonSettings
+			await settingService.SaveSettingAsync(new Node.Core.Entities.Common.CommonSettings
 			{
 				LogAllErrors = true,
 				RestartTimeout = CommonServicesDefaults.RestartTimeout,
@@ -879,17 +881,21 @@ namespace ARWNI2S.Portal.Services.Installation
 				LogUserProfileChanges = true
 			});
 
-			await settingService.SaveSettingAsync(new NodeSettings
+			await settingService.SaveSettingAsync(new ClusteringSettings
+			{
+				IgnoreAcl = true,
+				IgnoreNodeLimitations = true,
+				//UNDONE MORE NODE SETTINGS
+			});
+			await settingService.SaveSettingAsync(new PortalSettings
 			{
 				DefaultViewMode = "grid",
 				ExportImportAllowDownloadImages = true,
 				ExportImportRelatedEntitiesByName = true,
 				ExportImportUseDropdownlistsForAssociatedEntities = true,
-				IgnoreAcl = true,
-				IgnoreNodeLimitations = true,
 				//UNDONE MORE NODE SETTINGS
 			});
-
+			
 			await settingService.SaveSettingAsync(new PortalLocalizationSettings
 			{
 				DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.LanguageCulture == CommonServicesDefaults.DefaultLanguageCulture).Id,
@@ -1036,7 +1042,7 @@ namespace ARWNI2S.Portal.Services.Installation
 
 			await settingService.SaveSettingAsync(new PortalInfoSettings
 			{
-				NodeOffline = false,
+				PortalOffline = false,
 				DisplayEuCookieLawWarning = isEurope,
 				FacebookLink = "",
 				DiscordInviteLink = "https://discord.com/invite/v6cRyscjAB",
@@ -1109,7 +1115,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				Color3 = "#dde2e6"
 			});
 
-			await settingService.SaveSettingAsync(new SecuritySettings
+			await settingService.SaveSettingAsync(new PortalSecuritySettings
 			{
 				EncryptionKey = CommonHelper.GenerateRandomDigitCode(16),
 				AdminAreaAllowedIpAddresses = null,

@@ -3,7 +3,7 @@
 using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Localization;
-using ARWNI2S.Portal.Services.Security;
+using ARWNI2S.Node.Services.Security;
 using System.Text;
 using System.Xml;
 

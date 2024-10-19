@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
     {
         #region Fields
 
-        //private readonly NodeSettings _nodeSettings;
+        //private readonly NodeSettings _portalSettings;
         //private readonly IAddressService _addressService;
         //private readonly IBackInStockSubscriptionService _backInStockSubscriptionService;
         //private readonly ICategoryService _categoryService;
@@ -63,7 +63,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         #region Ctor
 
         public ImportManager(
-            //NodeSettings nodeSettings,
+            //NodeSettings portalSettings,
             //IAddressService addressService,
             //IBackInStockSubscriptionService backInStockSubscriptionService,
             //ICategoryService categoryService,
@@ -106,7 +106,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         {
             //_addressService = addressService;
             //_backInStockSubscriptionService = backInStockSubscriptionService;
-            //_nodeSettings = nodeSettings;
+            //_portalSettings = portalSettings;
             //_categoryService = categoryService;
             _countryService = countryService;
             _userActivityService = userActivityService;
@@ -476,7 +476,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
 
         //                break;
         //            case "ParentCategoryName":
-        //                if (_nodeSettings.ExportImportCategoriesUsingCategoryName && !isParentCategorySet)
+        //                if (_portalSettings.ExportImportCategoriesUsingCategoryName && !isParentCategorySet)
         //                {
         //                    var categoryName = manager.GetDefaultProperty("ParentCategoryName").StringValue;
         //                    if (!string.IsNullOrEmpty(categoryName))
@@ -556,7 +556,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    //try get category from database by ID
         //    var category = await await allCategories.Values.FirstOrDefaultAwaitAsync(async c => (await c).Id == manager.GetDefaultProperty("Id")?.IntValue);
 
-        //    if (_nodeSettings.ExportImportCategoriesUsingCategoryName && category == null)
+        //    if (_portalSettings.ExportImportCategoriesUsingCategoryName && category == null)
         //    {
         //        var categoryName = manager.GetDefaultProperty("Name").StringValue;
         //        if (!string.IsNullOrEmpty(categoryName))
@@ -579,8 +579,8 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    {
         //        category.CreatedOnUtc = DateTime.UtcNow;
         //        //default values
-        //        category.PageSize = _nodeSettings.DefaultCategoryPageSize;
-        //        category.PageSizeOptions = _nodeSettings.DefaultCategoryPageSizeOptions;
+        //        category.PageSize = _portalSettings.DefaultCategoryPageSize;
+        //        category.PageSizeOptions = _portalSettings.DefaultCategoryPageSizeOptions;
         //        category.Published = true;
         //        category.IncludeInTopMenu = true;
         //        category.AllowUsersToSelectPageSize = true;
@@ -736,7 +736,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //protected virtual async Task ImportProductAttributeAsync(ImportProductMetadata metadata, Product lastLoadedProduct, IList<Language> languages, int iRow)
         //{
         //    var productAttributeManager = metadata.ProductAttributeManager;
-        //    if (!_nodeSettings.ExportImportProductAttributes || lastLoadedProduct == null || productAttributeManager.IsCaption)
+        //    if (!_portalSettings.ExportImportProductAttributes || lastLoadedProduct == null || productAttributeManager.IsCaption)
         //        return;
 
         //    var productAttributeId = productAttributeManager.GetDefaultProperty("AttributeId").IntValue;
@@ -896,7 +896,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //private async Task ImportSpecificationAttributeAsync(ImportProductMetadata metadata, Product lastLoadedProduct, IList<Language> languages, int iRow)
         //{
         //    var specificationAttributeManager = metadata.SpecificationAttributeManager;
-        //    if (!_nodeSettings.ExportImportProductSpecificationAttributes || lastLoadedProduct == null || specificationAttributeManager.IsCaption)
+        //    if (!_portalSettings.ExportImportProductSpecificationAttributes || lastLoadedProduct == null || specificationAttributeManager.IsCaption)
         //        return;
 
         //    var attributeTypeId = specificationAttributeManager.GetDefaultProperty("AttributeType").IntValue;
@@ -973,7 +973,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    if (!Uri.IsWellFormedUriString(urlString, UriKind.Absolute))
         //        return urlString;
 
-        //    if (!_nodeSettings.ExportImportAllowDownloadImages)
+        //    if (!_portalSettings.ExportImportAllowDownloadImages)
         //        return string.Empty;
 
         //    //ensure that temp directory is created
@@ -1012,7 +1012,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var defaultProperties = metadata.DefaultProperties;
         //    var localizedProperties = metadata.LocalizedProperties;
 
-        //    var manager = new PropertyManager<Product, Language>(defaultProperties, _nodeSettings, localizedProperties, languages);
+        //    var manager = new PropertyManager<Product, Language>(defaultProperties, _portalSettings, localizedProperties, languages);
 
         //    var productAttributeProperties = new[]
         //    {
@@ -1051,7 +1051,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //        new PropertyByName<ExportProductAttribute, Language>("ValueName")
         //    };
 
-        //    var productAttributeManager = new PropertyManager<ExportProductAttribute, Language>(productAttributeProperties, _nodeSettings, productAttributeLocalizedProperties, languages);
+        //    var productAttributeManager = new PropertyManager<ExportProductAttribute, Language>(productAttributeProperties, _portalSettings, productAttributeLocalizedProperties, languages);
 
         //    var specificationAttributeProperties = new[]
         //    {
@@ -1069,7 +1069,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //        new PropertyByName<ExportSpecificationAttribute, Language>("CustomValue")
         //    };
 
-        //    var specificationAttributeManager = new PropertyManager<ExportSpecificationAttribute, Language>(specificationAttributeProperties, _nodeSettings, specificationAttributeLocalizedProperties, languages);
+        //    var specificationAttributeManager = new PropertyManager<ExportSpecificationAttribute, Language>(specificationAttributeProperties, _portalSettings, specificationAttributeLocalizedProperties, languages);
 
         //    var endRow = 2;
         //    var allCategories = new List<string>();
@@ -1089,7 +1089,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    tempProperty = manager.GetDefaultProperty("LimitedToNodes");
         //    var limitedToNodesCellNum = tempProperty?.PropertyOrderPosition ?? -1;
 
-        //    if (_nodeSettings.ExportImportUseDropdownlistsForAssociatedEntities)
+        //    if (_portalSettings.ExportImportUseDropdownlistsForAssociatedEntities)
         //    {
         //        productAttributeManager.SetSelectList("AttributeControlType", await AttributeControlType.TextBox.ToSelectListAsync(useLocalization: false));
         //        productAttributeManager.SetSelectList("AttributeValueType", await AttributeValueType.Simple.ToSelectListAsync(useLocalization: false));
@@ -1329,9 +1329,9 @@ namespace ARWNI2S.Portal.Services.ExportImport
 
         //    while (true)
         //    {
-        //        var curIndex = fileIndex * _nodeSettings.ExportImportProductsCountInOneFile;
+        //        var curIndex = fileIndex * _portalSettings.ExportImportProductsCountInOneFile;
 
-        //        var startRow = metadata.ProductsInFile[(fileIndex - 1) * _nodeSettings.ExportImportProductsCountInOneFile];
+        //        var startRow = metadata.ProductsInFile[(fileIndex - 1) * _portalSettings.ExportImportProductsCountInOneFile];
 
         //        var endRow = metadata.CountProductsInFile > curIndex + 1
         //            ? metadata.ProductsInFile[curIndex - 1]
@@ -1361,7 +1361,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var worksheet = metadata.DefaultWorksheet;
         //    var defaultProperties = metadata.DefaultProperties;
 
-        //    var manager = new PropertyManager<Order, Language>(defaultProperties, _nodeSettings);
+        //    var manager = new PropertyManager<Order, Language>(defaultProperties, _portalSettings);
 
         //    var orderItemProperties = new[]
         //    {
@@ -1377,7 +1377,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //        new PropertyByName<OrderItem, Language>("TotalInclTax")
         //    };
 
-        //    var orderItemManager = new PropertyManager<OrderItem, Language>(orderItemProperties, _nodeSettings);
+        //    var orderItemManager = new PropertyManager<OrderItem, Language>(orderItemProperties, _portalSettings);
 
         //    var endRow = 2;
         //    var allOrderGuids = new List<Guid>();
@@ -1663,7 +1663,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var metadata = await PrepareImportProductDataAsync(workbook, languages);
         //    var defaultWorksheet = metadata.DefaultWorksheet;
 
-        //    if (_nodeSettings.ExportImportSplitProductsFile && metadata.CountProductsInFile > _nodeSettings.ExportImportProductsCountInOneFile)
+        //    if (_portalSettings.ExportImportSplitProductsFile && metadata.CountProductsInFile > _portalSettings.ExportImportProductsCountInOneFile)
         //    {
         //        await ImportProductsFromSplitedXlsxAsync(defaultWorksheet, metadata);
         //        return;
@@ -2458,7 +2458,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var defaultProperties = metadata.DefaultProperties;
         //    var localizedProperties = metadata.LocalizedProperties;
 
-        //    var manager = new PropertyManager<Manufacturer, Language>(defaultProperties, _nodeSettings, localizedProperties, languages);
+        //    var manager = new PropertyManager<Manufacturer, Language>(defaultProperties, _portalSettings, localizedProperties, languages);
 
         //    var iRow = 2;
         //    var setSeName = defaultProperties.Any(p => p.PropertyName == "SeName");
@@ -2485,8 +2485,8 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //            manufacturer.CreatedOnUtc = DateTime.UtcNow;
 
         //            //default values
-        //            manufacturer.PageSize = _nodeSettings.DefaultManufacturerPageSize;
-        //            manufacturer.PageSizeOptions = _nodeSettings.DefaultManufacturerPageSizeOptions;
+        //            manufacturer.PageSize = _portalSettings.DefaultManufacturerPageSize;
+        //            manufacturer.PageSizeOptions = _portalSettings.DefaultManufacturerPageSizeOptions;
         //            manufacturer.Published = true;
         //            manufacturer.AllowUsersToSelectPageSize = true;
         //        }
@@ -2594,7 +2594,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //    var defaultProperties = metadata.DefaultProperties;
         //    var localizedProperties = metadata.LocalizedProperties;
 
-        //    var manager = new PropertyManager<Category, Language>(defaultProperties, _nodeSettings, localizedProperties, languages);
+        //    var manager = new PropertyManager<Category, Language>(defaultProperties, _portalSettings, localizedProperties, languages);
 
         //    var iRow = 2;
         //    var setSeName = defaultProperties.Any(p => p.PropertyName == "SeName");

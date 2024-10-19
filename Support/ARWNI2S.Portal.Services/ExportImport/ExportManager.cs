@@ -1,5 +1,4 @@
 ﻿using ARWNI2S.Infrastructure;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Services.Helpers;
 using ARWNI2S.Node.Core.Entities.Localization;
@@ -24,6 +23,7 @@ using ClosedXML.Excel;
 using System.Globalization;
 using System.Text;
 using System.Xml;
+using ARWNI2S.Portal.Services.Clustering;
 
 namespace ARWNI2S.Portal.Services.ExportImport
 {
@@ -35,13 +35,13 @@ namespace ARWNI2S.Portal.Services.ExportImport
         #region Fields
 
         private readonly AddressSettings _addressSettings;
-        private readonly NodeSettings _nodeSettings;
+        private readonly PortalSettings _portalSettings;
         private readonly IUserActivityService _userActivityService;
         private readonly WebUserSettings _userSettings;
         private readonly DateTimeSettings _dateTimeSettings;
         private readonly ICountryService _countryService;
         private readonly IUserAttributeFormatter _userAttributeFormatter;
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly IGdprService _gdprService;
         private readonly IGenericAttributeService _genericAttributeService;
@@ -58,13 +58,13 @@ namespace ARWNI2S.Portal.Services.ExportImport
         #region Ctor
 
         public ExportManager(AddressSettings addressSettings,
-            NodeSettings nodeSettings,
+            PortalSettings portalSettings,
             IUserActivityService userActivityService,
             WebUserSettings userSettings,
             DateTimeSettings dateTimeSettings,
             ICountryService countryService,
             IUserAttributeFormatter userAttributeFormatter,
-            UserService userService,
+            PortalUserService userService,
             IDateTimeHelper dateTimeHelper,
             IGdprService gdprService,
             IGenericAttributeService genericAttributeService,
@@ -77,7 +77,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             PortalWorkContext workContext)
         {
             _addressSettings = addressSettings;
-            _nodeSettings = nodeSettings;
+            _portalSettings = portalSettings;
             _userActivityService = userActivityService;
             _userSettings = userSettings;
             _dateTimeSettings = dateTimeSettings;
@@ -292,7 +292,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
 
             //object getPartner(User user)
             //{
-            //    if (!_nodeSettings.ExportImportRelatedEntitiesByName)
+            //    if (!_portalSettings.ExportImportRelatedEntitiesByName)
             //        return user.PartnerId;
 
             //    return partners.FirstOrDefault(v => v.Id == user.PartnerId)?.Name ?? string.Empty;
@@ -302,7 +302,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             {
                 var countryId = user.CountryId;
 
-                if (!_nodeSettings.ExportImportRelatedEntitiesByName)
+                if (!_portalSettings.ExportImportRelatedEntitiesByName)
                     return countryId;
 
                 var country = await _countryService.GetCountryByIdAsync(countryId);
@@ -314,7 +314,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             {
                 var stateProvinceId = user.StateProvinceId;
 
-                if (!_nodeSettings.ExportImportRelatedEntitiesByName)
+                if (!_portalSettings.ExportImportRelatedEntitiesByName)
                     return stateProvinceId;
 
                 var stateProvince = await _stateProvinceService.GetStateProvinceByIdAsync(stateProvinceId);
@@ -334,7 +334,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 //new PropertyByName<User, Language>("Partner",  (p, l) => getPartner(p)),
                 new PropertyByName<User, Language>("Active", (p, l) => p.Active),
                 new PropertyByName<User, Language>("UserRoles",  async (p, l) =>  string.Join(", ",
-                    (await _userService.GetUserRolesAsync(p)).Select(role => _nodeSettings.ExportImportRelatedEntitiesByName ? role.Name : role.Id.ToString()))),
+                    (await _userService.GetUserRolesAsync(p)).Select(role => _portalSettings.ExportImportRelatedEntitiesByName ? role.Name : role.Id.ToString()))),
                 new PropertyByName<User, Language>("IsGuest", async (p, l) => await _userService.IsGuestAsync(p)),
                 new PropertyByName<User, Language>("IsRegistered", async (p, l) => await _userService.IsRegisteredAsync(p)),
                 new PropertyByName<User, Language>("IsAdministrator", async (p, l) => await _userService.IsAdminAsync(p)),
@@ -366,7 +366,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<User, Language>("ForumPostCount", async (p, l) => await _genericAttributeService.GetAttributeAsync<int>(p, UserDefaults.ForumPostCountAttribute)),
                 //new PropertyByName<User, Language>("Signature", async (p, l) => await _genericAttributeService.GetAttributeAsync<string>(p, UserDefaults.SignatureAttribute)),
                 new PropertyByName<User, Language>("CustomUserAttributes", async (p, l) => await GetCustomUserAttributesAsync(p))
-            }, _nodeSettings);
+            }, _portalSettings);
 
             //activity log
             await _userActivityService.InsertActivityAsync(SystemKeywords.AdminArea.ExportUsers,
@@ -579,7 +579,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<User, Language>("Phone", (p, l) => p.Phone, !_userSettings.PhoneEnabled),
                 new PropertyByName<User, Language>("Fax", (p, l) => p.Fax, !_userSettings.FaxEnabled),
                 new PropertyByName<User, Language>("User attributes",  async (p, l) => await GetCustomUserAttributesAsync(p))
-            }, _nodeSettings);
+            }, _portalSettings);
 
             //user orders
             var currentLanguage = await _workContext.GetWorkingLanguageAsync();
@@ -617,7 +617,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //        async (p, l) => (await orderAddress(p))?.ZipPostalCode ?? string.Empty, !_addressSettings.ZipPostalCodeEnabled),
             //    new PropertyByName<Order, Language>("Shipping phone number", async (p, l) => (await orderAddress(p))?.PhoneNumber ?? string.Empty, !_addressSettings.PhoneEnabled),
             //    new PropertyByName<Order, Language>("Shipping fax number", async (p, l) => (await orderAddress(p))?.FaxNumber ?? string.Empty, !_addressSettings.FaxEnabled)
-            //}, _nodeSettings);
+            //}, _portalSettings);
 
             //var orderItemsManager = new PropertyManager<OrderItem, Language>(new[]
             //{
@@ -626,7 +626,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //    new PropertyByName<OrderItem, Language>("Price", async (oi, l) => await _priceFormatter.FormatPriceAsync(_currencyService.ConvertCurrency((await _orderService.GetOrderByIdAsync(oi.OrderId)).UserTaxDisplayType == TaxDisplayType.IncludingTax ? oi.UnitPriceInclTax : oi.UnitPriceExclTax, (await _orderService.GetOrderByIdAsync(oi.OrderId)).CurrencyRate), true, (await _orderService.GetOrderByIdAsync(oi.OrderId)).UserCurrencyCode, false, currentLanguage.Id)),
             //    new PropertyByName<OrderItem, Language>("Quantity", (oi, l) => oi.Quantity),
             //    new PropertyByName<OrderItem, Language>("Total", async (oi, l) => await _priceFormatter.FormatPriceAsync((await _orderService.GetOrderByIdAsync(oi.OrderId)).UserTaxDisplayType == TaxDisplayType.IncludingTax ? oi.PriceInclTax : oi.PriceExclTax))
-            //}, _nodeSettings);
+            //}, _portalSettings);
 
             //var orders = await _orderService.SearchOrdersAsync(userId: user.Id);
 
@@ -647,7 +647,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<Address, Language>("Phone number", (p, l) => p.PhoneNumber, !_addressSettings.PhoneEnabled),
                 new PropertyByName<Address, Language>("Fax number", (p, l) => p.FaxNumber, !_addressSettings.FaxEnabled),
                 new PropertyByName<Address, Language>("Custom attributes", async (p, l) => await _userAttributeFormatter.FormatAttributesAsync(p.CustomAttributes, ";"))
-            }, _nodeSettings);
+            }, _portalSettings);
 
             //user private messages
             //var systemMessageManager = new PropertyManager<SystemMessage, Language>(new[]
@@ -657,7 +657,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //    new PropertyByName<SystemMessage, Language>("Subject", (pm, l) => pm.Subject),
             //    new PropertyByName<SystemMessage, Language>("Text", (pm, l) => pm.Text),
             //    new PropertyByName<SystemMessage, Language>("Created on", async (pm, l) => (await _dateTimeHelper.ConvertToUserTimeAsync(pm.CreatedOnUtc, DateTimeKind.Utc)).ToString("D"))
-            //}, _nodeSettings);
+            //}, _portalSettings);
 
             //List<SystemMessage> pmList = null;
             //if (_forumSettings.AllowSystemMessages)
@@ -672,7 +672,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<GdprLog, Language>("Request type", async (log, l) => await _localizationService.GetLocalizedEnumAsync(log.RequestType)),
                 new PropertyByName<GdprLog, Language>("Request details", (log, l) => log.RequestDetails),
                 new PropertyByName<GdprLog, Language>("Created on", async (log, l) => (await _dateTimeHelper.ConvertToUserTimeAsync(log.CreatedOnUtc, DateTimeKind.Utc)).ToString("D"))
-            }, _nodeSettings);
+            }, _portalSettings);
 
             var gdprLog = await _gdprService.GetAllLogAsync(user.Id);
 

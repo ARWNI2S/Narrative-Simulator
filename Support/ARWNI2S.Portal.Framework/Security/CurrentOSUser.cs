@@ -72,7 +72,7 @@ namespace ARWNI2S.Portal.Framework.Security
             var respars = res.Split("\n");
 
             UserId = respars[0];
-            Groups = respars[1].Split(" ").ToList();
+            Groups = [.. respars[1].Split(" ")];
         }
 
         #endregion

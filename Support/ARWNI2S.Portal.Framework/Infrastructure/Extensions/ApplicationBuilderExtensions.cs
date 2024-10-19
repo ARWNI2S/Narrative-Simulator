@@ -9,6 +9,7 @@ using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Node.Services.Plugins;
 using ARWNI2S.Node.Services.ScheduleTasks;
+using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Portal.Framework.Globalization;
 using ARWNI2S.Portal.Framework.Routing;
 using ARWNI2S.Portal.Services;
@@ -19,7 +20,6 @@ using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Http;
 using ARWNI2S.Portal.Services.Installation;
 using ARWNI2S.Portal.Services.Media.RoxyFileman;
-using ARWNI2S.Portal.Services.Security;
 using ARWNI2S.Portal.Services.Seo;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -153,7 +153,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
                         if (DataSettingsManager.IsDatabaseInstalled())
                         {
-                            var commonSettings = EngineContext.Current.Resolve<Node.Core.Common.CommonSettings>();
+                            var commonSettings = EngineContext.Current.Resolve<Node.Core.Entities.Common.CommonSettings>();
 
                             if (commonSettings.LogAllErrors)
                             {

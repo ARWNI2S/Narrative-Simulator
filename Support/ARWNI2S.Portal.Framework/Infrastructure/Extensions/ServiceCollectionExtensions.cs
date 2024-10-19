@@ -5,6 +5,7 @@ using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Portal.Framework.Profiling;
 using ARWNI2S.Portal.Framework.Security.Captcha;
 using ARWNI2S.Portal.Framework.WebOptimizer;
@@ -14,7 +15,6 @@ using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Entities.Common;
 using ARWNI2S.Portal.Services.Http;
-using ARWNI2S.Portal.Services.Security;
 using Azure.Identity;
 using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.DataProtection;
@@ -65,7 +65,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
             //TODO: READ SECRETS FROM KEYVAULT use SecretAttribute decorated properties
 
-            var ni2sSettings = NI2SSettingsHelper.SaveNodeSettings(configurations, CommonHelper.DefaultFileProvider, false);
+            var ni2sSettings = NI2SSettingsHelper.SaveNI2SSettings(configurations, CommonHelper.DefaultFileProvider, false);
             services.AddSingleton(ni2sSettings);
             //services.AddSingleton(ni2sSettings as );
         }
@@ -424,7 +424,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 return;
 
             var ni2sSettings = Singleton<NI2SSettings>.Instance;
-            if (ni2sSettings.Get<PortalConfig>().MiniProfilerEnabled)
+            if (ni2sSettings.Get<CommonConfig>().MiniProfilerEnabled)
             {
                 services.AddMiniProfiler(miniProfilerOptions =>
                 {

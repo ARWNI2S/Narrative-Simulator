@@ -215,7 +215,7 @@ namespace ARWNI2S.Portal.Infrastructure.Installation
                 }
 
                 _availableLanguages.Add(language);
-                _availableLanguages = _availableLanguages.OrderBy(l => l.Name).ToList();
+                _availableLanguages = [.. _availableLanguages.OrderBy(l => l.Name)];
 
             }
             return _availableLanguages;

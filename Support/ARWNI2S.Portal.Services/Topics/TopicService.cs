@@ -5,7 +5,7 @@ using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Users;
 using ARWNI2S.Portal.Services.Entities.Topics;
-using ARWNI2S.Portal.Services.Security;
+using ARWNI2S.Node.Services.Security;
 
 namespace ARWNI2S.Portal.Services.Topics
 {

@@ -9,6 +9,7 @@ namespace ARWNI2S.Node.Core.Configuration
 
     public partial class OrleansSiloConfig : IConfig
     {
-
+        /// <inheritdoc/>
+        public int GetOrder() => 5;
     }
 }

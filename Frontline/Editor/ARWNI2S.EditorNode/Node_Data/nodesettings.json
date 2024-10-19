@@ -1,26 +1,24 @@
 ﻿{
+  "NodeConfig": {
+    "NodeName": "GRIMOIRE:17296",
+    "NodeId": "e4adc758-f3e8-1af2-c995-d18639d4091b",
+    "NodeType": "frontline",
+    "EnableEditor": false,
+    "AutoScale": false,
+    "IsDevelopment": true
+  },
   "ConnectionStrings": {
     "ConnectionString": "",
     "DataProvider": "sqlserver",
     "SQLCommandTimeout": null,
     "WithNoLock": false
   },
-  "AzureBlobConfig": {
-    "ConnectionString": "",
-    "ContainerName": "",
-    "EndPoint": "",
-    "AppendContainerName": true,
-    "StoreDataProtectionKeys": false,
-    "DataProtectionKeysContainerName": "",
-    "DataProtectionKeysVaultId": ""
-  },
   "ClusterConfig": {
-    "UseFrontline": true,
-    "EnableEditor": true,
-    "AutoScale": false,
     "IsDevelopment": true,
     "ClusterId": "ni2s-primary",
     "ServiceId": "ni2s",
+    "SiloStorageClustering": "localhost",
+    "ConnectionString": "",
     "KnownNodes": ""
   },
   "CommonConfig": {
@@ -34,12 +32,14 @@
     "UseProxy": false,
     "KnownNodes": ""
   },
-  "InstallationConfig": {
-    "DisabledModules": "*",
-    "InstallRegionalResources": true
-  },
-  "ModuleConfig": {
-    "UseUnsafeLoadAssembly": true
+  "AzureBlobConfig": {
+    "ConnectionString": "",
+    "ContainerName": "",
+    "EndPoint": "",
+    "AppendContainerName": true,
+    "StoreDataProtectionKeys": false,
+    "DataProtectionKeysContainerName": "",
+    "DataProtectionKeysVaultId": ""
   },
   "CacheConfig": {
     "DefaultCacheTime": 60,
@@ -52,6 +52,14 @@
     "ConnectionString": "127.0.0.1:6379,ssl=False",
     "SchemaName": "dbo",
     "TableName": "DistributedCache",
-    "InstanceName": "metalink"
-  }
+    "InstanceName": "ni2s"
+  },
+  "InstallationConfig": {
+    "DisabledModules": "*",
+    "InstallRegionalResources": true
+  },
+  "ModuleConfig": {
+    "UseUnsafeLoadAssembly": true
+  },
+  "RuntimeConfig": {}
 }

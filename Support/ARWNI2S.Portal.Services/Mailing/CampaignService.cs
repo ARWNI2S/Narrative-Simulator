@@ -13,7 +13,7 @@ namespace ARWNI2S.Portal.Services.Mailing
     {
         #region Fields
 
-        private readonly UserService _userService;
+        private readonly PortalUserService _userService;
         private readonly IEmailSender _emailSender;
         private readonly IMessageTokenProvider _messageTokenProvider;
         private readonly IQueuedEmailService _queuedEmailService;
@@ -25,7 +25,7 @@ namespace ARWNI2S.Portal.Services.Mailing
 
         #region Ctor
 
-        public CampaignService(UserService userService,
+        public CampaignService(PortalUserService userService,
             IEmailSender emailSender,
             IMessageTokenProvider messageTokenProvider,
             IQueuedEmailService queuedEmailService,

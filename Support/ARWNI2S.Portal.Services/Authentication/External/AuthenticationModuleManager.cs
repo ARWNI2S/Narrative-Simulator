@@ -19,7 +19,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         #region Ctor
 
         public AuthenticationModuleManager(ExternalAuthenticationSettings externalAuthenticationSettings,
-            UserService userService,
+            PortalUserService userService,
             IModuleService moduleService) : base(userService, moduleService)
         {
             _externalAuthenticationSettings = externalAuthenticationSettings;

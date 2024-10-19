@@ -3,14 +3,14 @@
 namespace ARWNI2S.Portal.Services.Entities
 {
     /// <summary>
-    /// Node information settings
+    /// Portal information settings
     /// </summary>
     public partial class PortalInfoSettings : ISettings
     {
         /// <summary>
-        /// Gets or sets a value indicating whether node is offline
+        /// Gets or sets a value indicating whether portal is offline
         /// </summary>
-        public bool NodeOffline { get; set; }
+        public bool PortalOffline { get; set; }
 
         /// <summary>
         /// Gets or sets a picture identifier of the logo. If 0, then the default one will be used

@@ -128,16 +128,6 @@ namespace ARWNI2S.Portal.Framework
             return _cachedActiveNodeScopeConfiguration ?? 0;
         }
 
-        Task<INI2SNode> INodeContext.GetCurrentNodeAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        INI2SNode INodeContext.GetCurrentNode()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
     }
 }

@@ -19,7 +19,7 @@ namespace ARWNI2S.Portal.Services.Authentication.MultiFactor
         #region Ctor
 
         public MultiFactorAuthenticationModuleManager(MultiFactorAuthenticationSettings multiFactorAuthenticationSettings,
-            UserService userService,
+            PortalUserService userService,
             IModuleService moduleService) : base(userService, moduleService)
         {
             _multiFactorAuthenticationSettings = multiFactorAuthenticationSettings;

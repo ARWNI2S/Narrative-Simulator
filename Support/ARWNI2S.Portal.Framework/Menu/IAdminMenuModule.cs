@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Node.Services.Plugins;
+﻿using ARWNI2S.Node.Core.Services.Plugins;
 
 namespace ARWNI2S.Portal.Framework.Menu
 {

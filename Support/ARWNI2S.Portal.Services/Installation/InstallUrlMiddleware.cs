@@ -35,7 +35,7 @@ namespace ARWNI2S.Portal.Services.Installation
             //whether database is installed
             if (!DataSettingsManager.IsDatabaseInstalled())
             {
-                var installUrl = $"{webHelper.GetNodeLocation()}{InstallationServiceDefaults.InstallPath}";
+                var installUrl = $"{webHelper.GetNodeLocation()}{PortalInstallationDefaults.InstallPath}";
                 if (!webHelper.GetThisPageUrl(false).StartsWith(installUrl, StringComparison.InvariantCultureIgnoreCase))
                 {
                     //redirect

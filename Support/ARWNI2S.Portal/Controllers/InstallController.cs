@@ -1,17 +1,18 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
+using ARWNI2S.Node.Core.Services.Plugins;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Data.Configuration;
 using ARWNI2S.Node.Services.Common;
+using ARWNI2S.Node.Services.Installation;
 using ARWNI2S.Node.Services.Plugins;
+using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Portal.Framework;
 using ARWNI2S.Portal.Framework.Security;
 using ARWNI2S.Portal.Infrastructure.Installation;
 using ARWNI2S.Portal.Models.Install;
 using ARWNI2S.Portal.Services;
-using ARWNI2S.Portal.Services.Installation;
-using ARWNI2S.Portal.Services.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Globalization;
@@ -23,7 +24,7 @@ namespace ARWNI2S.Portal.Controllers
     {
         #region Fields
 
-        private readonly NI2SSettings _appSettings;
+        private readonly NI2SSettings _nI2SSettings;
         private readonly Lazy<IInstallationLocalizationService> _locService;
         private readonly Lazy<IInstallationService> _installationService;
         private readonly IEngineFileProvider _fileProvider;
@@ -37,7 +38,7 @@ namespace ARWNI2S.Portal.Controllers
 
         #region Ctor
 
-        public InstallController(NI2SSettings appSettings,
+        public InstallController(NI2SSettings nI2SSettings,
             Lazy<IInstallationLocalizationService> locService,
             Lazy<IInstallationService> installationService,
             IEngineFileProvider fileProvider,
@@ -47,7 +48,7 @@ namespace ARWNI2S.Portal.Controllers
             Lazy<IUploadService> uploadService,
             Lazy<IWebHelper> webHelper)
         {
-            _appSettings = appSettings;
+            _nI2SSettings = nI2SSettings;
             _locService = locService;
             _installationService = installationService;
             _fileProvider = fileProvider;
@@ -129,7 +130,7 @@ namespace ARWNI2S.Portal.Controllers
             var model = new InstallModel
             {
                 AdminEmail = "admin@dragoncorp.org",
-                InstallRegionalResources = _appSettings.Get<InstallationConfig>().InstallRegionalResources,
+                InstallRegionalResources = _nI2SSettings.Get<InstallationConfig>().InstallRegionalResources,
                 CreateDatabaseIfNotExists = false,
                 ConnectionStringRaw = false,
                 DataProvider = DataProviderType.SqlServer
@@ -148,7 +149,7 @@ namespace ARWNI2S.Portal.Controllers
             if (DataSettingsManager.IsDatabaseInstalled())
                 return RedirectToRoute("Homepage");
 
-            model.InstallRegionalResources = _appSettings.Get<InstallationConfig>().InstallRegionalResources;
+            model.InstallRegionalResources = _nI2SSettings.Get<InstallationConfig>().InstallRegionalResources;
 
             PrepareAvailableDataProviders(model);
             PrepareLanguageList(model);
@@ -266,9 +267,9 @@ namespace ARWNI2S.Portal.Controllers
                 _moduleService.Value.ClearInstalledModulesList();
 
                 var modulesIgnoredDuringInstallation = new List<string>();
-                if (!string.IsNullOrEmpty(_appSettings.Get<InstallationConfig>().DisabledModules))
+                if (!string.IsNullOrEmpty(_nI2SSettings.Get<InstallationConfig>().DisabledModules))
                 {
-                    modulesIgnoredDuringInstallation = _appSettings.Get<InstallationConfig>().DisabledModules
+                    modulesIgnoredDuringInstallation = _nI2SSettings.Get<InstallationConfig>().DisabledModules
                         .Split(',', StringSplitOptions.RemoveEmptyEntries).Select(moduleName => moduleName.Trim()).ToList();
                 }
 
