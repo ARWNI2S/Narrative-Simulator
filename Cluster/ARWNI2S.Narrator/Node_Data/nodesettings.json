@@ -3,7 +3,7 @@
     "NodeName": "GRIMOIRE:33924",
     "NodeId": "b8a8cd68-abf7-50d1-4d21-9d38105f4cf3",
     "Port": 46600,
-    "NodeType": "other",
+    "NodeType": "narrator",
     "EnableEditor": false,
     "AutoScale": false,
     "IsDevelopment": true

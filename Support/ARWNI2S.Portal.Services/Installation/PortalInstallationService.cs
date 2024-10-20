@@ -32,7 +32,6 @@ using ARWNI2S.Portal.Services.Entities.Tax;
 using ARWNI2S.Portal.Services.Entities.Topics;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.ExportImport;
-using ARWNI2S.Portal.Services.Http;
 using ARWNI2S.Portal.Services.Localization;
 using ARWNI2S.Portal.Services.Seo;
 using System.Globalization;
@@ -40,13 +39,14 @@ using System.Text;
 using ARWNI2S.Portal.Services.Clustering;
 using ARWNI2S.Node.Services.Installation;
 using ARWNI2S.Portal.Services.Users;
+using ARWNI2S.Node.Core.Network;
 
 namespace ARWNI2S.Portal.Services.Installation
 {
-	/// <summary>
-	/// Installation service
-	/// </summary>
-	public partial class PortalInstallationService : IInstallationService
+    /// <summary>
+    /// Installation service
+    /// </summary>
+    public partial class PortalInstallationService : IInstallationService
 	{
 		#region Fields
 

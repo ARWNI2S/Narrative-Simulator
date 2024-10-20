@@ -1,21 +1,17 @@
-﻿namespace ARWNI2S.Portal.Services
+﻿using ARWNI2S.Node.Core;
+
+namespace ARWNI2S.Portal.Services
 {
     /// <summary>
     /// Represents a web helper
     /// </summary>
-    public partial interface IWebHelper
+    public partial interface IWebHelper : INodeHelper
     {
         /// <summary>
         /// Get URL referrer if exists
         /// </summary>
         /// <returns>URL referrer</returns>
         string GetUrlReferrer();
-
-        /// <summary>
-        /// Get IP address from HTTP context
-        /// </summary>
-        /// <returns>String of IP address</returns>
-        string GetCurrentIpAddress();
 
         /// <summary>
         /// Gets this page URL
@@ -25,26 +21,6 @@
         /// <param name="lowercaseUrl">Value indicating whether to lowercase URL</param>
         /// <returns>Page URL</returns>
         string GetThisPageUrl(bool includeQueryString, bool? useSsl = null, bool lowercaseUrl = false);
-
-        /// <summary>
-        /// Gets a value indicating whether current connection is secured
-        /// </summary>
-        /// <returns>True if it's secured, otherwise false</returns>
-        bool IsCurrentConnectionSecured();
-
-        /// <summary>
-        /// Gets node host location
-        /// </summary>
-        /// <param name="useSsl">Whether to get SSL secured URL</param>
-        /// <returns>Node host location</returns>
-        string GetNodeHost(bool useSsl);
-
-        /// <summary>
-        /// Gets node location
-        /// </summary>
-        /// <param name="useSsl">Whether to get SSL secured URL; pass null to determine automatically</param>
-        /// <returns>Node location</returns>
-        string GetNodeLocation(bool? useSsl = null);
 
         /// <summary>
         /// Returns true if the requested resource is one of the typical resources that needn't be processed by the CMS engine.
@@ -77,11 +53,6 @@
         /// <param name="name">Query parameter name</param>
         /// <returns>Query string value</returns>
         T QueryString<T>(string name);
-
-        /// <summary>
-        /// Restart application domain
-        /// </summary>
-        void RestartAppDomain();
 
         /// <summary>
         /// Gets a value that indicates whether the client is being redirected to a new location

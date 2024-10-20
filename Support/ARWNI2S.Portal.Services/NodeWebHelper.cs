@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
+using ARWNI2S.Node.Core.Network;
 using ARWNI2S.Portal.Services.Clustering;
-using ARWNI2S.Portal.Services.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -17,7 +17,7 @@ namespace ARWNI2S.Portal.Services
     /// <summary>
     /// Represents a web helper
     /// </summary>
-    public partial class NodeWebHelper : INodeHelper, IWebHelper
+    public partial class NodeWebHelper : IWebHelper
     {
         #region Fields  
 
