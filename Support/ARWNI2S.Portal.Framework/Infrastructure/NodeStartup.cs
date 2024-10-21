@@ -114,7 +114,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IWorkContext, PortalWorkContext>();
 
             //node context
-            services.AddScoped<INodeContext, NI2SPortalContext>();
+            services.AddScoped<IClusteringContext, NI2SPortalContext>();
 
             //services
             services.AddScoped<ITopicTemplateService, TopicTemplateService>();
@@ -243,7 +243,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
                 services.AddScoped(setting, serviceProvider =>
                 {
                     var nodeId = DataSettingsManager.IsDatabaseInstalled()
-                        ? ((NI2SNode)serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode())?.Id ?? 0
+                        ? ((NI2SNode)serviceProvider.GetRequiredService<IClusteringContext>().GetCurrentNode())?.Id ?? 0
                         : 0;
 
                     return serviceProvider.GetRequiredService<ISettingService>().LoadSettingAsync(setting, nodeId).Result;

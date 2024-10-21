@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Engine.Hosting;
 
-namespace ARWNI2S.Engine.Events
+namespace ARWNI2S.Engine.Simulation.Events
 {
     internal delegate void SimulationEventDelegate(params object[] data);
 
@@ -63,7 +63,7 @@ namespace ARWNI2S.Engine.Events
             // TODO : Implement quick stats string generation.
             /* critical */
 
-            return nameof(SimulationHostedService);
+            return "";// nameof(SimulationHostedService);
 
             /* critical */
         }

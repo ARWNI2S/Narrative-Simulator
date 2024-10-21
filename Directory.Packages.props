@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- System packages -->
+    <PackageVersion Include="Silk.NET.OpenCL" Version="2.21.0" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
     <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.4.6" />

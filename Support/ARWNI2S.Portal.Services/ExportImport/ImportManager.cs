@@ -47,7 +47,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
         //private readonly IShippingService _shippingService;
         //private readonly ISpecificationAttributeService _specificationAttributeService;
         private readonly IStateProvinceService _stateProvinceService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusteringContext _nodeContext;
         //private readonly INodeMappingService _nodeMappingService;
         //private readonly IClusteringService _clusteringService;
         //private readonly ITaxCategoryService _taxCategoryService;
@@ -92,7 +92,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //IShippingService shippingService,
             //ISpecificationAttributeService specificationAttributeService,
             IStateProvinceService stateProvinceService,
-            INodeContext nodeContext
+            IClusteringContext nodeContext
             //INodeMappingService nodeMappingService,
             //IClusteringService clusteringService,
             //ITaxCategoryService taxCategoryService,

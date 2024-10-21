@@ -50,7 +50,7 @@ namespace ARWNI2S.Portal.Services.Users
             IRepository<PollVotingRecord> pollVotingRecordRepository,
             IShortTermCacheManager shortTermCacheManager,
             IStaticCacheManager staticCacheManager,
-            INodeContext nodeContext
+            IClusteringContext nodeContext
             ) : base(userSettings, genericAttributeService, dataProvider, userRepository, userUserRoleMappingRepository, userPasswordRepository, userRoleRepository, gaRepository, shortTermCacheManager, staticCacheManager, nodeContext)
         {
             _userAddressRepository = userAddressRepository;

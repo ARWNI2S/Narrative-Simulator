@@ -12,7 +12,7 @@ namespace ARWNI2S.Portal.Framework
     /// <summary>
     /// NI2SNode context for web application
     /// </summary>
-    public partial class NI2SPortalContext : INodeContext
+    public partial class NI2SPortalContext : IClusteringContext
     {
         #region Fields
 

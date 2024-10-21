@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services
     /// <summary>
     /// Represents a web helper
     /// </summary>
-    public partial interface IWebHelper : INodeHelper
+    public partial interface IWebHelper : IClusteringHelper
     {
         /// <summary>
         /// Get URL referrer if exists

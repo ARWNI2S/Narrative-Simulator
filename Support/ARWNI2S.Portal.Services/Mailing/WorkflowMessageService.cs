@@ -36,7 +36,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         //private readonly IOrderService _orderService;
         //private readonly IProductService _productService;
         private readonly IQueuedEmailService _queuedEmailService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusteringContext _nodeContext;
         private readonly IClusteringService _clusteringService;
         private readonly ITokenizer _tokenizer;
         private readonly MessagesSettings _messagesSettings;
@@ -59,7 +59,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             //IOrderService orderService,
             //IProductService productService,
             IQueuedEmailService queuedEmailService,
-            INodeContext nodeContext,
+            IClusteringContext nodeContext,
             IClusteringService clusteringService,
             ITokenizer tokenizer,
             MessagesSettings messagesSettings)

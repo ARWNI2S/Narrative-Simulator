@@ -67,7 +67,7 @@
       Server garbage collection should be the fastest option for more than two processors.
       
       More details about GC you can see here: https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals-->
-    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
     <!--In workstation or server garbage collection, you can enable concurrent garbage collection,
       which enables threads to run concurrently with a dedicated thread that performs the garbage
       collection for most of the duration of the collection.
@@ -80,7 +80,7 @@
       To improve performance when several processes are running, disable concurrent garbage collection.
       
       More details here: https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#concurrent-garbage-collection-->
-    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
     <LangVersion>12.0</LangVersion>
   </PropertyGroup>
 

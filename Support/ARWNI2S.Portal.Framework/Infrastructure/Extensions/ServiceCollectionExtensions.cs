@@ -1,12 +1,13 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Network;
-using ARWNI2S.Node.Core.Runtime;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Services.Network;
 using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Portal.Framework.Profiling;
 using ARWNI2S.Portal.Framework.Security.Captcha;
@@ -103,7 +104,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         public static void AddContextAccessor(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IRuntimeContextAccessor, PortalContextAccessor>();
+            services.AddSingleton<IEngineContextAccessor, PortalContextAccessor>();
         }
 
         /// <summary>

@@ -1,13 +1,13 @@
-﻿using ARWNI2S.Node.Core.Runtime;
+﻿using ARWNI2S.Infrastructure.Engine;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 {
-    internal class PortalContextAccessor : IRuntimeContextAccessor
+    internal class PortalContextAccessor : IEngineContextAccessor
     {
         private static readonly AsyncLocal<EngineContextHolder> _engineContextCurrent = new AsyncLocal<EngineContextHolder>();
 
         /// <inheritdoc/>
-        public IRuntimeContext EngineContext
+        public IEngineContext EngineContext
         {
             get
             {
@@ -33,7 +33,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
         private sealed class EngineContextHolder
         {
-            public IRuntimeContext Context;
+            public IEngineContext Context;
         }
     }
 }

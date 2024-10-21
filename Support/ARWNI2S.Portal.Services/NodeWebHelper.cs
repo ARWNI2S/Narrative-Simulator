@@ -25,7 +25,7 @@ namespace ARWNI2S.Portal.Services
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUrlHelperFactory _urlHelperFactory;
-        private readonly Lazy<INodeContext> _nodeContext;
+        private readonly Lazy<IClusteringContext> _nodeContext;
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace ARWNI2S.Portal.Services
             IHostApplicationLifetime hostApplicationLifetime,
             IHttpContextAccessor httpContextAccessor,
             IUrlHelperFactory urlHelperFactory,
-            Lazy<INodeContext> nodeContext)
+            Lazy<IClusteringContext> nodeContext)
         {
             _actionContextAccessor = actionContextAccessor;
             _hostApplicationLifetime = hostApplicationLifetime;

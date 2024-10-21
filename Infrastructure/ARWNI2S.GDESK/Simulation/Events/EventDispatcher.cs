@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.Engine.Events
+﻿namespace ARWNI2S.Engine.Simulation.Events
 {
     internal sealed class EventDispatcher
     {

@@ -8,7 +8,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Simulation\DefaultSimulation.cs" />
+    <Compile Remove="Simulation\Entities\Actor.cs" />
+    <Compile Remove="Simulation\Entities\ActorEntityBase.cs" />
+    <Compile Remove="Simulation\Entities\Builder\ComposeTreeNode.cs" />
+    <Compile Remove="Simulation\Entities\Builder\EntityHierarchyBuilder.cs" />
+    <Compile Remove="Simulation\Entities\Builder\EntityInitializer.cs" />
+    <Compile Remove="Simulation\Entities\Builder\EntityInstancingGraph.cs" />
+    <Compile Remove="Simulation\Entities\Components\ActorComponentBase.cs" />
+    <Compile Remove="Simulation\Entities\Components\ChildActorComponent.cs" />
+    <Compile Remove="Simulation\Entities\Components\DefaultRootComponent.cs" />
+    <Compile Remove="Simulation\Entities\IActorComponent.cs" />
+    <Compile Remove="Simulation\Entities\IActorEntity.cs" />
+    <Compile Remove="Simulation\Entities\ISimulableEntity.cs" />
+    <Compile Remove="Simulation\Entities\Scene\SceneTickType.cs" />
+    <Compile Remove="Simulation\Entities\Scene\SimulationScene.cs" />
+    <Compile Remove="Simulation\Entities\SimulableEntity.cs" />
+    <Compile Remove="Simulation\Entities\World\Builder\SimulationWorldBuilder.cs" />
+    <Compile Remove="Simulation\Entities\World\Builder\WorldTreeNode.cs" />
+    <Compile Remove="Simulation\Entities\World\SimulationWorld.cs" />
+    <Compile Remove="Simulation\Entities\World\WorldRootComponent.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Simulation\Entities\Builder\" />
+    <Folder Include="Simulation\Entities\Components\" />
+    <Folder Include="Simulation\Entities\Actor\" />
+    <Folder Include="Simulation\Entities\Scene\" />
+    <Folder Include="Simulation\Entities\World\Builder\" />
   </ItemGroup>
 
 </Project>

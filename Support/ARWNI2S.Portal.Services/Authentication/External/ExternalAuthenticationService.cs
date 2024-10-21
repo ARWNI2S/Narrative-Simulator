@@ -38,7 +38,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILocalizationService _localizationService;
         private readonly IRepository<ExternalAuthenticationRecord> _externalAuthenticationRecordRepository;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusteringContext _nodeContext;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
         private readonly IWorkflowMessageService _workflowMessageService;
@@ -60,7 +60,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             IHttpContextAccessor httpContextAccessor,
             ILocalizationService localizationService,
             IRepository<ExternalAuthenticationRecord> externalAuthenticationRecordRepository,
-            INodeContext nodeContext,
+            IClusteringContext nodeContext,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
             IWorkflowMessageService workflowMessageService,

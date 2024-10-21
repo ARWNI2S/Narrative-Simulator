@@ -39,7 +39,7 @@ namespace ARWNI2S.Portal.Services.Users
         private readonly INewsLetterSubscriptionService _newsLetterSubscriptionService;
         private readonly INotificationService _notificationService;
         private readonly IPermissionService _permissionService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusteringContext _nodeContext;
         private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
@@ -62,7 +62,7 @@ namespace ARWNI2S.Portal.Services.Users
             INewsLetterSubscriptionService newsLetterSubscriptionService,
             INotificationService notificationService,
             IPermissionService permissionService,
-            INodeContext nodeContext,
+            IClusteringContext nodeContext,
             IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,

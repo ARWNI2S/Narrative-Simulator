@@ -35,7 +35,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ILocalizationService _localizationService;
         private readonly INewsService _newsService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusteringContext _nodeContext;
         private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         //private readonly IPartnerAttributeFormatter _partnerAttributeFormatter;
@@ -56,7 +56,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             IGenericAttributeService genericAttributeService,
             ILocalizationService localizationService,
             INewsService newsService,
-            INodeContext nodeContext,
+            IClusteringContext nodeContext,
             IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             //IPartnerAttributeFormatter partnerAttributeFormatter,
