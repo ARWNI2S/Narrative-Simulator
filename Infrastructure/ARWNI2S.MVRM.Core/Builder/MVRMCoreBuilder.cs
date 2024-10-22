@@ -6,14 +6,14 @@ namespace ARWNI2S.Engine.Builder
     /// <summary>
     /// Allows fine grained configuration of essential MVC services.
     /// </summary>
-    internal sealed class NI2SCoreBuilder : INI2SCoreBuilder
+    internal sealed class MVRMCoreBuilder : IMVRMCoreBuilder
     {
         /// <summary>
-        /// Initializes a new <see cref="NI2SCoreBuilder"/> instance.
+        /// Initializes a new <see cref="MVRMCoreBuilder"/> instance.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <param name="manager">The <see cref="EnginePartManager"/> of the application.</param>
-        public NI2SCoreBuilder(
+        public MVRMCoreBuilder(
             IServiceCollection services,
             EnginePartManager manager)
         {

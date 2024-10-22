@@ -2,7 +2,7 @@
 
 namespace ARWNI2S.Engine.Simulation.Kernel.Events
 {
-    internal interface IEventPool : IPool<SimulationEvent>, IDisposable
+    internal interface IEventPool : IPool<Event>, IDisposable
     {
         /// <summary>
         /// Devuelve el numero de objetos en la reserva de memoria.

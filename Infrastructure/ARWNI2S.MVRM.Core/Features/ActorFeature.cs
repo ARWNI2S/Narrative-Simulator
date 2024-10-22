@@ -6,7 +6,7 @@ namespace ARWNI2S.Engine.Features
 {
     /// <summary>
     /// The list of controllers types in an MVC application. The <see cref="ActorFeature"/> can be populated
-    /// using the <see cref="EnginePartManager"/> that is available during startup at <see cref="INI2SCoreBuilder.PartManager"/>
+    /// using the <see cref="EnginePartManager"/> that is available during startup at <see cref="IMVRMCoreBuilder.PartManager"/>
     /// or at a later stage by requiring the <see cref="EnginePartManager"/>
     /// as a dependency in a component.
     /// </summary>

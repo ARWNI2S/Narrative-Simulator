@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Engine.Builder
 {
-    public interface INI2SCoreBuilder
+    public interface IMVRMCoreBuilder
     {
         IServiceCollection Services { get; }
         EnginePartManager PartManager { get; }

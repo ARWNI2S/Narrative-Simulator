@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Simulation\DefaultSimulation.cs" />
     <Compile Remove="Simulation\Entities\Actor.cs" />
     <Compile Remove="Simulation\Entities\ActorEntityBase.cs" />
     <Compile Remove="Simulation\Entities\Builder\ComposeTreeNode.cs" />

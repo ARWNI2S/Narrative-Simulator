@@ -45,7 +45,7 @@ using ARWNI2S.Portal.Services.Seo;
 using ARWNI2S.Portal.Services.Topics;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using TaskScheduler = ARWNI2S.Node.Services.ScheduleTasks.TaskScheduler;
+using ClusterTaskScheduler = ARWNI2S.Node.Services.ScheduleTasks.ClusterTaskScheduler;
 using UserService = ARWNI2S.Portal.Services.Users.PortalUserService;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure
@@ -268,7 +268,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             //    services.AddScoped<SlugRouteTransformer>();
 
             //schedule tasks
-            services.AddSingleton<ITaskScheduler, TaskScheduler>();
+            services.AddSingleton<IClusterTaskScheduler, ClusterTaskScheduler>();
             services.AddTransient<IScheduleTaskRunner, ScheduleTaskRunner>();
 
             //event consumers
