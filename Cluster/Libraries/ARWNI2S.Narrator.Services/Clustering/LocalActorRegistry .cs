@@ -41,7 +41,7 @@ namespace ARWNI2S.Node.Services.Clustering
 
         private string GetSiloAddress()
         {
-            return this.RuntimeIdentity; // Orleans provides this identity as the silo address
+            return RuntimeIdentity; // Orleans provides this identity as the silo address
         }
     }
 }

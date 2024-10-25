@@ -3,30 +3,34 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <RootNamespace>ARWNI2S.Engine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Simulation\Entities\Actor.cs" />
-    <Compile Remove="Simulation\Entities\ActorEntityBase.cs" />
-    <Compile Remove="Simulation\Entities\Builder\ComposeTreeNode.cs" />
-    <Compile Remove="Simulation\Entities\Builder\EntityHierarchyBuilder.cs" />
-    <Compile Remove="Simulation\Entities\Builder\EntityInitializer.cs" />
-    <Compile Remove="Simulation\Entities\Builder\EntityInstancingGraph.cs" />
-    <Compile Remove="Simulation\Entities\Components\ActorComponentBase.cs" />
-    <Compile Remove="Simulation\Entities\Components\ChildActorComponent.cs" />
-    <Compile Remove="Simulation\Entities\Components\DefaultRootComponent.cs" />
-    <Compile Remove="Simulation\Entities\IActorComponent.cs" />
-    <Compile Remove="Simulation\Entities\IActorEntity.cs" />
-    <Compile Remove="Simulation\Entities\ISimulableEntity.cs" />
-    <Compile Remove="Simulation\Entities\Scene\SceneTickType.cs" />
-    <Compile Remove="Simulation\Entities\Scene\SimulationScene.cs" />
-    <Compile Remove="Simulation\Entities\SimulableEntity.cs" />
-    <Compile Remove="Simulation\Entities\World\Builder\SimulationWorldBuilder.cs" />
-    <Compile Remove="Simulation\Entities\World\Builder\WorldTreeNode.cs" />
-    <Compile Remove="Simulation\Entities\World\SimulationWorld.cs" />
-    <Compile Remove="Simulation\Entities\World\WorldRootComponent.cs" />
+    <Compile Remove="Simulation\**" />
+    <EmbeddedResource Remove="Simulation\**" />
+    <None Remove="Simulation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Hosting\GDESKHostedService.cs" />
+    <Compile Remove="Infrastructure\FrameProcessor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Simulation\DefaultSimulation.cs" />
+    <Compile Include="Simulation\Exceptions.cs" />
+    <Compile Include="Simulation\ISimulation.cs" />
+    <Compile Include="Simulation\Kernel\Dispatcher.cs" />
+    <Compile Include="Simulation\Kernel\Event.cs" />
+    <Compile Include="Simulation\Kernel\EventPool.cs" />
+    <Compile Include="Simulation\ISimulable.cs" />
+    <Compile Include="Simulation\LOD\SimulationLOD.cs" />
+    <Compile Include="Simulation\Runtime\EntityRuntime.cs" />
+    <Compile Include="Simulation\Runtime\IEntityRuntime.cs" />
+    <Compile Include="Simulation\SimulationBase.cs" />
+    <Compile Include="Simulation\Time\ISimulationClock.cs" />
+    <Compile Include="Simulation\Time\SimulationClock.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,11 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Simulation\Entities\Builder\" />
-    <Folder Include="Simulation\Entities\Components\" />
-    <Folder Include="Simulation\Entities\Actor\" />
-    <Folder Include="Simulation\Entities\Scene\" />
-    <Folder Include="Simulation\Entities\World\Builder\" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
   </ItemGroup>
 
 </Project>

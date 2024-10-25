@@ -16,10 +16,9 @@ using System.Runtime.InteropServices;
 // El siguiente GUID es para el identificador de typelib, si este proyecto se expone
 // en COM.
 
-[assembly: Guid("74285347-1689-4c6e-8faa-4100114e4888")]
+[assembly: Guid("649329c7-7e47-4387-a047-ed7a60dfa477")]
 
-[assembly: InternalsVisibleTo("ARWNI2S.Node.Runtime")]
-
-[assembly: InternalsVisibleTo("ARWNI2S.Narrator.Core")]
 [assembly: InternalsVisibleTo("ARWNI2S.Narrator.Data")]
 [assembly: InternalsVisibleTo("ARWNI2S.Narrator.Services")]
+
+[assembly: InternalsVisibleTo("ARWNI2S.Narrator.Framework")]

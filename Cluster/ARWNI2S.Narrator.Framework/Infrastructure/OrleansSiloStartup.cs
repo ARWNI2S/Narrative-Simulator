@@ -82,12 +82,16 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
                 }
 
                 siloBuilder.AddMemoryGrainStorage("Default"); // Almacenamiento en memoria para grains
+
             });
+
+            //services.AddSingleton<ILifecycleParticipant<ISiloLifecycle>, SiloStartupNotifier>();
+
+
         }
 
         public void Configure(IHost application)
         {
-            // Orleans normalmente no necesita configuraciones adicionales aquí
         }
 
         public int Order => 149;    // Puedes ajustar el orden según sea necesario

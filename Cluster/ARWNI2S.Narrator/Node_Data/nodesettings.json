@@ -64,5 +64,12 @@
     "UseUnsafeLoadAssembly": true
   },
   "RuntimeConfig": {},
-  "OrleansSiloConfig": {}
+  "OrleansSiloConfig": {},
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "None"
+    }
+  }
 }

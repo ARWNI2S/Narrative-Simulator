@@ -1,22 +1,28 @@
-﻿using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Engine.Hosting.Extensions;
+using ARWNI2S.Infrastructure;
+using ARWNI2S.Node.Core.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ARWNI2S.Infrastructure.Extensions.Configuration;
 
 namespace ARWNI2S.Narrator.Framework.Infrastructure
 {
     internal class NodeStartup : INI2SStartup
     {
-        public int Order => 2000;
+        public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        {
+            //services.UseSimulationClock<NarratorClock>();
+            services.UseSimulation<NarratorEngine>();
+
+            services.AddFromExisting<ILifecycleParticipant<ISiloLifecycle>, NarratorEngine>();
+        }
 
         public void Configure(IHost application)
         {
 
         }
 
-        public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
-        {
-
-        }
+        public int Order => 2000;
     }
 }

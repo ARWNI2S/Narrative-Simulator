@@ -167,7 +167,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IUrlRecordService, UrlRecordService>();
             //services.AddScoped<ITaxCategoryService, TaxCategoryService>();
             //services.AddScoped<ITaxService, TaxService>();
-            services.AddScoped<ILogService, DefaultLogger>();
+            services.AddScoped<ILogService, NodeDbLogger>();
             services.AddScoped<IUserActivityService, UserActivityService>();
             services.AddScoped<IGdprService, GdprService>();
             //services.AddScoped<IPollService, PollService>();
