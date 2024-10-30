@@ -1,28 +1,20 @@
 ﻿using ARWNI2S.Engine.Simulation.Time;
 using ARWNI2S.Infrastructure.Timing;
+using System.Diagnostics;
 
-namespace ARWNI2S.Engine.Simulation.Kernel
+namespace ARWNI2S.Engine.Simulation.Runtime
 {
-    internal sealed class Dispatcher : IDisposable
+    internal class GameRuntime : IGameRuntime, IDisposable
     {
-        #region Statistics
-
-        private DateTime startTime;
-
-        #endregion
-
         private readonly ISimulationClock _clock;
-        private readonly double _resolution;
 
         protected CancellationTokenSource cancelSource;
-        private bool disposedValue;
 
         public ISimulationClock Clock { get { return _clock; } }
 
-        public Dispatcher(ISimulationClock clock)
+        public GameRuntime(ISimulationClock clock)
         {
             _clock = clock;
-            _resolution = _clock.GetResolution();
 
             // Create the dedicated thread
             _workerThread = new Thread((_) => ThreadLoop(cancelSource.Token))
@@ -61,71 +53,50 @@ namespace ARWNI2S.Engine.Simulation.Kernel
             _workerThread.Join();
         }
 
-        #region Event Queue
-
-        private readonly PriorityQueue<Event, double> _eventQueue = new();
-
-        public void ScheduleEvent(Event @event)
-        {
-            lock (_lock)
-            {
-                if (@event == null) return;
-                _eventQueue.Enqueue(@event, _timer.GetTimeMs() + (@event.Time / _resolution));
-                Monitor.Pulse(_lock); // Despierta el hilo si está esperando
-            }
-        }
-
-        #endregion
-
-        #region Dispacher Loop
-
         private readonly object _lock = new();
 
         private readonly HiResTimer _timer = new();
         private readonly Thread _workerThread;
 
-        private void ThreadLoop(CancellationToken cancellationToken)
+        private void ThreadLoop(CancellationToken token)
         {
-            startTime = DateTime.UtcNow;
             _timer.Start();
-            _clock.Start();
 
-            var currentTime = _timer.GetTimeMs();
-            var lastTime = currentTime;
-
-            while (!cancellationToken.IsCancellationRequested)
+            while (token.IsCancellationRequested)
             {
-                var elapsedTimeMs = lastTime - currentTime;
-
-                lock (_lock)
-                {
-                    if (_eventQueue.TryPeek(out Event next, out double timestamp))
-                    {
-                        if (timestamp <= _timer.GetTimeMs())
-                        {
-                            _eventQueue.Dequeue();
-                            _clock.Advance(elapsedTimeMs);
-                            next.Execute();
-                            next.Dispose();
-                        }
-                        else
-                            Monitor.Wait(_lock, (int)(timestamp - _timer.GetTimeMs()));
-                    }
-                    else
-                        Monitor.Wait(_lock); // Espera si no hay eventos
-                }
-
-                lastTime = currentTime;
-                currentTime = _timer.GetTimeMs();
+                var frameStartMs = _timer.GetTimeMs();
             }
-
         }
 
-        #endregion
 
-        #region IDisposable implementation
 
-        private void Dispose(bool disposing)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #region IDisposable
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
@@ -140,6 +111,13 @@ namespace ARWNI2S.Engine.Simulation.Kernel
             }
         }
 
+        // // TODO: reemplazar el finalizador solo si "Dispose(bool disposing)" tiene código para liberar los recursos no administrados
+        // ~EntityRuntime()
+        // {
+        //     // No cambie este código. Coloque el código de limpieza en el método "Dispose(bool disposing)".
+        //     Dispose(disposing: false);
+        // }
+
         public void Dispose()
         {
             // No cambie este código. Coloque el código de limpieza en el método "Dispose(bool disposing)".
@@ -148,5 +126,34 @@ namespace ARWNI2S.Engine.Simulation.Kernel
         }
 
         #endregion
+
+
+
+
+
+
+
+
+
+        private long fpsStartTime;
+        private long fpsFrameCount;
+
+        public virtual void LimitFrameRate(int fps)
+        {
+            long freq = Stopwatch.Frequency;
+            long frame = Stopwatch.GetTimestamp();
+            while ((frame - fpsStartTime) * fps < freq * fpsFrameCount)
+            {
+                int sleepTime = (int)((fpsStartTime * fps + freq * fpsFrameCount - frame * fps) * 1000 / (freq * fps));
+                if (sleepTime > 0) Thread.Sleep(sleepTime);
+                frame = Stopwatch.GetTimestamp();
+            }
+            if (++fpsFrameCount > fps)
+            {
+                fpsFrameCount = 0;
+                fpsStartTime = frame;
+            }
+        }
+
     }
 }

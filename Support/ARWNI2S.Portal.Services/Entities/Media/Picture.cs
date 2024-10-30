@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Media
     /// <summary>
     /// Represents a picture
     /// </summary>
-    public partial class Picture : BaseEntity
+    public partial class Picture : DataEntity
     {
         /// <summary>
         /// Gets or sets the picture mime type

@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.News
     /// <summary>
     /// Represents a news item
     /// </summary>
-    public partial class NewsItem : BaseEntity, ISlugSupported, INodeMappingSupported
+    public partial class NewsItem : DataEntity, ISlugSupported, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the language identifier

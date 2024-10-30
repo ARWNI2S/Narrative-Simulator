@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Blogs
     /// <summary>
     /// Represents a blog comment
     /// </summary>
-    public partial class BlogComment : BaseEntity
+    public partial class BlogComment : DataEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

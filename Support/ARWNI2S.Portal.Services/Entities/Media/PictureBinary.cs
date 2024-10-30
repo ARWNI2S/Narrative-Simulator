@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Media
     /// <summary>
     /// Represents a picture binary data
     /// </summary>
-    public partial class PictureBinary : BaseEntity
+    public partial class PictureBinary : DataEntity
     {
         /// <summary>
         /// Gets or sets the picture binary

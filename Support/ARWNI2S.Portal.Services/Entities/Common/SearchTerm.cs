@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Common
     /// <summary>
     /// Search term record (for statistics)
     /// </summary>
-    public partial class SearchTerm : BaseEntity
+    public partial class SearchTerm : DataEntity
     {
         /// <summary>
         /// Gets or sets the keyword

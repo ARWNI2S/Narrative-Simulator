@@ -6,7 +6,7 @@ namespace ARWNI2S.Portal.Services.Entities.Users
     /// <summary>
     /// Represents a user attribute value
     /// </summary>
-    public partial class UserAttributeValue : BaseEntity, ILocalizedEntity
+    public partial class UserAttributeValue : DataEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the user attribute identifier

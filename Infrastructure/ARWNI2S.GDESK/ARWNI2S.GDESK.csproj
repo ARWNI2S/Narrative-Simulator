@@ -4,33 +4,42 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>ARWNI2S.Engine</RootNamespace>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Simulation\**" />
-    <EmbeddedResource Remove="Simulation\**" />
-    <None Remove="Simulation\**" />
+    <Compile Remove="Configuration\**" />
+    <Compile Remove="Hosting\**" />
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="Simulation\Kernel\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <EmbeddedResource Remove="Hosting\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="Simulation\Kernel\**" />
+    <None Remove="Configuration\**" />
+    <None Remove="Hosting\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="Simulation\Kernel\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Hosting\GDESKHostedService.cs" />
-    <Compile Remove="Infrastructure\FrameProcessor.cs" />
+    <Compile Remove="Simulation\EventHandler.cs" />
+    <Compile Remove="Simulation\ISimulable.cs" />
+    <Compile Remove="Simulation\Runtime\FrameTask.cs" />
+    <Compile Remove="Simulation\Runtime\FrameTaskScheduler.cs" />
+    <Compile Remove="Simulation\Runtime\TickManager.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Simulation\DefaultSimulation.cs" />
-    <Compile Include="Simulation\Exceptions.cs" />
-    <Compile Include="Simulation\ISimulation.cs" />
+    <Compile Include="Configuration\GDESKConfig.cs" />
+    <Compile Include="Hosting\DefaultGDESKServices.cs" />
+    <Compile Include="Hosting\Exceptions.cs" />
+    <Compile Include="Hosting\Extensions\GDESKGenericHostBuilderExtensions.cs" />
+    <Compile Include="Hosting\GDESKBuilder.cs" />
+    <Compile Include="Hosting\IGDESKBuilder.cs" />
     <Compile Include="Simulation\Kernel\Dispatcher.cs" />
-    <Compile Include="Simulation\Kernel\Event.cs" />
+    <Compile Include="Simulation\Kernel\Events.cs" />
     <Compile Include="Simulation\Kernel\EventPool.cs" />
-    <Compile Include="Simulation\ISimulable.cs" />
-    <Compile Include="Simulation\LOD\SimulationLOD.cs" />
-    <Compile Include="Simulation\Runtime\EntityRuntime.cs" />
-    <Compile Include="Simulation\Runtime\IEntityRuntime.cs" />
-    <Compile Include="Simulation\SimulationBase.cs" />
-    <Compile Include="Simulation\Time\ISimulationClock.cs" />
-    <Compile Include="Simulation\Time\SimulationClock.cs" />
   </ItemGroup>
 
   <ItemGroup>

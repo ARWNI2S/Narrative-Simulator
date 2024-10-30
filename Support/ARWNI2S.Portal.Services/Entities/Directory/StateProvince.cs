@@ -6,7 +6,7 @@ namespace ARWNI2S.Portal.Services.Entities.Directory
     /// <summary>
     /// Represents a state/province
     /// </summary>
-    public partial class StateProvince : BaseEntity, ILocalizedEntity
+    public partial class StateProvince : DataEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the country identifier

@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Tax
     /// <summary>
     /// Represents a tax category
     /// </summary>
-    public partial class TaxCategory : BaseEntity
+    public partial class TaxCategory : DataEntity
     {
         /// <summary>
         /// Gets or sets the name

@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Topics
     /// <summary>
     /// Represents a topic template
     /// </summary>
-    public partial class TopicTemplate : BaseEntity
+    public partial class TopicTemplate : DataEntity
     {
         /// <summary>
         /// Gets or sets the template name

@@ -6,7 +6,7 @@ namespace ARWNI2S.Portal.Services.Entities.Common
     /// <summary>
     /// Represents an address attribute
     /// </summary>
-    public partial class AddressAttribute : BaseEntity, ILocalizedEntity
+    public partial class AddressAttribute : DataEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the name

@@ -6,7 +6,7 @@ namespace ARWNI2S.Portal.Services.Entities.Polls
     /// <summary>
     /// Represents a poll
     /// </summary>
-    public partial class Poll : BaseEntity, INodeMappingSupported
+    public partial class Poll : DataEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the language identifier

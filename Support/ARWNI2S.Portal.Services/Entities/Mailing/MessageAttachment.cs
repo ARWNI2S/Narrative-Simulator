@@ -2,7 +2,7 @@
 
 namespace ARWNI2S.Portal.Services.Entities.Mailing
 {
-    public partial class MessageAttachment : BaseEntity
+    public partial class MessageAttachment : DataEntity
     {
         public int SystemMessageId { get; set; }
 

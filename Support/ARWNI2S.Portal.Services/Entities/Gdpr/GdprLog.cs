@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Gdpr
     /// <summary>
     /// Represents a GDPR log
     /// </summary>
-    public partial class GdprLog : BaseEntity
+    public partial class GdprLog : DataEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

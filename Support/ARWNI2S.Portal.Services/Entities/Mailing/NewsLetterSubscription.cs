@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// <summary>
     /// Represents NewsLetterSubscription entity
     /// </summary>
-    public partial class NewsLetterSubscription : BaseEntity
+    public partial class NewsLetterSubscription : DataEntity
     {
         /// <summary>
         /// Gets or sets the newsletter subscription GUID

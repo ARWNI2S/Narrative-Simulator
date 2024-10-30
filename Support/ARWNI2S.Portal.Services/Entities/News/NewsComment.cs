@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.News
     /// <summary>
     /// Represents a news comment
     /// </summary>
-    public partial class NewsComment : BaseEntity
+    public partial class NewsComment : DataEntity
     {
         /// <summary>
         /// Gets or sets the comment title

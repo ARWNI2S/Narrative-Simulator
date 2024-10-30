@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// <summary>
     /// Represents a campaign
     /// </summary>
-    public partial class Campaign : BaseEntity
+    public partial class Campaign : DataEntity
     {
         /// <summary>
         /// Gets or sets the name

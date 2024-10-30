@@ -34,6 +34,10 @@
     "UseProxy": false,
     "KnownNodes": ""
   },
+  "GDESKConfig": {
+    "EventPoolMaxSize": 5000,
+    "EventPoolWarmupSize": 500
+  },
   "AzureBlobConfig": {
     "ConnectionString": "",
     "ContainerName": "",

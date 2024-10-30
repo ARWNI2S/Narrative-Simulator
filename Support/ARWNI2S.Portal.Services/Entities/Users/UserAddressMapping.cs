@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Users
     /// <summary>
     /// Represents a user-address mapping class
     /// </summary>
-    public partial class UserAddressMapping : BaseEntity
+    public partial class UserAddressMapping : DataEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

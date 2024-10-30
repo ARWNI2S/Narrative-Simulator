@@ -1,19 +1,36 @@
-﻿using ARWNI2S.Engine.Simulation.Time;
-using Microsoft.Extensions.Logging;
+﻿using ARWNI2S.Engine.Simulation.Runtime;
+using ARWNI2S.Engine.Simulation.Time;
 
 namespace ARWNI2S.Engine.Simulation
 {
-    public interface ISimulation
+    public interface ISimulation : IDisposable
     {
+        /// <summary>
+        /// Gets the global simulation clock
+        /// </summary>
         ISimulationClock Clock { get; }
 
-        ILogger Logger { get; }
+        /// <summary>
+        /// Gets the local node entity runtime
+        /// </summary>
+        IGameRuntime Runtime { get; }
 
+        /// <summary>
+        /// Initializes the simulation
+        /// </summary>
+        void InitializeSimulation();
 
+        /// <summary>
+        /// Method to start and run the simulation.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token</param>
         void StartSimulation(CancellationToken? cancellationToken = null);
 
-        // Method to stop the loop gracefully
+        /// <summary>
+        /// Method to stop the simulation gracefully
+        /// </summary>
         void StopSimulation();
+
 
     }
 }

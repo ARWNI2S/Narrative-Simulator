@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// </summary>
     /// <typeparam name="T">Entity type</typeparam>
     /// <typeparam name="U"></typeparam>
-    public partial class EntityTokensAddedEvent<T, U> where T : BaseEntity
+    public partial class EntityTokensAddedEvent<T, U> where T : DataEntity
     {
         /// <summary>
         /// Ctor

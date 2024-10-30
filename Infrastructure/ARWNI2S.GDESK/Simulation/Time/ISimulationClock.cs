@@ -2,19 +2,38 @@
 {
     public interface ISimulationClock
     {
-        // Obtiene el tiempo actual del reloj en ticks o en una estructura TimeSpan.
-        Task<TimeSpan> GetCurrentTimeAsync();
+        /// <summary>
+        /// Obtiene la resolucion del reloj de simulacion.
+        /// </summary>
+        /// <returns>Milisegundos por unidad de tiempo.</returns>
+        internal double GetResolution();
 
-        //// Sincroniza el reloj con un valor externo (del consenso de otros relojes).
-        //void Synchronize(TimeSpan time);
+        /// <summary>
+        /// Obtiene el tiempo actual del reloj de la simulacion.
+        /// </summary>
+        /// <returns>Tiempo de la simulacion en milisegundos.</returns>
+        internal ulong GetTimeUnits();
 
-        //// Resetea o ajusta el reloj a un nuevo tiempo base.
-        //void Reset(TimeSpan startTime);
+        /// <summary>
+        /// Obtiene el tiempo actual del reloj de la simulacion.
+        /// </summary>
+        /// <returns>Tarea asincrona que contiene el Tiempo Transcurrido.</returns>
+        Task<TimeSpan> GetTimeAsync();
 
-        //// Inicia el reloj, permitiendo que el tiempo fluya.
-        //void Start();
+        /// <summary>
+        /// Inicia el reloj, permitiendo que el tiempo fluya.
+        /// </summary>
+        void Start();
 
-        //// Pausa el reloj.
-        //void Pause();
+        /// <summary>
+        /// Avanza el reloj de simulacion.
+        /// </summary>
+        /// <param name="time">Unidades de tiempo a avanzar.</param>
+        void Advance(double time);
+
+        /// <summary>
+        /// Pausa el reloj.
+        /// </summary>
+        void Pause();
     }
 }

@@ -9,7 +9,7 @@ namespace ARWNI2S.Portal.Services.Entities.Topics
     /// <summary>
     /// Represents a topic
     /// </summary>
-    public partial class Topic : BaseEntity, ILocalizedEntity, ISlugSupported, INodeMappingSupported, IAclSupported
+    public partial class Topic : DataEntity, ILocalizedEntity, ISlugSupported, INodeMappingSupported, IAclSupported
     {
         /// <summary>
         /// Gets or sets the name

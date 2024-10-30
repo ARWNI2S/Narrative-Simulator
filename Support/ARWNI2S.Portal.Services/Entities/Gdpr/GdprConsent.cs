@@ -6,7 +6,7 @@ namespace ARWNI2S.Portal.Services.Entities.Gdpr
     /// <summary>
     /// Represents a GDPR consent
     /// </summary>
-    public partial class GdprConsent : BaseEntity, ILocalizedEntity
+    public partial class GdprConsent : DataEntity, ILocalizedEntity
     {
         /// <summary>
         /// Gets or sets the message displayed to users

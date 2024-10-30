@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Users
     /// <summary>
     /// Represents an external authentication record
     /// </summary>
-    public partial class ExternalAuthenticationRecord : BaseEntity
+    public partial class ExternalAuthenticationRecord : DataEntity
     {
         /// <summary>
         /// Gets or sets the user identifier

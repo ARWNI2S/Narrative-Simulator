@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Engine.Infrastructure;
-using ARWNI2S.Engine.Simulation;
+﻿using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Engine.Simulation.Kernel;
+using ARWNI2S.Engine.Simulation.Runtime;
 using ARWNI2S.Engine.Simulation.Time;
 using Microsoft.Extensions.Logging;
 
@@ -8,8 +8,8 @@ namespace ARWNI2S.Node.Core.Infrastructure
 {
     internal class NarratorEngine : SimulationBase, ISimulation, ILifecycleParticipant<ISiloLifecycle>
     {
-        public NarratorEngine(Dispatcher dispatcher, FrameTaskScheduler frameTaskScheduler, ISimulationClock clock,
-            ILogger<NarratorEngine> logger) : base(dispatcher, frameTaskScheduler, clock, logger) { }
+        public NarratorEngine(Dispatcher dispatcher, IGameRuntime entityRuntime, ISimulationClock clock,
+            ILogger<NarratorEngine> logger) : base(dispatcher, entityRuntime, clock, logger) { }
 
         public void Participate(ISiloLifecycle lifecycle)
         {
@@ -21,10 +21,11 @@ namespace ARWNI2S.Node.Core.Infrastructure
         }
 
         // This method will be invoked when the silo is ready to serve requests
-        protected Task OnStartAsync(CancellationToken cancellationToken)
+        protected async Task OnStartAsync(CancellationToken cancellationToken)
         {
+            await InitializeSimulationAsync(cancellationToken);
+
             StartSimulation(cancellationToken);
-            return Task.CompletedTask;
         }
 
         protected Task OnStopAsync(CancellationToken token)
@@ -34,5 +35,21 @@ namespace ARWNI2S.Node.Core.Infrastructure
             return Task.CompletedTask;
         }
 
+        private async Task InitializeSimulationAsync(CancellationToken cancellationToken)
+        {
+            await Task.Run(() =>
+            {
+                InitializeSimulation();
+            }, cancellationToken);
+        }
+
+        /// <summary>
+        /// Narrator engine initialization.
+        /// </summary>
+        /// <returns>true if the initialization was successful, otherwise false.</returns>
+        protected override bool Initialize()
+        {
+            return base.Initialize();
+        }
     }
 }

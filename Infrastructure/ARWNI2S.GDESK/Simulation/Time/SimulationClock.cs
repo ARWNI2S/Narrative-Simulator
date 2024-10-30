@@ -1,52 +1,38 @@
-﻿using ARWNI2S.Infrastructure.Timing;
+﻿
 
 namespace ARWNI2S.Engine.Simulation.Time
 {
     public class SimulationClock : ISimulationClock
     {
-        private readonly HiResTimer _hiResTimer;
-        private double _startTime;
-        private double _stopTime;
-        //private double _lastElapsedTime;
+        private ulong _time;
+        private double _pendingTime;
+        private double _resolution;
+        private bool _isStopped;
 
-        public SimulationClock()
+        public ulong GetTimeUnits() => _time;
+
+        public void Advance(double deltaTimeMs)
         {
-            _hiResTimer = new HiResTimer();
-            Reset(TimeSpan.FromMilliseconds(0));
+            if (!_isStopped)
+            {
+                double delta = (deltaTimeMs * _resolution);
+                ulong time = (ulong)delta;
+                _pendingTime += delta - time;
+                if (_pendingTime > 1)
+                {
+                    _pendingTime--;
+                    time++;
+                }
+                _time += time;
+            }
         }
 
-        public virtual async Task<TimeSpan> GetCurrentTimeAsync()
-        {
-            return await Task.FromResult(TimeSpan.FromMilliseconds(_hiResTimer.GetTime()));
-        }
+        public double GetResolution() => _resolution;
 
-        public virtual void Pause()
-        {
-            if (!_hiResTimer.IsStopped)
-                _hiResTimer.Stop();
+        public void Pause() { _isStopped = true; }
 
-            _stopTime = _hiResTimer.GetTime();
-        }
+        public void Start() { _isStopped = false; }
 
-        public virtual void Reset(TimeSpan startTime)
-        {
-            _startTime = startTime.TotalMilliseconds;
-            _hiResTimer.Reset();
-        }
-
-        public virtual void Start()
-        {
-            if (_hiResTimer.IsStopped)
-                _hiResTimer.Start();
-
-            _startTime = _hiResTimer.GetTime();
-        }
-
-        public virtual void Synchronize(TimeSpan time)
-        {
-            if (!_hiResTimer.IsStopped)
-                _hiResTimer.Stop();
-
-        }
+        public Task<TimeSpan> GetTimeAsync() => Task.FromResult(TimeSpan.FromMilliseconds(GetTimeUnits()));
     }
 }

@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// <summary>
     /// Represents an email item
     /// </summary>
-    public partial class QueuedEmail : BaseEntity
+    public partial class QueuedEmail : DataEntity
     {
         /// <summary>
         /// Gets or sets the priority

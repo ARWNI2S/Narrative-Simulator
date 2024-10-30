@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Common
     /// <summary>
     /// Address
     /// </summary>
-    public partial class Address : BaseEntity
+    public partial class Address : DataEntity
     {
         /// <summary>
         /// Gets or sets the first name

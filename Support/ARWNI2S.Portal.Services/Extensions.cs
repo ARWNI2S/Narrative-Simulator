@@ -55,7 +55,7 @@ namespace ARWNI2S.Portal.Services
         /// <param name="objList">List of objects</param>
         /// <param name="selector">Selector for name</param>
         /// <returns>SelectList</returns>
-        public static SelectList ToSelectList<T>(this T objList, Func<BaseEntity, string> selector) where T : IEnumerable<BaseEntity>
+        public static SelectList ToSelectList<T>(this T objList, Func<DataEntity, string> selector) where T : IEnumerable<DataEntity>
         {
             return new SelectList(objList.Select(p => new { ID = p.Id, Name = selector(p) }), "ID", "Name");
         }

@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Directory
     /// <summary>
     /// Represents a country
     /// </summary>
-    public partial class Country : BaseEntity, ILocalizedEntity, INodeMappingSupported
+    public partial class Country : DataEntity, ILocalizedEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the name

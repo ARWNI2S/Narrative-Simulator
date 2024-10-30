@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Media
     /// <summary>
     /// Represents a download
     /// </summary>
-    public partial class Download : BaseEntity
+    public partial class Download : DataEntity
     {
         /// <summary>
         /// Gets or sets a GUID

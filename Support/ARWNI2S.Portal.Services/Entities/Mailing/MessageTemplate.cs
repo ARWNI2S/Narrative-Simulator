@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// <summary>
     /// Represents a message template
     /// </summary>
-    public partial class MessageTemplate : BaseEntity, ILocalizedEntity, INodeMappingSupported
+    public partial class MessageTemplate : DataEntity, ILocalizedEntity, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the name

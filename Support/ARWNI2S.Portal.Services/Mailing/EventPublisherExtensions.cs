@@ -40,7 +40,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="entity">Entity</param>
         /// <param name="tokens">Tokens</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public static async Task EntityTokensAddedAsync<T, U>(this INodeEventPublisher eventPublisher, T entity, IList<U> tokens) where T : BaseEntity
+        public static async Task EntityTokensAddedAsync<T, U>(this INodeEventPublisher eventPublisher, T entity, IList<U> tokens) where T : DataEntity
         {
             await eventPublisher.PublishAsync(new EntityTokensAddedEvent<T, U>(entity, tokens));
         }

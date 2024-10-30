@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Seo
     /// <summary>
     /// Represents an URL record
     /// </summary>
-    public partial class UrlRecord : BaseEntity
+    public partial class UrlRecord : DataEntity
     {
         /// <summary>
         /// Gets or sets the entity identifier

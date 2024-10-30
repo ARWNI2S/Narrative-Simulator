@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Services.Entities.Blogs
     /// <summary>
     /// Represents a blog post
     /// </summary>
-    public partial class BlogPost : BaseEntity, ISlugSupported, INodeMappingSupported
+    public partial class BlogPost : DataEntity, ISlugSupported, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the language identifier

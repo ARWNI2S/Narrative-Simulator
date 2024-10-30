@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Mailing
     /// <summary>
     /// Represents an email account
     /// </summary>
-    public partial class EmailAccount : BaseEntity
+    public partial class EmailAccount : DataEntity
     {
         /// <summary>
         /// Gets or sets an email address

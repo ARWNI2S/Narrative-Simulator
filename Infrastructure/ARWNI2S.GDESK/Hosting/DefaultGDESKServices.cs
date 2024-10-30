@@ -1,5 +1,4 @@
-﻿using ARWNI2S.Engine.Infrastructure;
-using ARWNI2S.Engine.Simulation;
+﻿using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Engine.Simulation.Kernel;
 using ARWNI2S.Engine.Simulation.Runtime;
 using ARWNI2S.Engine.Simulation.Time;
@@ -25,18 +24,14 @@ namespace ARWNI2S.Engine.Hosting
 
             // Common services
             services.AddLogging();
-            //services.AddLogging(logging =>
-            //{
-            //    logging.AddConsole();
-            //    logging.AddDebug();
-            //});
-            //services.AddOptions();
+            services.AddOptions();
             services.TryAddSingleton<TimeProvider>(TimeProvider.System);
 
             //services.TryAddSingleton(typeof(IOptionFormatter<>), typeof(DefaultOptionsFormatter<>));
             //services.TryAddSingleton(typeof(IOptionFormatterResolver<>), typeof(DefaultOptionsFormatterResolver<>));
 
             services.AddSingleton<Dispatcher>();
+            //services.AddSingleton<EventFactory>();
             services.AddSingleton<EventPool>();
             //services.AddSingleton<Watchdog>();
             //services.AddHostedService<GDESKHostedService>();
@@ -63,8 +58,8 @@ namespace ARWNI2S.Engine.Hosting
 
             services.TryAddSingleton<ISimulationClock, SimulationClock>();
 
-            services.TryAddSingleton<EntityRuntime>();
-            services.TryAddSingleton<IEntityRuntime, EntityRuntime>();
+            services.TryAddSingleton<GameRuntime>();
+            services.TryAddSingleton<IGameRuntime, GameRuntime>();
             //            services.TryAddSingleton<IGrainCancellationTokenRuntime, GrainCancellationTokenRuntime>();
             //            services.AddTransient<CancellationSourcesExtension>();
             //            services.AddKeyedTransient<IGrainExtension>(typeof(ICancellationSourcesExtension), (sp, _) => sp.GetRequiredService<CancellationSourcesExtension>());
@@ -370,9 +365,9 @@ namespace ARWNI2S.Engine.Hosting
             //            // Use Orleans server.
             //            services.AddSingleton<ILifecycleParticipant<ISiloLifecycle>, SiloConnectionListener>();
             //            services.AddSingleton<ILifecycleParticipant<ISiloLifecycle>, GatewayConnectionListener>();
-            services.AddSingleton<FrameTaskScheduler>();
+            //services.AddSingleton<FrameTaskScheduler>();
             //services.AddSingleton<FrameProcessor>();
-            services.AddSingleton<SharedMemoryPool>();
+            //services.AddSingleton<SharedMemoryPool>();
 
             if (!services.Any(x => x.ServiceType == typeof(ISimulationClock)))
             {

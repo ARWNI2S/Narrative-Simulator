@@ -5,7 +5,7 @@ namespace ARWNI2S.Portal.Services.Entities.Polls
     /// <summary>
     /// Represents a poll voting record
     /// </summary>
-    public partial class PollVotingRecord : BaseEntity
+    public partial class PollVotingRecord : DataEntity
     {
         /// <summary>
         /// Gets or sets the poll answer identifier
