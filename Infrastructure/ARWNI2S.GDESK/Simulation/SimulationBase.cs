@@ -5,10 +5,28 @@ using Microsoft.Extensions.Logging;
 
 namespace ARWNI2S.Engine.Simulation
 {
+    public enum SimulationLOD : int
+    {
+        Disabled = -1,
+        LOD_0 = 0,
+        LOD_1 = LOD_0 + 1,
+        LOD_2 = LOD_0 + 2,
+        LOD_3 = LOD_0 + 3,
+        LOD_4 = LOD_0 + 4,
+        LOD_5 = LOD_0 + 5,
+        LOD_6 = LOD_0 + 6,
+        LOD_7 = LOD_0 + 7,
+        LOD_8 = LOD_0 + 8,
+        LOD_9 = LOD_0 + 9,
+        LOD_10 = LOD_0 + 10,
+        LOD_CUSTOM = LOD_10 + 1,
+        LOD_MAX = int.MaxValue,
+    }
+
     public abstract class SimulationBase : ISimulation
     {
         private readonly Dispatcher _dispatcher;
-        private readonly IGameRuntime _entityRuntime;
+        private readonly ISimulableRuntime _simulableRuntime;
         private readonly ISimulationClock _clock;
 
         private readonly ILogger _logger;
@@ -22,10 +40,10 @@ namespace ARWNI2S.Engine.Simulation
         /// <remarks>Uninitialized simulation won't run.</remarks>
         public bool IsInitialized { get; protected set; }
 
-        internal SimulationBase(Dispatcher dispatcher, IGameRuntime entityRuntime, ISimulationClock clock, ILogger logger)
+        internal SimulationBase(Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock, ILogger logger)
         {
             _dispatcher = dispatcher;
-            _entityRuntime = entityRuntime;
+            _simulableRuntime = simulableRuntime;
 
             _clock = clock;
             _logger = logger;
@@ -35,7 +53,7 @@ namespace ARWNI2S.Engine.Simulation
         public ISimulationClock Clock => _clock;
 
         /// <inheritdoc />
-        public IGameRuntime Runtime => _entityRuntime;
+        public ISimulableRuntime Runtime => _simulableRuntime;
 
         /// <inheritdoc />
         protected void InitializeSimulation() { IsInitialized = Initialize(); }
@@ -50,7 +68,7 @@ namespace ARWNI2S.Engine.Simulation
                 CancellationTokenSource.CreateLinkedTokenSource(cancellationToken.Value);
 
             // Start the dedicated threads
-            _entityRuntime.Start(mainCancelSource.Token);
+            _simulableRuntime.Start(mainCancelSource.Token);
             _dispatcher.Start(mainCancelSource.Token);
             _logger.LogInformation("Simulation has started.");
         }

@@ -9,11 +9,11 @@ namespace ARWNI2S.Engine.Simulation
     {
         public DefaultSimulation(
             Dispatcher dispatcher,
-            IGameRuntime entityRuntime,
+            ISimulableRuntime simulableRuntime,
             ISimulationClock clock,
             ILogger<DefaultSimulation> logger)
             : base(dispatcher,
-                  entityRuntime,
+                  simulableRuntime,
                   clock,
                   logger)
         {

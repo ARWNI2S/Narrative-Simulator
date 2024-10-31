@@ -1,9 +1,8 @@
-﻿using ARWNI2S.Engine.Simulation.Entities;
-using ARWNI2S.Runtime.Simulation.Actors.Grains;
+﻿using ARWNI2S.Runtime.Simulation.Actors.Grains;
 
 namespace ARWNI2S.Node.Core.Actors.Grains
 {
-    internal class NI2SActorGrain : Grain, INI2SActorGrain, IGameObject
+    internal class NI2SActorGrain : Grain, INI2SActorGrain
     {
         public Guid UUID => GrainContext.GrainId.GetGuidKey();
 
@@ -16,8 +15,5 @@ namespace ARWNI2S.Node.Core.Actors.Grains
         {
             return base.OnDeactivateAsync(reason, cancellationToken);
         }
-
-        // Not here yet.
-        void IGameObject.InitializeGameObject(IGameObjectBuilder objectBuilder) => throw new NotImplementedException();
     }
 }

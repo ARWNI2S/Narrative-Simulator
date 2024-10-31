@@ -1,7 +1,7 @@
 ﻿
 namespace ARWNI2S.Engine.Simulation.Runtime
 {
-    public interface IGameRuntime
+    public interface ISimulableRuntime
     {
         void Start(CancellationToken? token = null);
 

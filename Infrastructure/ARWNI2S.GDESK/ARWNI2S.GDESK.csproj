@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Compile Remove="Simulation\EventHandler.cs" />
-    <Compile Remove="Simulation\ISimulable.cs" />
     <Compile Remove="Simulation\Runtime\FrameTask.cs" />
     <Compile Remove="Simulation\Runtime\FrameTaskScheduler.cs" />
     <Compile Remove="Simulation\Runtime\TickManager.cs" />

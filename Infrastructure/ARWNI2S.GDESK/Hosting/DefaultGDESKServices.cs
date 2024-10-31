@@ -1,6 +1,7 @@
 ﻿using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Engine.Simulation.Kernel;
 using ARWNI2S.Engine.Simulation.Runtime;
+using ARWNI2S.Engine.Simulation.Runtime.Update;
 using ARWNI2S.Engine.Simulation.Time;
 using ARWNI2S.Infrastructure.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,13 +26,12 @@ namespace ARWNI2S.Engine.Hosting
             // Common services
             services.AddLogging();
             services.AddOptions();
-            services.TryAddSingleton<TimeProvider>(TimeProvider.System);
+            services.TryAddSingleton(TimeProvider.System);
 
             //services.TryAddSingleton(typeof(IOptionFormatter<>), typeof(DefaultOptionsFormatter<>));
             //services.TryAddSingleton(typeof(IOptionFormatterResolver<>), typeof(DefaultOptionsFormatterResolver<>));
 
             services.AddSingleton<Dispatcher>();
-            //services.AddSingleton<EventFactory>();
             services.AddSingleton<EventPool>();
             //services.AddSingleton<Watchdog>();
             //services.AddHostedService<GDESKHostedService>();
@@ -56,10 +56,22 @@ namespace ARWNI2S.Engine.Hosting
             //            services.TryAddSingleton<FallbackSystemTarget>();
             //            services.TryAddSingleton<LifecycleSchedulingSystemTarget>();
 
-            services.TryAddSingleton<ISimulationClock, SimulationClock>();
+            services.TryAddSingleton<UpdateProcessor>();
+            services.TryAddSingleton<SimulableRuntime>();
+            services.TryAddSingleton<ISimulableRuntime, SimulableRuntime>();
 
-            services.TryAddSingleton<GameRuntime>();
-            services.TryAddSingleton<IGameRuntime, GameRuntime>();
+            if (!services.Any(x => x.ServiceType == typeof(ISimulationClock)))
+            {
+                services.TryAddSingleton<SimulationClock>();
+                services.AddFromExisting<ISimulationClock, SimulationClock>();
+            }
+
+            if (!services.Any(x => x.ServiceType == typeof(ISimulation)))
+            {
+                services.TryAddSingleton<DefaultSimulation>();
+                services.AddFromExisting<ISimulation, DefaultSimulation>();
+            }
+
             //            services.TryAddSingleton<IGrainCancellationTokenRuntime, GrainCancellationTokenRuntime>();
             //            services.AddTransient<CancellationSourcesExtension>();
             //            services.AddKeyedTransient<IGrainExtension>(typeof(ICancellationSourcesExtension), (sp, _) => sp.GetRequiredService<CancellationSourcesExtension>());
@@ -369,17 +381,6 @@ namespace ARWNI2S.Engine.Hosting
             //services.AddSingleton<FrameProcessor>();
             //services.AddSingleton<SharedMemoryPool>();
 
-            if (!services.Any(x => x.ServiceType == typeof(ISimulationClock)))
-            {
-                services.TryAddSingleton<SimulationClock>();
-                services.AddFromExisting<ISimulationClock, SimulationClock>();
-            }
-
-            if (!services.Any(x => x.ServiceType == typeof(ISimulation)))
-            {
-                services.TryAddSingleton<DefaultSimulation>();
-                services.AddFromExisting<ISimulation, DefaultSimulation>();
-            }
 
             //            // Activation migration
             //            services.AddSingleton<MigrationContext.SerializationHooks>();

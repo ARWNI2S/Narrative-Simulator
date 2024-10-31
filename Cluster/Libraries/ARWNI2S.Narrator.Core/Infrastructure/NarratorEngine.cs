@@ -8,8 +8,8 @@ namespace ARWNI2S.Node.Core.Infrastructure
 {
     internal class NarratorEngine : SimulationBase, ISimulation, ILifecycleParticipant<ISiloLifecycle>
     {
-        public NarratorEngine(Dispatcher dispatcher, IGameRuntime entityRuntime, ISimulationClock clock,
-            ILogger<NarratorEngine> logger) : base(dispatcher, entityRuntime, clock, logger) { }
+        public NarratorEngine(Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock,
+            ILogger<NarratorEngine> logger) : base(dispatcher, simulableRuntime, clock, logger) { }
 
         public void Participate(ISiloLifecycle lifecycle)
         {

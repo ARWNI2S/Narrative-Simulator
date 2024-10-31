@@ -13,7 +13,7 @@ namespace ARWNI2S.Engine.Simulation
         /// <summary>
         /// Gets the local node entity runtime
         /// </summary>
-        IGameRuntime Runtime { get; }
+        ISimulableRuntime Runtime { get; }
 
         /// <summary>
         /// Initializes the simulation
