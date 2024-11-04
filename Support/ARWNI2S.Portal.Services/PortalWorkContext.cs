@@ -27,7 +27,7 @@ namespace ARWNI2S.Portal.Services
         //private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILanguageService _languageService;
         //private readonly IBlockchainService _blockchainService;
-        private readonly IClusteringContext _nodeContext;
+        private readonly INodeContext _nodeContext;
         //private readonly INodeMappingService _nodeMappingService;
         //private readonly IUserAgentHelper _userAgentHelper;
         //private readonly IPlayerService _playerService;
@@ -63,7 +63,7 @@ namespace ARWNI2S.Portal.Services
                     //    IHttpContextAccessor httpContextAccessor,
                     ILanguageService languageService,
                 //    IBlockchainService blockchainService,
-                IClusteringContext nodeContext
+                INodeContext nodeContext
             //    INodeMappingService nodeMappingService,
             //    IUserAgentHelper userAgentHelper,
             //    IPartnerService partnerService,

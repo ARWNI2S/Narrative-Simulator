@@ -7,11 +7,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Authentication\**" />
+    <Content Remove="Authentication\**" />
+    <EmbeddedResource Remove="Authentication\**" />
+    <None Remove="Authentication\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Entities\Mailing\SystemMessage.cs" />
+    <Compile Remove="Entities\Users\ExternalAuthenticationRecord.cs" />
+    <Compile Remove="Entities\Users\ExternalAuthenticationSettings.cs" />
+    <Compile Remove="Entities\Users\MultiFactorAuthenticationSettings.cs" />
+    <Compile Remove="Entities\Users\UserActivatedEvent.cs" />
+    <Compile Remove="Entities\Users\UserLoggedinEvent.cs" />
+    <Compile Remove="Entities\Users\UserLoggedOutEvent.cs" />
+    <Compile Remove="Entities\Users\UserRegisteredEvent.cs" />
+    <Compile Remove="Entities\Users\UserRegistrationType.cs" />
     <Compile Remove="Globalization\GeoLookupService.cs" />
     <Compile Remove="Globalization\IGeoLookupService.cs" />
     <Compile Remove="Localization\ITranslationService.cs" />
     <Compile Remove="Localization\TranslationService.cs" />
+    <Compile Remove="Users\IUserRegistrationService.cs" />
+    <Compile Remove="Users\UserRegistrationRequest.cs" />
+    <Compile Remove="Users\UserRegistrationResult.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Authentication\AuthenticationMiddleware.cs" />
+    <Compile Include="Authentication\CookieAuthenticationService.cs" />
+    <Compile Include="Authentication\External\ExternalAuthenticationService.cs" />
+    <Compile Include="Authentication\WebAuthenticationServicesDefaults.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -19,7 +19,7 @@ namespace ARWNI2S.Portal.Framework.Globalization
         /// </returns>
         public override async Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
         {
-            var localizationSettings = NodeEngineContext.Current.Resolve<PortalLocalizationSettings>();
+            var localizationSettings = EngineContext.Current.Resolve<PortalLocalizationSettings>();
 
             if (!localizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
                 return await NullProviderCultureResult;

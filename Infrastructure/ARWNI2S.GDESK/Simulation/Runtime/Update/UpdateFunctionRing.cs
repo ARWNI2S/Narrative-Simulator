@@ -1,33 +1,41 @@
-﻿using System.Collections;
+﻿using ARWNI2S.Infrastructure.Collections.Generic;
+using System.Collections;
 
 namespace ARWNI2S.Engine.Simulation.Runtime.Update
 {
     internal class UpdateFunctionRing : IEnumerable<UpdateFunction>, IEnumerator<UpdateFunction>
     {
-        private readonly UpdateFrameRoot _frameRoot;
+        private UpdateFrameRoot updateFrameRoot;
 
-        private UpdateFunction _current;
-        private UpdateFunction _currentSegmentRoot;
+        private UpdateFunction current;
+
+        private Deque<UpdateRoot> _completedCycles = [];
+        private UpdateRoot currentCycleRoot;
+        private Deque<UpdateRoot> _pendingCycles = [];
+
         private bool _inSegment;
         private bool _isFrameComplete;
 
-        public UpdateFunctionRing(UpdateFrameRoot frameRoot)
+        public void Initialize(UpdateFrameRoot frameRoot)
         {
-            _frameRoot = frameRoot ?? throw new ArgumentNullException(nameof(frameRoot));
-            _current = _currentSegmentRoot = _frameRoot;
+            updateFrameRoot = frameRoot ?? throw new ArgumentNullException(nameof(frameRoot));
+            current = updateFrameRoot;
             Reset();
         }
 
-        public UpdateFunction GetNextFrameRoot() => _isFrameComplete ? PrepareFrameRoot() : _frameRoot;
+        public UpdateFunction GetNextFrameRoot() => _isFrameComplete ? PrepareFrameRoot() : updateFrameRoot;
 
         private UpdateFrameRoot PrepareFrameRoot()
         {
-            return _frameRoot;//TODO: .GenerateNextFrame();
+            return updateFrameRoot;//TODO: .GenerateNextFrame();
         }
 
         public UpdateFunction GetNextCycleRoot()
         {
-            var result = _current.InternalData.Next;
+            if (current == null)
+                return updateFrameRoot;
+
+            var result = current.InternalData.Next;
 
             while (result is not UpdateRoot)
                 result = result.InternalData.Next;
@@ -45,26 +53,31 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
 
         #region IEnumerator implementation
 
-        public UpdateFunction Current => _current;
+        public UpdateFunction Current => current;
 
         object IEnumerator.Current => Current;
 
         // Mueve al siguiente UpdateFunction en el segmento actual
         public bool MoveNext()
         {
-            if (_current == null) // Primer acceso al segmento actual
+            if (current == null) // Primer acceso al segmento actual
             {
-                _current = _currentSegmentRoot;
+                current = currentCycleRoot;
             }
             else
             {
-                _current = _current.InternalData.Next;
+                current = current.InternalData.Next;
             }
 
+            //if(current is UpdateFrameRoot frameRoot)
+            //{
+            //    currentCycleRoot = updateFrameRoot = frameRoot;
+            //    _inSegment = false;
+            //}
             // Si llegamos al próximo UpdateRoot, hemos alcanzado el final del segmento actual
-            if (_current is UpdateRoot && _current != _currentSegmentRoot)
+            if (current is UpdateRoot nextRoot && current != currentCycleRoot)
             {
-                _currentSegmentRoot = _current;
+                currentCycleRoot = nextRoot;
                 _inSegment = false;
             }
 
@@ -73,8 +86,8 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
 
         public void Reset()
         {
-            _currentSegmentRoot = _current; // Mantener la posición en el anillo general
-            _current = null;
+            currentCycleRoot = (UpdateRoot)current; // Mantener la posición en el anillo general
+            current = null;
             _inSegment = true;
         }
 

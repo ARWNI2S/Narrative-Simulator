@@ -1,21 +1,21 @@
-﻿using ARWNI2S.Infrastructure.Engine;
+﻿using ARWNI2S.Node.Core.Network;
 
 namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 {
-    internal class PortalContextAccessor : IEngineContextAccessor
+    internal class PortalContextAccessor : INetworkContextAccessor
     {
-        private static readonly AsyncLocal<EngineContextHolder> _engineContextCurrent = new AsyncLocal<EngineContextHolder>();
+        private static readonly AsyncLocal<NetworkContextHolder> _netContextCurrent = new AsyncLocal<NetworkContextHolder>();
 
         /// <inheritdoc/>
-        public IEngineContext EngineContext
+        public INetworkContext NetworkContext
         {
             get
             {
-                return _engineContextCurrent.Value?.Context;
+                return _netContextCurrent.Value?.Context;
             }
             set
             {
-                var holder = _engineContextCurrent.Value;
+                var holder = _netContextCurrent.Value;
                 if (holder != null)
                 {
                     // Clear current EngineContext trapped in the AsyncLocals, as its done.
@@ -26,14 +26,15 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 {
                     // Use an object indirection to hold the EngineContext in the AsyncLocal,
                     // so it can be cleared in all ExecutionContexts when its cleared.
-                    _engineContextCurrent.Value = new EngineContextHolder { Context = value };
+                    _netContextCurrent.Value = new NetworkContextHolder { Context = value };
                 }
             }
         }
 
-        private sealed class EngineContextHolder
+
+        private sealed class NetworkContextHolder
         {
-            public IEngineContext Context;
+            public INetworkContext Context;
         }
     }
 }

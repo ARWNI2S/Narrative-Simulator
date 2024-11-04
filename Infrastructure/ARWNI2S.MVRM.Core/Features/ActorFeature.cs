@@ -5,7 +5,7 @@ using System.Reflection;
 namespace ARWNI2S.Engine.Features
 {
     /// <summary>
-    /// The list of controllers types in an MVC application. The <see cref="ActorFeature"/> can be populated
+    /// The list of controllers types in an MVRM application. The <see cref="ActorFeature"/> can be populated
     /// using the <see cref="EnginePartManager"/> that is available during startup at <see cref="IMVRMCoreBuilder.PartManager"/>
     /// or at a later stage by requiring the <see cref="EnginePartManager"/>
     /// as a dependency in a component.
@@ -13,7 +13,7 @@ namespace ARWNI2S.Engine.Features
     public class ActorFeature
     {
         /// <summary>
-        /// Gets the list of controller types in an MVC application.
+        /// Gets the list of controller types in an MVRM application.
         /// </summary>
         public IList<TypeInfo> Controllers { get; } = [];
     }

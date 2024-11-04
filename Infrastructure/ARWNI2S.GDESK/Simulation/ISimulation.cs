@@ -1,10 +1,16 @@
 ﻿using ARWNI2S.Engine.Simulation.Runtime;
 using ARWNI2S.Engine.Simulation.Time;
+using ARWNI2S.Engine.Simulation.World;
 
 namespace ARWNI2S.Engine.Simulation
 {
     public interface ISimulation : IDisposable
     {
+        /// <summary>
+        /// Gets the global simulation world
+        /// </summary>
+        IWorld World { get; }
+
         /// <summary>
         /// Gets the global simulation clock
         /// </summary>

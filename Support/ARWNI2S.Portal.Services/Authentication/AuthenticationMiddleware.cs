@@ -1,7 +1,7 @@
-﻿using ARWNI2S.Node.Core.Infrastructure;
+﻿using ARWNI2S.Node.Core.Entities.Users;
+using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Services.Logging;
-using ARWNI2S.Portal.Services.Entities.Users;
 using Microsoft.AspNetCore.Authentication;
 
 namespace ARWNI2S.Portal.Services.Authentication
@@ -52,7 +52,7 @@ namespace ARWNI2S.Portal.Services.Authentication
             });
 
             // Give any IAuthenticationRequestHandler schemes a chance to handle the request
-            var handlers = NodeEngineContext.Current.Resolve<IAuthenticationHandlerProvider>();
+            var handlers = EngineContext.Current.Resolve<IAuthenticationHandlerProvider>();
             foreach (var scheme in await Schemes.GetRequestHandlerSchemesAsync())
             {
                 try
@@ -66,13 +66,13 @@ namespace ARWNI2S.Portal.Services.Authentication
                         continue;
 
                     var externalAuthenticationSettings =
-                        NodeEngineContext.Current.Resolve<ExternalAuthenticationSettings>();
+                        EngineContext.Current.Resolve<ExternalAuthenticationSettings>();
 
                     if (!externalAuthenticationSettings.LogErrors)
                         continue;
 
                     var logger =
-                        NodeEngineContext.Current.Resolve<ILogService>();
+                        EngineContext.Current.Resolve<ILogService>();
 
                     await logger.ErrorAsync(ex.Message, ex);
                 }

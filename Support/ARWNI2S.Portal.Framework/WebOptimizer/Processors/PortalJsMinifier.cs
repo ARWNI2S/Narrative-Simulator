@@ -37,7 +37,7 @@ namespace ARWNI2S.Portal.Framework.WebOptimizer.Processors
 
                 if (result.HasErrors)
                 {
-                    await NodeEngineContext.Current.Resolve<ILogService>()
+                    await EngineContext.Current.Resolve<ILogService>()
                         .WarningAsync($"JavaScript minification: {key}", new(string.Join(Environment.NewLine, result.Errors)));
                 }
 

@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Engine.Simulation;
 
-namespace ARWNI2S.Engine.Hosting
+namespace ARWNI2S.Engine.Configuration
 {
     public class GDESKConfigurationException : GDESKException
     {

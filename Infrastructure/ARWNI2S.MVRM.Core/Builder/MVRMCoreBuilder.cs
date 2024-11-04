@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ARWNI2S.Engine.Builder
 {
     /// <summary>
-    /// Allows fine grained configuration of essential MVC services.
+    /// Allows fine grained configuration of essential MVRM services.
     /// </summary>
     internal sealed class MVRMCoreBuilder : IMVRMCoreBuilder
     {

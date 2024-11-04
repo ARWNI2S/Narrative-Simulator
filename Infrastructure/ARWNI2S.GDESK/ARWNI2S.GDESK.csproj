@@ -11,34 +11,15 @@
     <Compile Remove="Configuration\**" />
     <Compile Remove="Hosting\**" />
     <Compile Remove="Infrastructure\**" />
-    <Compile Remove="Simulation\Kernel\**" />
+    <Compile Remove="Simulation\**" />
     <EmbeddedResource Remove="Configuration\**" />
     <EmbeddedResource Remove="Hosting\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Simulation\Kernel\**" />
+    <EmbeddedResource Remove="Simulation\**" />
     <None Remove="Configuration\**" />
     <None Remove="Hosting\**" />
     <None Remove="Infrastructure\**" />
-    <None Remove="Simulation\Kernel\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Simulation\EventHandler.cs" />
-    <Compile Remove="Simulation\Runtime\FrameTask.cs" />
-    <Compile Remove="Simulation\Runtime\FrameTaskScheduler.cs" />
-    <Compile Remove="Simulation\Runtime\TickManager.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Configuration\GDESKConfig.cs" />
-    <Compile Include="Hosting\DefaultGDESKServices.cs" />
-    <Compile Include="Hosting\Exceptions.cs" />
-    <Compile Include="Hosting\Extensions\GDESKGenericHostBuilderExtensions.cs" />
-    <Compile Include="Hosting\GDESKBuilder.cs" />
-    <Compile Include="Hosting\IGDESKBuilder.cs" />
-    <Compile Include="Simulation\Kernel\Dispatcher.cs" />
-    <Compile Include="Simulation\Kernel\Events.cs" />
-    <Compile Include="Simulation\Kernel\EventPool.cs" />
+    <None Remove="Simulation\**" />
   </ItemGroup>
 
   <ItemGroup>

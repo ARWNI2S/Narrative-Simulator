@@ -8,6 +8,9 @@ using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Services.Authentication;
+using ARWNI2S.Node.Services.Authentication.External;
+using ARWNI2S.Node.Services.Authentication.MultiFactor;
 using ARWNI2S.Node.Services.Caching;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
@@ -26,7 +29,6 @@ using ARWNI2S.Portal.Framework.Routing;
 using ARWNI2S.Portal.Services;
 using ARWNI2S.Portal.Services.Authentication;
 using ARWNI2S.Portal.Services.Authentication.External;
-using ARWNI2S.Portal.Services.Authentication.MultiFactor;
 using ARWNI2S.Portal.Services.Blogs;
 using ARWNI2S.Portal.Services.Cms;
 using ARWNI2S.Portal.Services.Common;
@@ -114,7 +116,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IWorkContext, PortalWorkContext>();
 
             //node context
-            services.AddScoped<IClusteringContext, NI2SPortalContext>();
+            services.AddScoped<INodeContext, NI2SPortalContext>();
 
             //services
             services.AddScoped<ITopicTemplateService, TopicTemplateService>();
@@ -243,7 +245,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
                 services.AddScoped(setting, serviceProvider =>
                 {
                     var nodeId = DataSettingsManager.IsDatabaseInstalled()
-                        ? ((NI2SNode)serviceProvider.GetRequiredService<IClusteringContext>().GetCurrentNode())?.Id ?? 0
+                        ? ((NI2SNode)serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode())?.Id ?? 0
                         : 0;
 
                     return serviceProvider.GetRequiredService<ISettingService>().LoadSettingAsync(setting, nodeId).Result;

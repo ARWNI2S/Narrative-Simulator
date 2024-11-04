@@ -17,6 +17,9 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using User = ARWNI2S.Node.Core.Entities.Users.User;
 using UserService = ARWNI2S.Portal.Services.Users.PortalUserService;
+using ARWNI2S.Node.Services.Authentication.External;
+using ARWNI2S.Node.Services.Users;
+using ARWNI2S.Node.Services.Authentication;
 
 namespace ARWNI2S.Portal.Services.Authentication.External
 {
@@ -38,7 +41,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILocalizationService _localizationService;
         private readonly IRepository<ExternalAuthenticationRecord> _externalAuthenticationRecordRepository;
-        private readonly IClusteringContext _nodeContext;
+        private readonly INodeContext _nodeContext;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
         private readonly IWorkflowMessageService _workflowMessageService;
@@ -60,7 +63,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             IHttpContextAccessor httpContextAccessor,
             ILocalizationService localizationService,
             IRepository<ExternalAuthenticationRecord> externalAuthenticationRecordRepository,
-            IClusteringContext nodeContext,
+            INodeContext nodeContext,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
             IWorkflowMessageService workflowMessageService,
@@ -164,7 +167,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
 
             //registration is approved if validation isn't required
             var registrationIsApproved = _userSettings.UserRegistrationType == UserRegistrationType.Standard ||
-                _userSettings.UserRegistrationType == UserRegistrationType.EmailValidation && !_externalAuthenticationSettings.RequireEmailValidation;
+                _userSettings.UserRegistrationType == UserRegistrationType.Validation && !_externalAuthenticationSettings.RequireEmailValidation;
 
             //create registration request
             var user = (User)await _workContext.GetCurrentUserAsync();
@@ -207,13 +210,13 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             }
 
             //registration is succeeded but isn't activated
-            if (_userSettings.UserRegistrationType == UserRegistrationType.EmailValidation)
+            if (_userSettings.UserRegistrationType == UserRegistrationType.Validation)
             {
                 //email validation message
                 await _genericAttributeService.SaveAttributeAsync(user, UserDefaults.AccountActivationTokenAttribute, Guid.NewGuid().ToString());
                 await _workflowMessageService.SendUserEmailValidationMessageAsync(user, currentLanguage.Id);
 
-                return new RedirectToRouteResult("RegisterResult", new { resultId = (int)UserRegistrationType.EmailValidation, returnUrl });
+                return new RedirectToRouteResult("RegisterResult", new { resultId = (int)UserRegistrationType.Validation, returnUrl });
             }
 
             //registration is succeeded but isn't approved by admin

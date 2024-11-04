@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Node.Core.Entities.Users;
+using ARWNI2S.Node.Services.Authentication;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.Users;
 using Microsoft.AspNetCore.Authentication;
@@ -9,7 +10,7 @@ namespace ARWNI2S.Portal.Services.Authentication
     /// <summary>
     /// Represents service using cookie middleware for the authentication
     /// </summary>
-    public partial class CookieAuthenticationService : IAuthenticationService
+    public partial class CookieAuthenticationService : Node.Services.Authentication.IAuthenticationService
     {
         #region Fields
 
@@ -60,7 +61,7 @@ namespace ARWNI2S.Portal.Services.Authentication
             var userPrincipal = new ClaimsPrincipal(userIdentity);
 
             //set value indicating whether session is persisted and the time at which the authentication was issued
-            var authenticationProperties = new AuthenticationProperties
+            var authenticationProperties = new Microsoft.AspNetCore.Authentication.AuthenticationProperties
             {
                 IsPersistent = isPersistent,
                 IssuedUtc = DateTime.UtcNow

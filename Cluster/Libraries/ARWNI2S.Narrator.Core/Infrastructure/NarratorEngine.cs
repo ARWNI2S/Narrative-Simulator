@@ -1,15 +1,17 @@
-﻿using ARWNI2S.Engine.Simulation;
+﻿using ARWNI2S.Engine.Configuration;
+using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Engine.Simulation.Kernel;
 using ARWNI2S.Engine.Simulation.Runtime;
 using ARWNI2S.Engine.Simulation.Time;
+using ARWNI2S.Engine.Simulation.World;
 using Microsoft.Extensions.Logging;
 
 namespace ARWNI2S.Node.Core.Infrastructure
 {
     internal class NarratorEngine : SimulationBase, ISimulation, ILifecycleParticipant<ISiloLifecycle>
     {
-        public NarratorEngine(Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock,
-            ILogger<NarratorEngine> logger) : base(dispatcher, simulableRuntime, clock, logger) { }
+        public NarratorEngine(GDESKConfig configuration, Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock,
+            ILogger<NarratorEngine> logger) : base(configuration, dispatcher, simulableRuntime, clock, logger) { }
 
         public void Participate(ISiloLifecycle lifecycle)
         {
@@ -50,6 +52,11 @@ namespace ARWNI2S.Node.Core.Infrastructure
         protected override bool Initialize()
         {
             return base.Initialize();
+        }
+
+        protected override IWorld GetWorld()
+        {
+            throw new NotImplementedException();
         }
     }
 }

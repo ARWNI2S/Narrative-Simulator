@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Actors\Grains\NI2SActorGrain.cs" />
+    <Compile Remove="Infrastructure\NarratorEngine.cs" />
     <Compile Remove="Time\NarratorClock.cs" />
   </ItemGroup>
 
@@ -19,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Actors\Grains\" />
+    <Folder Include="Infrastructure\" />
     <Folder Include="Objects\" />
     <Folder Include="Time\" />
   </ItemGroup>

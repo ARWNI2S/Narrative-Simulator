@@ -3,8 +3,8 @@
     /// <summary>
     /// Specifies an assembly to be added as an <see cref="EnginePart" />.
     /// <para>
-    /// In the ordinary case, MVC will generate <see cref="EnginePartAttribute" />
-    /// instances on the entry assembly for each dependency that references MVC.
+    /// In the ordinary case, MVRM will generate <see cref="EnginePartAttribute" />
+    /// instances on the entry assembly for each dependency that references MVRM.
     /// Each of these assemblies is treated as an <see cref="EnginePart" />.
     /// </para>
     /// </summary>

@@ -38,7 +38,6 @@ using System.Globalization;
 using System.Text;
 using ARWNI2S.Portal.Services.Clustering;
 using ARWNI2S.Node.Services.Installation;
-using ARWNI2S.Portal.Services.Users;
 using ARWNI2S.Node.Core.Network;
 
 namespace ARWNI2S.Portal.Services.Installation
@@ -338,7 +337,7 @@ namespace ARWNI2S.Portal.Services.Installation
 		/// <returns>A task that represents the asynchronous operation</returns>
 		protected virtual async Task InstallLanguagesAsync((string languagePackDownloadLink, int languagePackProgress) languagePackInfo, CultureInfo cultureInfo, RegionInfo regionInfo)
 		{
-			var localizationService = NodeEngineContext.Current.Resolve<ILocalizationService>();
+			var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
 
 			var defaultCulture = new CultureInfo(CommonServicesDefaults.DefaultLanguageCulture);
 			var defaultLanguage = new Language
@@ -383,7 +382,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				//download and import language pack
 				try
 				{
-					var httpClientFactory = NodeEngineContext.Current.Resolve<IHttpClientFactory>();
+					var httpClientFactory = EngineContext.Current.Resolve<IHttpClientFactory>();
 					var httpClient = httpClientFactory.CreateClient(HttpDefaults.DefaultHttpClient);
 					await using var stream = await httpClient.GetStreamAsync(languagePackInfo.languagePackDownloadLink);
 					using var streamReader = new StreamReader(stream);
@@ -629,9 +628,9 @@ namespace ARWNI2S.Portal.Services.Installation
 			var pattern = "*.txt";
 
 			//we use different scope to prevent creating wrong settings in DI, because the settings data not exists yet
-			var serviceScopeFactory = NodeEngineContext.Current.Resolve<IServiceScopeFactory>();
+			var serviceScopeFactory = EngineContext.Current.Resolve<IServiceScopeFactory>();
 			using var scope = serviceScopeFactory.CreateScope();
-			var importManager = NodeEngineContext.Current.Resolve<IImportManager>(scope);
+			var importManager = EngineContext.Current.Resolve<IImportManager>(scope);
 			foreach (var filePath in _fileProvider.EnumerateFiles(directoryPath, pattern))
 			{
 				await using var stream = new FileStream(filePath, FileMode.Open);
@@ -798,7 +797,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			var isGermany = country == "DE";
 			var isEurope = ISO3166.FromCountryCode(country)?.SubjectToVat ?? false;
 
-			var settingService = NodeEngineContext.Current.Resolve<ISettingService>();
+			var settingService = EngineContext.Current.Resolve<ISettingService>();
 
 			await settingService.SaveSettingAsync(new SitemapSettings
 			{
@@ -926,7 +925,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				PasswordLifetime = 90,
 				FailedPasswordAllowedAttempts = 0,
 				FailedPasswordLockoutMinutes = 30,
-				UserRegistrationType = UserRegistrationType.EmailValidation,
+				UserRegistrationType = UserRegistrationType.Validation,
 				AllowUsersToUploadAvatars = true,
 				AvatarMaximumSizeBytes = 20000,
 				DefaultAvatarEnabled = true,
@@ -1422,7 +1421,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				new UserUserRoleMapping { UserId = adminUser.Id, UserRoleId = urRegistered.Id });
 
 			//set hashed admin password
-			var userRegistrationService = NodeEngineContext.Current.Resolve<IUserRegistrationService>();
+			var userRegistrationService = EngineContext.Current.Resolve<IUserRegistrationService>();
 			await userRegistrationService.ChangePasswordAsync(new ChangePasswordRequest(defaultUserEmail, false,
 				 PasswordFormat.Hashed, defaultUserPassword, null, UserServicesDefaults.DefaultHashedPasswordFormat));
 
@@ -3639,7 +3638,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			//await InstallDebugQuestsAsync();
 #endif
 
-			var localizedEntityService = NodeEngineContext.Current.Resolve<ILocalizedEntityService>();
+			var localizedEntityService = EngineContext.Current.Resolve<ILocalizedEntityService>();
 
 			await IntallLocalizedTopicsAsync(localizedEntityService);
 			await IntallLocalizedNewsAsync(localizedEntityService);
@@ -3647,6 +3646,11 @@ namespace ARWNI2S.Portal.Services.Installation
 			await IntallLocalizedMessageTemplatesAsync(localizedEntityService);
 		}
 
-		#endregion
-	}
+        public Task InstallNodeAsync(string adminUserEmail, string passwordUserPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
 }

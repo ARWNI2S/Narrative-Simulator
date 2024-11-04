@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly IMessageTokenProvider _messageTokenProvider;
         private readonly IQueuedEmailService _queuedEmailService;
         private readonly IRepository<Campaign> _campaignRepository;
-        private readonly IClusteringContext _nodeContext;
+        private readonly INodeContext _nodeContext;
         private readonly ITokenizer _tokenizer;
 
         #endregion
@@ -30,7 +30,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             IMessageTokenProvider messageTokenProvider,
             IQueuedEmailService queuedEmailService,
             IRepository<Campaign> campaignRepository,
-            IClusteringContext nodeContext,
+            INodeContext nodeContext,
             ITokenizer tokenizer)
         {
             _userService = userService;

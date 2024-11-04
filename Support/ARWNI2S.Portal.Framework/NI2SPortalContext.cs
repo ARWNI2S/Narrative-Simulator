@@ -12,7 +12,7 @@ namespace ARWNI2S.Portal.Framework
     /// <summary>
     /// NI2SNode context for web application
     /// </summary>
-    public partial class NI2SPortalContext : IClusteringContext
+    public partial class NI2SPortalContext : INodeContext
     {
         #region Fields
 
@@ -114,11 +114,11 @@ namespace ARWNI2S.Portal.Framework
             if ((await _clusterService.GetAllNodesAsync()).Count > 1)
             {
                 //do not inject IWorkContext via constructor because it'll cause circular references
-                var currentUser = (User)await NodeEngineContext.Current.Resolve<IWorkContext>().GetCurrentUserAsync();
+                var currentUser = (User)await EngineContext.Current.Resolve<IWorkContext>().GetCurrentUserAsync();
 
                 //try to get node identifier from attributes
                 var nodeId = await _genericAttributeService
-                    .GetAttributeAsync<int>(currentUser, UserDefaults.AdminAreaNodeScopeConfigurationAttribute);
+                    .GetAttributeAsync<int>(currentUser, UserDefaults.NodeScopeConfigurationAttribute);
 
                 _cachedActiveNodeScopeConfiguration = (await _clusterService.GetNodeByIdAsync(nodeId))?.Id ?? 0;
             }

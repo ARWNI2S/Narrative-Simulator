@@ -118,10 +118,10 @@ namespace ARWNI2S.Portal.Services.Entities.Users
         ///// </summary>
         //public int FailedPasswordLockoutMinutes { get; set; }
 
-        /// <summary>
-        /// User registration type
-        /// </summary>
-        public UserRegistrationType UserRegistrationType { get; set; }
+        ///// <summary>
+        ///// User registration type
+        ///// </summary>
+        //public UserRegistrationType UserRegistrationType { get; set; }
 
         ///// <summary>
         ///// Gets or sets a value indicating whether users are allowed to upload avatars.

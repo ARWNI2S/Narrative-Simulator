@@ -5,7 +5,7 @@ using System.Runtime.Loader;
 namespace ARWNI2S.Engine.EngineParts
 {
     /// <summary>
-    /// Specifies a assembly to load as part of MVC's assembly discovery mechanism.
+    /// Specifies a assembly to load as part of MVRM's assembly discovery mechanism.
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class RelatedAssemblyAttribute : Attribute
@@ -51,7 +51,7 @@ namespace ARWNI2S.Engine.EngineParts
         {
             ArgumentNullException.ThrowIfNull(assembly);
 
-            // MVC will specifically look for related parts in the same physical directory as the assembly.
+            // MVRM will specifically look for related parts in the same physical directory as the assembly.
             // No-op if the assembly does not have a location.
             if (assembly.IsDynamic)
             {

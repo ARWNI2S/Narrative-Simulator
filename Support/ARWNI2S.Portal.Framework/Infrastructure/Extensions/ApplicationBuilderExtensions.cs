@@ -47,7 +47,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void ConfigureRequestPipeline(this IApplicationBuilder application)
         {
-            NodeEngineContext.Current.ConfigureRequestPipeline(application);
+            EngineContext.Current.ConfigureRequestPipeline(application);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <returns>async task</returns>
         public static async Task StartEngineAsync(this IApplicationBuilder _)
         {
-            var engine = NodeEngineContext.Current;
+            var engine = EngineContext.Current;
 
             //further actions are performed only when the database is installed
             if (DataSettingsManager.IsDatabaseInstalled())
@@ -89,8 +89,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UsePortalExceptionHandler(this IApplicationBuilder application)
         {
-            var ni2sSettings = NodeEngineContext.Current.Resolve<NI2SSettings>();
-            var webHostEnvironment = NodeEngineContext.Current.Resolve<IWebHostEnvironment>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
+            var webHostEnvironment = EngineContext.Current.Resolve<IWebHostEnvironment>();
             var useDetailedExceptionPage = ni2sSettings.Get<CommonConfig>().DisplayFullErrorStack || webHostEnvironment.IsDevelopment();
             if (useDetailedExceptionPage)
             {
@@ -118,10 +118,10 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                         if (DataSettingsManager.IsDatabaseInstalled())
                         {
                             //get current user
-                            var currentUser = await NodeEngineContext.Current.Resolve<IWorkContext>().GetCurrentUserAsync();
+                            var currentUser = await EngineContext.Current.Resolve<IWorkContext>().GetCurrentUserAsync();
 
                             //log error
-                            await NodeEngineContext.Current.Resolve<ILogService>().ErrorAsync(exception.Message, exception, currentUser);
+                            await EngineContext.Current.Resolve<ILogService>().ErrorAsync(exception.Message, exception, currentUser);
                         }
                     }
                     finally
@@ -144,7 +144,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 //handle 404 Not Found
                 if (context.HttpContext.Response.StatusCode == StatusCodes.Status404NotFound)
                 {
-                    var webHelper = NodeEngineContext.Current.Resolve<IWebHelper>();
+                    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
                     if (!webHelper.IsStaticResource())
                     {
                         //get original path and query
@@ -153,12 +153,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
                         if (DataSettingsManager.IsDatabaseInstalled())
                         {
-                            var commonSettings = NodeEngineContext.Current.Resolve<Node.Core.Entities.Common.CommonSettings>();
+                            var commonSettings = EngineContext.Current.Resolve<Node.Core.Entities.Common.CommonSettings>();
 
                             if (commonSettings.LogAllErrors)
                             {
-                                var logger = NodeEngineContext.Current.Resolve<ILogService>();
-                                var workContext = NodeEngineContext.Current.Resolve<IWorkContext>();
+                                var logger = EngineContext.Current.Resolve<ILogService>();
+                                var workContext = EngineContext.Current.Resolve<IWorkContext>();
 
                                 await logger.ErrorAsync($"Error 404. The requested page ({originalPath}) was not found",
                                     user: await workContext.GetCurrentUserAsync());
@@ -194,8 +194,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 //handle 404 (Bad request)
                 if (context.HttpContext.Response.StatusCode == StatusCodes.Status400BadRequest)
                 {
-                    var logger = NodeEngineContext.Current.Resolve<ILogService>();
-                    var workContext = NodeEngineContext.Current.Resolve<IWorkContext>();
+                    var logger = EngineContext.Current.Resolve<ILogService>();
+                    var workContext = EngineContext.Current.Resolve<IWorkContext>();
                     await logger.ErrorAsync("Error 400. Bad request", null, user: await workContext.GetCurrentUserAsync());
                 }
             });
@@ -211,7 +211,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 return;
 
             //whether to use compression (gzip by default)
-            if (NodeEngineContext.Current.Resolve<Services.Entities.Common.CommonSettings>().UseResponseCompression)
+            if (EngineContext.Current.Resolve<Services.Entities.Common.CommonSettings>().UseResponseCompression)
                 application.UseResponseCompression();
         }
 
@@ -221,8 +221,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UseNI2SWebOptimizer(this IApplicationBuilder application)
         {
-            var fileProvider = NodeEngineContext.Current.Resolve<IEngineFileProvider>();
-            var webHostEnvironment = NodeEngineContext.Current.Resolve<IWebHostEnvironment>();
+            var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
+            var webHostEnvironment = EngineContext.Current.Resolve<IWebHostEnvironment>();
 
             application.UseWebOptimizer(webHostEnvironment, new[]
             {
@@ -240,8 +240,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UseNI2SStaticFiles(this IApplicationBuilder application)
         {
-            var fileProvider = NodeEngineContext.Current.Resolve<IEngineFileProvider>();
-            var ni2sSettings = NodeEngineContext.Current.Resolve<NI2SSettings>();
+            var fileProvider = EngineContext.Current.Resolve<IEngineFileProvider>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
 
             void staticFileResponse(StaticFileResponseContext context)
             {
@@ -257,7 +257,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 OnPrepareResponse = context =>
                 {
                     if (!DataSettingsManager.IsDatabaseInstalled() ||
-                        !NodeEngineContext.Current.Resolve<SitemapXmlSettings>().SitemapXmlEnabled)
+                        !EngineContext.Current.Resolve<SitemapXmlSettings>().SitemapXmlEnabled)
                     {
                         context.Context.Response.StatusCode = StatusCodes.Status403Forbidden;
                         context.Context.Response.ContentLength = 0;
@@ -310,7 +310,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 OnPrepareResponse = context =>
                 {
                     if (!DataSettingsManager.IsDatabaseInstalled() ||
-                        !NodeEngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.ManageMaintenance).Result)
+                        !EngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.ManageMaintenance).Result)
                     {
                         context.Context.Response.StatusCode = StatusCodes.Status404NotFound;
                         context.Context.Response.ContentLength = 0;
@@ -333,7 +333,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             {
                 application.UseStaticFiles(new StaticFileOptions
                 {
-                    FileProvider = NodeEngineContext.Current.Resolve<IRoxyFilemanFileProvider>(),
+                    FileProvider = EngineContext.Current.Resolve<IRoxyFilemanFileProvider>(),
                     RequestPath = new PathString(RoxyFilemanServiceDefaults.DefaultRootDirectory),
                     OnPrepareResponse = staticFileResponse
                 });
@@ -393,7 +393,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     return;
 
                 //prepare supported cultures
-                var cultures = NodeEngineContext.Current.Resolve<ILanguageService>().GetAllLanguages()
+                var cultures = EngineContext.Current.Resolve<ILanguageService>().GetAllLanguages()
 #if DEBUG
                     .Where(language => !language.Name.Contains("debug", StringComparison.CurrentCultureIgnoreCase))
 #endif
@@ -422,7 +422,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             application.UseEndpoints(endpoints =>
             {
                 //register all routes
-                NodeEngineContext.Current.Resolve<IRoutePublisher>().RegisterRoutes(endpoints);
+                EngineContext.Current.Resolve<IRoutePublisher>().RegisterRoutes(endpoints);
             });
         }
 
@@ -432,7 +432,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public static void UseNI2SProxy(this IApplicationBuilder application)
         {
-            var ni2sSettings = NodeEngineContext.Current.Resolve<NI2SSettings>();
+            var ni2sSettings = EngineContext.Current.Resolve<NI2SSettings>();
 
             if (ni2sSettings.Get<HostingConfig>().UseProxy)
             {

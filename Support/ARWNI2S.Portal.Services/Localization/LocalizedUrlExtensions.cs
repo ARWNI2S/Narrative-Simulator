@@ -37,7 +37,7 @@ namespace ARWNI2S.Portal.Services.Localization
                 return (false, null);
 
             //suppose that the first segment is the language code and try to get language
-            var languageService = NodeEngineContext.Current.Resolve<ILanguageService>();
+            var languageService = EngineContext.Current.Resolve<ILanguageService>();
             var language = (await languageService.GetAllLanguagesAsync())
                 .FirstOrDefault(urlLanguage => urlLanguage.UniqueSeoCode.Equals(firstSegment, StringComparison.InvariantCultureIgnoreCase));
 

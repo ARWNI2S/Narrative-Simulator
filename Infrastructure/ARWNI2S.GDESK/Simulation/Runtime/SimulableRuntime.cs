@@ -1,4 +1,5 @@
-﻿using ARWNI2S.Engine.Simulation.Runtime.Update;
+﻿using ARWNI2S.Engine.Configuration;
+using ARWNI2S.Engine.Simulation.Runtime.Update;
 using ARWNI2S.Engine.Simulation.Time;
 
 namespace ARWNI2S.Engine.Simulation.Runtime
@@ -12,12 +13,31 @@ namespace ARWNI2S.Engine.Simulation.Runtime
 
         public ISimulationClock Clock { get { return _clock; } }
 
-        public SimulableRuntime(UpdateProcessor updateProcessor, ISimulationClock clock)
+        public SimulableRuntime(GDESKConfig config,
+            ISimulationClock clock)
         {
-            _updateProcessor = updateProcessor;
-
             _clock = clock;
+
+            _updateProcessor = new UpdateProcessor(config, this, new UpdateFunctionRing(), _clock);
         }
+
+        public void InitializeRuntime(GDESKConfig configuration)
+        {
+            try
+            {
+                //At this point we must have an empty cycle represented by:
+                var frameRoot = new UpdateFrameRoot();
+                frameRoot.InternalData = new UpdateFunction.RegistryInfo();
+                frameRoot.InternalData.Next = frameRoot;
+
+                _updateProcessor.Initialize(frameRoot);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
 
         // Method to start the loop on a dedicated thread
         public void Start(CancellationToken? cancellationToken = null)

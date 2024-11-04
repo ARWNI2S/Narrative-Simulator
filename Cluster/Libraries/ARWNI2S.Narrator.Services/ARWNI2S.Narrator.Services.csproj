@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Clustering\LocalActorRegistry .cs" />
+    <Compile Remove="Clustering\Services\ActorDirectoryService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
     <ProjectReference Include="..\ARWNI2S.Narrator.Data\ARWNI2S.Narrator.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clustering\Services\" />
   </ItemGroup>
 
 </Project>

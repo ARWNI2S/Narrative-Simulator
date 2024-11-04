@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Node.Core;
+﻿using ARWNI2S.Node.Core.Network;
 
 namespace ARWNI2S.Portal.Services
 {
     /// <summary>
     /// Represents a web helper
     /// </summary>
-    public partial interface IWebHelper : IClusteringHelper
+    public partial interface IWebHelper : INI2SNetHelper
     {
         /// <summary>
         /// Get URL referrer if exists
@@ -54,20 +54,20 @@ namespace ARWNI2S.Portal.Services
         /// <returns>Query string value</returns>
         T QueryString<T>(string name);
 
-        /// <summary>
-        /// Gets a value that indicates whether the client is being redirected to a new location
-        /// </summary>
-        bool IsRequestBeingRedirected { get; }
+        ///// <summary>
+        ///// Gets a value that indicates whether the client is being redirected to a new location
+        ///// </summary>
+        //bool IsBeingRedirected { get; }
 
-        /// <summary>
-        /// Gets or sets a value that indicates whether the client is being redirected to a new location using POST
-        /// </summary>
-        bool IsPostBeingDone { get; set; }
+        ///// <summary>
+        ///// Gets or sets a value that indicates whether the client is being redirected to a new location using POST
+        ///// </summary>
+        //bool IsPostBeingDone { get; set; }
 
-        /// <summary>
-        /// Gets current HTTP request protocol
-        /// </summary>
-        string GetCurrentRequestProtocol();
+        ///// <summary>
+        ///// Gets current HTTP request protocol
+        ///// </summary>
+        //string GetCurrentProtocol();
 
         /// <summary>
         /// Gets whether the specified HTTP request URI references the local host.

@@ -6,9 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Clustering\Services\**" />
+    <EmbeddedResource Remove="Clustering\Services\**" />
+    <None Remove="Clustering\Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Clustering\LocalActorRegistry .cs" />
+    <Compile Remove="Network\FrontlineService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Services\ARWNI2S.Node.Services.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clustering\" />
+    <Folder Include="Network\" />
   </ItemGroup>
 
 </Project>

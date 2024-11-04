@@ -1,11 +1,12 @@
-﻿using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Engine.Simulation.Simulable;
+using ARWNI2S.Infrastructure;
 
 namespace ARWNI2S.Engine.Simulation.Runtime.Update
 {
-	/// <summary>
-	/// The update group
-	/// </summary>
-	public enum UpdateGroup
+    /// <summary>
+    /// The update group
+    /// </summary>
+    public enum UpdateGroup
 	{
 		Default,
 		AIUpdates,
@@ -178,6 +179,11 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
 			/// Back pointer to the <see cref="UpdateFrameRoot"/> containing this update function if it is registered
 			/// </summary>
 			public UpdateFrameRoot FrameRoot;
+
+			/// <summary>
+			/// Back pointer to the <see cref="Update.UpdateRoot"/> containing this update function if it is registered
+			/// </summary>
+			public UpdateRoot UpdateRoot;
 		}
 
 		/// <summary>

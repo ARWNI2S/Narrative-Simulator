@@ -1,6 +1,9 @@
-﻿using ARWNI2S.Engine.Simulation.Kernel;
+﻿using ARWNI2S.Engine.Configuration;
+using ARWNI2S.Engine.Simulation.Kernel;
 using ARWNI2S.Engine.Simulation.Runtime;
 using ARWNI2S.Engine.Simulation.Time;
+using ARWNI2S.Engine.Simulation.World;
+using ARWNI2S.Infrastructure.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace ARWNI2S.Engine.Simulation
@@ -25,14 +28,18 @@ namespace ARWNI2S.Engine.Simulation
 
     public abstract class SimulationBase : ISimulation
     {
+        private readonly GDESKConfig _configuration;
+
         private readonly Dispatcher _dispatcher;
         private readonly ISimulableRuntime _simulableRuntime;
         private readonly ISimulationClock _clock;
 
         private readonly ILogger _logger;
 
+
         private CancellationTokenSource mainCancelSource;
         private bool disposedValue;
+
 
         /// <summary>
         /// Gets a value indicating if the simulation is correctly initialized.
@@ -40,8 +47,10 @@ namespace ARWNI2S.Engine.Simulation
         /// <remarks>Uninitialized simulation won't run.</remarks>
         public bool IsInitialized { get; protected set; }
 
-        internal SimulationBase(Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock, ILogger logger)
+        internal SimulationBase(GDESKConfig configuration, Dispatcher dispatcher, ISimulableRuntime simulableRuntime, ISimulationClock clock, ILogger logger)
         {
+            _configuration = configuration;
+
             _dispatcher = dispatcher;
             _simulableRuntime = simulableRuntime;
 
@@ -55,8 +64,29 @@ namespace ARWNI2S.Engine.Simulation
         /// <inheritdoc />
         public ISimulableRuntime Runtime => _simulableRuntime;
 
+        public IWorld World => GetWorld();
+
         /// <inheritdoc />
-        protected void InitializeSimulation() { IsInitialized = Initialize(); }
+        protected void InitializeSimulation()
+        {
+            try
+            {
+                _logger.LogInformation("Initializing Simulation at: {time}", DateTime.Now);
+
+                _simulableRuntime.InitializeRuntime(_configuration);
+                IsInitialized = Initialize();
+            }
+            catch (GDESKException gdeskEx)
+            {
+                _logger.LogCritical(ErrorCode.SimulationBaseInitializing, gdeskEx.Message, gdeskEx);
+                IsInitialized = false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
 
         /// <inheritdoc />
         protected virtual void StartSimulation(CancellationToken? cancellationToken = null)
@@ -93,7 +123,12 @@ namespace ARWNI2S.Engine.Simulation
         /// </summary>
         /// <returns>true if the initialization was successful, otherwise false.</returns>
         /// <remarks>Always returns true if not overloaded.</remarks>
-        protected virtual bool Initialize() { return true; }
+        protected virtual bool Initialize()
+        {
+            return true;
+        }
+
+        protected abstract IWorld GetWorld();
 
         /// <inheritdoc />
         void ISimulation.InitializeSimulation() => InitializeSimulation();

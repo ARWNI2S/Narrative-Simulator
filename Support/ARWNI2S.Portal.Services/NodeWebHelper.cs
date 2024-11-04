@@ -25,7 +25,7 @@ namespace ARWNI2S.Portal.Services
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUrlHelperFactory _urlHelperFactory;
-        private readonly Lazy<IClusteringContext> _nodeContext;
+        private readonly Lazy<INodeContext> _nodeContext;
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace ARWNI2S.Portal.Services
             IHostApplicationLifetime hostApplicationLifetime,
             IHttpContextAccessor httpContextAccessor,
             IUrlHelperFactory urlHelperFactory,
-            Lazy<IClusteringContext> nodeContext)
+            Lazy<INodeContext> nodeContext)
         {
             _actionContextAccessor = actionContextAccessor;
             _hostApplicationLifetime = hostApplicationLifetime;
@@ -96,7 +96,7 @@ namespace ARWNI2S.Portal.Services
                 return string.Empty;
 
             //URL referrer is null in some case (for example, in IE 8)
-            return _httpContextAccessor.HttpContext.Request.Headers[HeaderNames.Referer];
+            return _httpContextAccessor.HttpContext.Request.Headers[Microsoft.Net.Http.Headers.HeaderNames.Referer];
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace ARWNI2S.Portal.Services
                 return string.Empty;
 
             //try to get host from the request HOST header
-            var hostHeader = _httpContextAccessor.HttpContext.Request.Headers[HeaderNames.Host];
+            var hostHeader = _httpContextAccessor.HttpContext.Request.Headers[Microsoft.Net.Http.Headers.HeaderNames.Host];
             if (StringValues.IsNullOrEmpty(hostHeader))
                 return string.Empty;
 
@@ -349,7 +349,7 @@ namespace ARWNI2S.Portal.Services
         /// <summary>
         /// Gets a value that indicates whether the client is being redirected to a new location
         /// </summary>
-        public virtual bool IsRequestBeingRedirected
+        public virtual bool IsBeingRedirected
         {
             get
             {
@@ -380,7 +380,7 @@ namespace ARWNI2S.Portal.Services
         /// <summary>
         /// Gets current HTTP request protocol
         /// </summary>
-        public virtual string GetCurrentRequestProtocol()
+        public virtual string GetCurrentProtocol()
         {
             return IsCurrentConnectionSecured() ? Uri.UriSchemeHttps : Uri.UriSchemeHttp;
         }
@@ -439,6 +439,8 @@ namespace ARWNI2S.Portal.Services
 
             return request.Headers.XRequestedWith == "XMLHttpRequest";
         }
+
+        bool INI2SNetHelper.IsStaticAsset() => IsStaticResource();
 
         #endregion
     }

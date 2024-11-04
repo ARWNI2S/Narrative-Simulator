@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ARWNI2S.Engine.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -76,12 +77,12 @@ namespace ARWNI2S.Engine.Hosting.Extensions
             ArgumentNullException.ThrowIfNull(hostBuilder);
             ArgumentNullException.ThrowIfNull(configureDelegate);
 
-            if (hostBuilder.Properties.ContainsKey("HasGDESKClientBuilder"))
+            if (hostBuilder.Properties.ContainsKey("HasGDESKBuilder"))
             {
-                throw GetGDESKClientAddedException();
+                throw GetGDESKAlreadyAddedException();
             }
 
-            hostBuilder.Properties["HasGDESKSiloBuilder"] = "true";
+            hostBuilder.Properties["HasGDESKBuilder"] = "true";
 
             return hostBuilder.ConfigureServices((context, services) => configureDelegate(context, AddGDESKCore(services, context.Configuration)));
         }
@@ -119,7 +120,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
                 builder = marker.BuilderInstance switch
                 {
                     IGDESKBuilder existingBuilder => existingBuilder,
-                    _ => throw GetGDESKClientAddedException()
+                    _ => throw GetGDESKAlreadyAddedException()
                 };
             }
 
@@ -132,7 +133,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
             return builder;
         }
 
-        private static GDESKConfigurationException GetGDESKClientAddedException() =>
+        private static GDESKConfigurationException GetGDESKAlreadyAddedException() =>
             new("Do not call twice UseGDESK/AddGDESK. If you want multiple simulation in the same process, only UseGDESK/AddGDESK is necessary and call UseMultiSimulationKernel/AddMultiSimulationKernel.");
     }
 

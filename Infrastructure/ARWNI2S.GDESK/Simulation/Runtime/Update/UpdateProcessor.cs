@@ -1,13 +1,17 @@
 ﻿using ARWNI2S.Engine.Configuration;
 using ARWNI2S.Engine.Simulation.Time;
 using ARWNI2S.Infrastructure.Timing;
-using System.Diagnostics;
 
 namespace ARWNI2S.Engine.Simulation.Runtime.Update
 {
     internal class UpdateProcessor : IDisposable
     {
+        private readonly ISimulableRuntime _runtime;
         private readonly ISimulationClock _clock;
+        private readonly UpdateFunctionRing _updateRing;
+
+        private readonly Thread _updateThread;
+        private readonly Thread _workerThread;
 
         #region Statistics
 
@@ -17,10 +21,12 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
 
         public ISimulationClock Clock { get { return _clock; } }
 
-        public UpdateProcessor(/*GDESKConfig config, */UpdateFunctionRing updateRing, ISimulationClock clock)
+        public UpdateProcessor(GDESKConfig config, ISimulableRuntime runtime, UpdateFunctionRing updateRing, ISimulationClock clock)
         {
-            _clock = clock;
+            _runtime = runtime;
             _updateRing = updateRing;
+
+            _clock = clock;
 
             // Create the dedicated threads
             _updateThread = new Thread((_) => UpdateLoop(cancelSource.Token))
@@ -37,6 +43,11 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
             };
         }
 
+        internal void Initialize(UpdateFrameRoot frameRoot)
+        {
+            _updateRing.Initialize(frameRoot);
+        }
+
         // Method to start the loop on a dedicated thread
         public void Start(CancellationToken? cancellationToken = null)
         {
@@ -44,6 +55,7 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
                 CancellationTokenSource.CreateLinkedTokenSource(cancellationToken.Value);
 
             // Start the dedicated thread
+            _workerThread.Start(cancelSource.Token);
             _updateThread.Start(cancelSource.Token);
         }
 
@@ -67,7 +79,6 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
 
         #region Update Function Ring
 
-        private readonly UpdateFunctionRing _updateRing;
 
         private UpdateFunction frameRoot;
         private UpdateFunction cycleRoot;
@@ -93,7 +104,6 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
         #region Update Cycle Loop
 
         private readonly HiResTimer _timer = new();
-        private readonly Thread _updateThread;
 
         private void UpdateLoop(CancellationToken token)
         {
@@ -117,7 +127,7 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
                 //Frame preparation tasks (high priority do once per frame)
                 foreach (var update in _updateRing)
                 {
-                    update.InternalData.Task.RunSynchronously();
+                    update.InternalData?.Task?.RunSynchronously();
                 }
 
                 lock (_awaiter)
@@ -130,7 +140,7 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
                 {
                     foreach (var update in _updateRing)
                     {
-                        update.InternalData.Task.RunSynchronously();
+                        update.InternalData?.Task?.RunSynchronously();
                     }
 
                     lock (_awaiter)
@@ -165,7 +175,6 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
         #region Dynamic Maintenance
 
         private readonly object _awaiter = new();
-        private readonly Thread _workerThread;
 
         private void WorkerLoop(CancellationToken token)
         {
@@ -219,34 +228,6 @@ namespace ARWNI2S.Engine.Simulation.Runtime.Update
         }
 
         #endregion
-
-
-
-
-
-
-
-
-
-        private long fpsStartTime;
-        private long fpsFrameCount;
-
-        public virtual void LimitFrameRate(int fps)
-        {
-            long freq = Stopwatch.Frequency;
-            long frame = Stopwatch.GetTimestamp();
-            while ((frame - fpsStartTime) * fps < freq * fpsFrameCount)
-            {
-                int sleepTime = (int)((fpsStartTime * fps + freq * fpsFrameCount - frame * fps) * 1000 / (freq * fps));
-                if (sleepTime > 0) Thread.Sleep(sleepTime);
-                frame = Stopwatch.GetTimestamp();
-            }
-            if (++fpsFrameCount > fps)
-            {
-                fpsFrameCount = 0;
-                fpsStartTime = frame;
-            }
-        }
 
     }
 }

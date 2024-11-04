@@ -50,7 +50,8 @@ namespace ARWNI2S.Engine.Simulation.Kernel
                 return;
 
             // Signal cancellation
-            cancelSource.Cancel();
+            if (cancelSource != null)
+                cancelSource.Cancel();
 
             lock (_lock)
             {

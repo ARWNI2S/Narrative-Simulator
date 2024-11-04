@@ -14,10 +14,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- System packages -->
-    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
-    <PackageVersion Include="Silk.NET.OpenCL" Version="2.21.0" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
     <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.4.6" />
@@ -28,6 +24,7 @@
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.2.2" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Caching.SqlServer" Version="$(MicrosoftPackageLatestVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="$(MicrosoftPackageLatestVersion)" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="8.0.0" />
@@ -66,6 +63,7 @@
     <PackageVersion Include="MySqlConnector" Version="2.3.7" />
     <PackageVersion Include="Npgsql" Version="8.0.4" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Silk.NET.OpenCL" Version="2.21.0" />
     <PackageVersion Include="SkiaSharp" Version="2.88.8" />
     <PackageVersion Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.8" />
     <PackageVersion Include="Svg.Skia" Version="2.0.0.1" />

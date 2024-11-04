@@ -3,14 +3,14 @@ using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Services;
+using ARWNI2S.Node.Services.Authentication;
+using ARWNI2S.Node.Services.Authentication.MultiFactor;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Node.Services.Users;
-using ARWNI2S.Portal.Services.Authentication;
-using ARWNI2S.Portal.Services.Authentication.MultiFactor;
 using ARWNI2S.Portal.Services.Entities.Users;
 using ARWNI2S.Portal.Services.Mailing;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +19,29 @@ using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace ARWNI2S.Portal.Services.Users
 {
+    public static class UserRegistrationServiceExtensions
+    {
+        /// <summary>
+        /// Login passed user
+        /// </summary>
+        /// <param name="user">User to login</param>
+        /// <param name="returnUrl">URL to which the user will return after authentication</param>
+        /// <param name="isPersist">Is remember me</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation
+        /// The task result contains the result of an authentication
+        /// </returns>
+        public static async Task<IActionResult> SignInUserAsync(this IUserRegistrationService userRegistrationService, User user, string returnUrl, bool isPersist = false)
+        {
+            var result = await userRegistrationService.LoginUserAsync(user, returnUrl, isPersist);
+
+            if (result.Success && !string.IsNullOrEmpty(result.State) && !string.IsNullOrEmpty(returnUrl) && returnUrl.Equals(result.State, StringComparison.InvariantCultureIgnoreCase))
+                return new RedirectResult(result.State);
+
+            return new RedirectToRouteResult("Homepage", null);
+        }
+    }
+
     /// <summary>
     /// User registration service
     /// </summary>
@@ -39,7 +62,7 @@ namespace ARWNI2S.Portal.Services.Users
         private readonly INewsLetterSubscriptionService _newsLetterSubscriptionService;
         private readonly INotificationService _notificationService;
         private readonly IPermissionService _permissionService;
-        private readonly IClusteringContext _nodeContext;
+        private readonly INodeContext _nodeContext;
         private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
@@ -62,7 +85,7 @@ namespace ARWNI2S.Portal.Services.Users
             INewsLetterSubscriptionService newsLetterSubscriptionService,
             INotificationService notificationService,
             IPermissionService permissionService,
-            IClusteringContext nodeContext,
+            INodeContext nodeContext,
             IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
@@ -417,14 +440,11 @@ namespace ARWNI2S.Portal.Services.Users
         /// A task that represents the asynchronous operation
         /// The task result contains the result of an authentication
         /// </returns>
-        public virtual async Task<IActionResult> SignInUserAsync(User user, string returnUrl, bool isPersist = false)
+        public virtual async Task<UserLoginResult> LoginUserAsync(User user, string returnUrl = null, bool isPersist = false)
         {
             var currentUser = await _workContext.GetCurrentUserAsync();
             if (currentUser?.Id != user.Id)
             {
-                //migrate shopping cart
-                //await _shoppingCartService.MigrateShoppingCartAsync(currentUser, user, true);
-
                 await _workContext.SetCurrentUserAsync(user);
             }
 
@@ -440,11 +460,10 @@ namespace ARWNI2S.Portal.Services.Users
 
             var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
 
-            //redirect to the return URL if it's specified
             if (!string.IsNullOrEmpty(returnUrl) && urlHelper.IsLocalUrl(returnUrl))
-                return new RedirectResult(returnUrl);
+                return new UserLoginResult() { State = returnUrl };
 
-            return new RedirectToRouteResult("Homepage", null);
+            return new UserLoginResult();
         }
 
         /// <summary>
@@ -531,6 +550,7 @@ namespace ARWNI2S.Portal.Services.Users
             user.Username = newUsername;
             await _userService.UpdateUserAsync(user);
         }
+
 
         #endregion
     }

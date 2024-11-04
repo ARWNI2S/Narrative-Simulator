@@ -1,10 +1,7 @@
 ﻿using ARWNI2S.Infrastructure;
-using ARWNI2S.Node.Core.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ARWNI2S.Infrastructure.Extensions.Configuration;
-using ARWNI2S.Runtime.Infrastructure.Extensions;
 
 namespace ARWNI2S.Narrator.Framework.Infrastructure
 {
@@ -13,9 +10,9 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //services.UseSimulationClock<NarratorClock>();
-            services.UseSimulation<NarratorEngine>();
+            //services.UseSimulation<NarratorEngine>();
 
-            services.AddFromExisting<ILifecycleParticipant<ISiloLifecycle>, NarratorEngine>();
+            //services.AddFromExisting<ILifecycleParticipant<ISiloLifecycle>, NarratorEngine>();
         }
 
         public void Configure(IHost application)

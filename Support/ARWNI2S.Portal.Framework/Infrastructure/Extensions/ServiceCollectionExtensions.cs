@@ -1,19 +1,19 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
-using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Network;
 using ARWNI2S.Node.Core.Security;
 using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Services.Authentication;
+using ARWNI2S.Node.Services.Authentication.External;
 using ARWNI2S.Node.Services.Network;
 using ARWNI2S.Node.Services.Security;
 using ARWNI2S.Portal.Framework.Profiling;
 using ARWNI2S.Portal.Framework.Security.Captcha;
 using ARWNI2S.Portal.Framework.WebOptimizer;
 using ARWNI2S.Portal.Services.Authentication;
-using ARWNI2S.Portal.Services.Authentication.External;
 using ARWNI2S.Portal.Services.Common;
 using ARWNI2S.Portal.Services.Configuration;
 using ARWNI2S.Portal.Services.Entities.Common;
@@ -92,7 +92,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
             //create engine and configure service provider
             Singleton<IEngine>.Instance = new WebNodeEngine();
-            var engine = NodeEngineContext.Create();
+            var engine = EngineContext.Create();
 
             engine.ConfigureServices(services, builder.Configuration);
         }
@@ -104,7 +104,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         public static void AddContextAccessor(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IEngineContextAccessor, PortalContextAccessor>();
+            services.AddSingleton<INetworkContextAccessor, PortalContextAccessor>();
         }
 
         /// <summary>
@@ -234,8 +234,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.AuthenticationCookie}";
                 options.Cookie.HttpOnly = true;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                options.LoginPath = AuthenticationServicesDefaults.LoginPath;
-                options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
+                options.LoginPath = WebAuthenticationServicesDefaults.LoginPath;
+                options.AccessDeniedPath = WebAuthenticationServicesDefaults.AccessDeniedPath;
             });
 
             //add external authentication
@@ -244,8 +244,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.ExternalAuthenticationCookie}";
                 options.Cookie.HttpOnly = true;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                options.LoginPath = AuthenticationServicesDefaults.LoginPath;
-                options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
+                options.LoginPath = WebAuthenticationServicesDefaults.LoginPath;
+                options.AccessDeniedPath = WebAuthenticationServicesDefaults.AccessDeniedPath;
             });
 
             //add wallet authentication
@@ -436,7 +436,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     ((MemoryCacheStorage)miniProfilerOptions.Storage).CacheDuration = TimeSpan.FromMinutes(ni2sSettings.Get<CacheConfig>().DefaultCacheTime);
 
                     //determine who can access the MiniProfiler results
-                    miniProfilerOptions.ResultsAuthorize = request => NodeEngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
+                    miniProfilerOptions.ResultsAuthorize = request => EngineContext.Current.Resolve<IPermissionService>().AuthorizeAsync(StandardPermissionProvider.AccessProfiling).Result;
                 });
             }
         }
@@ -479,7 +479,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 {
                     options.AllowMinificationInDevelopmentEnvironment = true;
                     options.AllowCompressionInDevelopmentEnvironment = true;
-                    options.DisableMinification = !NodeEngineContext.Current.Resolve<CommonSettings>().EnableHtmlMinification;
+                    options.DisableMinification = !EngineContext.Current.Resolve<CommonSettings>().EnableHtmlMinification;
                     options.DisableCompression = true;
                     options.DisablePoweredByHttpHeaders = true;
                 })
