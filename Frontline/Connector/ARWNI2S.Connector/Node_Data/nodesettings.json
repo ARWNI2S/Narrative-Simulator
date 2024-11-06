@@ -8,7 +8,7 @@
     "IsDevelopment": true
   },
   "ConnectionStrings": {
-    "ConnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ni2s.local;Integrated Security=True;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;",
+    "ConnectionString": "",
     "DataProvider": "sqlserver",
     "SQLCommandTimeout": null,
     "WithNoLock": false
@@ -61,5 +61,6 @@
   "ModuleConfig": {
     "UseUnsafeLoadAssembly": true
   },
-  "RuntimeConfig": {}
+  "RuntimeConfig": {},
+  "AllowedHosts": "*"
 }
