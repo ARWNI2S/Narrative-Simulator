@@ -42,10 +42,10 @@ using ARWNI2S.Node.Core.Network;
 
 namespace ARWNI2S.Portal.Services.Installation
 {
-    /// <summary>
-    /// Installation service
-    /// </summary>
-    public partial class PortalInstallationService : IInstallationService
+	/// <summary>
+	/// Installation service
+	/// </summary>
+	public partial class PortalInstallationService : IInstallationService
 	{
 		#region Fields
 
@@ -3646,11 +3646,11 @@ namespace ARWNI2S.Portal.Services.Installation
 			await IntallLocalizedMessageTemplatesAsync(localizedEntityService);
 		}
 
-        public Task InstallNodeAsync(string adminUserEmail, string passwordUserPassword)
-        {
-            throw new NotImplementedException();
-        }
+		public Task InstallNodeAsync(string adminUserEmail, string passwordUserPassword)
+		{
+			throw new NotImplementedException();
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

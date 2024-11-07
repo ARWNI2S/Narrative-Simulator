@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ARWNI2S.Engine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Network\Client\ConnectorBase.cs" />
+    <Compile Remove="Network\Client\ConnectState.cs" />
+    <Compile Remove="Network\Client\GZipConnector.cs" />
+    <Compile Remove="Network\Client\IConnector.cs" />
+    <Compile Remove="Network\Client\INodeClient.cs" />
+    <Compile Remove="Network\Client\NodeClient.cs" />
+    <Compile Remove="Network\Client\PackageHandler.cs" />
+    <Compile Remove="Network\Client\SecurityOptions.cs" />
+    <Compile Remove="Network\Client\SocketConnector.cs" />
+    <Compile Remove="Network\Client\SslStreamConnector.cs" />
+    <Compile Remove="Network\ConnectionManager.cs" />
+    <Compile Remove="Network\INodeClientFactory.cs" />
+    <Compile Remove="Network\NodeClient.cs" />
+    <Compile Remove="Network\NodeClientFactory.cs" />
+    <Compile Remove="Network\Pipeline\ClientPipelineFilter.cs" />
+    <Compile Remove="Network\Pipeline\PipelineFilterFactory.cs" />
+    <Compile Remove="Network\Pipeline\PipelineFilterRoot.cs" />
+    <Compile Remove="Network\Protocol\NI2SPacketDecoder.cs" />
+    <Compile Remove="Network\Protocol\NI2SPacketEncoder.cs" />
+    <Compile Remove="Network\Protocol\NI2SPacketFilter.cs" />
+    <Compile Remove="Network\Protocol\NI2SProtocol.cs" />
+    <Compile Remove="Network\Session\InProcSessionContainerMiddlewareExtensions.cs" />
+    <Compile Remove="Network\StatusCodes.cs" />
+    <Compile Remove="Network\SuperSocketExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Hosting\Builder\" />
+    <Folder Include="Network\Client\" />
+    <Folder Include="Network\Pipeline\" />
+  </ItemGroup>
+
+</Project>
