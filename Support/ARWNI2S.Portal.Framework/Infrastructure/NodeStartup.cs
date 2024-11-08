@@ -3,7 +3,6 @@ using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Services.Helpers;
@@ -245,7 +244,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
                 services.AddScoped(setting, serviceProvider =>
                 {
                     var nodeId = DataSettingsManager.IsDatabaseInstalled()
-                        ? ((NI2SNode)serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode())?.Id ?? 0
+                        ? serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode()?.Id ?? 0
                         : 0;
 
                     return serviceProvider.GetRequiredService<ISettingService>().LoadSettingAsync(setting, nodeId).Result;

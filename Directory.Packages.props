@@ -6,7 +6,7 @@
     <MicrosoftFrameworkVersion>8.0.0</MicrosoftFrameworkVersion>
     <MicrosoftOrleansVersion>8.2.0</MicrosoftOrleansVersion>
     <FluentMigratorVersion>6.1.1</FluentMigratorVersion>
-    <SuperSocketVersion>2.0.0-beta.28</SuperSocketVersion>
+    <NodeServerVersion>2.0.0-beta.28</NodeServerVersion>
     <!-- Shared Test Package Versions -->
     <xUnitVersion>2.9.2</xUnitVersion>
     <xUnitRunnerVersion>2.8.2</xUnitRunnerVersion>
@@ -15,6 +15,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- System packages -->
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
     <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.4.6" />
@@ -44,9 +45,9 @@
     <PackageVersion Include="Azure.Storage.Blobs" Version="12.22.2" />
     <!-- Microsoft.Orleans packages -->
     <PackageVersion Include="Microsoft.Orleans.Server" Version="$(MicrosoftOrleansVersion)" />
-    <!-- SuperSocket packages -->
-    <PackageVersion Include="SuperSocket.ProtoBase" Version="$(SuperSocketVersion)" />
-    <PackageVersion Include="SuperSocket.Server.Abstractions" Version="$(SuperSocketVersion)" />
+    <!-- NodeServer packages -->
+    <PackageVersion Include="NodeServer.ProtoBase" Version="$(NodeServerVersion)" />
+    <PackageVersion Include="NodeServer.Server.Abstractions" Version="$(NodeServerVersion)" />
     <!-- Aspire -->
     <!--<PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.Orleans" Version="$(AspireVersion)" />

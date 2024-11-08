@@ -3,8 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ARWNI2S.Engine</RootNamespace>
+    <RootNamespace>ARWNI2S.Engine.Network</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Relayer\**" />
+    <EmbeddedResource Remove="Relayer\**" />
+    <None Remove="Relayer\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />

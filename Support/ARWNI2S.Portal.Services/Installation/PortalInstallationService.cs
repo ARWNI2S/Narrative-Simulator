@@ -337,7 +337,7 @@ namespace ARWNI2S.Portal.Services.Installation
 		/// <returns>A task that represents the asynchronous operation</returns>
 		protected virtual async Task InstallLanguagesAsync((string languagePackDownloadLink, int languagePackProgress) languagePackInfo, CultureInfo cultureInfo, RegionInfo regionInfo)
 		{
-			var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
+			var localizationService = NodeEngineContext.Current.Resolve<ILocalizationService>();
 
 			var defaultCulture = new CultureInfo(CommonServicesDefaults.DefaultLanguageCulture);
 			var defaultLanguage = new Language
@@ -382,7 +382,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				//download and import language pack
 				try
 				{
-					var httpClientFactory = EngineContext.Current.Resolve<IHttpClientFactory>();
+					var httpClientFactory = NodeEngineContext.Current.Resolve<IHttpClientFactory>();
 					var httpClient = httpClientFactory.CreateClient(HttpDefaults.DefaultHttpClient);
 					await using var stream = await httpClient.GetStreamAsync(languagePackInfo.languagePackDownloadLink);
 					using var streamReader = new StreamReader(stream);
@@ -628,9 +628,9 @@ namespace ARWNI2S.Portal.Services.Installation
 			var pattern = "*.txt";
 
 			//we use different scope to prevent creating wrong settings in DI, because the settings data not exists yet
-			var serviceScopeFactory = EngineContext.Current.Resolve<IServiceScopeFactory>();
+			var serviceScopeFactory = NodeEngineContext.Current.Resolve<IServiceScopeFactory>();
 			using var scope = serviceScopeFactory.CreateScope();
-			var importManager = EngineContext.Current.Resolve<IImportManager>(scope);
+			var importManager = NodeEngineContext.Current.Resolve<IImportManager>(scope);
 			foreach (var filePath in _fileProvider.EnumerateFiles(directoryPath, pattern))
 			{
 				await using var stream = new FileStream(filePath, FileMode.Open);
@@ -797,7 +797,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			var isGermany = country == "DE";
 			var isEurope = ISO3166.FromCountryCode(country)?.SubjectToVat ?? false;
 
-			var settingService = EngineContext.Current.Resolve<ISettingService>();
+			var settingService = NodeEngineContext.Current.Resolve<ISettingService>();
 
 			await settingService.SaveSettingAsync(new SitemapSettings
 			{
@@ -1421,7 +1421,7 @@ namespace ARWNI2S.Portal.Services.Installation
 				new UserUserRoleMapping { UserId = adminUser.Id, UserRoleId = urRegistered.Id });
 
 			//set hashed admin password
-			var userRegistrationService = EngineContext.Current.Resolve<IUserRegistrationService>();
+			var userRegistrationService = NodeEngineContext.Current.Resolve<IUserRegistrationService>();
 			await userRegistrationService.ChangePasswordAsync(new ChangePasswordRequest(defaultUserEmail, false,
 				 PasswordFormat.Hashed, defaultUserPassword, null, UserServicesDefaults.DefaultHashedPasswordFormat));
 
@@ -3638,7 +3638,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			//await InstallDebugQuestsAsync();
 #endif
 
-			var localizedEntityService = EngineContext.Current.Resolve<ILocalizedEntityService>();
+			var localizedEntityService = NodeEngineContext.Current.Resolve<ILocalizedEntityService>();
 
 			await IntallLocalizedTopicsAsync(localizedEntityService);
 			await IntallLocalizedNewsAsync(localizedEntityService);

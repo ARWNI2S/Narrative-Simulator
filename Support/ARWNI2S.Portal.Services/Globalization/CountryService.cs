@@ -1,7 +1,6 @@
 ﻿using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Localization;
@@ -66,7 +65,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         /// </returns>
         public virtual async Task<IList<Country>> GetAllCountriesAsync(int languageId = 0, bool showHidden = false)
         {
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             var key = _staticCacheManager.PrepareKeyForDefaultCache(GlobalizationServicesDefaults.CountriesAllCacheKey, languageId,
                 showHidden, node);
 

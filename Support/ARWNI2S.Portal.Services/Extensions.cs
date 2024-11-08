@@ -30,7 +30,7 @@ namespace ARWNI2S.Portal.Services
             if (!typeof(TEnum).IsEnum)
                 throw new ArgumentException("An Enumeration type is required.", nameof(enumObj));
 
-            var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
+            var localizationService = NodeEngineContext.Current.Resolve<ILocalizationService>();
 
             var values = await Enum.GetValues(typeof(TEnum)).OfType<TEnum>().Where(enumValue =>
                     valuesToExclude == null || !valuesToExclude.Contains(Convert.ToInt32(enumValue)))

@@ -1,7 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Events;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Clustering;
@@ -197,7 +196,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.UserRegisteredNotification, node.Id);
@@ -238,7 +237,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.UserWelcomeMessage, node.Id);
@@ -280,7 +279,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.UserEmailValidationMessage, node.Id);
@@ -322,7 +321,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.UserEmailRevalidationMessage, node.Id);
@@ -365,7 +364,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.UserPasswordRecoveryMessage, node.Id);
@@ -1366,7 +1365,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(subscription);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewsletterSubscriptionActivationMessage, node.Id);
@@ -1405,7 +1404,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(subscription);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewsletterSubscriptionDeactivationMessage, node.Id);
@@ -2185,7 +2184,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(user);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewVatSubmittedNotification, node.Id);
@@ -2227,7 +2226,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(blogComment);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.BlogCommentNotification, node.Id);
@@ -2269,7 +2268,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         {
             ArgumentNullException.ThrowIfNull(newsComment);
 
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.NewsCommentNotification, node.Id);
@@ -2366,7 +2365,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         public virtual async Task<IList<int>> SendContactUsMessageAsync(int languageId, string senderEmail,
             string senderName, string subject, string body)
         {
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             languageId = await EnsureLanguageIsActiveAsync(languageId, node.Id);
 
             var messageTemplates = await GetActiveMessageTemplatesAsync(MessageTemplateSystemNames.ContactUsMessage, node.Id);
@@ -2585,7 +2584,7 @@ namespace ARWNI2S.Portal.Services.Mailing
                 CreatedOnUtc = DateTime.UtcNow,
                 EmailAccountId = emailAccount.Id,
                 DontSendBeforeDateUtc = !messageTemplate.DelayBeforeSend.HasValue ? null
-                    : (DateTime?)(DateTime.UtcNow + TimeSpan.FromHours(messageTemplate.DelayPeriod.ToHours(messageTemplate.DelayBeforeSend.Value)))
+                    : DateTime.UtcNow + TimeSpan.FromHours(messageTemplate.DelayPeriod.ToHours(messageTemplate.DelayBeforeSend.Value))
             };
 
             await _queuedEmailService.InsertQueuedEmailAsync(email);

@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Infrastructure
         {
             if (DataSettingsManager.IsDatabaseInstalled())
             {
-                var localizationSettings = EngineContext.Current.Resolve<LocalizationSettings>();
+                var localizationSettings = NodeEngineContext.Current.Resolve<LocalizationSettings>();
                 if (localizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
                 {
                     //this pattern is set once at the application start, when we don't have the selected language yet

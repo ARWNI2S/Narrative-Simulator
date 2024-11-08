@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Infrastructure.Entities;
 using ARWNI2S.Node.Core;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Core.Entities.Localization;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Services.Localization;
@@ -105,7 +104,7 @@ namespace ARWNI2S.Portal.Services
 
         private async Task<Language> GetLanguageFromCultureAsync(CultureInfo cultureInfo)
         {
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             var allNodeLanguages = await _languageService.GetAllLanguagesAsync(nodeId: node.Id);
 
             //check user language availability
@@ -363,7 +362,7 @@ namespace ARWNI2S.Portal.Services
                 return _cachedLanguage;
 
             var user = await GetCurrentUserAsync();
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
 
             //whether we should detect the language from the request
             //var detectedLanguage = await GetLanguageFromRequestAsync();

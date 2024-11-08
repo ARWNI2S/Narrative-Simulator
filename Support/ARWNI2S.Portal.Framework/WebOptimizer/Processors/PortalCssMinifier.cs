@@ -37,7 +37,7 @@ namespace ARWNI2S.Portal.Framework.WebOptimizer.Processors
 
                 if (result.HasErrors)
                 {
-                    await EngineContext.Current.Resolve<ILogService>()
+                    await NodeEngineContext.Current.Resolve<ILogService>()
                         .WarningAsync($"Stylesheet minification: {key}", new(string.Join(Environment.NewLine, result.Errors)));
                 }
 

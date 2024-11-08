@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Node.Core;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Services;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Node.Services.Logging;
@@ -2318,7 +2317,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
 
                     var isActive = true;
 
-                    var node =(NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+                    var node = await _nodeContext.GetCurrentNodeAsync();
                     var nodeId = node.Id;
 
                     //"email" field specified

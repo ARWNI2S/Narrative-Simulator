@@ -24,7 +24,7 @@ namespace ARWNI2S.Portal.Framework.Security.Honeypot
             sb.AppendFormat("<div style=\"display:none;\">");
             sb.Append(Environment.NewLine);
 
-            var securitySettings = EngineContext.Current.Resolve<PortalSecuritySettings>();
+            var securitySettings = NodeEngineContext.Current.Resolve<PortalSecuritySettings>();
             sb.AppendFormat("<input id=\"{0}\" name=\"{0}\" type=\"text\">", securitySettings.HoneypotInputName);
 
             sb.Append(Environment.NewLine);

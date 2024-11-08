@@ -240,7 +240,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         protected virtual async Task<string> RouteUrlAsync(int nodeId = 0, string routeName = null, object routeValues = null)
         {
             //try to get a node by the passed identifier
-            var node = await _clusteringService.GetNodeByIdAsync(nodeId) ?? (NI2SNode)await _nodeContext.GetCurrentNodeAsync()
+            var node = await _clusteringService.GetNodeByIdAsync(nodeId) ?? await _nodeContext.GetCurrentNodeAsync()
                 ?? throw new NodeException("No node could be loaded");
 
             //ensure that the node URL is specified
@@ -285,7 +285,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             tokens.Add(new Token("Instagram.URL", _nodeInformationSettings.InstagramLink));
 
             //event notification
-            await _eventPublisher.EntityTokensAddedAsync(node as NI2SNode, tokens);
+            await _eventPublisher.EntityTokensAddedAsync(node, tokens);
         }
 
         /// <summary>

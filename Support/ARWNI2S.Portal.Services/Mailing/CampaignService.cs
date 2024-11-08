@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Portal.Services.Entities.Mailing;
 using ARWNI2S.Portal.Services.Users;
 
@@ -139,7 +138,7 @@ namespace ARWNI2S.Portal.Services.Mailing
                     continue;
 
                 var tokens = new List<Token>();
-                await _messageTokenProvider.AddNodeTokensAsync(tokens, (NI2SNode)await _nodeContext.GetCurrentNodeAsync(), emailAccount);
+                await _messageTokenProvider.AddNodeTokensAsync(tokens, await _nodeContext.GetCurrentNodeAsync(), emailAccount);
                 await _messageTokenProvider.AddNewsLetterSubscriptionTokensAsync(tokens, subscription);
                 if (user != null)
                     await _messageTokenProvider.AddUserTokensAsync(tokens, user);

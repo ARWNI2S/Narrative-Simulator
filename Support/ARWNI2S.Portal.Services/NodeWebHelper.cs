@@ -439,7 +439,7 @@ namespace ARWNI2S.Portal.Services
             return request.Headers.XRequestedWith == "XMLHttpRequest";
         }
 
-        bool INI2SNetHelper.IsStaticAsset() => IsStaticResource();
+        bool INI2SHelper.IsStaticAsset() => IsStaticResource();
 
         #endregion
     }

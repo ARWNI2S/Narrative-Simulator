@@ -3,7 +3,6 @@ using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Entities.Users;
 using ARWNI2S.Node.Core.Events;
 using ARWNI2S.Node.Data;
-using ARWNI2S.Node.Core.Entities.Clustering;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Common;
 using ARWNI2S.Node.Services.Localization;
@@ -170,8 +169,8 @@ namespace ARWNI2S.Portal.Services.Authentication.External
                 _userSettings.UserRegistrationType == UserRegistrationType.Validation && !_externalAuthenticationSettings.RequireEmailValidation;
 
             //create registration request
-            var user = (User)await _workContext.GetCurrentUserAsync();
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var user = await _workContext.GetCurrentUserAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             var registrationRequest = new UserRegistrationRequest(user,
                 parameters.Email, parameters.Email,
                 CommonHelper.GenerateRandomDigitCode(20),
@@ -283,8 +282,8 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         {
             ArgumentNullException.ThrowIfNull(parameters);
 
-            var user = (User)await _workContext.GetCurrentUserAsync();
-            var node = (NI2SNode)await _nodeContext.GetCurrentNodeAsync();
+            var user = await _workContext.GetCurrentUserAsync();
+            var node = await _nodeContext.GetCurrentNodeAsync();
             if (!await _authenticationModuleManager.IsModuleActiveAsync(parameters.ProviderSystemName, user, node.Id))
                 return await ErrorAuthenticationAsync(new[] { await _localizationService.GetResourceAsync("Account.ExternalAuthenticationMethod.LoadError") }, returnUrl);
 
