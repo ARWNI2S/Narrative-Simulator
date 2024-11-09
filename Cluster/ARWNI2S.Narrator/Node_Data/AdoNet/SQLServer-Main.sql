@@ -20,8 +20,8 @@ Implementation notes:
    Orleans handles exception as a failure and will retry.
 
 7) The implementation follows the Extended Orleans membership protocol. For more information, see at:
-        https://learn.microsoft.com/dotnet/orleans/implementation/cluster-management
-        https://github.com/dotnet/orleans/blob/main/src/Orleans.Core/SystemTargetInterfaces/IMembershipTable.cs
+		https://learn.microsoft.com/dotnet/orleans/implementation/cluster-management
+		https://github.com/dotnet/orleans/blob/main/src/Orleans.Core/SystemTargetInterfaces/IMembershipTable.cs
 */
 
 -- These settings improves throughput of the database by reducing locking by better separating readers from writers.

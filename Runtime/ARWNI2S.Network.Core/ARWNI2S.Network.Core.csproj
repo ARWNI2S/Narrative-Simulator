@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ARWNI2S.Engine.Network</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Connection\CloseReason.cs" />
+    <Compile Remove="Connection\IChannelWithRemoteCertificate.cs" />
+    <Compile Remove="Connection\IConnection.cs" />
+    <Compile Remove="Connection\IConnectionFactory.cs" />
+    <Compile Remove="Connection\IConnectionWithSessionIdentifier.cs" />
+    <Compile Remove="Connection\IObjectPipe.cs" />
+    <Compile Remove="Connection\IPipeConnection.cs" />
+    <Compile Remove="Connection\IStreamConnection.cs" />
+    <Compile Remove="Connection\IVirtualConnection.cs" />
+    <Compile Remove="Connection\Pipes\NamedPipeConnection.cs" />
+    <Compile Remove="Protocol\IKeyedPackageInfo.cs" />
+    <Compile Remove="Protocol\IPackageDecoder.cs" />
+    <Compile Remove="Protocol\IPackageEncoder.cs" />
+    <Compile Remove="Protocol\IPackagePartReader.cs" />
+    <Compile Remove="Protocol\IPipelineFilter.cs" />
+    <Compile Remove="Protocol\IPipelineFilterFactory.cs" />
+    <Compile Remove="Protocol\IStringPackage.cs" />
+    <Compile Remove="Proxy\IProxyProtocolPipelineFilter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

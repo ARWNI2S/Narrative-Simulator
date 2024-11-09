@@ -17,14 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Actors\Grains\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Objects\" />
     <Folder Include="Time\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
   </ItemGroup>
 
 </Project>

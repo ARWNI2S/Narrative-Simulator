@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
     <ProjectReference Include="..\ARWNI2S.Connector.Framework\ARWNI2S.Connector.Framework.csproj" />
   </ItemGroup>
 

@@ -3,6 +3,7 @@
     "NodeName": "GRIMOIRE:25232",
     "NodeId": "2ce52f4d-970a-949e-7f51-ac4990ce70e3",
     "NodeType": "frontline",
+    "Port" : 10010,
     "EnableEditor": false,
     "AutoScale": false,
     "IsDevelopment": true
