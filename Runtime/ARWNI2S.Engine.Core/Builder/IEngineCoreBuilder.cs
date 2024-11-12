@@ -1,11 +1,12 @@
-﻿using ARWNI2S.Infrastructure.EngineParts;
+﻿using ARWNI2S.Node.Core.Engine;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Engine.Builder
 {
-    public interface IMVRMCoreBuilder
+    public interface IEngineCoreBuilder
     {
         IServiceCollection Services { get; }
+
         EnginePartManager PartManager { get; }
     }
 }

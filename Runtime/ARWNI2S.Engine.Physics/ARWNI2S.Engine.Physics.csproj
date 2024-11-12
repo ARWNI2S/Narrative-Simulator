@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
     <ProjectReference Include="..\ARWNI2S.Engine.Compute\ARWNI2S.Engine.Compute.csproj" />
     <ProjectReference Include="..\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,12 +3,12 @@
     /// <summary>
     /// Provides programmatic configuration for the MVRM framework.
     /// </summary>
-    public class MVRMOptions
+    public class EngineOptions
     {
         /// <summary>
-        /// Creates a new instance of <see cref="MVRMOptions"/>.
+        /// Creates a new instance of <see cref="EngineOptions"/>.
         /// </summary>
-        public MVRMOptions()
+        public EngineOptions()
         {
         }
 

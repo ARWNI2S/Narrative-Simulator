@@ -1,20 +1,20 @@
 ﻿using ARWNI2S.Engine.Builder;
 using ARWNI2S.Engine.Features.Providers;
 using ARWNI2S.Engine.Options;
-using ARWNI2S.Infrastructure.EngineParts;
+using ARWNI2S.Node.Core.Engine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 namespace ARWNI2S.Engine.Hosting.Extensions
 {
-    internal static class MVRMCoreServiceCollectionExtensions
+    internal static class EngineCoreServiceCollectionExtensions
     {
         /// <summary>
         /// Add services to the application and configure service provider
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static IMVRMCoreBuilder AddMVRMCore(this IServiceCollection services)
+        public static IEngineCoreBuilder AddEngineCore(this IServiceCollection services)
         {
             ArgumentNullException.ThrowIfNull(services);
 
@@ -24,9 +24,9 @@ namespace ARWNI2S.Engine.Hosting.Extensions
 
             ConfigureDefaultFeatureProviders(nodeModuleManager);
             ConfigureDefaultServices(services);
-            AddMVRMCoreServices(services);
+            AddEngineCoreServices(services);
 
-            var builder = new MVRMCoreBuilder(services, nodeModuleManager);
+            var builder = new EngineCoreBuilder(services, nodeModuleManager);
 
             return builder;
 
@@ -70,28 +70,28 @@ namespace ARWNI2S.Engine.Hosting.Extensions
         /// <summary>
         /// Adds the minimum essential NI2S services to the specified <see cref="IServiceCollection" />. Additional services
         /// including NI2S's support for authorization, formatters, and validation must be added separately using the
-        /// <see cref="IMVRMCoreBuilder"/> returned from this method.
+        /// <see cref="IEngineCoreBuilder"/> returned from this method.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
-        /// <param name="setupAction">An <see cref="Action{MVRMOptions}"/> to configure the provided <see cref="MVRMOptions"/>.</param>
-        /// <returns>An <see cref="IMVRMCoreBuilder"/> that can be used to further configure the NI2S services.</returns>
+        /// <param name="setupAction">An <see cref="Action{MVRMOptions}"/> to configure the provided <see cref="EngineOptions"/>.</param>
+        /// <returns>An <see cref="IEngineCoreBuilder"/> that can be used to further configure the NI2S services.</returns>
         /// <remarks>
-        /// The <see cref="AddMVRMCore(IServiceCollection)"/> approach for configuring
+        /// The <see cref="AddEngineCore(IServiceCollection)"/> approach for configuring
         /// NI2S is provided for experienced NI2S developers who wish to have full control over the set of default services
-        /// registered. <see cref="AddMVRMCore(IServiceCollection)"/> will register
+        /// registered. <see cref="AddEngineCore(IServiceCollection)"/> will register
         /// the minimum set of services necessary to route requests and invoke controllers. It is not expected that any
         /// application will satisfy its requirements with just a call to
-        /// <see cref="AddMVRMCore(IServiceCollection)"/>. Additional configuration using the
-        /// <see cref="IMVRMCoreBuilder"/> will be required.
+        /// <see cref="AddEngineCore(IServiceCollection)"/>. Additional configuration using the
+        /// <see cref="IEngineCoreBuilder"/> will be required.
         /// </remarks>
-        public static IMVRMCoreBuilder AddMVRMCore(
+        public static IEngineCoreBuilder AddMVRMCore(
             this IServiceCollection services,
-            Action<MVRMOptions> setupAction)
+            Action<EngineOptions> setupAction)
         {
             ArgumentNullException.ThrowIfNull(services);
             ArgumentNullException.ThrowIfNull(setupAction);
 
-            var builder = services.AddMVRMCore();
+            var builder = services.AddEngineCore();
             services.Configure(setupAction);
 
             return builder;
@@ -100,7 +100,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
 
 
         // To enable unit testing
-        internal static void AddMVRMCoreServices(IServiceCollection services)
+        internal static void AddEngineCoreServices(IServiceCollection _)
         {
             ////
             //// Options

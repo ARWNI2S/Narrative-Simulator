@@ -27,7 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Hosting\Extensions\MVRMCoreServiceCollectionExtensions.cs" />
+    <Compile Include="Hosting\Extensions\EngineBuilderExtensions.cs" />
+    <Compile Include="Hosting\Extensions\EngineCoreServiceCollectionExtensions.cs" />
+    <Compile Include="Hosting\Extensions\EnginePartManagerExtensions.cs" />
+    <Compile Include="Hosting\Internal\EngineBuilder.cs" />
   </ItemGroup>
 
   <ItemGroup>

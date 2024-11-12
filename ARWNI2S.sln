@@ -207,6 +207,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Contexts",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Roleplay", "Runtime\ARWNI2S.Ontology.Roleplay\ARWNI2S.Ontology.Roleplay.csproj", "{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Engine.Data", "Runtime\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj", "{F79376EF-4FF7-485B-B61C-E80A22B003D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -407,6 +409,10 @@ Global
 		{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79376EF-4FF7-485B-B61C-E80A22B003D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79376EF-4FF7-485B-B61C-E80A22B003D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79376EF-4FF7-485B-B61C-E80A22B003D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79376EF-4FF7-485B-B61C-E80A22B003D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -485,6 +491,7 @@ Global
 		{39080D86-135D-48CC-82FE-22EF9385B1C2} = {E4F8857B-E43B-4FDD-9F1C-AD438989A622}
 		{92DBADE1-68F7-4A26-AC3A-491AC13CE07E} = {E4F8857B-E43B-4FDD-9F1C-AD438989A622}
 		{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C} = {E4F8857B-E43B-4FDD-9F1C-AD438989A622}
+		{F79376EF-4FF7-485B-B61C-E80A22B003D6} = {9ECD8966-6A6D-4348-BCE6-963FCC619735}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65605281-5AFC-48F1-A1E0-D1648E0CBA35}
