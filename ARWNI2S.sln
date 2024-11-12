@@ -38,7 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50 - Frontline", "50 - Fron
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "51 - Code Generation", "51 - Code Generation", "{6ED853A8-5BC0-4186-AFE7-98162473CC2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "992 - Portal", "992 - Portal", "{0E9041A8-1148-4D95-9556-10C0804481C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Portal", "99 - Portal", "{0E9041A8-1148-4D95-9556-10C0804481C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Portal", "Support\ARWNI2S.Portal\ARWNI2S.Portal.csproj", "{77C0A32A-87C8-4A89-9152-04B3D20253EA}"
 EndProject
@@ -68,7 +68,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Narrative Simulator", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Test", "90 - Test", "{219517EE-98C2-46CC-9F5C-327DB764EABE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Extras", "99 - Extras", "{C58467A8-29A5-4267-9D96-CAF02123F3D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Extras", "90 - Extras", "{C58467A8-29A5-4267-9D96-CAF02123F3D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - Cluster", "91 - Cluster", "{DC32D1C9-A88C-4BA0-9D30-3EC860AEEF01}"
 EndProject
@@ -110,7 +110,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Sdk", "NI2SSdk\ARWN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Framework.UnrealServer", "Framework\GameEngines\ARWNI2S.Framework.UnrealServer\ARWNI2S.Framework.UnrealServer.csproj", "{F4E43E82-05CA-45CA-9559-FC046B43007A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "991 - SpeechServices", "991 - SpeechServices", "{49792570-6AC3-42C2-B74A-C68267347A2A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - SpeechServices", "91 - SpeechServices", "{49792570-6AC3-42C2-B74A-C68267347A2A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "41 - Narrator Core", "41 - Narrator Core", "{A78CB67D-7AEE-4730-B1A2-719EA579EA6F}"
 EndProject
@@ -130,9 +130,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Framework.Services"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Modules.AISpeech.Convai", "Extra\AISpeech\ARWNI2S.Modules.AISpeech.Convai\ARWNI2S.Modules.AISpeech.Convai.csproj", "{102B7001-47A2-4C67-96D7-EB15684D4CEC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Tools", "90 - Tools", "{095F8A7B-24C6-4535-927E-ADCEE8A67650}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80 - Tools", "80 - Tools", "{095F8A7B-24C6-4535-927E-ADCEE8A67650}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - NI2S Build", "91 - NI2S Build", "{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "81 - NI2S Build", "81 - NI2S Build", "{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Node", "Node", "{F913EAE3-EF55-4332-BE88-7B2488939ECA}"
 	ProjectSection(SolutionItems) = preProject
@@ -191,7 +191,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Network", "Runtime\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Engine.Core", "Runtime\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj", "{786D96C0-41C5-49BD-9796-54D9DEEDA0F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Engine.Physics", "Runtime\ARWNI2S.Engine.Physics\ARWNI2S.Engine.Physics.csproj", "{D6A9B2B2-8614-4B68-A9A8-68FFCD72F356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Engine.Physics", "Runtime\ARWNI2S.Engine.Physics\ARWNI2S.Engine.Physics.csproj", "{D6A9B2B2-8614-4B68-A9A8-68FFCD72F356}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Engine.MVRM", "Runtime\ARWNI2S.Engine.MVRM\ARWNI2S.Engine.MVRM.csproj", "{0FD5ACF8-E165-4712-8B50-607315D729AC}"
 EndProject
@@ -199,13 +199,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Engine.AICore", "Ru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Engine.Compute", "Runtime\ARWNI2S.Engine.Compute\ARWNI2S.Engine.Compute.csproj", "{70FC07B8-B519-4A99-80B5-4CECBEEE52BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Ontology.Abstractions", "Runtime\ARWNI2S.Ontology.Abstractions\ARWNI2S.Ontology.Abstractions.csproj", "{AC5BC081-50AA-4084-BF95-7B0303776FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Abstractions", "Runtime\ARWNI2S.Ontology.Abstractions\ARWNI2S.Ontology.Abstractions.csproj", "{AC5BC081-50AA-4084-BF95-7B0303776FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Ontology.Semantics", "Runtime\ARWNI2S.Ontology.Semantics\ARWNI2S.Ontology.Semantics.csproj", "{39080D86-135D-48CC-82FE-22EF9385B1C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Semantics", "Runtime\ARWNI2S.Ontology.Semantics\ARWNI2S.Ontology.Semantics.csproj", "{39080D86-135D-48CC-82FE-22EF9385B1C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Ontology.Contexts", "Runtime\ARWNI2S.Ontology.Contexts\ARWNI2S.Ontology.Contexts.csproj", "{92DBADE1-68F7-4A26-AC3A-491AC13CE07E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Contexts", "Runtime\ARWNI2S.Ontology.Contexts\ARWNI2S.Ontology.Contexts.csproj", "{92DBADE1-68F7-4A26-AC3A-491AC13CE07E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Ontology.Roleplay", "Runtime\ARWNI2S.Ontology.Roleplay\ARWNI2S.Ontology.Roleplay.csproj", "{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARWNI2S.Ontology.Roleplay", "Runtime\ARWNI2S.Ontology.Roleplay\ARWNI2S.Ontology.Roleplay.csproj", "{AF4E25ED-BBBD-4E08-AB4E-1FF8E918C22C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

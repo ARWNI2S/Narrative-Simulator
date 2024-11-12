@@ -8,8 +8,22 @@
 
   <ItemGroup>
     <Compile Remove="Attributes\**" />
+    <Compile Remove="Configuration\**" />
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="Simulation\**" />
     <EmbeddedResource Remove="Attributes\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="Simulation\**" />
     <None Remove="Attributes\**" />
+    <None Remove="Configuration\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="Simulation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="GameObject.cs" />
+    <Compile Remove="IGameEntity.cs" />
   </ItemGroup>
 
   <ItemGroup>
