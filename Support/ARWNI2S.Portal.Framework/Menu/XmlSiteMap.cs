@@ -1,6 +1,6 @@
 ﻿//code from Telerik MVC Extensions
 
-using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Localization;
 using ARWNI2S.Node.Services.Security;
@@ -160,7 +160,7 @@ namespace ARWNI2S.Portal.Framework.Menu
         /// </summary>
         public SiteMapNode RootNode { get; set; }
 
-        private static readonly char[] separator = new[] { ',' };
+        private static readonly char[] separator = [','];
 
         #endregion
     }

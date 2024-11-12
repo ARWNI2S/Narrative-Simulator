@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
@@ -91,7 +92,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             mvcCoreBuilder.PartManager.InitializeModules(moduleConfig);
 
             //create engine and configure service provider
-            Singleton<IEngine>.Instance = new WebNodeEngine();
+            Singleton<INodeEngine>.Instance = new WebNodeEngine();
             var engine = NodeEngineContext.Create();
 
             engine.ConfigureServices(services, builder.Configuration);
@@ -104,7 +105,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         public static void AddContextAccessor(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IContextAccessor, PortalContextAccessor>();
+            services.AddSingleton<IEngineContextAccessor, PortalContextAccessor>();
         }
 
         /// <summary>

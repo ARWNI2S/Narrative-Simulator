@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -61,7 +61,7 @@ namespace ARWNI2S.Portal.Services.Helpers
                 //ignore
             }
 
-            return Enumerable.Empty<XElement>();
+            return [];
         }
 
         private void Initialize(string userAgentStringsPath, string crawlerOnlyUserAgentStringsPath, string additionalCrawlersFilePath)

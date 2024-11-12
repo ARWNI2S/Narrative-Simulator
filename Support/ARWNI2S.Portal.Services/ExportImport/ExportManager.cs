@@ -323,8 +323,8 @@ namespace ARWNI2S.Portal.Services.ExportImport
             }
 
             //property manager 
-            var manager = new PropertyManager<User, Language>(new[]
-            {
+            var manager = new PropertyManager<User, Language>(
+            [
                 new PropertyByName<User, Language>("UserId", (p, l) => p.Id),
                 new PropertyByName<User, Language>("UserGuid", (p, l) => p.UserGuid),
                 new PropertyByName<User, Language>("Email", (p, l) => p.Email),
@@ -366,7 +366,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<User, Language>("ForumPostCount", async (p, l) => await _genericAttributeService.GetAttributeAsync<int>(p, UserDefaults.ForumPostCountAttribute)),
                 //new PropertyByName<User, Language>("Signature", async (p, l) => await _genericAttributeService.GetAttributeAsync<string>(p, UserDefaults.SignatureAttribute)),
                 new PropertyByName<User, Language>("CustomUserAttributes", async (p, l) => await GetCustomUserAttributesAsync(p))
-            }, _portalSettings);
+            ], _portalSettings);
 
             //activity log
             await _userActivityService.InsertActivityAsync(SystemKeywords.AdminArea.ExportUsers,
@@ -559,8 +559,8 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //async Task<Address> orderBillingAddress(Order o) => await _addressService.GetAddressByIdAsync(o.BillingAddressId);
 
             //user info and user attributes
-            var userManager = new PropertyManager<User, Language>(new[]
-            {
+            var userManager = new PropertyManager<User, Language>(
+            [
                 new PropertyByName<User, Language>("Email", (p, l) => p.Email),
                 new PropertyByName<User, Language>("Username", (p, l) => p.Username, !_userSettings.UsernamesEnabled), 
                 //attributes
@@ -579,7 +579,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<User, Language>("Phone", (p, l) => p.Phone, !_userSettings.PhoneEnabled),
                 new PropertyByName<User, Language>("Fax", (p, l) => p.Fax, !_userSettings.FaxEnabled),
                 new PropertyByName<User, Language>("User attributes",  async (p, l) => await GetCustomUserAttributesAsync(p))
-            }, _portalSettings);
+            ], _portalSettings);
 
             //user orders
             var currentLanguage = await _workContext.GetWorkingLanguageAsync();
@@ -631,8 +631,8 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //var orders = await _orderService.SearchOrdersAsync(userId: user.Id);
 
             //user addresses
-            var addressManager = new PropertyManager<Address, Language>(new[]
-            {
+            var addressManager = new PropertyManager<Address, Language>(
+            [
                 new PropertyByName<Address, Language>("First name", (p, l) => p.FirstName),
                 new PropertyByName<Address, Language>("Last name", (p, l) => p.LastName),
                 new PropertyByName<Address, Language>("Email", (p, l) => p.Email),
@@ -647,7 +647,7 @@ namespace ARWNI2S.Portal.Services.ExportImport
                 new PropertyByName<Address, Language>("Phone number", (p, l) => p.PhoneNumber, !_addressSettings.PhoneEnabled),
                 new PropertyByName<Address, Language>("Fax number", (p, l) => p.FaxNumber, !_addressSettings.FaxEnabled),
                 new PropertyByName<Address, Language>("Custom attributes", async (p, l) => await _userAttributeFormatter.FormatAttributesAsync(p.CustomAttributes, ";"))
-            }, _portalSettings);
+            ], _portalSettings);
 
             //user private messages
             //var systemMessageManager = new PropertyManager<SystemMessage, Language>(new[]
@@ -667,12 +667,12 @@ namespace ARWNI2S.Portal.Services.ExportImport
             //}
 
             //user GDPR logs
-            var gdprLogManager = new PropertyManager<GdprLog, Language>(new[]
-            {
+            var gdprLogManager = new PropertyManager<GdprLog, Language>(
+            [
                 new PropertyByName<GdprLog, Language>("Request type", async (log, l) => await _localizationService.GetLocalizedEnumAsync(log.RequestType)),
                 new PropertyByName<GdprLog, Language>("Request details", (log, l) => log.RequestDetails),
                 new PropertyByName<GdprLog, Language>("Created on", async (log, l) => (await _dateTimeHelper.ConvertToUserTimeAsync(log.CreatedOnUtc, DateTimeKind.Utc)).ToString("D"))
-            }, _portalSettings);
+            ], _portalSettings);
 
             var gdprLog = await _gdprService.GetAllLogAsync(user.Id);
 

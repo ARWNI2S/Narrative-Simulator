@@ -51,7 +51,7 @@ namespace ARWNI2S.Portal.Services.Users
 
             return (await _userService.GetAllUsersAsync(
                 date,
-                userRoleIds: new[] { registeredUserRole.Id })).Count;
+                userRoleIds: [registeredUserRole.Id])).Count;
         }
 
         #endregion

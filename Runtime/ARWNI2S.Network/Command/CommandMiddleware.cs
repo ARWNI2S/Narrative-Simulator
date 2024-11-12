@@ -355,8 +355,8 @@ namespace ARWNI2S.Engine.Network.Command
                 {
                     if (commandTypeInfo.CommandType != commandTypeInfo.ActualCommandType)
                     {
-                        var commandFactory = ActivatorUtilities.CreateFactory(commandTypeInfo.CommandType, new[] { typeof(IServiceProvider) });
-                        command = commandFactory.Invoke(serviceProvider, new object[] { serviceProvider }) as ICommand;
+                        var commandFactory = ActivatorUtilities.CreateFactory(commandTypeInfo.CommandType, [typeof(IServiceProvider)]);
+                        command = commandFactory.Invoke(serviceProvider, [serviceProvider]) as ICommand;
                     }
                     else
                     {

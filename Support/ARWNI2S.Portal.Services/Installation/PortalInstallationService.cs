@@ -39,13 +39,14 @@ using System.Text;
 using ARWNI2S.Portal.Services.Clustering;
 using ARWNI2S.Node.Services.Installation;
 using ARWNI2S.Node.Core.Network;
+using ARWNI2S.Infrastructure.Engine;
 
 namespace ARWNI2S.Portal.Services.Installation
 {
-	/// <summary>
-	/// Installation service
-	/// </summary>
-	public partial class PortalInstallationService : IInstallationService
+    /// <summary>
+    /// Installation service
+    /// </summary>
+    public partial class PortalInstallationService : IInstallationService
 	{
 		#region Fields
 
@@ -63,7 +64,7 @@ namespace ARWNI2S.Portal.Services.Installation
 		private readonly IRepository<MeasureDimension> _measureDimensionRepository;
 		private readonly IRepository<MeasureWeight> _measureWeightRepository;
 		private readonly IRepository<StateProvince> _stateProvinceRepository;
-		private readonly IRepository<NI2SNode> _nodeRepository;
+		private readonly IRepository<ClusterNode> _nodeRepository;
 		//private readonly IRepository<TaxCategory> _taxCategoryRepository;
 		//private readonly IRepository<Token> _tokenRepository;
 		//private readonly IRepository<NonFungibleToken> _nftRepository;
@@ -90,7 +91,7 @@ namespace ARWNI2S.Portal.Services.Installation
 			IRepository<MeasureDimension> measureDimensionRepository,
 			IRepository<MeasureWeight> measureWeightRepository,
 			IRepository<StateProvince> stateProvinceRepository,
-			IRepository<NI2SNode> nodeRepository,
+			IRepository<ClusterNode> nodeRepository,
 			//IRepository<TaxCategory> taxCategoryRepository,
 			//IRepository<Token> tokenRepository,
 			//IRepository<NonFungibleToken> nftRepository,
@@ -231,7 +232,7 @@ namespace ARWNI2S.Portal.Services.Installation
 		protected virtual async Task InstallNodesAsync()
 		{
 			var nodeUrl = _webHelper.GetNodeLocation();
-			var nodes = new List<NI2SNode>
+			var nodes = new List<ClusterNode>
 			{
 				new() {
 					//Name = nodeUrl.Contains("localhost") ? "Development Node" : "DragonCorp Metalink",

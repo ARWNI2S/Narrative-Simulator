@@ -1,5 +1,4 @@
 using ARWNI2S.Engine.Network.Configuration.Options;
-using ARWNI2S.Engine.Network.Connection;
 using ARWNI2S.Engine.Network.Connection.Pipes;
 using ARWNI2S.Infrastructure.Network.Connection;
 using System.Net.Sockets;
@@ -28,7 +27,7 @@ namespace ARWNI2S.Engine.Network.Client
 
         public Stream Stream { get; set; }
 
-        public static readonly ConnectState CancelledState = new ConnectState(false);
+        public static readonly ConnectState CancelledState = new(false);
 
         public IConnection CreateConnection(ConnectionOptions connectionOptions)
         {

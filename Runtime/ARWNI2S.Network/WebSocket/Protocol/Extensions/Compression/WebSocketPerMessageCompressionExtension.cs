@@ -19,7 +19,7 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol.Extensions.Compression
 
         private static readonly Encoding _encoding = new UTF8Encoding(false);
 
-        private static readonly byte[] LAST_FOUR_OCTETS = new byte[] { 0x00, 0x00, 0xFF, 0xFF };
+        private static readonly byte[] LAST_FOUR_OCTETS = [0x00, 0x00, 0xFF, 0xFF];
         private static readonly ArrayPool<byte> _arrayPool = ArrayPool<byte>.Shared;
 
         public void Decode(WebSocketPackage package)

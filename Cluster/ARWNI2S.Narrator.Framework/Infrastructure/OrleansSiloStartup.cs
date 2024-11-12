@@ -1,8 +1,9 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Runtime.Data;
+using ARWNI2S.Runtime.Configuration.Options.Extensions;
 using Azure.Data.Tables;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ using StackExchange.Redis;
 
 namespace ARWNI2S.Narrator.Framework.Infrastructure
 {
-    public class OrleansSiloStartup : INI2SStartup
+    public class OrleansSiloStartup : INodeStartup
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
@@ -90,7 +91,7 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
 
         }
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
         }
 

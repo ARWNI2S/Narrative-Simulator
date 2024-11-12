@@ -12,16 +12,16 @@ namespace ARWNI2S.Portal.Framework
     /// <summary>
     /// NI2SNode context for web application
     /// </summary>
-    public partial class NI2SPortalContext : INodeContext
+    public partial class NI2SPortalContext : IClusterContext
     {
         #region Fields
 
         private readonly IGenericAttributeService _genericAttributeService;
         protected readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IRepository<NI2SNode> _nodeRepository;
+        private readonly IRepository<ClusterNode> _nodeRepository;
         private readonly IClusteringService _clusterService;
 
-        private NI2SNode _cachedNode;
+        private ClusterNode _cachedNode;
         private int? _cachedActiveNodeScopeConfiguration;
 
         #endregion
@@ -38,7 +38,7 @@ namespace ARWNI2S.Portal.Framework
         public NI2SPortalContext(
             IGenericAttributeService genericAttributeService,
             IHttpContextAccessor httpContextAccessor,
-            IRepository<NI2SNode> nodeRepository,
+            IRepository<ClusterNode> nodeRepository,
             IClusteringService clusterService)
         {
             _genericAttributeService = genericAttributeService;
@@ -55,7 +55,7 @@ namespace ARWNI2S.Portal.Framework
         /// Gets the current node
         /// </summary>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task<NI2SNode> GetCurrentNodeAsync()
+        public virtual async Task<ClusterNode> GetCurrentNodeAsync()
         {
             if (_cachedNode != null)
                 return _cachedNode;
@@ -77,7 +77,7 @@ namespace ARWNI2S.Portal.Framework
         /// <summary>
         /// Gets the current node
         /// </summary>
-        public virtual NI2SNode GetCurrentNode()
+        public virtual ClusterNode GetCurrentNode()
         {
             if (_cachedNode != null)
                 return _cachedNode;

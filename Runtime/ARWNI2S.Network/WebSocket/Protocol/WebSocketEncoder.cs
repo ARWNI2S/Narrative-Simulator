@@ -23,15 +23,15 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol
 
         public IReadOnlyList<IWebSocketExtension> Extensions { get; set; }
 
-        private static int[] _defaultFragmentSizes = new int[]
-            {
+        private static int[] _defaultFragmentSizes =
+            [
                 1024,
                 1024 * 4,
                 1024 * 8,
                 1024 * 16,
                 1024 * 32,
                 1024 * 64
-            };
+            ];
 
         static WebSocketEncoder()
         {
@@ -113,7 +113,7 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol
 
         private int EncodeEmptyFragment(IBufferWriter<byte> writer, byte opCode)
         {
-            return EncodeFinalFragment(writer, opCode, ReadOnlySpan<char>.Empty, null, default);
+            return EncodeFinalFragment(writer, opCode, [], null, default);
         }
 
         private int EncodeFragment(IBufferWriter<byte> writer, byte opCode, int fragmentSize, ReadOnlySpan<char> text, Encoder encoder, ref ArraySegment<byte> unwrittenBytes, out int charsUsed)

@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
@@ -115,7 +116,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IWorkContext, PortalWorkContext>();
 
             //node context
-            services.AddScoped<INodeContext, NI2SPortalContext>();
+            services.AddScoped<IClusterContext, NI2SPortalContext>();
 
             //services
             services.AddScoped<ITopicTemplateService, TopicTemplateService>();
@@ -244,7 +245,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
                 services.AddScoped(setting, serviceProvider =>
                 {
                     var nodeId = DataSettingsManager.IsDatabaseInstalled()
-                        ? serviceProvider.GetRequiredService<INodeContext>().GetCurrentNode()?.Id ?? 0
+                        ? serviceProvider.GetRequiredService<IClusterContext>().GetCurrentNode()?.Id ?? 0
                         : 0;
 
                     return serviceProvider.GetRequiredService<ISettingService>().LoadSettingAsync(setting, nodeId).Result;

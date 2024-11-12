@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Engine.Network.Configuration.Options;
 using ARWNI2S.Infrastructure.Network.Connection;
-using ARWNI2S.Infrastructure.Network.Connection.Pipes;
+using ARWNI2S.Infrastructure.Network.Pipes;
 using ARWNI2S.Infrastructure.Network.Protocol;
 using ARWNI2S.Infrastructure.Network.Proxy;
 using Microsoft.Extensions.Logging;
@@ -12,7 +12,7 @@ namespace ARWNI2S.Engine.Network.Connection.Pipes
 {
     public abstract partial class PipeConnectionBase : ConnectionBase, IConnection, IPipeConnection
     {
-        private CancellationTokenSource _cts = new CancellationTokenSource();
+        private CancellationTokenSource _cts = new();
 
         private IPipelineFilter _pipelineFilter;
 

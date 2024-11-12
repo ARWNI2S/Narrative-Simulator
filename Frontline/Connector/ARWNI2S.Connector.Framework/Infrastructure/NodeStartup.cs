@@ -1,15 +1,15 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace ARWNI2S.Connector.Framework.Infrastructure
 {
-    internal class NodeStartup : INI2SStartup
+    internal class NodeStartup : INodeStartup
     {
         public int Order => 2000;
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
 
         }

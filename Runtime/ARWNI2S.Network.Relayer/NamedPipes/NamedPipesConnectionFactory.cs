@@ -1,5 +1,4 @@
 using ARWNI2S.Engine.Network.Configuration.Options;
-using ARWNI2S.Engine.Network.Connection.Pipes;
 using ARWNI2S.Infrastructure.Network.Connection;
 using System.IO.Pipes;
 

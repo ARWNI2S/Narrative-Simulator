@@ -6,7 +6,7 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol
 {
     public static partial class ExtensionMethods
     {
-        private readonly static char[] m_CrCf = new char[] { '\r', '\n' };
+        private readonly static char[] m_CrCf = ['\r', '\n'];
 
         /// <summary>
         /// Appends in the format with CrCf as suffix.

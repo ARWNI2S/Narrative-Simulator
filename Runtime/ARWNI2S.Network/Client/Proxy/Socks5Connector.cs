@@ -20,7 +20,7 @@ namespace ARWNI2S.Engine.Network.Client.Proxy
 
         private string _password;
 
-        readonly static byte[] _authenHandshakeRequest = new byte[] { 0x05, 0x02, 0x00, 0x02 };
+        readonly static byte[] _authenHandshakeRequest = [0x05, 0x02, 0x00, 0x02];
 
         public Socks5Connector(EndPoint proxyEndPoint)
             : base(proxyEndPoint)

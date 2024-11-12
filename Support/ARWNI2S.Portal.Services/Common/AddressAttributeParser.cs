@@ -16,7 +16,7 @@ namespace ARWNI2S.Portal.Services.Common
 
         private readonly IAddressAttributeService _addressAttributeService;
         private readonly ILocalizationService _localizationService;
-        private static readonly char[] separator = new[] { ',' };
+        private static readonly char[] separator = [','];
 
         #endregion
 

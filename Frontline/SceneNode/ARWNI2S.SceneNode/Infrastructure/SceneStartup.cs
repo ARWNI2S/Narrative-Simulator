@@ -1,12 +1,13 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.SceneNode.Infrastructure
 {
-    internal class SceneStartup : INI2SStartup
+    internal class SceneStartup : INodeStartup
     {
         public int Order => 2002;
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
 
         }

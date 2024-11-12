@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Services.Blogs
         private readonly IRepository<BlogPost> _blogPostRepository;
         private readonly IStaticCacheManager _staticCacheManager;
         private readonly INodeMappingService _nodeMappingService;
-        private static readonly char[] separator = new[] { ',' };
+        private static readonly char[] separator = [','];
 
         #endregion
 

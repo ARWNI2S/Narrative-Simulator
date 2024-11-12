@@ -19,7 +19,7 @@ namespace ARWNI2S.Portal.Services.Globalization
         private readonly IStaticCacheManager _staticCacheManager;
         private readonly ILocalizationService _localizationService;
         private readonly IRepository<Country> _countryRepository;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusterContext _nodeContext;
         private readonly INodeMappingService _nodeMappingService;
 
         #endregion
@@ -30,7 +30,7 @@ namespace ARWNI2S.Portal.Services.Globalization
             IStaticCacheManager staticCacheManager,
             ILocalizationService localizationService,
             IRepository<Country> countryRepository,
-            INodeContext nodeContext,
+            IClusterContext nodeContext,
             INodeMappingService nodeMappingService)
         {
             _staticCacheManager = staticCacheManager;

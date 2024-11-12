@@ -1,11 +1,11 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace ARWNI2S.Narrator.Framework.Infrastructure
 {
-    internal class NodeStartup : INI2SStartup
+    internal class NodeStartup : INodeStartup
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
@@ -15,7 +15,7 @@ namespace ARWNI2S.Narrator.Framework.Infrastructure
             //services.AddFromExisting<ILifecycleParticipant<ISiloLifecycle>, NarratorEngine>();
         }
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
 
         }

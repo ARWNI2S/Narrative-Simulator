@@ -12,13 +12,13 @@ namespace ARWNI2S.Engine.Network.Proxy
     {
         private static readonly byte[] PROXY_DELIMITER = Encoding.ASCII.GetBytes("\r\n");
 
-        private static readonly IProxySgementProcessor[] PROXY_SEGMENT_PARSERS = new IProxySgementProcessor[]
-            {
+        private static readonly IProxySgementProcessor[] PROXY_SEGMENT_PARSERS =
+            [
                 new SourceIPAddressProcessor(),
                 new DestinationIPAddressProcessor(),
                 new SourcePortProcessor(),
                 new DestinationPortProcessor()
-            };
+            ];
 
         public override bool Process(TPackageInfo package, object filterContext, ref SequenceReader<byte> reader, out IPackagePartReader<TPackageInfo> nextPartReader, out bool needMoreData)
         {

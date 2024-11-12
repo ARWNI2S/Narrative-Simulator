@@ -5,7 +5,6 @@ using ARWNI2S.Engine.Network.Proxy;
 using ARWNI2S.Engine.Network.Session;
 using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Extensions;
-using ARWNI2S.Infrastructure.Lifecycle;
 using ARWNI2S.Infrastructure.Logging;
 using ARWNI2S.Infrastructure.Network.Connection;
 using ARWNI2S.Infrastructure.Network.Protocol;
@@ -27,7 +26,7 @@ namespace ARWNI2S.Engine.Network
         public ServerOptions Options { get; }
         private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger _logger;
-        private readonly NodeLifecycle _nodeServerLifecycle;
+        //private readonly NodeLifecycle _nodeServerLifecycle;
 
         internal protected ILogger Logger
         {
@@ -107,13 +106,13 @@ namespace ARWNI2S.Engine.Network
                 _packageHandlingScheduler.Initialize(packageHandler, errorHandler);
             }
 
-            _nodeServerLifecycle = new NodeLifecycle(_logger);
-            // register all lifecycle participants
-            IEnumerable<ILifecycleParticipant<INodeLifecycle>> lifecycleParticipants = _serviceProvider.GetServices<ILifecycleParticipant<INodeLifecycle>>();
-            foreach (var participant in lifecycleParticipants)
-            {
-                participant?.Participate(_nodeServerLifecycle);
-            }
+            //_nodeServerLifecycle = new NodeLifecycle(_logger);
+            //// register all lifecycle participants
+            //IEnumerable<ILifecycleParticipant<INodeLifecycle>> lifecycleParticipants = _serviceProvider.GetServices<ILifecycleParticipant<INodeLifecycle>>();
+            //foreach (var participant in lifecycleParticipants)
+            //{
+            //    participant?.Participate(_nodeServerLifecycle);
+            //}
 
         }
 
@@ -453,7 +452,7 @@ namespace ARWNI2S.Engine.Network
 
             try
             {
-                await _nodeServerLifecycle.OnStart(cancellationToken).ConfigureAwait(false);
+                //await _nodeServerLifecycle.OnStart(cancellationToken).ConfigureAwait(false);
                 await OnStartedAsync();
             }
             catch (Exception e)
@@ -497,7 +496,7 @@ namespace ARWNI2S.Engine.Network
             try
             {
                 await OnStopAsync();
-                await _nodeServerLifecycle.OnStop(cancellationToken).ConfigureAwait(false);
+                //await _nodeServerLifecycle.OnStop(cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -505,17 +504,6 @@ namespace ARWNI2S.Engine.Network
             }
 
             _state = ServerState.Stopped;
-        }
-
-        async Task<bool> IServer.StartAsync()
-        {
-            await StartAsync(CancellationToken.None);
-            return true;
-        }
-
-        async Task IServer.StopAsync()
-        {
-            await StopAsync(CancellationToken.None);
         }
 
         #region IDisposable Support

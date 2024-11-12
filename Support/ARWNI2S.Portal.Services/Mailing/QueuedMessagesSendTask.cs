@@ -14,7 +14,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly IEmailSender _emailSender;
         private readonly ILogService _logger;
         private readonly IQueuedEmailService _queuedEmailService;
-        private static readonly char[] separator = new[] { ';' };
+        private static readonly char[] separator = [';'];
 
         #endregion
 

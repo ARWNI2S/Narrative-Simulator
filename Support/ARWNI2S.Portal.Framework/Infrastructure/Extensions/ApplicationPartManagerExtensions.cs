@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.ComponentModel;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
@@ -104,7 +105,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <summary>
         /// Load and register the assembly
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="applicationPartManager">Engine part manager</param>
         /// <param name="assemblyFile">Path to the assembly file</param>
         /// <param name="useUnsafeLoadAssembly">Indicating whether to load an assembly into the load-from context, bypassing some security checks</param>
         /// <returns>Assembly</returns>
@@ -142,7 +143,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <summary>
         /// Perform file deploy and return loaded assembly
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="applicationPartManager">Engine part manager</param>
         /// <param name="assemblyFile">Path to the module assembly file</param>
         /// <param name="moduleConfig">Module config</param>
         /// <param name="fileProvider">NI2S file provider</param>
@@ -226,7 +227,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// <summary>
         /// Initialize modules system
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="applicationPartManager">Engine part manager</param>
         /// <param name="moduleConfig">Module config</param>
         public static void InitializeModules(this ApplicationPartManager applicationPartManager, ModuleConfig moduleConfig)
         {

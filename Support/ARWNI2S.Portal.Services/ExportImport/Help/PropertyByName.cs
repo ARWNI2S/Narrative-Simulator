@@ -197,7 +197,7 @@ namespace ARWNI2S.Portal.Services.ExportImport.Help
         /// <returns>Result</returns>
         public string[] GetDropDownElements()
         {
-            return IsDropDownCell ? DropDownElements.Select(ev => ev.Text).ToArray() : Array.Empty<string>();
+            return IsDropDownCell ? DropDownElements.Select(ev => ev.Text).ToArray() : [];
         }
 
         /// <summary>

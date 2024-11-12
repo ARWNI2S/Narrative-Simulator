@@ -4,7 +4,7 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol
 {
     public class WebSocketMaskedEncoder : WebSocketEncoder
     {
-        private static readonly Random _random = new Random();
+        private static readonly Random _random = new();
 
         private const int MASK_LEN = 4;
 

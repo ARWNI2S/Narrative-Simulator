@@ -8,7 +8,7 @@ namespace ARWNI2S.Engine.Network.Connection
     {
         public CompressionLevel CompressionLevel { get; }
 
-        private IEnumerable<IConnectionStreamInitializer> _empty = new IConnectionStreamInitializer[0];
+        private IEnumerable<IConnectionStreamInitializer> _empty = [];
 
         public DefaultConnectionStreamInitializersFactory()
             : this(CompressionLevel.NoCompression)

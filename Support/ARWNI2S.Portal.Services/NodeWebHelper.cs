@@ -24,7 +24,7 @@ namespace ARWNI2S.Portal.Services
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUrlHelperFactory _urlHelperFactory;
-        private readonly Lazy<INodeContext> _nodeContext;
+        private readonly Lazy<IClusterContext> _nodeContext;
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace ARWNI2S.Portal.Services
             IHostApplicationLifetime hostApplicationLifetime,
             IHttpContextAccessor httpContextAccessor,
             IUrlHelperFactory urlHelperFactory,
-            Lazy<INodeContext> nodeContext)
+            Lazy<IClusterContext> nodeContext)
         {
             _actionContextAccessor = actionContextAccessor;
             _hostApplicationLifetime = hostApplicationLifetime;
@@ -354,7 +354,7 @@ namespace ARWNI2S.Portal.Services
             {
                 var response = _httpContextAccessor.HttpContext.Response;
                 //ASP.NET 4 style - return response.IsRequestBeingRedirected;
-                int[] redirectionStatusCodes = { StatusCodes.Status301MovedPermanently, StatusCodes.Status302Found };
+                int[] redirectionStatusCodes = [StatusCodes.Status301MovedPermanently, StatusCodes.Status302Found];
 
                 return redirectionStatusCodes.Contains(response.StatusCode);
             }

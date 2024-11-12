@@ -27,7 +27,7 @@ namespace ARWNI2S.Engine.Network.WebSocket.Protocol
         public const string ResponseAcceptLine = "Sec-WebSocket-Accept: {0}\r\n";
         public const byte StartByte = 0x00;
         public const byte EndByte = 0xFF;
-        public static byte[] ClosingHandshake = new byte[] { 0xFF, 0x00 };
+        public static byte[] ClosingHandshake = [0xFF, 0x00];
         public const string WsSchema = "ws";
         public const string WssSchema = "wss";
     }

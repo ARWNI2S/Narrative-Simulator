@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ARWNI2S.Engine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Attributes\**" />
+    <EmbeddedResource Remove="Attributes\**" />
+    <None Remove="Attributes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
+  </ItemGroup>
+
+</Project>

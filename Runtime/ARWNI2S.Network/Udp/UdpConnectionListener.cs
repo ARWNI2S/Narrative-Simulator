@@ -70,7 +70,7 @@ namespace ARWNI2S.Engine.Network.Udp
                 uint IOC_VENDOR = 0x18000000;
                 uint SIO_UDP_CONNRESET = IOC_IN | IOC_VENDOR | 12;
 
-                byte[] optionInValue = { Convert.ToByte(false) };
+                byte[] optionInValue = [Convert.ToByte(false)];
                 byte[] optionOutValue = new byte[4];
 
                 try

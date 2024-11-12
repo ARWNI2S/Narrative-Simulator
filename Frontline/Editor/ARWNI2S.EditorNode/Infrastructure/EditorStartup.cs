@@ -1,12 +1,13 @@
 ﻿using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.EditorNode.Infrastructure
 {
-    internal class EditorStartup : INI2SStartup
+    internal class EditorStartup : INodeStartup
     {
         public int Order => 2002;
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
 
         }

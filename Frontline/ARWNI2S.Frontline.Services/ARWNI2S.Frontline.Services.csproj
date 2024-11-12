@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Compile Remove="Clustering\LocalActorRegistry .cs" />
+    <Compile Remove="FrontlineContextAccessor.cs" />
     <Compile Remove="Network\FrontlineService.cs" />
   </ItemGroup>
 

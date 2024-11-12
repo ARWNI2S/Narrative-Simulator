@@ -43,7 +43,7 @@ namespace ARWNI2S.Portal.Framework.Routing
             {
                 //ensure this language is available
                 var code = routeValue?.ToString();
-                var nodeContext = NodeEngineContext.Current.Resolve<INodeContext>();
+                var nodeContext = NodeEngineContext.Current.Resolve<IClusterContext>();
                 var node = nodeContext.GetCurrentNode();
                 var languages = _languageService.GetAllLanguages(nodeId: node.Id);
                 var language = languages

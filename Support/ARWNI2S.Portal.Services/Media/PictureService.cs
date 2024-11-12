@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Collections.Generic;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Data;
 using ARWNI2S.Node.Data.Extensions;
 using ARWNI2S.Node.Services.Configuration;
@@ -234,7 +235,7 @@ namespace ARWNI2S.Portal.Services.Media
             ArgumentNullException.ThrowIfNull(picture);
 
             var result = fromDb
-                ? (await GetPictureBinaryByPictureIdAsync(picture.Id))?.BinaryData ?? Array.Empty<byte>()
+                ? (await GetPictureBinaryByPictureIdAsync(picture.Id))?.BinaryData ?? []
                 : await LoadPictureFromFileAsync(picture.Id, picture.MimeType);
 
             return result;
@@ -897,7 +898,7 @@ namespace ARWNI2S.Portal.Services.Media
                 IsNew = isNew
             };
             await _pictureRepository.InsertAsync(picture);
-            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? pictureBinary : Array.Empty<byte>());
+            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? pictureBinary : []);
 
             if (!await IsStoreInDbAsync())
                 await SavePictureInFileAsync(picture.Id, pictureBinary, mimeType);
@@ -1015,7 +1016,7 @@ namespace ARWNI2S.Portal.Services.Media
             picture.IsNew = isNew;
 
             await _pictureRepository.UpdateAsync(picture);
-            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? pictureBinary : Array.Empty<byte>());
+            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? pictureBinary : []);
 
             if (!await IsStoreInDbAsync())
                 await SavePictureInFileAsync(picture.Id, pictureBinary, mimeType);
@@ -1044,7 +1045,7 @@ namespace ARWNI2S.Portal.Services.Media
             picture.SeoFilename = seoFilename;
 
             await _pictureRepository.UpdateAsync(picture);
-            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? (await GetPictureBinaryByPictureIdAsync(picture.Id)).BinaryData : Array.Empty<byte>());
+            await UpdatePictureBinaryAsync(picture, await IsStoreInDbAsync() ? (await GetPictureBinaryByPictureIdAsync(picture.Id)).BinaryData : []);
 
             if (!await IsStoreInDbAsync())
                 await SavePictureInFileAsync(picture.Id, (await GetPictureBinaryByPictureIdAsync(picture.Id)).BinaryData, picture.MimeType);
@@ -1227,7 +1228,7 @@ namespace ARWNI2S.Portal.Services.Media
                             //now on file system
                             await SavePictureInFileAsync(picture.Id, pictureBinary, picture.MimeType);
                         //update appropriate properties
-                        await UpdatePictureBinaryAsync(picture, isStoreInDb ? pictureBinary : Array.Empty<byte>());
+                        await UpdatePictureBinaryAsync(picture, isStoreInDb ? pictureBinary : []);
                         picture.IsNew = true;
                     }
 

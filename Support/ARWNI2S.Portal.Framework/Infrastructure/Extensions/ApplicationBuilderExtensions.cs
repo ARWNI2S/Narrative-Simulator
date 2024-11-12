@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
@@ -63,7 +63,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             if (DataSettingsManager.IsDatabaseInstalled())
             {
                 //log application start
-                await engine.Resolve<ILogService>().InformationAsync("Application started");
+                await engine.Resolve<ILogService>().InformationAsync("Engine started");
 
                 //install and update modules
                 var moduleService = engine.Resolve<IModuleService>();
@@ -224,14 +224,14 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             var fileProvider = NodeEngineContext.Current.Resolve<IEngineFileProvider>();
             var webHostEnvironment = NodeEngineContext.Current.Resolve<IWebHostEnvironment>();
 
-            application.UseWebOptimizer(webHostEnvironment, new[]
-            {
+            application.UseWebOptimizer(webHostEnvironment,
+            [
                 new FileProviderOptions
                 {
                     RequestPath =  new PathString("/Modules"),
                     FileProvider = new PhysicalFileProvider(fileProvider.MapPath(@"Modules"))
                 }
-            });
+            ]);
         }
 
         /// <summary>

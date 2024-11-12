@@ -18,7 +18,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             //register engine
-            services.AddSingleton<IEngine>(this);
+            services.AddSingleton<INodeEngine>(this);
 
             //find startup configurations provided by other assemblies
             var typeFinder = Singleton<ITypeFinder>.Instance;

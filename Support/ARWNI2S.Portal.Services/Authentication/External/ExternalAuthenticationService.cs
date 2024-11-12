@@ -40,12 +40,12 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILocalizationService _localizationService;
         private readonly IRepository<ExternalAuthenticationRecord> _externalAuthenticationRecordRepository;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusterContext _nodeContext;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly PortalWorkContext _workContext;
         private readonly IWorkflowMessageService _workflowMessageService;
         private readonly PortalLocalizationSettings _localizationSettings;
-        private static readonly string[] stringArray = new[] { "Registration is disabled" };
+        private static readonly string[] stringArray = ["Registration is disabled"];
 
         #endregion
 
@@ -62,7 +62,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             IHttpContextAccessor httpContextAccessor,
             ILocalizationService localizationService,
             IRepository<ExternalAuthenticationRecord> externalAuthenticationRecordRepository,
-            INodeContext nodeContext,
+            IClusterContext nodeContext,
             IUrlHelperFactory urlHelperFactory,
             PortalWorkContext workContext,
             IWorkflowMessageService workflowMessageService,
@@ -108,10 +108,10 @@ namespace ARWNI2S.Portal.Services.Authentication.External
 
             //account is already assigned to another user
             if (currentLoggedInUser.Id != associatedUser.Id)
-                return await ErrorAuthenticationAsync(new[]
-                {
+                return await ErrorAuthenticationAsync(
+                [
                     await _localizationService.GetResourceAsync("Account.AssociatedExternalAuth.AccountAlreadyAssigned")
-                }, returnUrl);
+                ], returnUrl);
 
             //or the user try to log in as himself. bit weird
             return SuccessfulAuthentication(returnUrl);
@@ -161,7 +161,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             {
                 var alreadyExistsError = string.Format(await _localizationService.GetResourceAsync("Account.AssociatedExternalAuth.EmailAlreadyExists"),
                     !string.IsNullOrEmpty(parameters.ExternalDisplayIdentifier) ? parameters.ExternalDisplayIdentifier : parameters.ExternalIdentifier);
-                return await ErrorAuthenticationAsync(new[] { alreadyExistsError }, returnUrl);
+                return await ErrorAuthenticationAsync([alreadyExistsError], returnUrl);
             }
 
             //registration is approved if validation isn't required
@@ -222,7 +222,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             if (_userSettings.UserRegistrationType == UserRegistrationType.AdminApproval)
                 return new RedirectToRouteResult("RegisterResult", new { resultId = (int)UserRegistrationType.AdminApproval, returnUrl });
 
-            return await ErrorAuthenticationAsync(new[] { await _localizationService.GetResourceAsync("Account.Register.Error") }, returnUrl);
+            return await ErrorAuthenticationAsync([await _localizationService.GetResourceAsync("Account.Register.Error")], returnUrl);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             var user = await _workContext.GetCurrentUserAsync();
             var node = await _nodeContext.GetCurrentNodeAsync();
             if (!await _authenticationModuleManager.IsModuleActiveAsync(parameters.ProviderSystemName, user, node.Id))
-                return await ErrorAuthenticationAsync(new[] { await _localizationService.GetResourceAsync("Account.ExternalAuthenticationMethod.LoadError") }, returnUrl);
+                return await ErrorAuthenticationAsync([await _localizationService.GetResourceAsync("Account.ExternalAuthenticationMethod.LoadError")], returnUrl);
 
             //get current logged-in user
             var currentLoggedInUser = await _userService.IsRegisteredAsync(user) ? user : null;

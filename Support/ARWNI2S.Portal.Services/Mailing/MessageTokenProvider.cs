@@ -35,7 +35,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ILocalizationService _localizationService;
         private readonly INewsService _newsService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusterContext _nodeContext;
         private readonly IClusteringService _clusteringService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         //private readonly IPartnerAttributeFormatter _partnerAttributeFormatter;
@@ -56,7 +56,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             IGenericAttributeService genericAttributeService,
             ILocalizationService localizationService,
             INewsService newsService,
-            INodeContext nodeContext,
+            IClusterContext nodeContext,
             IClusteringService clusteringService,
             IUrlHelperFactory urlHelperFactory,
             //IPartnerAttributeFormatter partnerAttributeFormatter,
@@ -151,7 +151,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         }
 
 
-        private static readonly string[] NodeTokens = new[] {
+        private static readonly string[] NodeTokens = [
             "%Node.Name%",
             "%Node.URL%",
             "%Node.Email%",
@@ -164,9 +164,9 @@ namespace ARWNI2S.Portal.Services.Mailing
             "%Twitter.URL%",
             "%YouTube.URL%",
             "%Instagram.URL%"
-        };
+        ];
 
-        private static readonly string[] UserTokens = new[] {
+        private static readonly string[] UserTokens = [
             "%User.Email%",
             "%User.Username%",
             "%User.FullName%",
@@ -179,49 +179,49 @@ namespace ARWNI2S.Portal.Services.Mailing
             "%User.AccountActivationURL%",
             "%User.EmailRevalidationURL%",
             "%Wishlist.URLForUser%"
-        };
+        ];
 
-        private static readonly string[] SubscriptionTokens = new[] {
+        private static readonly string[] SubscriptionTokens = [
             "%NewsLetterSubscription.Email%",
             "%NewsLetterSubscription.ActivationUrl%",
             "%NewsLetterSubscription.DeactivationUrl%"
-        };
+        ];
 
-        private static readonly string[] PartnerTokens = new[] {
+        private static readonly string[] PartnerTokens = [
             "%Partner.Name%",
             "%Partner.Email%",
             "%Partner.PartnerAttributes%"
-        };
+        ];
 
-        private static readonly string[] BlogCommentTokens = new[] {
+        private static readonly string[] BlogCommentTokens = [
             "%BlogComment.BlogPostTitle%"
-        };
+        ];
 
-        private static readonly string[] NewsCommentTokens = new[] {
+        private static readonly string[] NewsCommentTokens = [
             "%NewsComment.NewsTitle%"
-        };
+        ];
 
-        private static readonly string[] EmailAFriendTokens = new[] {
+        private static readonly string[] EmailAFriendTokens = [
             "%EmailAFriend.PersonalMessage%",
             "%EmailAFriend.Email%"
-        };
+        ];
 
-        private static readonly string[] VatValidationTokens = new[] {
+        private static readonly string[] VatValidationTokens = [
             "%VatValidationResult.Name%",
             "%VatValidationResult.Address%"
-        };
+        ];
 
-        private static readonly string[] ContactUsTokens = new[] {
+        private static readonly string[] ContactUsTokens = [
             "%ContactUs.SenderEmail%",
             "%ContactUs.SenderName%",
             "%ContactUs.Body%"
-        };
+        ];
 
-        private static readonly string[] ContactPartnerTokens = new[] {
+        private static readonly string[] ContactPartnerTokens = [
             "%ContactUs.SenderEmail%",
             "%ContactUs.SenderName%",
             "%ContactUs.Body%"
-        };
+        ];
 
         #endregion
 
@@ -266,7 +266,7 @@ namespace ARWNI2S.Portal.Services.Mailing
         /// <param name="node">Node</param>
         /// <param name="emailAccount">Email account</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task AddNodeTokensAsync(IList<Token> tokens, NI2SNode node, EmailAccount emailAccount)
+        public virtual async Task AddNodeTokensAsync(IList<Token> tokens, ClusterNode node, EmailAccount emailAccount)
         {
             ArgumentNullException.ThrowIfNull(emailAccount);
 
@@ -438,7 +438,7 @@ namespace ARWNI2S.Portal.Services.Mailing
             var additionalTokens = new CampaignAdditionalTokensAddedEvent();
             await _eventPublisher.PublishAsync(additionalTokens);
 
-            var allowedTokens = (await GetListOfAllowedTokensAsync(new[] { TokenGroupNames.NodeTokens, TokenGroupNames.SubscriptionTokens })).ToList();
+            var allowedTokens = (await GetListOfAllowedTokensAsync([TokenGroupNames.NodeTokens, TokenGroupNames.SubscriptionTokens])).ToList();
             allowedTokens.AddRange(additionalTokens.AdditionalTokens);
 
             return allowedTokens.Distinct();
@@ -482,21 +482,21 @@ namespace ARWNI2S.Portal.Services.Mailing
                 MessageTemplateSystemNames.UserWelcomeMessage or
                 MessageTemplateSystemNames.UserEmailValidationMessage or
                 MessageTemplateSystemNames.UserEmailRevalidationMessage or
-                MessageTemplateSystemNames.UserPasswordRecoveryMessage => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens },
+                MessageTemplateSystemNames.UserPasswordRecoveryMessage => [TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens],
 
                 MessageTemplateSystemNames.NewsletterSubscriptionActivationMessage or
-                MessageTemplateSystemNames.NewsletterSubscriptionDeactivationMessage => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.SubscriptionTokens },
+                MessageTemplateSystemNames.NewsletterSubscriptionDeactivationMessage => [TokenGroupNames.NodeTokens, TokenGroupNames.SubscriptionTokens],
 
-                MessageTemplateSystemNames.EmailAFriendMessage => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.ProductTokens, TokenGroupNames.EmailAFriendTokens },
+                MessageTemplateSystemNames.EmailAFriendMessage => [TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.ProductTokens, TokenGroupNames.EmailAFriendTokens],
 
-                MessageTemplateSystemNames.NewPartnerAccountApplyNotification => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.PartnerTokens },
-                MessageTemplateSystemNames.PartnerInformationChangeNotification => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.PartnerTokens },
+                MessageTemplateSystemNames.NewPartnerAccountApplyNotification => [TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.PartnerTokens],
+                MessageTemplateSystemNames.PartnerInformationChangeNotification => [TokenGroupNames.NodeTokens, TokenGroupNames.PartnerTokens],
 
-                MessageTemplateSystemNames.NewVatSubmittedNotification => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.VatValidation },
-                MessageTemplateSystemNames.BlogCommentNotification => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.BlogCommentTokens, TokenGroupNames.UserTokens },
-                MessageTemplateSystemNames.NewsCommentNotification => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.NewsCommentTokens, TokenGroupNames.UserTokens },
-                MessageTemplateSystemNames.ContactUsMessage => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.ContactUs },
-                MessageTemplateSystemNames.ContactPartnerMessage => new[] { TokenGroupNames.NodeTokens, TokenGroupNames.ContactPartner },
+                MessageTemplateSystemNames.NewVatSubmittedNotification => [TokenGroupNames.NodeTokens, TokenGroupNames.UserTokens, TokenGroupNames.VatValidation],
+                MessageTemplateSystemNames.BlogCommentNotification => [TokenGroupNames.NodeTokens, TokenGroupNames.BlogCommentTokens, TokenGroupNames.UserTokens],
+                MessageTemplateSystemNames.NewsCommentNotification => [TokenGroupNames.NodeTokens, TokenGroupNames.NewsCommentTokens, TokenGroupNames.UserTokens],
+                MessageTemplateSystemNames.ContactUsMessage => [TokenGroupNames.NodeTokens, TokenGroupNames.ContactUs],
+                MessageTemplateSystemNames.ContactPartnerMessage => [TokenGroupNames.NodeTokens, TokenGroupNames.ContactPartner],
                 _ => Array.Empty<string>(),
             };
         }

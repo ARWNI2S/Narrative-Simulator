@@ -10,13 +10,13 @@ namespace ARWNI2S.Portal.Services.Localization
     /// </summary>
     public static class LocalizedUrlExtensions
     {
-        private static readonly char[] separator = new[] { '/' };
+        private static readonly char[] separator = ['/'];
 
         /// <summary>
         /// Get a value indicating whether URL is localized (contains SEO code)
         /// </summary>
         /// <param name="url">URL</param>
-        /// <param name="pathBase">Application path base</param>
+        /// <param name="pathBase">Engine path base</param>
         /// <param name="isRawPath">A value indicating whether passed URL is raw URL</param>
         /// <returns>
         /// A task that represents the asynchronous operation
@@ -49,7 +49,7 @@ namespace ARWNI2S.Portal.Services.Localization
         /// Remove application path from raw URL
         /// </summary>
         /// <param name="rawUrl">Raw URL</param>
-        /// <param name="pathBase">Application path base</param>
+        /// <param name="pathBase">Engine path base</param>
         /// <returns>Result</returns>
         public static string RemoveApplicationPathFromRawUrl(this string rawUrl, PathString pathBase)
         {
@@ -61,7 +61,7 @@ namespace ARWNI2S.Portal.Services.Localization
         /// Remove language SEO code from URL
         /// </summary>
         /// <param name="url">Raw URL</param>
-        /// <param name="pathBase">Application path base</param>
+        /// <param name="pathBase">Engine path base</param>
         /// <param name="isRawPath">A value indicating whether passed URL is raw URL</param>
         /// <returns>URL without language SEO code</returns>
         public static string RemoveLanguageSeoCodeFromUrl(this string url, PathString pathBase, bool isRawPath)
@@ -88,7 +88,7 @@ namespace ARWNI2S.Portal.Services.Localization
         /// Add language SEO code to URL
         /// </summary>
         /// <param name="url">Raw URL</param>
-        /// <param name="pathBase">Application path base</param>
+        /// <param name="pathBase">Engine path base</param>
         /// <param name="isRawPath">A value indicating whether passed URL is raw URL</param>
         /// <param name="language">Language</param>
         /// <returns>Result</returns>

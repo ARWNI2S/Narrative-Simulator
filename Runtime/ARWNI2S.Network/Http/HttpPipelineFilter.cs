@@ -8,7 +8,7 @@ namespace ARWNI2S.Engine.Network.Http
 {
     public class HttpPipelineFilter : IPipelineFilter<HttpRequest>
     {
-        private static ReadOnlySpan<byte> _CRLF => new byte[] { (byte)'\r', (byte)'\n' };
+        private static ReadOnlySpan<byte> _CRLF => [(byte)'\r', (byte)'\n'];
 
         private static readonly char _TAB = '\t';
 

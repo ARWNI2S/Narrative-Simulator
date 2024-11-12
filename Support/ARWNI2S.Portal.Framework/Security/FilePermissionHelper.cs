@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Services.Plugins;
 using System.Diagnostics;
@@ -281,7 +281,7 @@ namespace ARWNI2S.Portal.Framework.Security
             return new List<string>
             {
                 fileProvider.MapPath(NI2SModuleDefaults.ModulesInfoFilePath),
-                fileProvider.MapPath(ConfigurationDefaults.NodeSettingsFilePath)
+                fileProvider.MapPath(NI2SConfigurationDefaults.NI2SSettingsFilePath)
             };
         }
 

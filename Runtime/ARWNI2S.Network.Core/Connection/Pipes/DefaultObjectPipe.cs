@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Infrastructure.Network.Connection.Pipes;
+﻿using ARWNI2S.Infrastructure.Network.Pipes;
 using System.Buffers;
 using System.Threading.Tasks.Sources;
 
@@ -35,7 +35,7 @@ namespace ARWNI2S.Engine.Network.Connection.Pipes
         private const int _segmentSize = 5;
         private BufferSegment _first;
         private BufferSegment _current;
-        private object _syncRoot = new object();
+        private object _syncRoot = new();
         private static readonly ArrayPool<T> _pool = ArrayPool<T>.Shared;
         private ManualResetValueTaskSourceCore<T> _taskSourceCore;
         private bool _waiting = false;

@@ -26,7 +26,7 @@ namespace ARWNI2S.Portal.Services
         //private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILanguageService _languageService;
         //private readonly IBlockchainService _blockchainService;
-        private readonly INodeContext _nodeContext;
+        private readonly IClusterContext _nodeContext;
         //private readonly INodeMappingService _nodeMappingService;
         //private readonly IUserAgentHelper _userAgentHelper;
         //private readonly IPlayerService _playerService;
@@ -62,7 +62,7 @@ namespace ARWNI2S.Portal.Services
                     //    IHttpContextAccessor httpContextAccessor,
                     ILanguageService languageService,
                 //    IBlockchainService blockchainService,
-                INodeContext nodeContext
+                IClusterContext nodeContext
             //    INodeMappingService nodeMappingService,
             //    IUserAgentHelper userAgentHelper,
             //    IPartnerService partnerService,
@@ -703,9 +703,9 @@ namespace ARWNI2S.Portal.Services
 
         #endregion
 
-        async Task<INI2SUser> IWorkContext.GetCurrentUserAsync() { return await GetCurrentUserAsync(); }
+        async Task<IUser> IWorkContext.GetCurrentUserAsync() { return await GetCurrentUserAsync(); }
 
-        async Task IWorkContext.SetCurrentUserAsync(INI2SUser user)
+        async Task IWorkContext.SetCurrentUserAsync(IUser user)
         {
             if (user is User u)
                 await SetCurrentUserAsync(u);

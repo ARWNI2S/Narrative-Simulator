@@ -4,7 +4,7 @@ using System.IO.Pipelines;
 using System.Runtime.InteropServices;
 using Reason = ARWNI2S.Infrastructure.Network.Connection.CloseReason;
 using ARWNI2S.Engine.Network.Configuration.Options;
-using ARWNI2S.Infrastructure.Network.Connection.Pipes;
+using ARWNI2S.Infrastructure.Network.Pipes;
 
 namespace ARWNI2S.Engine.Network.Connection.Pipes
 {
