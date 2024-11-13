@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Reflection.Emit;
+using ARWNI2S.Engine.Entities;
 using ARWNI2S.Infrastructure;
 
 namespace ARWNI2S.Engine.Reflection

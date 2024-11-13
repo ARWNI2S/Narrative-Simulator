@@ -30,7 +30,7 @@ namespace ARWNI2S.Portal.Controllers
         private readonly Lazy<IPermissionService> _permissionService;
         private readonly Lazy<IModuleService> _moduleService;
         private readonly Lazy<IStaticCacheManager> _staticCacheManager;
-        private readonly Lazy<IUploadService> _uploadService;
+        //private readonly Lazy<IUploadService> _uploadService;
         private readonly Lazy<IWebHelper> _webHelper;
 
         #endregion
@@ -44,7 +44,7 @@ namespace ARWNI2S.Portal.Controllers
             Lazy<IPermissionService> permissionService,
             Lazy<IModuleService> moduleService,
             Lazy<IStaticCacheManager> staticCacheManager,
-            Lazy<IUploadService> uploadService,
+            //Lazy<IUploadService> uploadService,
             Lazy<IWebHelper> webHelper)
         {
             _nI2SSettings = nI2SSettings;
@@ -54,7 +54,7 @@ namespace ARWNI2S.Portal.Controllers
             _permissionService = permissionService;
             _moduleService = moduleService;
             _staticCacheManager = staticCacheManager;
-            _uploadService = uploadService;
+            //_uploadService = uploadService;
             _webHelper = webHelper;
         }
 
@@ -256,7 +256,7 @@ namespace ARWNI2S.Portal.Controllers
                     //}
 
                     //upload CLDR
-                    await _uploadService.Value.UploadLocalePatternAsync(cultureInfo);
+                    //await _uploadService.Value.UploadLocalePatternAsync(cultureInfo);
                 }
 
                 //now resolve installation service

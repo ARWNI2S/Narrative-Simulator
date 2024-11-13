@@ -182,7 +182,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             services.AddScoped<IScheduleTaskService, ScheduleTaskService>();
             services.AddScoped<IExportManager, ExportManager>();
             services.AddScoped<IImportManager, ImportManager>();
-            services.AddScoped<IUploadService, UploadService>();
+            //services.AddScoped<IUploadService, UploadService>();
             services.AddScoped<IExternalAuthenticationService, ExternalAuthenticationService>();
             //services.AddScoped<IWalletAuthenticationService, WalletAuthenticationService>();
             services.AddSingleton<IRoutePublisher, RoutePublisher>();

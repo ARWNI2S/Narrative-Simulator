@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ARWNI2S.Engine.Entities;
 
 namespace ARWNI2S.Engine.Internal
 {

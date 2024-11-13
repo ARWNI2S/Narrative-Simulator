@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ARWNI2S.Engine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <None Remove="Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.AdoNet" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.Redis" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Hosting\ARWNI2S.Node.Hosting.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.AICore\ARWNI2S.Engine.AICore.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Compute\ARWNI2S.Engine.Compute.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.MVRM\ARWNI2S.Engine.MVRM.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Physics\ARWNI2S.Engine.Physics.csproj" />
+  </ItemGroup>
+
+</Project>

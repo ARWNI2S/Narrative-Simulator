@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.Engine.Extensions
+﻿using ARWNI2S.Engine.Entities;
+
+namespace ARWNI2S.Engine.Extensions
 {
     internal static class NI2SPropertyAttributeExtensions
     {

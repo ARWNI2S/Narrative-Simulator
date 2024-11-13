@@ -2,7 +2,7 @@
 using ARWNI2S.Engine.Features.Providers;
 using ARWNI2S.Engine.Options;
 using ARWNI2S.Node.Core.Engine;
-using ARWNI2S.Node.Core.Engine.Builder;
+using ARWNI2S.Node.Hosting.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +15,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
         /// Add services to the engine and configure service provider
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static IEngineCoreBuilder AddEngineCore(this IServiceCollection services)
+        public static INiisBuilder AddEngineCore2(this IServiceCollection services)
         {
             ArgumentNullException.ThrowIfNull(services);
 
@@ -25,9 +25,9 @@ namespace ARWNI2S.Engine.Hosting.Extensions
 
             ConfigureDefaultFeatureProviders(nodeModuleManager);
             ConfigureDefaultServices(services);
-            AddEngineCoreServices(services);
+            AddEngineCore2Services(services);
 
-            var builder = new EngineCoreBuilder(services, nodeModuleManager);
+            var builder = new NiisBuilder(services, nodeModuleManager);
 
             return builder;
 
@@ -55,7 +55,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
                 }
 
                 manager.PopulateDefaultParts(entryAssemblyName);
-        }
+            }
 
             return manager;
         }
@@ -71,28 +71,28 @@ namespace ARWNI2S.Engine.Hosting.Extensions
         /// <summary>
         /// Adds the minimum essential NI2S services to the specified <see cref="IServiceCollection" />. Additional services
         /// including NI2S's support for authorization, formatters, and validation must be added separately using the
-        /// <see cref="IEngineCoreBuilder"/> returned from this method.
+        /// <see cref="INiisBuilder"/> returned from this method.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <param name="setupAction">An <see cref="Action{MVRMOptions}"/> to configure the provided <see cref="EngineOptions"/>.</param>
-        /// <returns>An <see cref="IEngineCoreBuilder"/> that can be used to further configure the NI2S services.</returns>
+        /// <returns>An <see cref="INiisBuilder"/> that can be used to further configure the NI2S services.</returns>
         /// <remarks>
-        /// The <see cref="AddEngineCore(IServiceCollection)"/> approach for configuring
+        /// The <see cref="AddEngineCore2(IServiceCollection)"/> approach for configuring
         /// NI2S is provided for experienced NI2S developers who wish to have full control over the set of default services
-        /// registered. <see cref="AddEngineCore(IServiceCollection)"/> will register
+        /// registered. <see cref="AddEngineCore2(IServiceCollection)"/> will register
         /// the minimum set of services necessary to route requests and invoke controllers. It is not expected that any
         /// engine will satisfy its requirements with just a call to
-        /// <see cref="AddEngineCore(IServiceCollection)"/>. Additional configuration using the
-        /// <see cref="IEngineCoreBuilder"/> will be required.
+        /// <see cref="AddEngineCore2(IServiceCollection)"/>. Additional configuration using the
+        /// <see cref="INiisBuilder"/> will be required.
         /// </remarks>
-        public static IEngineCoreBuilder AddMVRMCore(
+        public static INiisBuilder AddEngineCore2(
             this IServiceCollection services,
             Action<EngineOptions> setupAction)
         {
             ArgumentNullException.ThrowIfNull(services);
             ArgumentNullException.ThrowIfNull(setupAction);
 
-            var builder = services.AddEngineCore();
+            var builder = services.AddEngineCore2();
             services.Configure(setupAction);
 
             return builder;
@@ -101,7 +101,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
 
 
         // To enable unit testing
-        internal static void AddEngineCoreServices(IServiceCollection _)
+        internal static void AddEngineCore2Services(IServiceCollection _)
         {
             ////
             //// Options

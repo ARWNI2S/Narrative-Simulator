@@ -35,7 +35,6 @@
     <Compile Include="Hosting\Diagnostics\HostingEngineMetrics.cs" />
     <Compile Include="Hosting\Diagnostics\NiisMethods.cs" />
     <Compile Include="Hosting\Extensions\EngineBuilderExtensions.cs" />
-    <Compile Include="Hosting\Extensions\EngineCoreServiceCollectionExtensions.cs" />
     <Compile Include="Hosting\Extensions\EnginePartManagerExtensions.cs" />
     <Compile Include="Hosting\HostingEngine.cs" />
     <Compile Include="Hosting\HostingFrameStartingLog.cs" />
