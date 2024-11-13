@@ -7,7 +7,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         private static readonly AsyncLocal<EngineContextHolder> _netContextCurrent = new();
 
         /// <inheritdoc/>
-        public ARWNI2S.Infrastructure.Engine.ExecutionContext EngineContext
+        public ARWNI2S.Infrastructure.Engine.EngineContext EngineContext
         {
             get
             {
@@ -34,7 +34,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
         private sealed class EngineContextHolder
         {
-            public ARWNI2S.Infrastructure.Engine.ExecutionContext EngineContext;
+            public ARWNI2S.Infrastructure.Engine.EngineContext EngineContext;
         }
     }
 }

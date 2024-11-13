@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Infrastructure.Configuration;
 
-namespace ARWNI2S.Node.Core.Configuration
+namespace ARWNI2S.Engine.Configuration
 {
 
     /// <summary>

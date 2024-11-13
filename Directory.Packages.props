@@ -6,7 +6,6 @@
     <MicrosoftFrameworkVersion>8.0.0</MicrosoftFrameworkVersion>
     <MicrosoftOrleansVersion>8.2.0</MicrosoftOrleansVersion>
     <FluentMigratorVersion>6.1.1</FluentMigratorVersion>
-    <NodeServerVersion>2.0.0-beta.28</NodeServerVersion>
     <!-- Shared Test Package Versions -->
     <xUnitVersion>2.9.2</xUnitVersion>
     <xUnitRunnerVersion>2.8.2</xUnitRunnerVersion>
@@ -15,7 +14,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- System packages -->
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
     <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.4.6" />
@@ -32,6 +30,7 @@
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <!-- Abstractions packages -->
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
@@ -44,10 +43,10 @@
     <PackageVersion Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
     <PackageVersion Include="Azure.Storage.Blobs" Version="12.22.2" />
     <!-- Microsoft.Orleans packages -->
+    <PackageVersion Include="Microsoft.Orleans.Client" Version="$(MicrosoftOrleansVersion)" />
+    <PackageVersion Include="Microsoft.Orleans.EventSourcing" Version="$(MicrosoftOrleansVersion)" />
+    <PackageVersion Include="Microsoft.Orleans.Sdk" Version="$(MicrosoftOrleansVersion)" />
     <PackageVersion Include="Microsoft.Orleans.Server" Version="$(MicrosoftOrleansVersion)" />
-    <!-- NodeServer packages -->
-    <PackageVersion Include="NodeServer.ProtoBase" Version="$(NodeServerVersion)" />
-    <PackageVersion Include="NodeServer.Server.Abstractions" Version="$(NodeServerVersion)" />
     <!-- Aspire -->
     <!--<PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.Orleans" Version="$(AspireVersion)" />

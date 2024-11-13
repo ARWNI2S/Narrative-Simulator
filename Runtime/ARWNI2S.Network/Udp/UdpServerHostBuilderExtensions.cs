@@ -1,5 +1,4 @@
 using ARWNI2S.Engine.Network.Connection;
-using ARWNI2S.Engine.Network.Host;
 using ARWNI2S.Engine.Network.Middleware;
 using ARWNI2S.Engine.Network.Session;
 using Microsoft.Extensions.DependencyInjection;

@@ -17,6 +17,8 @@
     <Compile Remove="Connection\IStreamConnection.cs" />
     <Compile Remove="Connection\IVirtualConnection.cs" />
     <Compile Remove="Connection\Pipes\NamedPipeConnection.cs" />
+    <Compile Remove="Host\HostBuilderExtensions.cs" />
+    <Compile Remove="Host\INodeServerHostBuilder.cs" />
     <Compile Remove="Protocol\IKeyedPackageInfo.cs" />
     <Compile Remove="Protocol\IPackageDecoder.cs" />
     <Compile Remove="Protocol\IPackageEncoder.cs" />
@@ -25,6 +27,7 @@
     <Compile Remove="Protocol\IPipelineFilterFactory.cs" />
     <Compile Remove="Protocol\IStringPackage.cs" />
     <Compile Remove="Proxy\IProxyProtocolPipelineFilter.cs" />
+    <Compile Remove="Session\InProcSessionContainerMiddlewareExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

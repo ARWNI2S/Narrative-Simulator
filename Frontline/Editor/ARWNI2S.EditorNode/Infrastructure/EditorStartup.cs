@@ -3,7 +3,7 @@ using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.EditorNode.Infrastructure
 {
-    internal class EditorStartup : INodeStartup
+    internal class EditorStartup : INI2SStartup
     {
         public int Order => 2002;
 

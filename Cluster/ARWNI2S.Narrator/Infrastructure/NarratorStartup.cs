@@ -3,7 +3,7 @@ using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.Narrator.Infrastructure
 {
-    internal class NarratorStartup : INodeStartup
+    internal class NarratorStartup : INI2SStartup
     {
         public int Order => 2002;
 

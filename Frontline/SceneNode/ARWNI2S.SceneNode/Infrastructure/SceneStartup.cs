@@ -3,7 +3,7 @@ using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.SceneNode.Infrastructure
 {
-    internal class SceneStartup : INodeStartup
+    internal class SceneStartup : INI2SStartup
     {
         public int Order => 2002;
 

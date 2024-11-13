@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Narrator.Framework.Infrastructure
 {
-    internal class NodeStartup : INodeStartup
+    internal class NarratorNodeStartup : INI2SStartup
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {

@@ -2,6 +2,7 @@
 using ARWNI2S.Engine.Features.Providers;
 using ARWNI2S.Engine.Options;
 using ARWNI2S.Node.Core.Engine;
+using ARWNI2S.Node.Core.Engine.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +12,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
     internal static class EngineCoreServiceCollectionExtensions
     {
         /// <summary>
-        /// Add services to the application and configure service provider
+        /// Add services to the engine and configure service provider
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         public static IEngineCoreBuilder AddEngineCore(this IServiceCollection services)
@@ -80,7 +81,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
         /// NI2S is provided for experienced NI2S developers who wish to have full control over the set of default services
         /// registered. <see cref="AddEngineCore(IServiceCollection)"/> will register
         /// the minimum set of services necessary to route requests and invoke controllers. It is not expected that any
-        /// application will satisfy its requirements with just a call to
+        /// engine will satisfy its requirements with just a call to
         /// <see cref="AddEngineCore(IServiceCollection)"/>. Additional configuration using the
         /// <see cref="IEngineCoreBuilder"/> will be required.
         /// </remarks>
@@ -253,7 +254,7 @@ namespace ARWNI2S.Engine.Hosting.Extensions
 
         private static void ConfigureDefaultServices(IServiceCollection services)
         {
-            services.AddMemoryCache();
+            //services.AddMemoryCache();
         }
     }
 }

@@ -17,8 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Command\CommandMiddlewareExtensions.cs" />
     <Compile Remove="IConfigureContainerAdapter.cs" />
     <Compile Remove="NamedPipeListener.cs" />
+    <Compile Remove="Udp\UdpServerHostBuilderExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

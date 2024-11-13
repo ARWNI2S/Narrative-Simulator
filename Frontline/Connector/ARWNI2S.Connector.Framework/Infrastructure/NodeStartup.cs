@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Connector.Framework.Infrastructure
 {
-    internal class NodeStartup : INodeStartup
+    internal class NodeStartup : INI2SStartup
     {
         public int Order => 2000;
 

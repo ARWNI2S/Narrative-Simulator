@@ -10,31 +10,42 @@
     <Compile Remove="Configuration\**" />
     <Compile Remove="Hosting\**" />
     <Compile Remove="Infrastructure\**" />
-    <Compile Remove="Simulation\**" />
     <EmbeddedResource Remove="Configuration\**" />
     <EmbeddedResource Remove="Hosting\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Simulation\**" />
     <None Remove="Configuration\**" />
     <None Remove="Hosting\**" />
     <None Remove="Infrastructure\**" />
-    <None Remove="Simulation\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="GameObject.cs" />
     <Compile Remove="IGameEntity.cs" />
+    <Compile Remove="Tasks\FrameTask.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Orleans\GameObjectState.cs~RF2b89f27c.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Hosting\Diagnostics\ActivityCreator.cs" />
+    <Compile Include="Hosting\Diagnostics\HostingEngineDiagnostics.cs" />
+    <Compile Include="Hosting\Diagnostics\HostingEngineEventSource.cs" />
+    <Compile Include="Hosting\Diagnostics\HostingEngineMetrics.cs" />
+    <Compile Include="Hosting\Diagnostics\NiisMethods.cs" />
     <Compile Include="Hosting\Extensions\EngineBuilderExtensions.cs" />
     <Compile Include="Hosting\Extensions\EngineCoreServiceCollectionExtensions.cs" />
     <Compile Include="Hosting\Extensions\EnginePartManagerExtensions.cs" />
+    <Compile Include="Hosting\HostingEngine.cs" />
+    <Compile Include="Hosting\HostingFrameStartingLog.cs" />
+    <Compile Include="Hosting\IHostContextContainer.cs" />
     <Compile Include="Hosting\Internal\EngineBuilder.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Orleans.Client" />
   </ItemGroup>
 
   <ItemGroup>

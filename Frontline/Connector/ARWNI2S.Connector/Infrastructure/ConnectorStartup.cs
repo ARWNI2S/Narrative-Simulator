@@ -3,7 +3,7 @@ using ARWNI2S.Infrastructure.Engine.Builder;
 
 namespace ARWNI2S.Connector.Infrastructure
 {
-    internal class ConnectorStartup : INodeStartup
+    internal class ConnectorStartup : INI2SStartup
     {
         public int Order => 2002;
 

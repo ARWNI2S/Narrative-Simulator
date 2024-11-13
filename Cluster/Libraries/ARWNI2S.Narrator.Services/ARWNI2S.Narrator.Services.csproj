@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ARWNI2S.Node.Services</RootNamespace>
+    <RootNamespace>ARWNI2S.Engine.Services</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

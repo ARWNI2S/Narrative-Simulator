@@ -1,17 +1,16 @@
-﻿using ARWNI2S.Node.Core.Configuration;
-using ARWNI2S.Node.Core.Infrastructure;
-using ARWNI2S.Node.Data.Migrations;
-using ARWNI2S.Node.Data;
-using Microsoft.AspNetCore.Hosting;
-using System.Reflection;
+﻿using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Infrastructure.Lifecycle;
+using ARWNI2S.Node.Core.Configuration;
+using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Node.Data;
+using ARWNI2S.Node.Data.Migrations;
 using ARWNI2S.Node.Services.Logging;
 using ARWNI2S.Node.Services.Plugins;
 using ARWNI2S.Node.Services.ScheduleTasks;
 using Microsoft.Extensions.Hosting;
-using ARWNI2S.Infrastructure.Engine.Builder;
+using System.Reflection;
 
-namespace ARWNI2S.Runtime.Hosting.Extensions
+namespace ARWNI2S.Engine.Hosting.Extensions
 {
     /// <summary>
     /// Represents extensions of IEngineBuilder
@@ -21,11 +20,11 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Configure the node NI2S engine
         /// </summary>
-        /// <param name="application">Builder for configuring a node's NI2S engine</param>
-        public static void ConfigureEngine(this IEngineBuilder application)
+        /// <param name="engine">Builder for configuring a node's NI2S engine</param>
+        public static void ConfigureEngine(this IEngineBuilder engine)
         {
-            //application.ConfigureSimulation();
-            NodeEngineContext.Current.ConfigureEngine(application);
+            //engine.ConfigureSimulation();
+            NodeEngineContext.Current.ConfigureEngine(engine);
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// </summary>
         /// <param name="_">unused</param>
         /// <returns>async task</returns>
-        public static async Task StartEngineAsync(this IHost _)
+        public static async Task StartEngineAsync(this IEngineBuilder _)
         {
             var engine = NodeEngineContext.Current;
 
@@ -67,8 +66,8 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Add exception handling
         /// </summary>
-        /// <param name="host">Builder for configuring an application's request pipeline</param>
-        public static void UseNI2SExceptionHandler(this IEngineBuilder host)
+        /// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        public static void UseNI2SExceptionHandler(this IEngineBuilder engine)
         {
             //TODO: EXCEPTION HANDLER!!!
 
@@ -78,16 +77,16 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
             if (useDetailedExceptions)
             {
                 //get detailed exceptions for developing and testing purposes
-                //application.UseDeveloperExceptionPage();
+                //engine.UseDeveloperExceptionPage();
             }
             else
             {
                 //or use special exception handler
-                //application.UseExceptionHandler("/Error/Error");
+                //engine.UseExceptionHandler("/Error/Error");
             }
 
             //log errors
-            //application.UseExceptionHandler(handler =>
+            //engine.UseExceptionHandler(handler =>
             //{
             //    handler.Run(async context =>
             //    {
@@ -119,8 +118,8 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Configure applying forwarded headers to their matching fields on the current request.
         /// </summary>
-        /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public static void UseNodeProxy(this IEngineBuilder application)
+        /// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        public static void UseNodeProxy(this IEngineBuilder engine)
         {
             //TODO: NODE PROXY/VPN/ETC!!!
 
@@ -155,18 +154,18 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
                 //}
 
                 ////configure forwarding
-                //application.UseForwardedHeaders(options);
+                //engine.UseForwardedHeaders(options);
             }
         }
 
-        public static void UseClustering(this IEngineBuilder application)
+        public static void UseClustering(this IEngineBuilder engine)
         {
         }
 
         ///// <summary>
         ///// Add exception handling
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopExceptionHandler(this IEngineBuilder engine)
         //{
         //    var appSettings = EngineContext.Current.Resolve<AppSettings>();
@@ -216,7 +215,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Adds a special handler that checks for responses with the 404 status code that do not have a body
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UsePageNotFound(this IEngineBuilder engine)
         //{
         //    engine.UseStatusCodePages(async context =>
@@ -266,7 +265,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Adds a special handler that checks for responses with the 400 status code (bad request)
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseBadRequestResult(this IEngineBuilder engine)
         //{
         //    engine.UseStatusCodePages(async context =>
@@ -284,7 +283,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure middleware for dynamically compressing HTTP responses
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopResponseCompression(this IEngineBuilder engine)
         //{
         //    if (!DataSettingsManager.IsDatabaseInstalled())
@@ -298,7 +297,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Adds WebOptimizer to the <see cref="IEngineBuilder"/> request execution pipeline
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopWebOptimizer(this IEngineBuilder engine)
         //{
         //    var appSettings = Singleton<AppSettings>.Instance;
@@ -328,7 +327,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure static file serving
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopStaticFiles(this IEngineBuilder engine)
         //{
         //    var fileProvider = EngineContext.Current.Resolve<INopFileProvider>();
@@ -452,7 +451,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure middleware checking whether requested page is keep alive page
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseKeepAlive(this IEngineBuilder engine)
         //{
         //    engine.UseMiddleware<KeepAliveMiddleware>();
@@ -461,7 +460,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure middleware checking whether database is installed
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseInstallUrl(this IEngineBuilder engine)
         //{
         //    engine.UseMiddleware<InstallUrlMiddleware>();
@@ -470,7 +469,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Adds the authentication middleware, which enables authentication capabilities.
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopAuthentication(this IEngineBuilder engine)
         //{
         //    //check whether database is installed
@@ -503,7 +502,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure the request localization feature
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopRequestLocalization(this IEngineBuilder engine)
         //{
         //    engine.UseRequestLocalization(options =>
@@ -545,7 +544,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure Endpoints routing
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopEndpoints(this IEngineBuilder engine)
         //{
         //    //Execute the endpoint selected by the routing middleware
@@ -559,7 +558,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure applying forwarded headers to their matching fields on the current request.
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopProxy(this IEngineBuilder engine)
         //{
         //    var appSettings = EngineContext.Current.Resolve<AppSettings>();
@@ -617,7 +616,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         ///// <summary>
         ///// Configure WebMarkupMin
         ///// </summary>
-        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        ///// <param name="engine">Builder for configuring a engine's request pipeline</param>
         //public static void UseNopWebMarkupMin(this IEngineBuilder engine)
         //{
         //    //check whether database is installed

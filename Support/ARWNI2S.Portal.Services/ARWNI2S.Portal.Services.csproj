@@ -36,6 +36,8 @@
     <Compile Include="Authentication\AuthenticationMiddleware.cs" />
     <Compile Include="Authentication\CookieAuthenticationService.cs" />
     <Compile Include="Authentication\External\ExternalAuthenticationService.cs" />
+    <Compile Include="Authentication\External\IExternalAuthenticationRegistrar.cs" />
+    <Compile Include="Authentication\External\IExternalAuthenticationService.cs" />
     <Compile Include="Authentication\WebAuthenticationServicesDefaults.cs" />
   </ItemGroup>
 

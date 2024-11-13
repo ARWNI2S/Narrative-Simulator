@@ -9,10 +9,10 @@ using ARWNI2S.Node.Data.Mapping;
 using ARWNI2S.Node.Services.Plugins;
 using System.Reflection;
 
-namespace ARWNI2S.Runtime.Hosting.Extensions
+namespace ARWNI2S.Engine.Hosting.Extensions
 {
     /// <summary>
-    /// Represents application part manager extensions
+    /// Represents engine part manager extensions
     /// </summary>
     public static partial class EnginePartManagerExtensions
     {
@@ -106,11 +106,11 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Load and register the assembly
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="enginePartManager">Engine part manager</param>
         /// <param name="assemblyFile">Path to the assembly file</param>
         /// <param name="useUnsafeLoadAssembly">Indicating whether to load an assembly into the load-from context, bypassing some security checks</param>
         /// <returns>Assembly</returns>
-        private static Assembly AddApplicationParts(EnginePartManager applicationPartManager, string assemblyFile, bool useUnsafeLoadAssembly)
+        private static Assembly AddEngineParts(EnginePartManager enginePartManager, string assemblyFile, bool useUnsafeLoadAssembly)
         {
             //try to load a assembly
             Assembly assembly;
@@ -123,7 +123,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
             {
                 if (useUnsafeLoadAssembly)
                 {
-                    //if an application has been copied from the web, it is flagged by Windows as being a application,
+                    //if an engine has been copied from the web, it is flagged by Windows as being a engine,
                     //even if it resides on the local computer.You can change that designation by changing the file properties,
                     //or you can use the<loadFromRemoteSources> element to grant the assembly full trust.As an alternative,
                     //you can use the UnsafeLoadFrom method to load a local assembly that the operating system has flagged as
@@ -136,7 +136,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
             }
 
             //register the module definition
-            applicationPartManager.ApplicationParts.Add(new AssemblyPart(assembly));
+            enginePartManager.EngineParts.Add(new AssemblyPart(assembly));
 
             return assembly;
         }
@@ -144,12 +144,12 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Perform file deploy and return loaded assembly
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="enginePartManager">Engine part manager</param>
         /// <param name="assemblyFile">Path to the module assembly file</param>
         /// <param name="moduleConfig">Module config</param>
         /// <param name="fileProvider">Nop file provider</param>
         /// <returns>Assembly</returns>
-        private static Assembly PerformFileDeploy(this EnginePartManager applicationPartManager,
+        private static Assembly PerformFileDeploy(this EnginePartManager enginePartManager,
             string assemblyFile, ModuleConfig moduleConfig, IEngineFileProvider fileProvider)
         {
             //ensure for proper directory structure
@@ -159,7 +159,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
                     $"The module directory for the {fileProvider.GetFileName(assemblyFile)} file exists in a directory outside of the allowed nopCommerce directory hierarchy");
 
             var assembly =
-                AddApplicationParts(applicationPartManager, assemblyFile, moduleConfig.UseUnsafeLoadAssembly);
+                AddEngineParts(enginePartManager, assemblyFile, moduleConfig.UseUnsafeLoadAssembly);
 
             // delete the .deps file
             if (assemblyFile.EndsWith(".dll"))
@@ -180,7 +180,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         private static bool IsAlreadyLoaded(string filePath, string moduleName)
         {
             //ignore already loaded libraries
-            //(we do it because not all libraries are loaded immediately after application start)
+            //(we do it because not all libraries are loaded immediately after engine start)
             var fileName = _fileProvider.GetFileName(filePath);
             if (_baseAppLibraries.Any(library => library.Key.Equals(fileName, StringComparison.InvariantCultureIgnoreCase)))
                 return true;
@@ -229,11 +229,11 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
         /// <summary>
         /// Initialize modules system
         /// </summary>
-        /// <param name="applicationPartManager">Application part manager</param>
+        /// <param name="enginePartManager">Engine part manager</param>
         /// <param name="moduleConfig">Module config</param>
-        public static void InitializeModules(this EnginePartManager applicationPartManager, ModuleConfig moduleConfig)
+        public static void InitializeModules(this EnginePartManager enginePartManager, ModuleConfig moduleConfig)
         {
-            ArgumentNullException.ThrowIfNull(applicationPartManager);
+            ArgumentNullException.ThrowIfNull(enginePartManager);
 
             ArgumentNullException.ThrowIfNull(moduleConfig);
 
@@ -270,7 +270,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
 
                         //try to deploy main module assembly 
                         moduleDescriptor.ReferencedAssembly =
-                            applicationPartManager.PerformFileDeploy(mainModuleFile, moduleConfig, _fileProvider);
+                            enginePartManager.PerformFileDeploy(mainModuleFile, moduleConfig, _fileProvider);
 
                         //and then deploy all other referenced assemblies
                         var filesToDeploy = moduleDescriptor.ModuleFiles.Where(file =>
@@ -278,7 +278,7 @@ namespace ARWNI2S.Runtime.Hosting.Extensions
                             !IsAlreadyLoaded(file, moduleDescriptor.SystemName)).ToList();
 
                         foreach (var file in filesToDeploy)
-                            applicationPartManager.PerformFileDeploy(file, moduleConfig, _fileProvider);
+                            enginePartManager.PerformFileDeploy(file, moduleConfig, _fileProvider);
 
                         //determine a module type (only one module per assembly is allowed)
                         var moduleType = moduleDescriptor.ReferencedAssembly.GetTypes().FirstOrDefault(type =>

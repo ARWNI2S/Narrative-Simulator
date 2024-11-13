@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Node.Core.Engine;
+using ARWNI2S.Node.Core.Engine.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Engine.Builder
@@ -12,7 +13,7 @@ namespace ARWNI2S.Engine.Builder
         /// Initializes a new <see cref="EngineCoreBuilder"/> instance.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
-        /// <param name="manager">The <see cref="EnginePartManager"/> of the application.</param>
+        /// <param name="manager">The <see cref="EnginePartManager"/> of the engine.</param>
         public EngineCoreBuilder(
             IServiceCollection services,
             EnginePartManager manager)

@@ -4,7 +4,7 @@ using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Node.Core.Engine;
 
-namespace ARWNI2S.Runtime.Hosting.Internal
+namespace ARWNI2S.Engine.Hosting.Internal
 {
     internal sealed class EngineBuilder : IEngineBuilder
     {
@@ -46,7 +46,7 @@ namespace ARWNI2S.Runtime.Hosting.Internal
             {
                 _descriptions = [];
                 // Add component descriptions collection to properties so debugging tools can display
-                // a list of configured middleware for an engine.
+                // a list of configured middleware for a engine.
                 SetProperty(MiddlewareDescriptionsKey, _descriptions);
             }
         }

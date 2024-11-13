@@ -3,21 +3,21 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ARWNI2S.Node.Core</RootNamespace>
+    <RootNamespace>ARWNI2S.Engine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Actors\Grains\NI2SActorGrain.cs" />
+    <Compile Remove="Orleans\NI2SActorGrain.cs" />
     <Compile Remove="Infrastructure\NarratorEngine.cs" />
     <Compile Remove="Time\NarratorClock.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.EventSourcing" />
     <PackageReference Include="Microsoft.Orleans.Server" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Actors\Grains\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Objects\" />
     <Folder Include="Time\" />
