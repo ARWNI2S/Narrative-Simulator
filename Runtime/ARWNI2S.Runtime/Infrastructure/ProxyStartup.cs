@@ -1,10 +1,10 @@
-﻿using ARWNI2S.Infrastructure;
-using ARWNI2S.Runtime.Hosting.Extensions;
+﻿using ARWNI2S.Engine.Hosting.Extensions;
+using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
-namespace ARWNI2S.Runtime.Infrastructure
+namespace ARWNI2S.Engine.Infrastructure
 {
     /// <summary>
     /// Represents object for the configuring services on application startup
@@ -21,10 +21,10 @@ namespace ARWNI2S.Runtime.Infrastructure
         /// <summary>
         /// Configure the using of added middleware
         /// </summary>
-        /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public void Configure(IHost application)
+        /// <param name="builder">Builder for configuring an application's request pipeline</param>
+        public void Configure(IEngineBuilder builder)
         {
-            application.UseNodeProxy();
+            builder.UseNodeProxy();
         }
 
         /// <summary>

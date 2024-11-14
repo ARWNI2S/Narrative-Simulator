@@ -1,4 +1,4 @@
-using ARWNI2S.Engine;
+using ARWNI2S.Node;
 
 namespace ARWNI2S.EditorNode
 {
@@ -6,7 +6,7 @@ namespace ARWNI2S.EditorNode
     {
         public static async Task Main(string[] args)
         {
-            await EntryPoints.RunDefaultsAsync(args);
+            await EntryPoint.RunDefaultsAsync(args);
         }
     }
 }

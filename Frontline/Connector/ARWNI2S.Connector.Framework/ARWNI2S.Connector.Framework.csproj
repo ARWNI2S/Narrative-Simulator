@@ -6,8 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ARWNI2S.Frontline.Identity\ARWNI2S.Frontline.Identity.csproj" />
-    <ProjectReference Include="..\..\ARWNI2S.Frontline.Services\ARWNI2S.Frontline.Services.csproj" />
+    <ProjectReference Include="..\..\ARWNI2S.Frontline.Framework\ARWNI2S.Frontline.Framework.csproj" />
   </ItemGroup>
 
 </Project>

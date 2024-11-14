@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Node.Core.Infrastructure;
 
-namespace ARWNI2S.Runtime.Infrastructure
+namespace ARWNI2S.Node.Infrastructure
 {
     /// <summary>
     /// Provides support for lazy initialization

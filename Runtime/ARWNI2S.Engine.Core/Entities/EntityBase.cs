@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Infrastructure.Entities;
 
-namespace ARWNI2S.Engine
+namespace ARWNI2S.Engine.Entities
 {
     public abstract partial class EntityBase : IEntity
     {

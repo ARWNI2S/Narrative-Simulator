@@ -1,5 +1,5 @@
-﻿using ARWNI2S.Engine.Builder;
-using ARWNI2S.Engine.Hosting.Diagnostics;
+﻿using ARWNI2S.Engine.Hosting.Diagnostics;
+using ARWNI2S.Engine.Hosting.Internal;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Infrastructure.Extensions;
@@ -7,7 +7,6 @@ using ARWNI2S.Node.Builder;
 using ARWNI2S.Node.Configuration.Options;
 using ARWNI2S.Node.Hosting;
 using ARWNI2S.Node.Hosting.Infrastructure;
-using ARWNI2S.Node.Hosting.Internal;
 using ARWNI2S.Node.Hosting.Startup;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
-namespace ARWNI2S.Engine.Hosting.Internal
+namespace ARWNI2S.Node.Hosting.Internal
 {
     internal sealed class GenericNodeHostBuilder : NodeHostBuilderBase, ISupportsHostStartup
     {

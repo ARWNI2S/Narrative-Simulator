@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>ARWNI2S.Engine</RootNamespace>
+    <RootNamespace>ARWNI2S.Node</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Infrastructure\**" />
-    <None Remove="Infrastructure\**" />
+    <Compile Remove="Hosting\Extensions\ApplicationBuilderExtensions.cs" />
+    <Compile Remove="Infrastructure\ClusterStartup.cs" />
+    <Compile Remove="Infrastructure\ProxyStartup.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,11 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Hosting\ARWNI2S.Node.Hosting.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Engine.AICore\ARWNI2S.Engine.AICore.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Engine.Compute\ARWNI2S.Engine.Compute.csproj" />
     <ProjectReference Include="..\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
     <ProjectReference Include="..\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Engine.MVRM\ARWNI2S.Engine.MVRM.csproj" />
     <ProjectReference Include="..\ARWNI2S.Engine.Physics\ARWNI2S.Engine.Physics.csproj" />
   </ItemGroup>
 

@@ -1,11 +1,11 @@
-﻿using ARWNI2S.Infrastructure;
-using ARWNI2S.Runtime.Hosting.Extensions;
+﻿using ARWNI2S.Engine.Hosting.Extensions;
+using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 // INIT STEP 2.1
-namespace ARWNI2S.Runtime.Infrastructure
+namespace ARWNI2S.Node.Infrastructure
 {
     /// <summary>
     /// Represents object for the configuring exceptions and errors handling on application startup
@@ -16,7 +16,7 @@ namespace ARWNI2S.Runtime.Infrastructure
         /// Add and configure any of the middleware
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        /// <param name="configuration">Configuration of the application</param>
+        /// <param name="configuration">Configuration of the engine</param>
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
         }
@@ -24,11 +24,11 @@ namespace ARWNI2S.Runtime.Infrastructure
         /// <summary>
         /// Configure the using of added services
         /// </summary>
-        /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public void Configure(IHost application)
+        /// <param name="engine">Builder for configuring an application's request pipeline</param>
+        public void Configure(IEngineBuilder engine)
         {
             //exception handling
-            application.UseNI2SExceptionHandler();
+            engine.UseNI2SExceptionHandler();
 
             ////handle 400 errors (bad request)
             //application.UseBadRequestResult();

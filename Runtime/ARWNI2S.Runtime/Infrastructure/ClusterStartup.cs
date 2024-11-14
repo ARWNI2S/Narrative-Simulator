@@ -1,10 +1,11 @@
-﻿using ARWNI2S.Infrastructure;
-using ARWNI2S.Runtime.Hosting.Extensions;
+﻿using ARWNI2S.Engine.Hosting.Extensions;
+using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Engine.Builder;
+using ARWNI2S.Node.Hosting.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
-namespace ARWNI2S.Runtime.Infrastructure
+namespace ARWNI2S.Node.Infrastructure
 {
     public class ClusterStartup : INI2SStartup
     {
@@ -17,9 +18,9 @@ namespace ARWNI2S.Runtime.Infrastructure
             services.AddNI2SRuntimeServices();
         }
 
-        public void Configure(IHost application)
+        public void Configure(IEngineBuilder engine)
         {
-            application.UseClustering();
+            engine.UseClustering();
         }
 
         public int Order => 100;     // clustering services should be loaded after error handlers

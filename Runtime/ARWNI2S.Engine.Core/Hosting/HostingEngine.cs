@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Engine.Features;
 using ARWNI2S.Engine.Hosting.Diagnostics;
+using ARWNI2S.Engine.Hosting.Internal;
 using ARWNI2S.Infrastructure.Engine;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -136,7 +137,7 @@ namespace ARWNI2S.Engine.Hosting
                     }
                 }
             }
-            internal HostingFrameStartingLog StartLog { get; set; }
+            //internal HostingFrameStartingLog StartLog { get; set; }
 
             public long StartTimestamp { get; set; }
             internal bool HasDiagnosticListener { get; set; }
@@ -152,7 +153,7 @@ namespace ARWNI2S.Engine.Hosting
 
                 Scope = null;
                 Activity = null;
-                StartLog = null;
+                //StartLog = null;
 
                 StartTimestamp = 0;
                 HasDiagnosticListener = false;

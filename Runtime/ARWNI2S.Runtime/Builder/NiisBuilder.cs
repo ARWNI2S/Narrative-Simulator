@@ -1,7 +1,8 @@
-﻿using ARWNI2S.Node.Core.Engine;
+﻿using ARWNI2S.Engine.Builder;
+using ARWNI2S.Node.Core.Engine;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ARWNI2S.Engine.Builder
+namespace ARWNI2S.Node.Builder
 {
     /// <summary>
     /// Allows fine grained configuration of essential MVRM services.

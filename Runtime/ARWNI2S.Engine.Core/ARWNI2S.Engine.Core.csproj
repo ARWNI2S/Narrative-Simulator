@@ -7,25 +7,49 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Configuration\**" />
+    <Compile Remove="Attributes\**" />
+    <Compile Remove="Dispatching\**" />
+    <Compile Remove="Entities\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Features\Providers\**" />
     <Compile Remove="Hosting\**" />
     <Compile Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Configuration\**" />
+    <Compile Remove="Modules\**" />
+    <Compile Remove="Object\**" />
+    <Compile Remove="Orleans\**" />
+    <Compile Remove="Reflection\**" />
+    <EmbeddedResource Remove="Attributes\**" />
+    <EmbeddedResource Remove="Dispatching\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Features\Providers\**" />
     <EmbeddedResource Remove="Hosting\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
-    <None Remove="Configuration\**" />
+    <EmbeddedResource Remove="Modules\**" />
+    <EmbeddedResource Remove="Object\**" />
+    <EmbeddedResource Remove="Orleans\**" />
+    <EmbeddedResource Remove="Reflection\**" />
+    <None Remove="Attributes\**" />
+    <None Remove="Dispatching\**" />
+    <None Remove="Entities\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Features\Providers\**" />
     <None Remove="Hosting\**" />
     <None Remove="Infrastructure\**" />
+    <None Remove="Modules\**" />
+    <None Remove="Object\**" />
+    <None Remove="Orleans\**" />
+    <None Remove="Reflection\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="DefaultConnection.cs" />
+    <Compile Remove="Features\ActorFeature.cs" />
     <Compile Remove="GameObject.cs" />
     <Compile Remove="IGameEntity.cs" />
+    <Compile Remove="Internal\EntityProxy.cs" />
     <Compile Remove="Tasks\FrameTask.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Orleans\GameObjectState.cs~RF2b89f27c.TMP" />
+    <Compile Remove="Tasks\NiisFrame.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,8 +61,9 @@
     <Compile Include="Hosting\Extensions\EngineBuilderExtensions.cs" />
     <Compile Include="Hosting\Extensions\EnginePartManagerExtensions.cs" />
     <Compile Include="Hosting\HostingEngine.cs" />
-    <Compile Include="Hosting\HostingFrameStartingLog.cs" />
     <Compile Include="Hosting\IHostContextContainer.cs" />
+    <Compile Include="Hosting\Internal\DefaultEngineContext.cs" />
+    <Compile Include="Hosting\Internal\DefaultEngineContextFactory.cs" />
     <Compile Include="Hosting\Internal\EngineBuilder.cs" />
   </ItemGroup>
 
@@ -52,6 +77,10 @@
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Data\ARWNI2S.Node.Data.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Services\ARWNI2S.Node.Services.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tasks\" />
   </ItemGroup>
 
 </Project>

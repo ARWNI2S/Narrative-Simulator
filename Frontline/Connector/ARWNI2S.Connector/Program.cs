@@ -1,4 +1,4 @@
-using ARWNI2S.Engine;
+using ARWNI2S.Node;
 
 namespace ARWNI2S.Connector
 {
@@ -6,7 +6,7 @@ namespace ARWNI2S.Connector
     {
         public static async Task Main(string[] args)
         {
-            await EntryPoints.RunDefaultsAsync(args);
+            await EntryPoint.RunDefaultsAsync(args);
         }
     }
 }

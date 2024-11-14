@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Engine.AICore\ARWNI2S.Engine.AICore.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
   </ItemGroup>
 
 </Project>

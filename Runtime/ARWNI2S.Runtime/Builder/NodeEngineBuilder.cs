@@ -1,9 +1,6 @@
-﻿using ARWNI2S.Engine.Configuration.Options;
-using ARWNI2S.Engine.Hosting;
-using ARWNI2S.Engine.Hosting.Extensions;
-using ARWNI2S.Infrastructure.Engine;
+﻿using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
-using ARWNI2S.Node.Builder;
+using ARWNI2S.Node.Configuration.Options;
 using ARWNI2S.Node.Hosting;
 using ARWNI2S.Node.Hosting.Extensions;
 using ARWNI2S.Node.Hosting.Internal;
@@ -15,13 +12,13 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ARWNI2S.Engine.Builder
+namespace ARWNI2S.Node.Builder
 {
     public sealed class NodeEngineBuilder : IHostApplicationBuilder
     {
         private const string EndpointRouteBuilderKey = "__EndpointRouteBuilder";
-        private const string AuthenticationMiddlewareSetKey = "__AuthenticationMiddlewareSet";
-        private const string AuthorizationMiddlewareSetKey = "__AuthorizationMiddlewareSet";
+        //private const string AuthenticationMiddlewareSetKey = "__AuthenticationMiddlewareSet";
+        //private const string AuthorizationMiddlewareSetKey = "__AuthorizationMiddlewareSet";
         private const string UseRoutingKey = "__UseRouting";
 
         private readonly HostApplicationBuilder _hostApplicationBuilder;
@@ -288,7 +285,7 @@ namespace ARWNI2S.Engine.Builder
         {
             private readonly IEngineBuilder _builtEngine = builtEngine;
 
-            public FrameDelegate CreateMiddleware(FrameDelegate next)
+            public FrameDelegate CreateMiddleware(FrameDelegate _)
             {
                 //_builtEngine.Run(next);
                 return _builtEngine.Build();

@@ -1,8 +1,8 @@
-﻿using ARWNI2S.Engine.Builder;
-using ARWNI2S.Engine.Configuration.Options;
-using ARWNI2S.Engine.Hosting.Internal;
+﻿using ARWNI2S.Engine.Hosting.Internal;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
+using ARWNI2S.Node.Builder;
+using ARWNI2S.Node.Configuration.Options;
 using ARWNI2S.Node.Engine;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ARWNI2S.Engine.Hosting
+namespace ARWNI2S.Node.Hosting
 {
     public sealed class NodeEngineHost : IHost, IEngineBuilder, IMessageRelayBuilder, IAsyncDisposable
     {

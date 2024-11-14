@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Engine.Hosting;
+﻿using ARWNI2S.Node.Hosting;
 
-namespace ARWNI2S.Engine.Configuration.Options
+namespace ARWNI2S.Node.Configuration.Options
 {
     /// <summary>
     /// Options for configuring the behavior for <see cref="NodeEngineHost.CreateBuilder(NodeEngineOptions)"/>.

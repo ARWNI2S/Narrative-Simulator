@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ARWNI2S.Engine.Hosting.Internal
+namespace ARWNI2S.Node.Hosting.Internal
 {
     // We use this type to capture calls to the INodeHostBuilder so the we can properly order calls to
     // to GenericHostNodeHostBuilder.

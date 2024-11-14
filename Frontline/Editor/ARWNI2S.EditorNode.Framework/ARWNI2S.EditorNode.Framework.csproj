@@ -6,8 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ARWNI2S.Frontline.Identity\ARWNI2S.Frontline.Identity.csproj" />
-    <ProjectReference Include="..\..\ARWNI2S.Frontline.Services\ARWNI2S.Frontline.Services.csproj" />
+    <Compile Remove="Hosting\**" />
+    <EmbeddedResource Remove="Hosting\**" />
+    <None Remove="Hosting\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ARWNI2S.Frontline.Framework\ARWNI2S.Frontline.Framework.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
 
-namespace ARWNI2S.Engine.Builder
+namespace ARWNI2S.Node.Builder
 {
     /// <summary>
     /// A factory for creating <see cref="IEngineBuilder" /> instances.

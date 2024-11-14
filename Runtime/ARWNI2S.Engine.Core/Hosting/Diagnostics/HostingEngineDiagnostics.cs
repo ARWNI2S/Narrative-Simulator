@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Engine.Features;
+using ARWNI2S.Engine.Hosting.Internal;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Features;
 using Microsoft.Extensions.Logging;
@@ -248,8 +249,8 @@ namespace ARWNI2S.Engine.Hosting.Diagnostics
         private void LogFrameStarting(HostingEngine.Context context)
         {
             // IsEnabled is checked in the caller, so if we are here just log
-            var startLog = new HostingFrameStartingLog(context.EngineContext!);
-            context.StartLog = startLog;
+            //var startLog = new HostingFrameStartingLog(context.EngineContext!);
+            //context.StartLog = startLog;
 
             //_logger.Log(
             //    logLevel: LogLevel.Information,
@@ -265,17 +266,17 @@ namespace ARWNI2S.Engine.Hosting.Diagnostics
             // IsEnabled isn't checked in the caller, startTimestamp > 0 is used as a fast proxy check
             // but that may be because diagnostics are enabled, which also uses startTimestamp,
             // so check if we logged the start event
-            if (context.StartLog != null)
-            {
-                var elapsed = Stopwatch.GetElapsedTime(startTimestamp, currentTimestamp);
+            //if (context.StartLog != null)
+            //{
+            //    var elapsed = Stopwatch.GetElapsedTime(startTimestamp, currentTimestamp);
 
-                //_logger.Log(
-                //    logLevel: LogLevel.Information,
-                //    eventId: LoggerEventIds.FrameFinished,
-                //    state: new HostingFrameFinishedLog(context, elapsed),
-                //    exception: null,
-                //    formatter: HostingFrameFinishedLog.Callback);
-            }
+            //    _logger.Log(
+            //        logLevel: LogLevel.Information,
+            //        eventId: LoggerEventIds.FrameFinished,
+            //        state: new HostingFrameFinishedLog(context, elapsed),
+            //        exception: null,
+            //        formatter: HostingFrameFinishedLog.Callback);
+            //}
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]

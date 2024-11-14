@@ -6,11 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ARWNI2S.Frontline.Services\ARWNI2S.Frontline.Services.csproj" />
+    <Compile Remove="CrossProcess\**" />
+    <Compile Remove="GameEngine\**" />
+    <Compile Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="CrossProcess\**" />
+    <EmbeddedResource Remove="GameEngine\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <None Remove="CrossProcess\**" />
+    <None Remove="GameEngine\**" />
+    <None Remove="Infrastructure\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <ProjectReference Include="..\..\ARWNI2S.Frontline.Framework\ARWNI2S.Frontline.Framework.csproj" />
   </ItemGroup>
 
 </Project>

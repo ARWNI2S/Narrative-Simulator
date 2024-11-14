@@ -8,10 +8,10 @@ namespace ARWNI2S.Engine.Hosting.Internal
 {
     internal sealed class EngineBuilder : IEngineBuilder
     {
-        private const string ServerFeaturesKey = "server.Features";
+        private const string EngineFeaturesKey = "engine.Features";
         private const string EngineServicesKey = "engine.Services";
         private const string MiddlewareDescriptionsKey = "__MiddlewareDescriptions";
-        private const string RequestUnhandledKey = "__RequestUnhandled";
+        private const string EventUnhandledKey = "__EventUnhandledKey";
 
         private readonly List<Func<FrameDelegate, FrameDelegate>> _components = [];
         private readonly List<string> _descriptions;
@@ -37,7 +37,7 @@ namespace ARWNI2S.Engine.Hosting.Internal
             Properties = new Dictionary<string, object>(StringComparer.Ordinal);
             EngineServices = serviceProvider;
 
-            SetProperty(ServerFeaturesKey, server);
+            SetProperty(EngineFeaturesKey, server);
 
             // IDebugger service can optionally be added by tests to simulate the debugger being attached.
             _debugger = (IDebugger)serviceProvider?.GetService(typeof(IDebugger)) ?? DebuggerWrapper.Instance;
@@ -76,19 +76,19 @@ namespace ARWNI2S.Engine.Hosting.Internal
             }
         }
 
-        ///// <summary>
-        ///// Gets the <see cref="IFeatureCollection"/> for server features.
-        ///// </summary>
-        ///// <remarks>
-        ///// An empty collection is returned if a server wasn't specified for the engine builder.
-        ///// </remarks>
-        //public IFeatureCollection ServerFeatures
-        //{
-        //    get
-        //    {
-        //        return GetProperty<IFeatureCollection>(ServerFeaturesKey)!;
-        //    }
-        //}
+        /// <summary>
+        /// Gets the <see cref="IFeatureCollection"/> for server features.
+        /// </summary>
+        /// <remarks>
+        /// An empty collection is returned if a server wasn't specified for the engine builder.
+        /// </remarks>
+        public IFeatureCollection EngineFeatures
+        {
+            get
+            {
+                return GetProperty<IFeatureCollection>(EngineFeaturesKey)!;
+            }
+        }
 
         /// <summary>
         /// Gets a set of properties for <see cref="EngineBuilder"/>.

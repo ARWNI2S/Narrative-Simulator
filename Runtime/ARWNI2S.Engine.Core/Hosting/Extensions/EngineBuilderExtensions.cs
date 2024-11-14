@@ -1,5 +1,4 @@
 ﻿using ARWNI2S.Infrastructure.Engine.Builder;
-using ARWNI2S.Infrastructure.Lifecycle;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Data;
@@ -51,8 +50,8 @@ namespace ARWNI2S.Engine.Hosting.Extensions
                 assembly = Assembly.GetAssembly(typeof(IMigrationManager));
                 migrationManager.ApplyUpMigrations(assembly, MigrationProcessType.Update);
 
-                //start engine lifecycle
-                var engineLifecycle = engine.Resolve<EngineLifecycle>();
+                ////start engine lifecycle
+                //var engineLifecycle = engine.Resolve<EngineLifecycle>();
 
                 //log node start
                 await engine.Resolve<ILogService>().InformationAsync("Node started");
@@ -115,50 +114,50 @@ namespace ARWNI2S.Engine.Hosting.Extensions
             //});
         }
 
-        /// <summary>
-        /// Configure applying forwarded headers to their matching fields on the current request.
-        /// </summary>
-        /// <param name="engine">Builder for configuring an engine's request pipeline</param>
-        public static void UseNodeProxy(this IEngineBuilder engine)
-        {
-            //TODO: NODE PROXY/VPN/ETC!!!
+        ///// <summary>
+        ///// Configure applying forwarded headers to their matching fields on the current request.
+        ///// </summary>
+        ///// <param name="engine">Builder for configuring an engine's request pipeline</param>
+        //public static void UseNodeProxy(this IEngineBuilder engine)
+        //{
+        //    //TODO: NODE PROXY/VPN/ETC!!!
 
-            var ni2sSettings = NodeEngineContext.Current.Resolve<NI2SSettings>();
+        //    var ni2sSettings = NodeEngineContext.Current.Resolve<NI2SSettings>();
 
-            if (ni2sSettings.Get<HostingConfig>().UseProxy)
-            {
-                //var options = new ForwardedHeadersOptions
-                //{
-                //    ForwardedHeaders = ForwardedHeaders.All,
-                //    // IIS already serves as a reverse proxy and will add X-Forwarded headers to all requests,
-                //    // so we need to increase this limit, otherwise, passed forwarding headers will be ignored.
-                //    ForwardLimit = 2
-                //};
+        //    if (ni2sSettings.Get<HostingConfig>().UseProxy)
+        //    {
+        //        //var options = new ForwardedHeadersOptions
+        //        //{
+        //        //    ForwardedHeaders = ForwardedHeaders.All,
+        //        //    // IIS already serves as a reverse proxy and will add X-Forwarded headers to all requests,
+        //        //    // so we need to increase this limit, otherwise, passed forwarding headers will be ignored.
+        //        //    ForwardLimit = 2
+        //        //};
 
-                //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().ForwardedForHeaderName))
-                //    options.ForwardedForHeaderName = ni2sSettings.Get<HostingConfig>().ForwardedForHeaderName;
+        //        //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().ForwardedForHeaderName))
+        //        //    options.ForwardedForHeaderName = ni2sSettings.Get<HostingConfig>().ForwardedForHeaderName;
 
-                //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().ForwardedProtoHeaderName))
-                //    options.ForwardedProtoHeaderName = ni2sSettings.Get<HostingConfig>().ForwardedProtoHeaderName;
+        //        //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().ForwardedProtoHeaderName))
+        //        //    options.ForwardedProtoHeaderName = ni2sSettings.Get<HostingConfig>().ForwardedProtoHeaderName;
 
-                //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().KnownProxies))
-                //{
-                //    foreach (var strIp in ni2sSettings.Get<HostingConfig>().KnownProxies.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList())
-                //    {
-                //        if (IPAddress.TryParse(strIp, out var ip))
-                //            options.KnownProxies.Add(ip);
-                //    }
+        //        //if (!string.IsNullOrEmpty(ni2sSettings.Get<HostingConfig>().KnownProxies))
+        //        //{
+        //        //    foreach (var strIp in ni2sSettings.Get<HostingConfig>().KnownProxies.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList())
+        //        //    {
+        //        //        if (IPAddress.TryParse(strIp, out var ip))
+        //        //            options.KnownProxies.Add(ip);
+        //        //    }
 
-                //    if (options.KnownProxies.Count > 1)
-                //        options.ForwardLimit = null; //disable the limit, because KnownProxies is configured
-                //}
+        //        //    if (options.KnownProxies.Count > 1)
+        //        //        options.ForwardLimit = null; //disable the limit, because KnownProxies is configured
+        //        //}
 
-                ////configure forwarding
-                //engine.UseForwardedHeaders(options);
-            }
-        }
+        //        ////configure forwarding
+        //        //engine.UseForwardedHeaders(options);
+        //    }
+        //}
 
-        public static void UseClustering(this IEngineBuilder engine)
+        public static void UseClustering(this IEngineBuilder _)
         {
         }
 
