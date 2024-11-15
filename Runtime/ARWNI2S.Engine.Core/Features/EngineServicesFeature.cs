@@ -33,7 +33,7 @@ namespace ARWNI2S.Engine.Features
             {
                 if (!_requestServicesSet && _scopeFactory != null)
                 {
-                    _context.Callback.RegisterForDisposeAsync(this);
+                    //_context.Callback.RegisterForDisposeAsync(this);
                     _scope = _scopeFactory.CreateScope();
                     _requestServices = _scope.ServiceProvider;
                     _requestServicesSet = true;

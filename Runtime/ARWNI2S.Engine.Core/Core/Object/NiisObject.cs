@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Engine.Entities;
-using ARWNI2S.Engine.Orleans;
+using ARWNI2S.Engine.Orleans.Grains;
 
-namespace ARWNI2S.Engine.Object
+namespace ARWNI2S.Engine.Core.Object
 {
     public abstract class NiisObject : EntityBase, IDistributedEntity
     {

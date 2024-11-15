@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Runtime\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
+  </ItemGroup>
+
 </Project>

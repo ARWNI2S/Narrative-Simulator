@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.Engine.Entities
+﻿namespace ARWNI2S.Engine.Core.Object
 {
     public enum PropertyUsage
     {
@@ -18,21 +18,21 @@
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-    public abstract class NI2SAttribute : Attribute { }
+    public abstract class NiisAttribute : Attribute { }
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class NI2S_ObjectAttribute : NI2SAttribute { }
+    public class NiisObjectAttribute : NiisAttribute { }
 
     [AttributeUsage(AttributeTargets.Struct, AllowMultiple = false, Inherited = true)]
-    public class NI2S_StructAttribute : NI2SAttribute { }
+    public class NiisStructAttribute : NiisAttribute { }
 
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    public class NI2S_PropertyAttribute : NI2SAttribute
+    public class NiisPropertyAttribute : NiisAttribute
     {
         public PropertyUsage Usage { get; }
         public string Description { get; }
 
-        public NI2S_PropertyAttribute(PropertyUsage usage = PropertyUsage.ReadOnly, string description = null)
+        public NiisPropertyAttribute(PropertyUsage usage = PropertyUsage.ReadOnly, string description = null)
         {
             Usage = usage;
 
@@ -41,12 +41,12 @@
     }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public class NI2S_MethodAttribute : NI2SAttribute
+    public class NiisFunctionAttribute : NiisAttribute
     {
         public MethodUsage Usage { get; }
         public string Description { get; }
 
-        public NI2S_MethodAttribute(MethodUsage usage = MethodUsage.Function | MethodUsage.Callable, string description = null)
+        public NiisFunctionAttribute(MethodUsage usage = MethodUsage.Function | MethodUsage.Callable, string description = null)
         {
             Usage = usage;
 

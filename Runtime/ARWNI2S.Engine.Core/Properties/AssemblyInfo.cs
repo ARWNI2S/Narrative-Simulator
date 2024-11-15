@@ -20,6 +20,8 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("ARWNI2S.Runtime")]
 
+[assembly: InternalsVisibleTo("ARWNI2S.CodeGenerator")]
+
 [assembly: InternalsVisibleTo("ARWNI2S.Narrator.Core")]
 [assembly: InternalsVisibleTo("ARWNI2S.Narrator.Data")]
 [assembly: InternalsVisibleTo("ARWNI2S.Narrator.Services")]

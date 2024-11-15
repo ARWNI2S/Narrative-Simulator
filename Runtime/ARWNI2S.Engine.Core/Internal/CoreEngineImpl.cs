@@ -1,9 +1,14 @@
-﻿using ARWNI2S.Infrastructure.Engine;
+﻿using ARWNI2S.Engine.Configuration.Options;
+using ARWNI2S.Engine.Diagnostics;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Core.Engine;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System.Diagnostics;
 
 namespace ARWNI2S.Engine.Internal
 {
-    internal class CoreEngineImpl : IEngine
+    internal sealed class CoreEngineImpl : IEngine
     {
         private bool _hasStarted;
         private int _stopping;
@@ -12,16 +17,16 @@ namespace ARWNI2S.Engine.Internal
 
         public IFeatureCollection Features { get; }
 
-        //public EngineCoreImpl(
-        //    IOptions<EngineCoreOptions> options,
-        //    //IEnumerable<IConnectionListenerFactory> transportFactories,
-        //    //IEnumerable<IMultiplexedConnectionListenerFactory> multiplexedFactories,
-        //    //IHttpsConfigurationService httpsConfigurationService,
-        //    ILoggerFactory loggerFactory/*,
-        //    KestrelMetrics metrics*/)
-        //    : this(/*transportFactories, multiplexedFactories, httpsConfigurationService, CreateServiceContext(options, loggerFactory, diagnosticSource: null, metrics*/))
-        //{
-        //}
+        public CoreEngineImpl(
+            IOptions<EngineOptions> options,
+            //IEnumerable<IConnectionListenerFactory> transportFactories,
+            //IEnumerable<IMultiplexedConnectionListenerFactory> multiplexedFactories,
+            //IHttpsConfigurationService httpsConfigurationService,
+            ILoggerFactory loggerFactory,
+            CoreEngineMetrics metrics)
+            : this(/*transportFactories, multiplexedFactories, httpsConfigurationService,*/ CreateServiceContext(options, loggerFactory, diagnosticSource: null, metrics))
+        {
+        }
 
         // For testing
 
@@ -29,8 +34,7 @@ namespace ARWNI2S.Engine.Internal
             //IEnumerable<IConnectionListenerFactory> transportFactories,
             //IEnumerable<IMultiplexedConnectionListenerFactory> multiplexedFactories,
             //IHttpsConfigurationService httpsConfigurationService,
-            //ServiceContext serviceContext
-            )
+            ServiceContext serviceContext)
         {
             //ArgumentNullException.ThrowIfNull(transportFactories);
 
@@ -236,213 +240,216 @@ namespace ARWNI2S.Engine.Internal
             StopAsync(new CancellationToken(canceled: true)).GetAwaiter().GetResult();
         }
 
-        //private async Task BindAsync(CancellationToken cancellationToken)
-        //{
-        //    await _bindSemaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
+        private static ServiceContext CreateServiceContext(IOptions<EngineOptions> options, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource, CoreEngineMetrics metrics)
+        {
+            ArgumentNullException.ThrowIfNull(options);
+            ArgumentNullException.ThrowIfNull(loggerFactory);
 
-        //    try
-        //    {
-        //        if (_stopping == 1)
-        //        {
-        //            throw new InvalidOperationException("Kestrel has already been stopped.");
-        //        }
+            var serverOptions = options.Value ?? new EngineOptions();
+            //var trace = new KestrelTrace(loggerFactory);
+            //var connectionManager = new ConnectionManager(
+            //    trace,
+            //    serverOptions.Limits.MaxConcurrentUpgradedConnections);
 
-        //        IChangeToken? reloadToken = null;
+            //var dateHeaderValueManager = new DateHeaderValueManager(TimeProvider.System);
 
-        //        _serverAddresses.InternalCollection.PreventPublicMutation();
+            //var heartbeat = new Heartbeat(
+            //    new IHeartbeatHandler[] { dateHeaderValueManager, connectionManager },
+            //    TimeProvider.System,
+            //    DebuggerWrapper.Singleton,
+            //    trace,
+            //    Heartbeat.Interval);
 
-        //        if (Options.ConfigurationLoader?.ReloadOnChange == true && (!_serverAddresses.PreferHostingUrls || _serverAddresses.InternalCollection.Count == 0))
-        //        {
-        //            reloadToken = Options.ConfigurationLoader.GetReloadToken();
-        //        }
-
-        //        Options.ConfigurationLoader?.LoadInternal();
-        //        Options.ConfigurationLoader?.ProcessEndpointsToAdd();
-
-        //        await AddressBinder.BindAsync(Options.GetListenOptions(), AddressBindContext!, _httpsConfigurationService.UseHttpsWithDefaults, cancellationToken).ConfigureAwait(false);
-        //        _configChangedRegistration = reloadToken?.RegisterChangeCallback(TriggerRebind, this);
-        //    }
-        //    finally
-        //    {
-        //        _bindSemaphore.Release();
-        //    }
-        //}
-
-        //        internal sealed class KestrelServerImpl : IServer
-        //        {
-        //            private readonly ServerAddressesFeature _serverAddresses;
-        //            private readonly TransportManager _transportManager;
-        //            private readonly List<IConnectionListenerFactory> _transportFactories;
-        //            private readonly List<IMultiplexedConnectionListenerFactory> _multiplexedTransportFactories;
-        //            private readonly IHttpsConfigurationService _httpsConfigurationService;
-
-        //            private readonly SemaphoreSlim _bindSemaphore = new SemaphoreSlim(initialCount: 1);
-
-        //            private IDisposable? _configChangedRegistration;
-
-
-
-        //            private static ServiceContext CreateServiceContext(IOptions<EngineCoreOptions> options, ILoggerFactory loggerFactory, DiagnosticSource? diagnosticSource, KestrelMetrics metrics)
-        //            {
-        //                ArgumentNullException.ThrowIfNull(options);
-        //                ArgumentNullException.ThrowIfNull(loggerFactory);
-
-        //                var serverOptions = options.Value ?? new EngineCoreOptions();
-        //                var trace = new KestrelTrace(loggerFactory);
-        //                var connectionManager = new ConnectionManager(
-        //                    trace,
-        //                    serverOptions.Limits.MaxConcurrentUpgradedConnections);
-
-        //                var dateHeaderValueManager = new DateHeaderValueManager(TimeProvider.System);
-
-        //                var heartbeat = new Heartbeat(
-        //                    new IHeartbeatHandler[] { dateHeaderValueManager, connectionManager },
-        //                    TimeProvider.System,
-        //                    DebuggerWrapper.Singleton,
-        //                    trace,
-        //                    Heartbeat.Interval);
-
-        //                return new ServiceContext
-        //                {
-        //                    Log = trace,
-        //                    Scheduler = PipeScheduler.ThreadPool,
-        //                    HttpParser = new HttpParser<Http1ParsingHandler>(trace.IsEnabled(LogLevel.Information), serverOptions.DisableHttp1LineFeedTerminators),
-        //                    TimeProvider = TimeProvider.System,
-        //                    DateHeaderValueManager = dateHeaderValueManager,
-        //                    ConnectionManager = connectionManager,
-        //                    Heartbeat = heartbeat,
-        //                    ServerOptions = serverOptions,
-        //                    DiagnosticSource = diagnosticSource,
-        //                    Metrics = metrics
-        //                };
-        //            }
-
-        //            public EngineCoreOptions Options => ServiceContext.ServerOptions;
-
-        //            private ServiceContext ServiceContext { get; }
-
-        //            private KestrelTrace Trace => ServiceContext.Log;
-
-        //            private AddressBindContext? AddressBindContext { get; set; }
-
-
-
-
-
-        //            private static void TriggerRebind(object? state)
-        //            {
-        //                if (state is KestrelServerImpl server)
-        //                {
-        //                    _ = server.RebindAsync();
-        //                }
-        //            }
-
-        //            private async Task RebindAsync()
-        //            {
-        //                // Prevents from interfering with shutdown or other rebinds.
-        //                // All exceptions are caught and logged at the critical level.
-        //                await _bindSemaphore.WaitAsync();
-
-        //                IChangeToken? reloadToken = null;
-
-        //                try
-        //                {
-        //                    if (_stopping == 1)
-        //                    {
-        //                        return;
-        //                    }
-
-        //                    Debug.Assert(Options.ConfigurationLoader != null, "Rebind can only happen when there is a ConfigurationLoader.");
-
-        //                    reloadToken = Options.ConfigurationLoader.GetReloadToken();
-        //                    var (endpointsToStop, endpointsToStart) = Options.ConfigurationLoader.Reload();
-
-        //                    Trace.LogDebug("Config reload token fired. Checking for changes...");
-
-        //                    if (endpointsToStop.Count > 0)
-        //                    {
-        //                        var urlsToStop = endpointsToStop.Select(lo => lo.EndpointConfig!.Url);
-        //                        if (Trace.IsEnabled(LogLevel.Information))
-        //                        {
-        //                            Trace.LogInformation("Config changed. Stopping the following endpoints: '{endpoints}'", string.Join("', '", urlsToStop));
-        //                        }
-
-        //                        // 5 is the default value for WebHost's "shutdownTimeoutSeconds", so use that.
-        //                        using var cts = CancellationTokenSource.CreateLinkedTokenSource(_stopCts.Token);
-        //                        cts.CancelAfter(TimeSpan.FromSeconds(5));
-
-        //                        // TODO: It would be nice to start binding to new endpoints immediately and reconfigured endpoints as soon
-        //                        // as the unbinding finished for the given endpoint rather than wait for all transports to unbind first.
-        //                        var configsToStop = new List<EndpointConfig>(endpointsToStop.Count);
-        //                        foreach (var lo in endpointsToStop)
-        //                        {
-        //                            configsToStop.Add(lo.EndpointConfig!);
-        //                        }
-        //                        await _transportManager.StopEndpointsAsync(configsToStop, cts.Token).ConfigureAwait(false);
-
-        //                        foreach (var listenOption in endpointsToStop)
-        //                        {
-        //                            Options.OptionsInUse.Remove(listenOption);
-        //                            _serverAddresses.InternalCollection.Remove(listenOption.GetDisplayName());
-        //                        }
-        //                    }
-
-        //                    if (endpointsToStart.Count > 0)
-        //                    {
-        //                        var urlsToStart = endpointsToStart.Select(lo => lo.EndpointConfig!.Url);
-        //                        if (Trace.IsEnabled(LogLevel.Information))
-        //                        {
-        //                            Trace.LogInformation("Config changed. Starting the following endpoints: '{endpoints}'", string.Join("', '", urlsToStart));
-        //                        }
-
-        //                        foreach (var listenOption in endpointsToStart)
-        //                        {
-        //                            try
-        //                            {
-        //                                await listenOption.BindAsync(AddressBindContext!, _stopCts.Token).ConfigureAwait(false);
-        //                            }
-        //                            catch (Exception ex)
-        //                            {
-        //                                if (Trace.IsEnabled(LogLevel.Critical))
-        //                                {
-        //                                    Trace.LogCritical(0, ex, "Unable to bind to '{url}' on config reload.", listenOption.EndpointConfig!.Url);
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    Trace.LogCritical(0, ex, "Unable to reload configuration.");
-        //                }
-        //                finally
-        //                {
-        //                    _configChangedRegistration = reloadToken?.RegisterChangeCallback(TriggerRebind, this);
-        //                    _bindSemaphore.Release();
-        //                }
-        //            }
-
-
-
-        //            private static ConnectionDelegate EnforceConnectionLimit(ConnectionDelegate innerDelegate, long? connectionLimit, KestrelTrace trace, KestrelMetrics metrics)
-        //            {
-        //                if (!connectionLimit.HasValue)
-        //                {
-        //                    return innerDelegate;
-        //                }
-
-        //                return new ConnectionLimitMiddleware<ConnectionContext>(c => innerDelegate(c), connectionLimit.Value, trace, metrics).OnConnectionAsync;
-        //            }
-
-        //            private static MultiplexedConnectionDelegate EnforceConnectionLimit(MultiplexedConnectionDelegate innerDelegate, long? connectionLimit, KestrelTrace trace, KestrelMetrics metrics)
-        //            {
-        //                if (!connectionLimit.HasValue)
-        //                {
-        //                    return innerDelegate;
-        //                }
-
-        //                return new ConnectionLimitMiddleware<MultiplexedConnectionContext>(c => innerDelegate(c), connectionLimit.Value, trace, metrics).OnConnectionAsync;
-        //            }
-        //        }
+            return new ServiceContext
+            {
+                //Log = trace,
+                //Scheduler = PipeScheduler.ThreadPool,
+                //HttpParser = new HttpParser<Http1ParsingHandler>(trace.IsEnabled(LogLevel.Information), serverOptions.DisableHttp1LineFeedTerminators),
+                //TimeProvider = TimeProvider.System,
+                //DateHeaderValueManager = dateHeaderValueManager,
+                //ConnectionManager = connectionManager,
+                //Heartbeat = heartbeat,
+                //ServerOptions = serverOptions,
+                //DiagnosticSource = diagnosticSource,
+                //Metrics = metrics
+            };
+        }
     }
 }
+
+//        internal sealed class KestrelServerImpl : IServer
+//        {
+//            private readonly ServerAddressesFeature _serverAddresses;
+//            private readonly TransportManager _transportManager;
+//            private readonly List<IConnectionListenerFactory> _transportFactories;
+//            private readonly List<IMultiplexedConnectionListenerFactory> _multiplexedTransportFactories;
+//            private readonly IHttpsConfigurationService _httpsConfigurationService;
+
+//            private readonly SemaphoreSlim _bindSemaphore = new SemaphoreSlim(initialCount: 1);
+
+//            private IDisposable? _configChangedRegistration;
+
+
+
+//            private static ServiceContext CreateServiceContext(IOptions<EngineCoreOptions> options, ILoggerFactory loggerFactory, DiagnosticSource? diagnosticSource, KestrelMetrics metrics)
+//            {
+//                ArgumentNullException.ThrowIfNull(options);
+//                ArgumentNullException.ThrowIfNull(loggerFactory);
+
+//                var serverOptions = options.Value ?? new EngineCoreOptions();
+//                var trace = new KestrelTrace(loggerFactory);
+//                var connectionManager = new ConnectionManager(
+//                    trace,
+//                    serverOptions.Limits.MaxConcurrentUpgradedConnections);
+
+//                var dateHeaderValueManager = new DateHeaderValueManager(TimeProvider.System);
+
+//                var heartbeat = new Heartbeat(
+//                    new IHeartbeatHandler[] { dateHeaderValueManager, connectionManager },
+//                    TimeProvider.System,
+//                    DebuggerWrapper.Singleton,
+//                    trace,
+//                    Heartbeat.Interval);
+
+//                return new ServiceContext
+//                {
+//                    Log = trace,
+//                    Scheduler = PipeScheduler.ThreadPool,
+//                    HttpParser = new HttpParser<Http1ParsingHandler>(trace.IsEnabled(LogLevel.Information), serverOptions.DisableHttp1LineFeedTerminators),
+//                    TimeProvider = TimeProvider.System,
+//                    DateHeaderValueManager = dateHeaderValueManager,
+//                    ConnectionManager = connectionManager,
+//                    Heartbeat = heartbeat,
+//                    ServerOptions = serverOptions,
+//                    DiagnosticSource = diagnosticSource,
+//                    Metrics = metrics
+//                };
+//            }
+
+//            public EngineCoreOptions Options => ServiceContext.ServerOptions;
+
+//            private ServiceContext ServiceContext { get; }
+
+//            private KestrelTrace Trace => ServiceContext.Log;
+
+//            private AddressBindContext? AddressBindContext { get; set; }
+
+
+
+
+
+//            private static void TriggerRebind(object? state)
+//            {
+//                if (state is KestrelServerImpl server)
+//                {
+//                    _ = server.RebindAsync();
+//                }
+//            }
+
+//            private async Task RebindAsync()
+//            {
+//                // Prevents from interfering with shutdown or other rebinds.
+//                // All exceptions are caught and logged at the critical level.
+//                await _bindSemaphore.WaitAsync();
+
+//                IChangeToken? reloadToken = null;
+
+//                try
+//                {
+//                    if (_stopping == 1)
+//                    {
+//                        return;
+//                    }
+
+//                    Debug.Assert(Options.ConfigurationLoader != null, "Rebind can only happen when there is a ConfigurationLoader.");
+
+//                    reloadToken = Options.ConfigurationLoader.GetReloadToken();
+//                    var (endpointsToStop, endpointsToStart) = Options.ConfigurationLoader.Reload();
+
+//                    Trace.LogDebug("Config reload token fired. Checking for changes...");
+
+//                    if (endpointsToStop.Count > 0)
+//                    {
+//                        var urlsToStop = endpointsToStop.Select(lo => lo.EndpointConfig!.Url);
+//                        if (Trace.IsEnabled(LogLevel.Information))
+//                        {
+//                            Trace.LogInformation("Config changed. Stopping the following endpoints: '{endpoints}'", string.Join("', '", urlsToStop));
+//                        }
+
+//                        // 5 is the default value for WebHost's "shutdownTimeoutSeconds", so use that.
+//                        using var cts = CancellationTokenSource.CreateLinkedTokenSource(_stopCts.Token);
+//                        cts.CancelAfter(TimeSpan.FromSeconds(5));
+
+//                        // TODO: It would be nice to start binding to new endpoints immediately and reconfigured endpoints as soon
+//                        // as the unbinding finished for the given endpoint rather than wait for all transports to unbind first.
+//                        var configsToStop = new List<EndpointConfig>(endpointsToStop.Count);
+//                        foreach (var lo in endpointsToStop)
+//                        {
+//                            configsToStop.Add(lo.EndpointConfig!);
+//                        }
+//                        await _transportManager.StopEndpointsAsync(configsToStop, cts.Token).ConfigureAwait(false);
+
+//                        foreach (var listenOption in endpointsToStop)
+//                        {
+//                            Options.OptionsInUse.Remove(listenOption);
+//                            _serverAddresses.InternalCollection.Remove(listenOption.GetDisplayName());
+//                        }
+//                    }
+
+//                    if (endpointsToStart.Count > 0)
+//                    {
+//                        var urlsToStart = endpointsToStart.Select(lo => lo.EndpointConfig!.Url);
+//                        if (Trace.IsEnabled(LogLevel.Information))
+//                        {
+//                            Trace.LogInformation("Config changed. Starting the following endpoints: '{endpoints}'", string.Join("', '", urlsToStart));
+//                        }
+
+//                        foreach (var listenOption in endpointsToStart)
+//                        {
+//                            try
+//                            {
+//                                await listenOption.BindAsync(AddressBindContext!, _stopCts.Token).ConfigureAwait(false);
+//                            }
+//                            catch (Exception ex)
+//                            {
+//                                if (Trace.IsEnabled(LogLevel.Critical))
+//                                {
+//                                    Trace.LogCritical(0, ex, "Unable to bind to '{url}' on config reload.", listenOption.EndpointConfig!.Url);
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                catch (Exception ex)
+//                {
+//                    Trace.LogCritical(0, ex, "Unable to reload configuration.");
+//                }
+//                finally
+//                {
+//                    _configChangedRegistration = reloadToken?.RegisterChangeCallback(TriggerRebind, this);
+//                    _bindSemaphore.Release();
+//                }
+//            }
+
+
+
+//            private static ConnectionDelegate EnforceConnectionLimit(ConnectionDelegate innerDelegate, long? connectionLimit, KestrelTrace trace, KestrelMetrics metrics)
+//            {
+//                if (!connectionLimit.HasValue)
+//                {
+//                    return innerDelegate;
+//                }
+
+//                return new ConnectionLimitMiddleware<ConnectionContext>(c => innerDelegate(c), connectionLimit.Value, trace, metrics).OnConnectionAsync;
+//            }
+
+//            private static MultiplexedConnectionDelegate EnforceConnectionLimit(MultiplexedConnectionDelegate innerDelegate, long? connectionLimit, KestrelTrace trace, KestrelMetrics metrics)
+//            {
+//                if (!connectionLimit.HasValue)
+//                {
+//                    return innerDelegate;
+//                }
+
+//                return new ConnectionLimitMiddleware<MultiplexedConnectionContext>(c => innerDelegate(c), connectionLimit.Value, trace, metrics).OnConnectionAsync;
+//            }
+//        }

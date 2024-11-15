@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
-using ARWNI2S.Engine.Entities;
+﻿using ARWNI2S.Engine.Core.Object;
 using ARWNI2S.Infrastructure;
+using System.Reflection;
+using System.Reflection.Emit;
 
-namespace ARWNI2S.Engine.Reflection
+namespace ARWNI2S.CodeGenerator
 {
     internal static class InterfaceGenerator
     {
@@ -22,7 +22,7 @@ namespace ARWNI2S.Engine.Reflection
             var typeBuilder = ModuleBuilder.DefineType(interfaceName, TypeAttributes.Public | TypeAttributes.Interface | TypeAttributes.Abstract);
 
             var methods = simObjectType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                .Where(m => m.GetCustomAttribute<NI2S_MethodAttribute>() != null);
+                .Where(m => m.GetCustomAttribute<NiisFunctionAttribute>() != null);
 
             foreach (var method in methods)
             {

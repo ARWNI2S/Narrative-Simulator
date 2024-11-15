@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.Engine.Orleans
+﻿namespace ARWNI2S.Engine.Orleans.Grains
 {
     public interface IActorGrain : IEntityGrain
     {

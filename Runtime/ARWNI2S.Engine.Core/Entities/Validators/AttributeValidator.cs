@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.Engine.Entities.Validators
+﻿using ARWNI2S.Engine.Core.Object;
+
+namespace ARWNI2S.Engine.Entities.Validators
 {
     internal sealed class AttributeValidator
     {
@@ -6,7 +8,7 @@
         {
             var typesWithAttribute = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(a => a.GetTypes())
-                .Where(t => t.GetCustomAttributes(typeof(NI2SAttribute), inherit: true).Any());
+                .Where(t => t.GetCustomAttributes(typeof(NiisAttribute), inherit: true).Length != 0);
 
             foreach (var type in typesWithAttribute)
             {

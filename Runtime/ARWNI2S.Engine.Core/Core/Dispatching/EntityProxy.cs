@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using ARWNI2S.Engine.Entities;
+﻿using ARWNI2S.Engine.Core.Object;
+using System.Reflection;
 
-namespace ARWNI2S.Engine.Dispatching
+namespace ARWNI2S.Engine.Core.Dispatching
 {
     public class EntityProxy<T> : DispatchProxy where T : class
     {
@@ -24,7 +24,7 @@ namespace ARWNI2S.Engine.Dispatching
         protected override object Invoke(MethodInfo method, object[] args)
         {
             // Verificar si el método está marcado como SimEventMethod
-            if (method.GetCustomAttribute<NI2S_MethodAttribute>() != null)
+            if (method.GetCustomAttribute<NiisFunctionAttribute>() != null)
             {
                 // Crear y encolar el evento automáticamente
                 //var simEvent = new SimEvent(_instance, _instance, method, args ?? [], SimulationEngine.CurrentTime + 1000);

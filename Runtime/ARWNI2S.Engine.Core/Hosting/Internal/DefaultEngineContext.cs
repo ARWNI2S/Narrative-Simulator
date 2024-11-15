@@ -1,13 +1,10 @@
 ﻿using ARWNI2S.Engine.Features;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Features;
-using ARWNI2S.Infrastructure.Network.Connection;
-using ARWNI2S.Infrastructure.Session;
 using ARWNI2S.Node.Core.Engine;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Security.Claims;
 
 namespace ARWNI2S.Engine.Hosting.Internal
 {
@@ -20,17 +17,17 @@ namespace ARWNI2S.Engine.Hosting.Internal
         // https://github.com/dotnet/aspnetcore/issues/31249
         private const int DefaultFeatureCollectionSize = 10;
 
-        // Lambdas hoisted to static readonly fields to improve inlining https://github.com/dotnet/roslyn/issues/13624
-        //    //private static readonly Func<IFeatureCollection, IItemsFeature> _newItemsFeature = f => new ItemsFeature();
+        //// Lambdas hoisted to static readonly fields to improve inlining https://github.com/dotnet/roslyn/issues/13624
+        ////    //private static readonly Func<IFeatureCollection, IItemsFeature> _newItemsFeature = f => new ItemsFeature();
         private static readonly Func<DefaultEngineContext, IServiceProvidersFeature> _newServiceProvidersFeature = context => new EngineServicesFeature(context, context.ServiceScopeFactory);
-        private static readonly Func<IFeatureCollection, IAuthenticationFeature> _newAuthenticationFeature = f => new CoreAuthenticationFeature();
-        private static readonly Func<IFeatureCollection, IFrameLifetimeFeature> _newFrameLifetimeFeature = f => new FrameLifetimeFeature();
-        //    //private static readonly Func<IFeatureCollection, ISessionFeature> _newSessionFeature = f => new DefaultSessionFeature();
-        //    //private static readonly Func<IFeatureCollection, ISessionFeature?> _nullSessionFeature = f => null;
-        //    //private static readonly Func<IFeatureCollection, IFrameIdentifierFeature> _newFrameIdentifierFeature = f => new FrameIdentifierFeature();
+        //private static readonly Func<IFeatureCollection, IAuthenticationFeature> _newAuthenticationFeature = f => new CoreAuthenticationFeature();
+        //private static readonly Func<IFeatureCollection, IFrameLifetimeFeature> _newFrameLifetimeFeature = f => new FrameLifetimeFeature();
+        ////    //private static readonly Func<IFeatureCollection, ISessionFeature> _newSessionFeature = f => new DefaultSessionFeature();
+        ////    //private static readonly Func<IFeatureCollection, ISessionFeature?> _nullSessionFeature = f => null;
+        private static readonly Func<IFeatureCollection, IFrameIdentifierFeature> _newFrameIdentifierFeature = f => new FrameIdentifierFeature();
 
         private FeatureReferences<FeatureInterfaces> _features;
-        //private DefaultConnection _connection;
+        ////private DefaultConnection _connection;
 
         // This is field exists to make analyzing memory dumps easier.
         // https://github.com/dotnet/aspnetcore/issues/29709
@@ -39,9 +36,9 @@ namespace ARWNI2S.Engine.Hosting.Internal
         /// <inheritdoc/>
         public override IFeatureCollection Features => _features.Collection ?? ContextDisposed();
 
-        /// <inheritdoc/>
-        public override IConnection Connection => throw new NotImplementedException();
-        //public override IConnection Connection => _connection ?? (_connection = new DefaultConnection(Features));
+        ///// <inheritdoc/>
+        //public override IConnection Connection => throw new NotImplementedException();
+        ////public override IConnection Connection => _connection ?? (_connection = new DefaultConnection(Features));
 
         /// <inheritdoc/>
         public override IServiceProvider EngineServices
@@ -50,21 +47,36 @@ namespace ARWNI2S.Engine.Hosting.Internal
             set { ServiceProvidersFeature.EngineServices = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="IServiceScopeFactory" /> for this instance.
+        /// </summary>
+        /// <returns>
+        /// <see cref="IServiceScopeFactory"/>
+        /// </returns>
+        public IServiceScopeFactory ServiceScopeFactory { get; set; } = default!;
+
         /// <inheritdoc/>
-        public override ClaimsPrincipal User
+        public override string TraceIdentifier
         {
-            get
-            {
-                var user = AuthenticationFeature.User;
-                if (user == null)
-                {
-                    user = new ClaimsPrincipal(new ClaimsIdentity());
-                    AuthenticationFeature.User = user;
-                }
-                return user;
-            }
-            set { AuthenticationFeature.User = value; }
+            get { return FrameIdentifierFeature.TraceIdentifier; }
+            set { FrameIdentifierFeature.TraceIdentifier = value; }
         }
+
+        ///// <inheritdoc/>
+        //public override ClaimsPrincipal User
+        //{
+        //    get
+        //    {
+        //        var user = AuthenticationFeature.User;
+        //        if (user == null)
+        //        {
+        //            user = new ClaimsPrincipal(new ClaimsIdentity());
+        //            AuthenticationFeature.User = user;
+        //        }
+        //        return user;
+        //    }
+        //    set { AuthenticationFeature.User = value; }
+        //}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultEngineContext"/> class.
@@ -121,29 +133,25 @@ namespace ARWNI2S.Engine.Hosting.Internal
 
         private IServiceProvidersFeature ServiceProvidersFeature =>
             _features.Fetch(ref _features.Cache.ServiceProviders, this, _newServiceProvidersFeature)!;
-        private IAuthenticationFeature AuthenticationFeature =>
-            _features.Fetch(ref _features.Cache.Authentication, _newAuthenticationFeature)!;
-        private IFrameLifetimeFeature LifetimeFeature =>
-            _features.Fetch(ref _features.Cache.Lifetime, _newFrameLifetimeFeature)!;
+        private IFrameIdentifierFeature FrameIdentifierFeature =>
+            _features.Fetch(ref _features.Cache.FrameIdentifier, _newFrameIdentifierFeature)!;
 
-        /// <summary>
-        /// Gets or sets the <see cref="IServiceScopeFactory" /> for this instance.
-        /// </summary>
-        /// <returns>
-        /// <see cref="IServiceScopeFactory"/>
-        /// </returns>
-        public IServiceScopeFactory ServiceScopeFactory { get; set; } = default!;
+        //private IAuthenticationFeature AuthenticationFeature =>
+        //    _features.Fetch(ref _features.Cache.Authentication, _newAuthenticationFeature)!;
+        //private IFrameLifetimeFeature LifetimeFeature =>
+        //    _features.Fetch(ref _features.Cache.Lifetime, _newFrameLifetimeFeature)!;
 
 
 
 
-        public override IEvent Event => throw new NotImplementedException();
 
 
-        public override IDictionary<object, object> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override CancellationToken FrameAborted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string TraceIdentifier { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override ISession Session { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public override IEvent Event => throw new NotImplementedException();
+
+
+        //public override IDictionary<object, object> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public override CancellationToken FrameAborted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public override ISession Session { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         // This property exists because of backwards compatibility.
         // We send an anonymous object with an EngineContext property
@@ -155,14 +163,14 @@ namespace ARWNI2S.Engine.Hosting.Internal
         [EditorBrowsable(EditorBrowsableState.Never)]
         public EngineContext EngineContext => this;
 
-        public override IEvent Callback => throw new NotImplementedException();
+        //public override IEvent Callback => throw new NotImplementedException();
 
 
-        /// <inheritdoc/>
-        public override void Abort()
-        {
-            LifetimeFeature.Abort();
-        }
+        ///// <inheritdoc/>
+        //public override void Abort()
+        //{
+        //    LifetimeFeature.Abort();
+        //}
 
         private static IFeatureCollection ContextDisposed()
         {
@@ -180,10 +188,10 @@ namespace ARWNI2S.Engine.Hosting.Internal
         {
             //public IItemsFeature? Items;
             public IServiceProvidersFeature ServiceProviders;
-            public IAuthenticationFeature Authentication;
-            public IFrameLifetimeFeature Lifetime;
+            //public IAuthenticationFeature Authentication;
+            //public IFrameLifetimeFeature Lifetime;
             //public ISessionFeature? Session;
-            //public IFrameIdentifierFeature? FrameIdentifier;
+            public IFrameIdentifierFeature FrameIdentifier;
         }
     }
 
@@ -219,9 +227,6 @@ namespace ARWNI2S.Engine.Hosting.Internal
 
     //    //private ISessionFeature? SessionFeatureOrNull =>
     //    //    _features.Fetch(ref _features.Cache.Session, _nullSessionFeature);
-
-    //    //private IFrameIdentifierFeature FrameIdentifierFeature =>
-    //    //    _features.Fetch(ref _features.Cache.FrameIdentifier, _newFrameIdentifierFeature)!;
 
 
     //    ///// <inheritdoc/>

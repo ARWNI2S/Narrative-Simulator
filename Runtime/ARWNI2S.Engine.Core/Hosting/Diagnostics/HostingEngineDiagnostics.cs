@@ -145,7 +145,7 @@ namespace ARWNI2S.Engine.Hosting.Diagnostics
             if (startTimestamp != 0)
             {
                 currentTimestamp = Stopwatch.GetTimestamp();
-                var reachedPipelineEnd = engineContext.Items.ContainsKey(FrameUnhandledKey);
+                var reachedPipelineEnd = true;//engineContext.Items.ContainsKey(FrameUnhandledKey);
 
                 // Non-inline
                 LogFrameFinished(context, startTimestamp, currentTimestamp);
@@ -386,41 +386,42 @@ namespace ARWNI2S.Engine.Hosting.Diagnostics
         {
             hasDiagnosticListener = false;
 
-            var headers = engineContext.Event;//.Frame.Headers;
-            var activity = ActivityCreator.CreateFromRemote(
-                _activitySource,
-                _propagator,
-                headers,
-                static (object carrier, string fieldName, out string fieldValue, out IEnumerable<string> fieldValues) =>
-                {
-                    fieldValues = default;
-                    //var headers = (IHeaderDictionary)carrier!;
-                    //fieldValue = headers[fieldName];
-                    fieldValue = default;
-                },
-                ActivityName,
-                ActivityKind.Server,
-                tags: null,
-                links: null,
-                loggingEnabled || diagnosticListenerActivityCreationEnabled);
-            if (activity is null)
-            {
-                return null;
-            }
+            //var headers = engineContext.Event;//.Frame.Headers;
+            //var activity = ActivityCreator.CreateFromRemote(
+            //    _activitySource,
+            //    _propagator,
+            //    headers,
+            //    static (object carrier, string fieldName, out string fieldValue, out IEnumerable<string> fieldValues) =>
+            //    {
+            //        fieldValues = default;
+            //        //var headers = (IHeaderDictionary)carrier!;
+            //        //fieldValue = headers[fieldName];
+            //        fieldValue = default;
+            //    },
+            //    ActivityName,
+            //    ActivityKind.Server,
+            //    tags: null,
+            //    links: null,
+            //    loggingEnabled || diagnosticListenerActivityCreationEnabled);
+            //if (activity is null)
+            //{
+            //    return null;
+            //}
 
-            _diagnosticListener.OnActivityImport(activity, engineContext);
+            //_diagnosticListener.OnActivityImport(activity, engineContext);
 
-            if (_diagnosticListener.IsEnabled(ActivityStartKey))
-            {
-                hasDiagnosticListener = true;
-                StartActivity(activity, engineContext);
-            }
-            else
-            {
-                activity.Start();
-            }
+            //if (_diagnosticListener.IsEnabled(ActivityStartKey))
+            //{
+            //    hasDiagnosticListener = true;
+            //    StartActivity(activity, engineContext);
+            //}
+            //else
+            //{
+            //    activity.Start();
+            //}
 
-            return activity;
+            //return activity;
+            return null;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]

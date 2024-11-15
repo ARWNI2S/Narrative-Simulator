@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Engine.Configuration.Options;
+using ARWNI2S.Engine.Diagnostics;
 using ARWNI2S.Engine.Internal;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Node.Builder;
@@ -79,7 +80,7 @@ namespace ARWNI2S.Node.Hosting.Extensions
                 services.AddTransient<IConfigureOptions<EngineOptions>, EngineOptionsSetup>();
                 //services.AddSingleton<IHttpsConfigurationService, HttpsConfigurationService>();
                 services.AddSingleton<IEngine, CoreEngineImpl>();
-                //services.AddSingleton<CoreEngineMetrics>();
+                services.AddSingleton<CoreEngineMetrics>();
             });
 
             if (OperatingSystem.IsWindows())

@@ -8,37 +8,28 @@
 
   <ItemGroup>
     <Compile Remove="Attributes\**" />
-    <Compile Remove="Dispatching\**" />
-    <Compile Remove="Entities\**" />
     <Compile Remove="Extensions\**" />
     <Compile Remove="Features\Providers\**" />
     <Compile Remove="Hosting\**" />
     <Compile Remove="Infrastructure\**" />
     <Compile Remove="Modules\**" />
     <Compile Remove="Object\**" />
-    <Compile Remove="Orleans\**" />
     <Compile Remove="Reflection\**" />
     <EmbeddedResource Remove="Attributes\**" />
-    <EmbeddedResource Remove="Dispatching\**" />
-    <EmbeddedResource Remove="Entities\**" />
     <EmbeddedResource Remove="Extensions\**" />
     <EmbeddedResource Remove="Features\Providers\**" />
     <EmbeddedResource Remove="Hosting\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
     <EmbeddedResource Remove="Modules\**" />
     <EmbeddedResource Remove="Object\**" />
-    <EmbeddedResource Remove="Orleans\**" />
     <EmbeddedResource Remove="Reflection\**" />
     <None Remove="Attributes\**" />
-    <None Remove="Dispatching\**" />
-    <None Remove="Entities\**" />
     <None Remove="Extensions\**" />
     <None Remove="Features\Providers\**" />
     <None Remove="Hosting\**" />
     <None Remove="Infrastructure\**" />
     <None Remove="Modules\**" />
     <None Remove="Object\**" />
-    <None Remove="Orleans\**" />
     <None Remove="Reflection\**" />
   </ItemGroup>
 
@@ -48,6 +39,9 @@
     <Compile Remove="GameObject.cs" />
     <Compile Remove="IGameEntity.cs" />
     <Compile Remove="Internal\EntityProxy.cs" />
+    <Compile Remove="Orleans\GrainEvent.cs" />
+    <Compile Remove="Orleans\GrainState.cs" />
+    <Compile Remove="Orleans\Grains\IActorGrain.cs" />
     <Compile Remove="Tasks\FrameTask.cs" />
     <Compile Remove="Tasks\NiisFrame.cs" />
   </ItemGroup>

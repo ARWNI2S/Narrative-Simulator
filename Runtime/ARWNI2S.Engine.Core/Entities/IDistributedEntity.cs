@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Engine.Orleans;
+﻿using ARWNI2S.Engine.Orleans.Grains;
 
 namespace ARWNI2S.Engine.Entities
 {

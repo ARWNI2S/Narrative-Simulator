@@ -2,7 +2,7 @@
 using ARWNI2S.Node.Services.Clustering;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ARWNI2S.EditorNode.Framework.Hosting.Extensions
+namespace ARWNI2S.Frontline.Framework.Hosting.Extensions
 {
     /// <summary>
     /// Represents extensions of IServiceCollection
