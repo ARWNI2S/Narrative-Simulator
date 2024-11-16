@@ -1,13 +1,12 @@
 ﻿using ARWNI2S.Engine.Orleans.Placement;
-using ARWNI2S.Node.Configuration.Options.Extensions;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Node.Hosting.Configuration.Options.Extensions;
 using Azure.Data.Tables;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.Configuration;
-using Orleans.Runtime;
 using Orleans.Runtime.Placement;
 using StackExchange.Redis;
 using Constants = ARWNI2S.Infrastructure.Constants;

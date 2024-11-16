@@ -2,12 +2,12 @@
 using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Configuration;
 using ARWNI2S.Node.Builder;
-using ARWNI2S.Node.Configuration.Options.Extensions;
 using ARWNI2S.Node.Core;
 using ARWNI2S.Node.Core.Caching;
 using ARWNI2S.Node.Core.Configuration;
 using ARWNI2S.Node.Core.Infrastructure;
 using ARWNI2S.Node.Core.Network;
+using ARWNI2S.Node.Hosting.Configuration.Options.Extensions;
 using ARWNI2S.Node.Services.Clustering;
 using ARWNI2S.Node.Services.Network;
 using Azure.Data.Tables;

@@ -13,7 +13,7 @@ namespace ARWNI2S.Engine.Hosting.Internal
         private const string MiddlewareDescriptionsKey = "__MiddlewareDescriptions";
         private const string EventUnhandledKey = "__EventUnhandledKey";
 
-        private readonly List<Func<FrameDelegate, FrameDelegate>> _components = [];
+        private readonly List<Func<UpdateDelegate, UpdateDelegate>> _components = [];
         private readonly List<string> _descriptions;
         private readonly IDebugger _debugger;
 
@@ -110,7 +110,7 @@ namespace ARWNI2S.Engine.Hosting.Internal
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns>An instance of <see cref="IEngineBuilder"/> after the operation has completed.</returns>
-        public IEngineBuilder Use(Func<FrameDelegate, FrameDelegate> middleware)
+        public IEngineBuilder Use(Func<UpdateDelegate, UpdateDelegate> middleware)
         {
             _components.Add(middleware);
             _descriptions?.Add(CreateMiddlewareDescription(middleware));
@@ -118,7 +118,7 @@ namespace ARWNI2S.Engine.Hosting.Internal
             return this;
         }
 
-        private static string CreateMiddlewareDescription(Func<FrameDelegate, FrameDelegate> middleware)
+        private static string CreateMiddlewareDescription(Func<UpdateDelegate, UpdateDelegate> middleware)
         {
             if (middleware.Target != null)
             {
@@ -151,15 +151,15 @@ namespace ARWNI2S.Engine.Hosting.Internal
         }
 
         /// <summary>
-        /// Produces a <see cref="FrameDelegate"/> that executes added middlewares.
+        /// Produces a <see cref="UpdateDelegate"/> that executes added processors.
         /// </summary>
-        /// <returns>The <see cref="FrameDelegate"/>.</returns>
-        public FrameDelegate Build()
+        /// <returns>The <see cref="UpdateDelegate"/>.</returns>
+        public UpdateDelegate Build()
         {
-            FrameDelegate engine = context =>
+            UpdateDelegate engine = context =>
             {
-                //// If we reach the end of the pipeline, but we have an endpoint, then something unexpected has happened.
-                //// This could happen if user code sets an endpoint, but they forgot to add the UseEndpoint middleware.
+                //// If we reach the end of the pipeline, but we have a dirty entity, then something unexpected has happened.
+                //// This could happen if user code sets a behaviour, but they forgot to add the UseBehavior processor.
                 //var endpoint = context.GetEndpoint();
                 //var endpointRequestDelegate = endpoint?.RequestDelegate;
                 //if (endpointRequestDelegate != null)

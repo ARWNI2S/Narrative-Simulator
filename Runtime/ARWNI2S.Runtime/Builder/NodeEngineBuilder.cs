@@ -2,6 +2,7 @@
 using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Node.Configuration.Options;
 using ARWNI2S.Node.Hosting;
+using ARWNI2S.Node.Hosting.Builder;
 using ARWNI2S.Node.Hosting.Extensions;
 using ARWNI2S.Node.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
@@ -17,8 +18,8 @@ namespace ARWNI2S.Node.Builder
     public sealed class NodeEngineBuilder : IHostApplicationBuilder
     {
         private const string EndpointRouteBuilderKey = "__EndpointRouteBuilder";
-        //private const string AuthenticationMiddlewareSetKey = "__AuthenticationMiddlewareSet";
-        //private const string AuthorizationMiddlewareSetKey = "__AuthorizationMiddlewareSet";
+        //private const string AuthenticationFrameProcessorSetKey = "__AuthenticationFrameProcessorSet";
+        //private const string AuthorizationFrameProcessorSetKey = "__AuthorizationFrameProcessorSet";
         private const string UseRoutingKey = "__UseRouting";
 
         private readonly HostApplicationBuilder _hostApplicationBuilder;
@@ -186,7 +187,7 @@ namespace ARWNI2S.Node.Builder
                 if (!_builtEngine.Properties.TryGetValue(EndpointRouteBuilderKey, out var localRouteBuilder))
                 {
                     //engine.UseRouting();
-                    // Middleware the needs to re-route will use this property to call UseRouting()
+                    // FrameProcessor the needs to re-route will use this property to call UseRouting()
                     _builtEngine.Properties[UseRoutingKey] = engine.Properties[UseRoutingKey];
                 }
                 else
@@ -196,33 +197,33 @@ namespace ARWNI2S.Node.Builder
                 }
             }
 
-            // Process authorization and authentication middlewares independently to avoid
-            // registering middlewares for services that do not exist
+            // Process authorization and authentication frame processors independently to avoid
+            // registering frame processors for services that do not exist
             var serviceProviderIsService = _builtEngine.Services.GetService<IServiceProviderIsService>();
             //if (serviceProviderIsService?.IsService(typeof(IAuthenticationSchemeProvider)) is true)
             //{
-            //    // Don't add more than one instance of the middleware
-            //    if (!_builtEngine.Properties.ContainsKey(AuthenticationMiddlewareSetKey))
+            //    // Don't add more than one instance of the frame processor
+            //    if (!_builtEngine.Properties.ContainsKey(AuthenticationFrameProcessorSetKey))
             //    {
             //        // The Use invocations will set the property on the outer pipeline,
             //        // but we want to set it on the inner pipeline as well.
-            //        _builtEngine.Properties[AuthenticationMiddlewareSetKey] = true;
+            //        _builtEngine.Properties[AuthenticationFrameProcessorSetKey] = true;
             //        engine.UseAuthentication();
             //    }
             //}
 
             //if (serviceProviderIsService?.IsService(typeof(IAuthorizationHandlerProvider)) is true)
             //{
-            //    if (!_builtEngine.Properties.ContainsKey(AuthorizationMiddlewareSetKey))
+            //    if (!_builtEngine.Properties.ContainsKey(AuthorizationFrameProcessorSetKey))
             //    {
-            //        _builtEngine.Properties[AuthorizationMiddlewareSetKey] = true;
+            //        _builtEngine.Properties[AuthorizationFrameProcessorSetKey] = true;
             //        engine.UseAuthorization();
             //    }
             //}
 
             // Wire the source pipeline to run in the destination pipeline
             var wireSourcePipeline = new WireSourcePipeline(_builtEngine);
-            engine.Use(wireSourcePipeline.CreateMiddleware);
+            engine.Use(wireSourcePipeline.CreateFrameProcessor);
 
             if (_builtEngine.DataSources.Count > 0)
             {
@@ -230,7 +231,7 @@ namespace ARWNI2S.Node.Builder
                 //engine.UseEndpoints(_ => { });
             }
 
-            MergeMiddlewareDescriptions(engine);
+            MergeFrameProcessorDescriptions(engine);
 
             // Copy the properties to the destination engine builder
             foreach (var item in _builtEngine.Properties)
@@ -251,21 +252,21 @@ namespace ARWNI2S.Node.Builder
         void IHostApplicationBuilder.ConfigureContainer<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory, Action<TContainerBuilder> configure) =>
             _hostApplicationBuilder.ConfigureContainer(factory, configure);
 
-        private void MergeMiddlewareDescriptions(IEngineBuilder engine)
+        private void MergeFrameProcessorDescriptions(IEngineBuilder engine)
         {
-            // A user's engine builds up a list of middleware. Then when the NodeEngine is started, middleware is automatically added
+            // A user's engine builds up a list of frame processor. Then when the NodeEngine is started, frame processor is automatically added
             // if it is required. For example, the engine has mapped endpoints but hasn't configured UseRouting/UseEndpoints.
             //
-            // This method updates the middleware descriptions to include automatically added middleware.
-            // The engine's middleware list is inserted into the new pipeline to create the best representation possible of the middleware pipeline.
+            // This method updates the frame processor descriptions to include automatically added frame processor.
+            // The engine's frame processor list is inserted into the new pipeline to create the best representation possible of the frame processor pipeline.
             //
-            // If the debugger isn't attached then there won't be middleware description collections in the properties and this does nothing.
+            // If the debugger isn't attached then there won't be frame processor description collections in the properties and this does nothing.
 
             Debug.Assert(_builtEngine is not null);
 
-            const string MiddlewareDescriptionsKey = "__MiddlewareDescriptions";
-            if (_builtEngine.Properties.TryGetValue(MiddlewareDescriptionsKey, out var sourceValue) &&
-                engine.Properties.TryGetValue(MiddlewareDescriptionsKey, out var destinationValue) &&
+            const string FrameProcessorDescriptionsKey = "__FrameProcessorDescriptions";
+            if (_builtEngine.Properties.TryGetValue(FrameProcessorDescriptionsKey, out var sourceValue) &&
+                engine.Properties.TryGetValue(FrameProcessorDescriptionsKey, out var destinationValue) &&
                 sourceValue is List<string> sourceDescriptions &&
                 destinationValue is List<string> destinationDescriptions)
             {
@@ -275,7 +276,7 @@ namespace ARWNI2S.Node.Builder
                     destinationDescriptions.RemoveAt(wireUpIndex);
                     destinationDescriptions.InsertRange(wireUpIndex, sourceDescriptions);
 
-                    _builtEngine.Properties[MiddlewareDescriptionsKey] = destinationDescriptions;
+                    _builtEngine.Properties[FrameProcessorDescriptionsKey] = destinationDescriptions;
                 }
             }
         }
@@ -285,9 +286,9 @@ namespace ARWNI2S.Node.Builder
         {
             private readonly IEngineBuilder _builtEngine = builtEngine;
 
-            public FrameDelegate CreateMiddleware(FrameDelegate _)
+            public UpdateDelegate CreateFrameProcessor(UpdateDelegate next)
             {
-                //_builtEngine.Run(next);
+                _builtEngine.Run(next);
                 return _builtEngine.Build();
             }
         }

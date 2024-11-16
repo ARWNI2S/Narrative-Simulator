@@ -8,7 +8,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
     public partial class RoutingStartup : IWebStartup
     {
         /// <summary>
-        /// Add and configure any of the middleware
+        /// Add and configure any of the engine services
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         /// <param name="configuration">Configuration of the application</param>

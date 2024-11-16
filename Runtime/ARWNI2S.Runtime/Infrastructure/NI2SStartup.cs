@@ -34,7 +34,7 @@ namespace ARWNI2S.Node.Infrastructure
     public partial class NI2SStartup : INI2SStartup
     {
         /// <summary>
-        /// Add and configure any of the middleware
+        /// Add and configure any of the engine services
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         /// <param name="configuration">Configuration of the application</param>

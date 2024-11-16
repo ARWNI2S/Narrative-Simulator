@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\UpdateFunction.cs" />
     <Compile Remove="DefaultConnection.cs" />
     <Compile Remove="Features\ActorFeature.cs" />
     <Compile Remove="GameObject.cs" />
@@ -42,8 +43,6 @@
     <Compile Remove="Orleans\GrainEvent.cs" />
     <Compile Remove="Orleans\GrainState.cs" />
     <Compile Remove="Orleans\Grains\IActorGrain.cs" />
-    <Compile Remove="Tasks\FrameTask.cs" />
-    <Compile Remove="Tasks\NiisFrame.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,10 +70,6 @@
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Data\ARWNI2S.Node.Data.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Services\ARWNI2S.Node.Services.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Tasks\" />
   </ItemGroup>
 
 </Project>

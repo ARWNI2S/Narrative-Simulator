@@ -2,7 +2,7 @@
 using ARWNI2S.Engine.Diagnostics;
 using ARWNI2S.Engine.Internal;
 using ARWNI2S.Infrastructure.Engine;
-using ARWNI2S.Node.Builder;
+using ARWNI2S.Node.Hosting.Builder;
 using ARWNI2S.Node.Hosting.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

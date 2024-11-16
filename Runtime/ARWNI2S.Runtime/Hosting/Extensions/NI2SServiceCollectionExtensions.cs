@@ -239,13 +239,13 @@ namespace ARWNI2S.Node.Hosting.Extensions
             //services.TryAddEnumerable(ServiceDescriptor.Singleton<IRequestDelegateFactory, ControllerRequestDelegateFactory>());
 
             ////
-            //// Middleware pipeline filter related
+            //// FrameProcessor pipeline filter related
             ////
-            //services.TryAddSingleton<MiddlewareFilterConfigurationProvider>();
-            //// This maintains a cache of middleware pipelines, so it needs to be a singleton
-            //services.TryAddSingleton<MiddlewareFilterBuilder>();
-            //// Sets EngineBuilder on MiddlewareFilterBuilder
-            //services.TryAddEnumerable(ServiceDescriptor.Singleton<IStartupFilter, MiddlewareFilterBuilderStartupFilter>());
+            //services.TryAddSingleton<FrameProcessorFilterConfigurationProvider>();
+            //// This maintains a cache of frame processor pipelines, so it needs to be a singleton
+            //services.TryAddSingleton<FrameProcessorFilterBuilder>();
+            //// Sets EngineBuilder on FrameProcessorFilterBuilder
+            //services.TryAddEnumerable(ServiceDescriptor.Singleton<IStartupFilter, FrameProcessorFilterBuilderStartupFilter>());
 
             //// ProblemDetails
             //services.TryAddSingleton<ProblemDetailsFactory, DefaultProblemDetailsFactory>();

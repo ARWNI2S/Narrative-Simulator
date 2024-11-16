@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Engine.Configuration.Options;
-using ARWNI2S.Node.Builder;
+using ARWNI2S.Node.Hosting.Builder;
 using ARWNI2S.Node.Hosting.Extensions;
-using ARWNI2S.Node.Internal;
+using ARWNI2S.Node.Hosting.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

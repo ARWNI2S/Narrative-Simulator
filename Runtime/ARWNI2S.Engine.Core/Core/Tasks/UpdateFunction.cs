@@ -1,12 +1,14 @@
-﻿
+﻿using ARWNI2S.Engine.Core.Object;
+using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Infrastructure;
+using ARWNI2S.Infrastructure.Network.Protocol;
 
-namespace ARWNI2S.Engine.Tasks
+namespace ARWNI2S.Engine.Core.Tasks
 {
 	/// <summary>
 	/// Represents a simulation periodic update function
 	/// </summary>
-	public abstract class UpdateFunction
+	internal abstract class UpdateFunction
 	{
 		/// <summary>
 		/// Defines the minimum update group for this update function.
@@ -47,7 +49,7 @@ namespace ARWNI2S.Engine.Tasks
 		/// <summary>
 		/// Level of detail in wich this update function is running.
 		/// </summary>
-		public UpdateLOD LOD { get; set; } = UpdateLOD.Disabled;
+		public Resolution LOD { get; set; } = Resolution.Inactive;
 
 		/// <summary>
 		/// Update function states
@@ -148,7 +150,7 @@ namespace ARWNI2S.Engine.Tasks
 			public UpdateFrameRoot FrameRoot;
 
 			/// <summary>
-			/// Back pointer to the <see cref="Update.UpdateRoot"/> containing this update function if it is registered
+			/// Back pointer to the <see cref="Tasks.UpdateRoot"/> containing this update function if it is registered
 			/// </summary>
 			public UpdateRoot UpdateRoot;
 		}
@@ -210,7 +212,7 @@ namespace ARWNI2S.Engine.Tasks
 		* tasks have been completed.Only valid after TG_PreAsyncWork has started and then only until the UpdateFunction finishes
 		* execution
 		**/
-		public GraphEventRef GetCompletionHandle() { }
+		public GraphEventRef GetCompletionHandle() { return null; }
 
 		/** 
 		* Gets the action update group that this function will be elligible to start in.
@@ -236,13 +238,13 @@ namespace ARWNI2S.Engine.Tasks
 		 * @param TargetObject - UObject containing this update function. Only used to verify that the other pointer is still usable
 		 * @param TargetUpdateFunction - Actual update function to use as a prerequisite
 		 **/
-		public void AddPrerequisite(ISimulable TargetObject, UpdateFunction TargetUpdateFunction) { }
+		public void AddPrerequisite(NiisObject TargetObject, UpdateFunction TargetUpdateFunction) { }
 		/** 
 		 * Removes a prerequisite that was previously added.
 		 * @param TargetObject - UObject containing this update function. Only used to verify that the other pointer is still usable
 		 * @param TargetUpdateFunction - Actual update function to use as a prerequisite
 		 **/
-		public void RemovePrerequisite(ISimulable TargetObject, UpdateFunction TargetUpdateFunction) { }
+		public void RemovePrerequisite(NiisObject TargetObject, UpdateFunction TargetUpdateFunction) { }
 		/** 
 		 * Sets this function to hipri and all prerequisites recursively
 		 * @param bInHighPriority - priority to set
@@ -263,10 +265,10 @@ namespace ARWNI2S.Engine.Tasks
 		 * @param UpdateContext - context to update in
 		 * @param StackForCycleDetection - Stack For Cycle Detection
 		 */
-		private void QueueUpdateFunctionParallel(UpdateContext UpdateContext, IList<UpdateFunction*, TInlineAllocator<8>> StackForCycleDetection) { }
+		private void QueueUpdateFunctionParallel(UpdateContext UpdateContext, IList<UpdateFunction> StackForCycleDetection) { }
 
 		/** Returns the delta time to use when updating this function given the UpdateContext */
-		private float CalculateDeltaTime(UpdateContext UpdateContext) { }
+		private float CalculateDeltaTime(UpdateContext UpdateContext) { return -1; }
 
 		/** 
 		 * Logs the prerequisites

@@ -70,7 +70,7 @@ namespace ARWNI2S.Engine.Hosting.Diagnostics
         }
 
         [Event(6, Level = EventLevel.Informational)]
-        public void ServerReady()
+        public void EngineReady()
         {
             WriteEvent(6);
         }

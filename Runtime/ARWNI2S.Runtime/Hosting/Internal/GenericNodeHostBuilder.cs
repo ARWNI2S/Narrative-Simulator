@@ -4,8 +4,8 @@ using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Infrastructure.Extensions;
 using ARWNI2S.Node.Builder;
-using ARWNI2S.Node.Configuration.Options;
-using ARWNI2S.Node.Hosting;
+using ARWNI2S.Node.Hosting.Builder;
+using ARWNI2S.Node.Hosting.Configuration.Options;
 using ARWNI2S.Node.Hosting.Infrastructure;
 using ARWNI2S.Node.Hosting.Startup;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +17,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
 namespace ARWNI2S.Node.Hosting.Internal
 {
@@ -80,7 +79,7 @@ namespace ARWNI2S.Node.Hosting.Internal
                 services.TryAddSingleton(DistributedContextPropagator.Current);
 
                 services.TryAddSingleton<IEngineContextFactory, DefaultEngineContextFactory>();
-                //services.TryAddScoped<IMiddlewareFactory, MiddlewareFactory>();
+                //services.TryAddScoped<IFrameProcessorFactory, FrameProcessorFactory>();
                 services.TryAddSingleton<IEngineBuilderFactory, EngineBuilderFactory>();
 
                 services.AddMetrics();

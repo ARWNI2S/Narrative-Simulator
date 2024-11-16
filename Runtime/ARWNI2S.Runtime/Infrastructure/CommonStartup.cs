@@ -7,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ARWNI2S.Node.Infrastructure
 {
     /// <summary>
-    /// Represents object for the configuring common features and middleware on application startup
+    /// Represents object for the configuring common features and frame processor on application startup
     /// </summary>
     public partial class CommonStartup : INI2SStartup
     {
         /// <summary>
-        /// Add and configure any of the middleware
+        /// Add and configure any of the engine services
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
         /// <param name="configuration">Configuration of the application</param>
@@ -42,7 +42,7 @@ namespace ARWNI2S.Node.Infrastructure
         }
 
         /// <summary>
-        /// Configure the using of added middleware
+        /// Configure the using of added engine services
         /// </summary>
         /// <param name="engine">Builder for configuring an application's request pipeline</param>
         public void Configure(IEngineBuilder engine)

@@ -9,13 +9,13 @@ namespace ARWNI2S.Engine.Hosting
 {
     internal sealed class HostingEngine : IEngine<HostingEngine.Context>
     {
-        private readonly FrameDelegate _engine;
+        private readonly UpdateDelegate _engine;
         private readonly IEngineContextFactory _engineContextFactory;
         private readonly DefaultEngineContextFactory _defaultEngineContextFactory;
         private readonly HostingEngineDiagnostics _diagnostics;
 
         public HostingEngine(
-            FrameDelegate engine,
+            UpdateDelegate engine,
             ILogger logger,
             DiagnosticListener diagnosticSource,
             ActivitySource activitySource,

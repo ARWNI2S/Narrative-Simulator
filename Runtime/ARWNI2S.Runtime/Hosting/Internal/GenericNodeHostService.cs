@@ -2,7 +2,12 @@
 using ARWNI2S.Engine.Hosting.Diagnostics;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
-using ARWNI2S.Node.Configuration.Options;
+using ARWNI2S.Infrastructure.Engine.Features;
+using ARWNI2S.Node.Core.Configuration;
+using ARWNI2S.Node.Core.Infrastructure;
+using ARWNI2S.Node.Hosting.Configuration.Options;
+using ARWNI2S.Node.Hosting.Diagnostics;
+using ARWNI2S.Node.Hosting.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -60,73 +65,71 @@ namespace ARWNI2S.Node.Hosting
         {
             HostingEngineEventSource.Log.HostStart();
 
-            //var engineAddressesFeature = Engine.Features.Get<IEngineAddressesFeature>();
-            //var addresses = engineAddressesFeature?.Addresses;
-            //if (addresses != null && !addresses.IsReadOnly && addresses.Count == 0)
-            //{
-            //    // We support reading "urls" from app configuration
-            //    var urls = Configuration[NodeHostDefaults.EngineUrlsKey];
+            var ni2sSettings = Singleton<NI2SSettings>.Instance;
 
-            //    // But fall back to host settings
-            //    if (string.IsNullOrEmpty(urls))
-            //    {
-            //        urls = Options.NodeHostOptions.EngineUrls;
-            //    }
+            var engineModulesFeature = Engine.Features.Get<IEngineModulesFeature>();
+            var engineModules = engineModulesFeature?.Modules;
 
-            //    var httpPorts = Configuration[NodeHostDefaults.HttpPortsKey] ?? string.Empty;
-            //    var httpsPorts = Configuration[NodeHostDefaults.HttpsPortsKey] ?? string.Empty;
-            //    if (string.IsNullOrEmpty(urls))
-            //    {
-            //        // HTTP_PORTS and HTTPS_PORTS, these are lower priority than Urls.
-            //        static string ExpandPorts(string ports, string scheme)
-            //        {
-            //            return string.Join(';',
-            //                ports.Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
-            //                .Select(port => $"{scheme}://*:{port}"));
-            //        }
+            if (engineModules != null && engineModules.Count >= 0)
+            {
+                //    // We support reading "urls" from app configuration
+                //    var urls = Configuration[NodeHostDefaults.EngineUrlsKey];
 
-            //        var httpUrls = ExpandPorts(httpPorts, Uri.UriSchemeHttp);
-            //        var httpsUrls = ExpandPorts(httpsPorts, Uri.UriSchemeHttps);
-            //        urls = $"{httpUrls};{httpsUrls}";
-            //    }
-            //    else if (!string.IsNullOrEmpty(httpPorts) || !string.IsNullOrEmpty(httpsPorts))
-            //    {
-            //        Logger.PortsOverridenByUrls(httpPorts, httpsPorts, urls);
-            //    }
+                //    // But fall back to host settings
+                //    if (string.IsNullOrEmpty(urls))
+                //    {
+                //        urls = Options.NodeHostOptions.EngineUrls;
+                //    }
 
-            //    if (!string.IsNullOrEmpty(urls))
-            //    {
-            //        // We support reading "preferHostingUrls" from app configuration
-            //        var preferHostingUrlsConfig = Configuration[NodeHostDefaults.PreferHostingUrlsKey];
+                //    var httpPorts = Configuration[NodeHostDefaults.HttpPortsKey] ?? string.Empty;
+                //    var httpsPorts = Configuration[NodeHostDefaults.HttpsPortsKey] ?? string.Empty;
+                //    if (string.IsNullOrEmpty(urls))
+                //    {
+                //        // HTTP_PORTS and HTTPS_PORTS, these are lower priority than Urls.
+                //        static string ExpandPorts(string ports, string scheme)
+                //        {
+                //            return string.Join(';',
+                //                ports.Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                //                .Select(port => $"{scheme}://*:{port}"));
+                //        }
 
-            //        // But fall back to host settings
-            //        if (!string.IsNullOrEmpty(preferHostingUrlsConfig))
-            //        {
-            //            engineAddressesFeature!.PreferHostingUrls = preferHostingUrlsConfig.ParseBool();
-            //        }
-            //        else
-            //        {
-            //            engineAddressesFeature!.PreferHostingUrls = Options.NodeHostOptions.PreferHostingUrls;
-            //        }
+                //        var httpUrls = ExpandPorts(httpPorts, Uri.UriSchemeHttp);
+                //        var httpsUrls = ExpandPorts(httpsPorts, Uri.UriSchemeHttps);
+                //        urls = $"{httpUrls};{httpsUrls}";
+                //    }
+                //    else if (!string.IsNullOrEmpty(httpPorts) || !string.IsNullOrEmpty(httpsPorts))
+                //    {
+                //        Logger.PortsOverridenByUrls(httpPorts, httpsPorts, urls);
+                //    }
 
-            //        foreach (var value in urls.Split(';', StringSplitOptions.RemoveEmptyEntries))
-            //        {
-            //            addresses.Add(value);
-            //        }
-            //    }
-            //}
+                //    if (!string.IsNullOrEmpty(urls))
+                //    {
+                //        // We support reading "preferHostingUrls" from app configuration
+                //        var preferHostingUrlsConfig = Configuration[NodeHostDefaults.PreferHostingUrlsKey];
 
-            FrameDelegate engine = null;
+                //        // But fall back to host settings
+                //        if (!string.IsNullOrEmpty(preferHostingUrlsConfig))
+                //        {
+                //            engineAddressesFeature!.PreferHostingUrls = preferHostingUrlsConfig.ParseBool();
+                //        }
+                //        else
+                //        {
+                //            engineAddressesFeature!.PreferHostingUrls = Options.NodeHostOptions.PreferHostingUrls;
+                //        }
+
+                //        foreach (var value in urls.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                //        {
+                //            addresses.Add(value);
+                //        }
+                //    }
+
+            }
+
+            UpdateDelegate engine = null;
 
             try
             {
-                var configure = Options.ConfigureEngine;
-
-                if (configure == null)
-                {
-                    throw new InvalidOperationException($"No engine configured. Please specify a engine via INodeHostBuilder.UseStartup, INodeHostBuilder.Configure, or specifying the startup assembly via {nameof(NodeHostDefaults.StartupAssemblyKey)} in the web host configuration.");
-                }
-
+                var configure = Options.ConfigureEngine ?? throw new InvalidOperationException($"No engine configured. Please specify a engine via INodeHostBuilder.UseStartup, INodeHostBuilder.Configure, or specifying the startup assembly via {nameof(NodeHostDefaults.StartupAssemblyKey)} in the node host configuration.");
                 var builder = EngineBuilderFactory.CreateBuilder(Engine.Features);
 
                 //foreach (var filter in Enumerable.Reverse(StartupFilters))
@@ -136,12 +139,12 @@ namespace ARWNI2S.Node.Hosting
 
                 configure(builder);
 
-                // Build the request pipeline
+                // Build the engine update loop
                 engine = builder.Build();
             }
-            catch (Exception /*ex*/)
+            catch (Exception ex)
             {
-                //Logger.EngineError(ex);
+                Logger.EngineError(ex);
 
                 if (!Options.NodeHostOptions.CaptureStartupErrors)
                 {
@@ -150,13 +153,13 @@ namespace ARWNI2S.Node.Hosting
 
                 var showDetailedErrors = HostingEnvironment.IsDevelopment() || Options.NodeHostOptions.DetailedErrors;
 
-                //engine = ErrorPageBuilder.BuildErrorPageEngine(HostingEnvironment.ContentRootFileProvider, Logger, showDetailedErrors, ex);
+                engine = DetailedErrorBuilder.BuildEngineErrorFrame(HostingEnvironment.ContentRootFileProvider, Logger, showDetailedErrors, ex);
             }
 
             var niisEngine = new HostingEngine(engine, Logger, DiagnosticListener, ActivitySource, Propagator, EngineContextFactory, HostingEngineEventSource.Log, HostingMetrics);
 
             await Engine.StartAsync(niisEngine, cancellationToken);
-            //HostingEngineEventSource.Log.EngineReady();
+            HostingEngineEventSource.Log.EngineReady();
 
             //if (addresses != null)
             //{
@@ -178,10 +181,9 @@ namespace ARWNI2S.Node.Hosting
             {
                 foreach (var exception in Options.HostingStartupExceptions.InnerExceptions)
                 {
-                    //Logger.HostingStartupAssemblyError(exception);
+                    Logger.HostingStartupAssemblyError(exception);
                 }
             }
-            //await Task.Delay(100);
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
