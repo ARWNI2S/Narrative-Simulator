@@ -1,4 +1,5 @@
 ﻿using ARWNI2S.Engine.Features;
+using ARWNI2S.Infrastructure;
 using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Features;
 using ARWNI2S.Node.Core.Engine;
@@ -27,6 +28,7 @@ namespace ARWNI2S.Engine.Hosting.Internal
         private static readonly Func<IFeatureCollection, IFrameIdentifierFeature> _newFrameIdentifierFeature = f => new FrameIdentifierFeature();
 
         private FeatureReferences<FeatureInterfaces> _features;
+        private IEvent _callback;
         ////private DefaultConnection _connection;
 
         // This is field exists to make analyzing memory dumps easier.
@@ -54,6 +56,9 @@ namespace ARWNI2S.Engine.Hosting.Internal
         /// <see cref="IServiceScopeFactory"/>
         /// </returns>
         public IServiceScopeFactory ServiceScopeFactory { get; set; } = default!;
+
+        /// <inheritdoc/>
+        public override IEvent Callback => _callback ??= new NullCallback();
 
         /// <inheritdoc/>
         public override string TraceIdentifier
@@ -163,7 +168,6 @@ namespace ARWNI2S.Engine.Hosting.Internal
         [EditorBrowsable(EditorBrowsableState.Never)]
         public EngineContext EngineContext => this;
 
-        //public override IEvent Callback => throw new NotImplementedException();
 
 
         ///// <inheritdoc/>
