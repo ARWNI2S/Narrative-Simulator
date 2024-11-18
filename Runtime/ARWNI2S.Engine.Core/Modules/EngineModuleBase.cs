@@ -1,19 +1,26 @@
-﻿using ARWNI2S.Infrastructure.Engine;
+﻿using ARWNI2S.Engine.Modules;
+using ARWNI2S.Infrastructure.Engine;
 using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Infrastructure.Lifecycle;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using ILifecycleSubject = ARWNI2S.Infrastructure.Lifecycle.ILifecycleSubject;
 using ServiceLifecycleStage = ARWNI2S.Infrastructure.Lifecycle.ServiceLifecycleStage;
 
-namespace ARWNI2S.Engine.Modules
+#pragma warning disable IDE0130 // El espacio de nombres no coincide con la estructura de carpetas
+namespace ARWNI2S.Engine
+#pragma warning restore IDE0130 // El espacio de nombres no coincide con la estructura de carpetas
 {
-    internal class EngineModuleBase : IEngineModule
+    [EngineModule(ServiceLifecycleStage.RuntimeInitialize)]
+    public abstract class EngineModuleBase : IEngineModule
     {
+        private readonly int _engineLifecycleStage;
+
         public IFeatureCollection Features { get; }
 
         public EngineModuleBase()
         {
-
+            _engineLifecycleStage = this.GetType().GetCustomAttribute<EngineModuleAttribute>().Stage;
         }
 
         public void Configure(IEngineBuilder engineBuilder)
@@ -28,15 +35,18 @@ namespace ARWNI2S.Engine.Modules
 
         public void Participate(ILifecycleSubject lifecycle)
         {
-            lifecycle.Subscribe(GetType().Name, ServiceLifecycleStage.RuntimeInitialize, ct => OnStartAsync(ct), ct => OnStopAsync(ct));
+            lifecycle.Subscribe(GetType().Name, _engineLifecycleStage, ct => OnStartAsync(ct), ct => OnStopAsync(ct));
         }
 
-        private Task OnStartAsync(CancellationToken token)
+        protected abstract void ConfigureEngine(IEngineBuilder engine);
+        protected abstract void ConfigureModuleServices(IServiceCollection services);
+
+        protected virtual Task OnStartAsync(CancellationToken token)
         {
             return Task.CompletedTask;
         }
 
-        private Task OnStopAsync(CancellationToken token)
+        protected virtual Task OnStopAsync(CancellationToken token)
         {
             return Task.CompletedTask;
         }

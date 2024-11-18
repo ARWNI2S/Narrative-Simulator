@@ -1,7 +1,5 @@
 ﻿using ARWNI2S.Engine.Core.Object;
-using ARWNI2S.Engine.Simulation;
 using ARWNI2S.Infrastructure;
-using ARWNI2S.Infrastructure.Network.Protocol;
 
 namespace ARWNI2S.Engine.Core.Tasks
 {
@@ -46,10 +44,10 @@ namespace ARWNI2S.Engine.Core.Tasks
 		/// </summary>
 		public bool LongRunning { get; set; } = true;
 
-		/// <summary>
-		/// Level of detail in wich this update function is running.
-		/// </summary>
-		public Resolution LOD { get; set; } = Resolution.Inactive;
+		///// <summary>
+		///// Level of detail in wich this update function is running.
+		///// </summary>
+		//public Resolution LOD { get; set; } = Resolution.Inactive;
 
 		/// <summary>
 		/// Update function states

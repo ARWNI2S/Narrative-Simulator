@@ -3,7 +3,9 @@ using ARWNI2S.Infrastructure.Engine.Builder;
 using ARWNI2S.Infrastructure.Lifecycle;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ARWNI2S.Engine.Network
+#pragma warning disable IDE0130 // El espacio de nombres no coincide con la estructura de carpetas
+namespace ARWNI2S.Engine
+#pragma warning restore IDE0130 // El espacio de nombres no coincide con la estructura de carpetas
 {
     public sealed class NetworkModule : IEngineModule
     {

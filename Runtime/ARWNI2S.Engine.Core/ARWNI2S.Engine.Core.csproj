@@ -7,57 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Attributes\**" />
     <Compile Remove="Extensions\**" />
-    <Compile Remove="Features\Providers\**" />
-    <Compile Remove="Hosting\**" />
-    <Compile Remove="Infrastructure\**" />
-    <Compile Remove="Modules\**" />
-    <Compile Remove="Object\**" />
-    <Compile Remove="Reflection\**" />
-    <EmbeddedResource Remove="Attributes\**" />
     <EmbeddedResource Remove="Extensions\**" />
-    <EmbeddedResource Remove="Features\Providers\**" />
-    <EmbeddedResource Remove="Hosting\**" />
-    <EmbeddedResource Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Modules\**" />
-    <EmbeddedResource Remove="Object\**" />
-    <EmbeddedResource Remove="Reflection\**" />
-    <None Remove="Attributes\**" />
     <None Remove="Extensions\**" />
-    <None Remove="Features\Providers\**" />
-    <None Remove="Hosting\**" />
-    <None Remove="Infrastructure\**" />
-    <None Remove="Modules\**" />
-    <None Remove="Object\**" />
-    <None Remove="Reflection\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\UpdateFunction.cs" />
-    <Compile Remove="DefaultConnection.cs" />
-    <Compile Remove="Features\ActorFeature.cs" />
-    <Compile Remove="GameObject.cs" />
-    <Compile Remove="IGameEntity.cs" />
-    <Compile Remove="Internal\EntityProxy.cs" />
-    <Compile Remove="Orleans\GrainEvent.cs" />
-    <Compile Remove="Orleans\GrainState.cs" />
-    <Compile Remove="Orleans\Grains\IActorGrain.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Hosting\Diagnostics\ActivityCreator.cs" />
-    <Compile Include="Hosting\Diagnostics\HostingEngineDiagnostics.cs" />
-    <Compile Include="Hosting\Diagnostics\HostingEngineEventSource.cs" />
-    <Compile Include="Hosting\Diagnostics\HostingEngineMetrics.cs" />
-    <Compile Include="Hosting\Diagnostics\NiisMethods.cs" />
-    <Compile Include="Hosting\Extensions\EngineBuilderExtensions.cs" />
-    <Compile Include="Hosting\Extensions\EnginePartManagerExtensions.cs" />
-    <Compile Include="Hosting\HostingEngine.cs" />
-    <Compile Include="Hosting\IHostContextContainer.cs" />
-    <Compile Include="Hosting\Internal\DefaultEngineContext.cs" />
-    <Compile Include="Hosting\Internal\DefaultEngineContextFactory.cs" />
-    <Compile Include="Hosting\Internal\EngineBuilder.cs" />
+    <Compile Remove="Hosting\HostingFrameStartingLog.cs" />
+    <Compile Remove="Simulation\Resolution.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,6 +27,10 @@
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Data\ARWNI2S.Node.Data.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node.Services\ARWNI2S.Node.Services.csproj" />
     <ProjectReference Include="..\..\NI2S-Node\src\Infrastructure\ARWNI2S.Infrastructure\ARWNI2S.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Simulation\" />
   </ItemGroup>
 
 </Project>
