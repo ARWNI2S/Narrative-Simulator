@@ -19,8 +19,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
 
         private static readonly IEngineFileProvider _fileProvider;
         private static readonly List<KeyValuePair<string, Version>> _baseAppLibraries;
-        private static readonly Dictionary<string, Version> _moduleLibraries;
-        private static readonly Dictionary<string, ModuleLoadedAssemblyInfo> _loadedAssemblies = [];
+        private static readonly Dictionary<string, Version> _pluginLibraries;
+        private static readonly Dictionary<string, PluginLoadedAssemblyInfo> _loadedAssemblies = [];
         private static readonly ReaderWriterLockSlim _locker = new();
 
         #endregion
@@ -33,7 +33,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             _fileProvider = CommonHelper.DefaultFileProvider;
 
             _baseAppLibraries = [];
-            _moduleLibraries = [];
+            _pluginLibraries = [];
 
             //get all libraries from /bin/{version}/ directory
             foreach (var file in _fileProvider.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
@@ -45,7 +45,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     _baseAppLibraries.Add(new KeyValuePair<string, Version>(_fileProvider.GetFileName(file), GetAssemblyVersion(file)));
 
             //get all libraries from refs directory
-            var refsPathName = _fileProvider.Combine(Environment.CurrentDirectory, NI2SModuleDefaults.RefsPathName);
+            var refsPathName = _fileProvider.Combine(Environment.CurrentDirectory, PluginDefaults.RefsPathName);
             if (_fileProvider.DirectoryExists(refsPathName))
                 foreach (var file in _fileProvider.GetFiles(refsPathName, "*.dll"))
                     _baseAppLibraries.Add(new KeyValuePair<string, Version>(_fileProvider.GetFileName(file), GetAssemblyVersion(file)));
@@ -56,12 +56,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         #region Properties
 
         /// <summary>
-        /// Gets access to information about modules
+        /// Gets access to information about plugins
         /// </summary>
-        private static IModulesInfo ModulesInfo
+        private static IPluginsInfo PluginsInfo
         {
-            get => Singleton<IModulesInfo>.Instance;
-            set => Singleton<IModulesInfo>.Instance = value;
+            get => Singleton<IPluginsInfo>.Instance;
+            set => Singleton<IPluginsInfo>.Instance = value;
         }
 
         #endregion
@@ -82,23 +82,23 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             return null;
         }
 
-        private static void CheckCompatible(ModuleDescriptor moduleDescriptor, Dictionary<string, Version> assemblies)
+        private static void CheckCompatible(PluginDescriptor pluginDescriptor, Dictionary<string, Version> assemblies)
         {
-            var refFiles = moduleDescriptor.ModuleFiles.Where(file =>
-                !_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(moduleDescriptor.OriginalAssemblyFile))).ToList();
+            var refFiles = pluginDescriptor.PluginFiles.Where(file =>
+                !_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(pluginDescriptor.OriginalAssemblyFile))).ToList();
 
             foreach (var refFile in refFiles.Where(file =>
                          assemblies.ContainsKey(_fileProvider.GetFileName(file).ToLower())))
-                IsAlreadyLoaded(refFile, moduleDescriptor.SystemName);
+                IsAlreadyLoaded(refFile, pluginDescriptor.SystemName);
 
             var hasCollisions = _loadedAssemblies.Where(p =>
-                    p.Value.References.Any(r => r.ModuleName.Equals(moduleDescriptor.SystemName)))
+                    p.Value.References.Any(r => r.PluginName.Equals(pluginDescriptor.SystemName)))
                 .Any(p => p.Value.Collisions.Any());
 
             if (hasCollisions)
             {
-                ModulesInfo.IncompatibleModules.Add(moduleDescriptor.SystemName, ModuleIncompatibleType.HasCollisions);
-                ModulesInfo.ModuleDescriptors.Remove((moduleDescriptor, false));
+                PluginsInfo.IncompatiblePlugins.Add(pluginDescriptor.SystemName, PluginIncompatibleType.HasCollisions);
+                PluginsInfo.PluginDescriptors.Remove((pluginDescriptor, false));
             }
         }
 
@@ -134,7 +134,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     throw;
             }
 
-            //register the module definition
+            //register the plugin definition
             applicationPartManager.ApplicationParts.Add(new AssemblyPart(assembly));
 
             return assembly;
@@ -144,28 +144,28 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Perform file deploy and return loaded assembly
         /// </summary>
         /// <param name="applicationPartManager">Engine part manager</param>
-        /// <param name="assemblyFile">Path to the module assembly file</param>
-        /// <param name="moduleConfig">Module config</param>
+        /// <param name="assemblyFile">Path to the plugin assembly file</param>
+        /// <param name="pluginConfig">Plugin config</param>
         /// <param name="fileProvider">NI2S file provider</param>
         /// <returns>Assembly</returns>
         private static Assembly PerformFileDeploy(this ApplicationPartManager applicationPartManager,
-            string assemblyFile, ModuleConfig moduleConfig, IEngineFileProvider fileProvider)
+            string assemblyFile, PluginConfig pluginConfig, IEngineFileProvider fileProvider)
         {
             //ensure for proper directory structure
             if (string.IsNullOrEmpty(assemblyFile) ||
                 string.IsNullOrEmpty(fileProvider.GetParentDirectory(assemblyFile)))
                 throw new InvalidOperationException(
-                    $"The module directory for the {fileProvider.GetFileName(assemblyFile)} file exists in a directory outside of the allowed dragonCorp directory hierarchy");
+                    $"The plugin directory for the {fileProvider.GetFileName(assemblyFile)} file exists in a directory outside of the allowed dragonCorp directory hierarchy");
 
             var assembly =
-                AddApplicationParts(applicationPartManager, assemblyFile, moduleConfig.UseUnsafeLoadAssembly);
+                AddApplicationParts(applicationPartManager, assemblyFile, pluginConfig.UseUnsafeLoadAssembly);
 
             // delete the .deps file
             if (assemblyFile.EndsWith(".dll"))
                 _fileProvider.DeleteFile(assemblyFile[0..^4] + ".deps.json");
 
-            if (!_moduleLibraries.ContainsKey(fileProvider.GetFileName(assemblyFile)))
-                _moduleLibraries.Add(fileProvider.GetFileName(assemblyFile), assembly.GetName().Version);
+            if (!_pluginLibraries.ContainsKey(fileProvider.GetFileName(assemblyFile)))
+                _pluginLibraries.Add(fileProvider.GetFileName(assemblyFile), assembly.GetName().Version);
 
             return assembly;
         }
@@ -174,9 +174,9 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         /// Check whether the assembly is already loaded
         /// </summary>
         /// <param name="filePath">Assembly file path</param>
-        /// <param name="moduleName">Module system name</param>
+        /// <param name="pluginName">Plugin system name</param>
         /// <returns>Result of check</returns>
-        private static bool IsAlreadyLoaded(string filePath, string moduleName)
+        private static bool IsAlreadyLoaded(string filePath, string pluginName)
         {
             //ignore already loaded libraries
             //(we do it because not all libraries are loaded immediately after application start)
@@ -199,14 +199,14 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                         continue;
 
                     //loaded assembly not found
-                    if (!_loadedAssemblies.TryGetValue(assemblyName, out ModuleLoadedAssemblyInfo value))
+                    if (!_loadedAssemblies.TryGetValue(assemblyName, out PluginLoadedAssemblyInfo value))
                     {
-                        value = new ModuleLoadedAssemblyInfo(assemblyName, GetAssemblyVersion(assembly.Location));
+                        value = new PluginLoadedAssemblyInfo(assemblyName, GetAssemblyVersion(assembly.Location));
                         //add it to the list to find collisions later
                         _loadedAssemblies.Add(assemblyName, value);
                     }
 
-                    value.References.Add((moduleName, GetAssemblyVersion(filePath)));
+                    value.References.Add((pluginName, GetAssemblyVersion(filePath)));
 
                     return true;
                 }
@@ -225,32 +225,32 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
         #region Methods
 
         /// <summary>
-        /// Initialize modules system
+        /// Initialize plugins system
         /// </summary>
         /// <param name="applicationPartManager">Engine part manager</param>
-        /// <param name="moduleConfig">Module config</param>
-        public static void InitializeModules(this ApplicationPartManager applicationPartManager, ModuleConfig moduleConfig)
+        /// <param name="pluginConfig">Plugin config</param>
+        public static void InitializePlugins(this ApplicationPartManager applicationPartManager, PluginConfig pluginConfig)
         {
             ArgumentNullException.ThrowIfNull(applicationPartManager);
 
-            ArgumentNullException.ThrowIfNull(moduleConfig);
+            ArgumentNullException.ThrowIfNull(pluginConfig);
 
             //perform with locked access to resources
             using (new ReaderWriteLockDisposable(_locker))
             {
                 try
                 {
-                    //ensure modules directory is created
-                    var modulesDirectory = _fileProvider.MapPath(NI2SModuleDefaults.Path);
-                    _fileProvider.CreateDirectory(modulesDirectory);
+                    //ensure plugins directory is created
+                    var pluginsDirectory = _fileProvider.MapPath(PluginDefaults.Path);
+                    _fileProvider.CreateDirectory(pluginsDirectory);
 
                     //ensure uploaded directory is created
-                    var uploadedPath = _fileProvider.MapPath(NI2SModuleDefaults.UploadedPath);
+                    var uploadedPath = _fileProvider.MapPath(PluginDefaults.UploadedPath);
                     _fileProvider.CreateDirectory(uploadedPath);
 
                     foreach (var directory in _fileProvider.GetDirectories(uploadedPath))
                     {
-                        var moveTo = _fileProvider.Combine(modulesDirectory, _fileProvider.GetDirectoryNameOnly(directory));
+                        var moveTo = _fileProvider.Combine(pluginsDirectory, _fileProvider.GetDirectoryNameOnly(directory));
 
                         if (_fileProvider.DirectoryExists(moveTo))
                             _fileProvider.DeleteDirectory(moveTo);
@@ -258,49 +258,49 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                         _fileProvider.DirectoryMove(directory, moveTo);
                     }
 
-                    ModulesInfo = new ModulesInfo(_fileProvider);
-                    ModulesInfo.LoadModuleInfo();
+                    PluginsInfo = new PluginsInfo(_fileProvider);
+                    PluginsInfo.LoadPluginInfo();
 
-                    foreach (var moduleDescriptor in ModulesInfo.ModuleDescriptors.Where(p => p.needToDeploy)
-                                 .Select(p => p.moduleDescriptor))
+                    foreach (var pluginDescriptor in PluginsInfo.PluginDescriptors.Where(p => p.needToDeploy)
+                                 .Select(p => p.pluginDescriptor))
                     {
-                        var mainModuleFile = moduleDescriptor.OriginalAssemblyFile;
+                        var mainPluginFile = pluginDescriptor.OriginalAssemblyFile;
 
-                        //try to deploy main module assembly 
-                        moduleDescriptor.ReferencedAssembly =
-                            applicationPartManager.PerformFileDeploy(mainModuleFile, moduleConfig, _fileProvider);
+                        //try to deploy main plugin assembly 
+                        pluginDescriptor.ReferencedAssembly =
+                            applicationPartManager.PerformFileDeploy(mainPluginFile, pluginConfig, _fileProvider);
 
                         //and then deploy all other referenced assemblies
-                        var filesToDeploy = moduleDescriptor.ModuleFiles.Where(file =>
-                            !_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(mainModuleFile)) &&
-                            !IsAlreadyLoaded(file, moduleDescriptor.SystemName)).ToList();
+                        var filesToDeploy = pluginDescriptor.PluginFiles.Where(file =>
+                            !_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(mainPluginFile)) &&
+                            !IsAlreadyLoaded(file, pluginDescriptor.SystemName)).ToList();
 
                         foreach (var file in filesToDeploy)
-                            applicationPartManager.PerformFileDeploy(file, moduleConfig, _fileProvider);
+                            applicationPartManager.PerformFileDeploy(file, pluginConfig, _fileProvider);
 
-                        //determine a module type (only one module per assembly is allowed)
-                        var moduleType = moduleDescriptor.ReferencedAssembly.GetTypes().FirstOrDefault(type =>
-                            typeof(IModule).IsAssignableFrom(type) && !type.IsInterface && type.IsClass &&
+                        //determine a plugin type (only one plugin per assembly is allowed)
+                        var pluginType = pluginDescriptor.ReferencedAssembly.GetTypes().FirstOrDefault(type =>
+                            typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface && type.IsClass &&
                             !type.IsAbstract);
 
-                        if (moduleType != default)
-                            moduleDescriptor.ModuleType = moduleType;
+                        if (pluginType != default)
+                            pluginDescriptor.PluginType = pluginType;
                     }
 
 
                     var assemblies = _baseAppLibraries.ToList();
-                    foreach (var moduleLoadedAssemblyInfo in _loadedAssemblies)
-                        assemblies.Add(new KeyValuePair<string, Version>(moduleLoadedAssemblyInfo.Key, moduleLoadedAssemblyInfo.Value.AssemblyInMemory));
+                    foreach (var pluginLoadedAssemblyInfo in _loadedAssemblies)
+                        assemblies.Add(new KeyValuePair<string, Version>(pluginLoadedAssemblyInfo.Key, pluginLoadedAssemblyInfo.Value.AssemblyInMemory));
 
-                    foreach (var moduleLibrary in _moduleLibraries.Where(item => !assemblies.Any(p => p.Key.Equals(item.Key, StringComparison.InvariantCultureIgnoreCase))).ToList())
-                        assemblies.Add(new KeyValuePair<string, Version>(moduleLibrary.Key, moduleLibrary.Value));
+                    foreach (var pluginLibrary in _pluginLibraries.Where(item => !assemblies.Any(p => p.Key.Equals(item.Key, StringComparison.InvariantCultureIgnoreCase))).ToList())
+                        assemblies.Add(new KeyValuePair<string, Version>(pluginLibrary.Key, pluginLibrary.Value));
 
                     var inMemoryAssemblies = assemblies.GroupBy(p => p.Key).Select(p => p.First())
                         .ToDictionary(p => p.Key.ToLower(), p => p.Value);
 
-                    foreach (var moduleDescriptor in ModulesInfo.ModuleDescriptors.Where(p => !p.needToDeploy)
-                                 .Select(p => p.moduleDescriptor).ToList())
-                        CheckCompatible(moduleDescriptor, inMemoryAssemblies);
+                    foreach (var pluginDescriptor in PluginsInfo.PluginDescriptors.Where(p => !p.needToDeploy)
+                                 .Select(p => p.pluginDescriptor).ToList())
+                        CheckCompatible(pluginDescriptor, inMemoryAssemblies);
                 }
                 catch (Exception exception)
                 {
@@ -312,12 +312,12 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                     throw new PortalException(message, exception);
                 }
 
-                ModulesInfo.AssemblyLoadedCollision = _loadedAssemblies.Select(item => item.Value)
+                PluginsInfo.AssemblyLoadedCollision = _loadedAssemblies.Select(item => item.Value)
                     .Where(loadedAssemblyInfo => loadedAssemblyInfo.Collisions.Any()).ToList();
 
-                //add name compatibility types from modules
-                var nameCompatibilityList = ModulesInfo.ModuleDescriptors.Where(pd => pd.moduleDescriptor.Installed).SelectMany(pd => pd
-                    .moduleDescriptor.ReferencedAssembly.GetTypes().Where(type =>
+                //add name compatibility types from plugins
+                var nameCompatibilityList = PluginsInfo.PluginDescriptors.Where(pd => pd.pluginDescriptor.Installed).SelectMany(pd => pd
+                    .pluginDescriptor.ReferencedAssembly.GetTypes().Where(type =>
                         typeof(INameCompatibility).IsAssignableFrom(type) && !type.IsInterface && type.IsClass &&
                         !type.IsAbstract));
                 NameCompatibilityManager.AdditionalNameCompatibilities.AddRange(nameCompatibilityList);

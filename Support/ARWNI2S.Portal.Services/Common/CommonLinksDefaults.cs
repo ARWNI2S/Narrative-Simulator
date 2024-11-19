@@ -41,9 +41,9 @@
             public static string Marketplace => "https://www.dragoncorp.org/marketplace/";
 
             /// <summary>
-            /// Gets the tax modules page
+            /// Gets the tax plugins page
             /// </summary>
-            public static string TaxModules => "https://www.dragoncorp.org/en/marketplace/?category=taxes";
+            public static string TaxPlugins => "https://www.dragoncorp.org/en/marketplace/?category=taxes";
 
             /// <summary>
             /// Gets the themes page
@@ -258,9 +258,9 @@
             public static string ExternalAuthentication => "https://docs.dragoncorp.org/getting-started/advanced-configuration/external-authentication-methods.html";
 
             /// <summary>
-            /// Gets a URL of the modules docs page
+            /// Gets a URL of the plugins docs page
             /// </summary>
-            public static string Modules => "https://docs.dragoncorp.org/getting-started/advanced-configuration/modules-in-dragoncorp.html";
+            public static string Plugins => "https://docs.dragoncorp.org/getting-started/advanced-configuration/plugins-in-dragoncorp.html";
 
             /// <summary>
             /// Gets a URL of the log docs page
@@ -370,14 +370,14 @@
             public static string OnAdminCountries => "?utm_source=admin-panel&utm_medium=countries&utm_campaign=admin-panel";
 
             /// <summary>
-            /// Gets parameters used on admin area all modules page
+            /// Gets parameters used on admin area all plugins page
             /// </summary>
-            public static string OnAdminAllModules => "?utm_source=admin-panel&utm_medium=menu&utm_campaign=marketplace&utm_content=all-modules";
+            public static string OnAdminAllPlugins => "?utm_source=admin-panel&utm_medium=menu&utm_campaign=marketplace&utm_content=all-plugins";
 
             /// <summary>
-            /// Gets parameters used on admin area tax modules page
+            /// Gets parameters used on admin area tax plugins page
             /// </summary>
-            public static string OnAdminTaxModules => "?utm_source=admin-panel&utm_medium=menu&utm_campaign=marketplace&utm_content=tax-modules";
+            public static string OnAdminTaxPlugins => "?utm_source=admin-panel&utm_medium=menu&utm_campaign=marketplace&utm_content=tax-plugins";
 
             /// <summary>
             /// Gets parameters used on install

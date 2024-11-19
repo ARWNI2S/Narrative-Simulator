@@ -73,8 +73,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             //user agent helper
             services.AddScoped<IUserAgentHelper, UserAgentHelper>();
 
-            //modules
-            services.AddScoped<IModuleService, ModuleService>();
+            //plugins
+            services.AddScoped<IPluginService, PluginService>();
             //services.AddScoped<OfficialFeedManager>();
 
             //static cache manager
@@ -222,17 +222,17 @@ namespace ARWNI2S.Portal.Framework.Infrastructure
             //services.AddScoped<ITournamentService, TournamentService>();
             //services.AddScoped<ITournamentEnrollmentService, TournamentEnrollmentService>();
 
-            //module managers
-            services.AddScoped(typeof(IModuleManager<>), typeof(ModuleManager<>));
-            services.AddScoped<IAuthenticationModuleManager, AuthenticationModuleManager>();
-            //services.AddScoped<IBlockchainRpcApiModuleManager, BlockchainRpcApiModuleManager>();
-            //services.AddScoped<IMetaverseModuleManager, MetaverseModuleManager>();
-            services.AddScoped<IMultiFactorAuthenticationModuleManager, MultiFactorAuthenticationModuleManager>();
-            //services.AddScoped<IWalletExtensionModuleManager, WalletExtensionModuleManager>();
-            services.AddScoped<IWidgetModuleManager, WidgetModuleManager>();
-            services.AddScoped<IExchangeRateModuleManager, ExchangeRateModuleManager>();
-            //services.AddScoped<ITaxModuleManager, TaxModuleManager>();
-            //services.AddScoped<ITournamentModuleManager, TournamentModuleManager>();
+            //plugin managers
+            services.AddScoped(typeof(IPluginManager<>), typeof(PluginManager<>));
+            services.AddScoped<IAuthenticationPluginManager, AuthenticationPluginManager>();
+            //services.AddScoped<IBlockchainRpcApiPluginManager, BlockchainRpcApiPluginManager>();
+            //services.AddScoped<IMetaversePluginManager, MetaversePluginManager>();
+            services.AddScoped<IMultiFactorAuthenticationPluginManager, MultiFactorAuthenticationPluginManager>();
+            //services.AddScoped<IWalletExtensionPluginManager, WalletExtensionPluginManager>();
+            services.AddScoped<IWidgetPluginManager, WidgetPluginManager>();
+            services.AddScoped<IExchangeRatePluginManager, ExchangeRatePluginManager>();
+            //services.AddScoped<ITaxPluginManager, TaxPluginManager>();
+            //services.AddScoped<ITournamentPluginManager, TournamentPluginManager>();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 

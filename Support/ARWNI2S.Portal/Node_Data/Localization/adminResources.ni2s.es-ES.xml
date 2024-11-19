@@ -3136,7 +3136,7 @@
     <Value>Seleccione un umbral de puntuación reCAPTCHA v3 (1.0 es muy probable que sea una buena interacción, 0.0 es muy probable que sea un bot). De forma predeterminada, puede utilizar un umbral de 0,5.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.RobotsAdditionsInstruction">
-    <Value>También puede ampliar los datos .txt robots agregando el archivo {0} al directorio wwwroot de su sitio.</Value>
+    <Value>También puede ampliar los datos .txt robots agregando el archivo {0} al directorio Content de su sitio.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.RobotsAdditionsRules">
     <Value>Reglas de adiciones</Value>

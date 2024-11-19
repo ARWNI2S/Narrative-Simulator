@@ -5,10 +5,10 @@ namespace ARWNI2S.Portal.Services.Cms
     /// <summary>
     /// Provides an interface for creating widgets
     /// </summary>
-    public partial interface IWidgetModule : IModule
+    public partial interface IWidgetPlugin : IPlugin
     {
         /// <summary>
-        /// Gets a value indicating whether to hide this module on the widget list page in the admin area
+        /// Gets a value indicating whether to hide this plugin on the widget list page in the admin area
         /// </summary>
         bool HideInWidgetList { get; }
 

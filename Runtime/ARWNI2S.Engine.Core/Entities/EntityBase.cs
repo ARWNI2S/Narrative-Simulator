@@ -6,6 +6,8 @@ namespace ARWNI2S.Engine.Entities
     {
         public Guid UUID { get; internal set; }
 
+        public string Name { get; internal set; }
+
         object IEntity.Id => UUID;
     }
 }

@@ -74,10 +74,10 @@ namespace ARWNI2S.Node.Hosting.Extensions
             //add core services
             var niisCoreBuilder = services.AddNI2SCore();
 
-            //initialize modules
-            var moduleConfig = new ModuleConfig();
-            builder.Configuration.GetSection(nameof(ModuleConfig)).Bind(moduleConfig, options => options.BindNonPublicProperties = true);
-            niisCoreBuilder.PartManager.InitializeModules(moduleConfig);
+            //initialize plugins
+            var pluginConfig = new PluginConfig();
+            builder.Configuration.GetSection(nameof(PluginConfig)).Bind(pluginConfig, options => options.BindNonPublicProperties = true);
+            niisCoreBuilder.PartManager.InitializePlugins(pluginConfig);
 
             //create engine and configure service provider
             var engine = NodeEngineContext.Create();
@@ -403,7 +403,7 @@ namespace ARWNI2S.Node.Hosting.Extensions
     //        options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
     //    });
 
-    //    //register and configure external authentication modules now
+    //    //register and configure external authentication plugins now
     //    var typeFinder = Singleton<ITypeFinder>.Instance;
     //    var externalAuthConfigurations = typeFinder.FindClassesOfType<IExternalAuthenticationRegistrar>();
     //    var externalAuthInstances = externalAuthConfigurations

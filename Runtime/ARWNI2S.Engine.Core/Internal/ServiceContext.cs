@@ -17,11 +17,11 @@ namespace ARWNI2S.Engine.Internal
 
         //public IHttpParser<Http1ParsingHandler> HttpParser { get; set; } = default!;
 
-        //public TimeProvider TimeProvider { get; set; } = default!;
+        public TimeProvider TimeProvider { get; set; } = default!;
 
         //public DateHeaderValueManager DateHeaderValueManager { get; set; } = default!;
 
-        //public ConnectionManager ConnectionManager { get; set; } = default!;
+        //public EngineModules ModuleManager { get; set; } = default!;
 
         //public Heartbeat Heartbeat { get; set; } = default!;
 

@@ -280,7 +280,7 @@ namespace ARWNI2S.Portal.Framework.Security
         {
             return new List<string>
             {
-                fileProvider.MapPath(NI2SModuleDefaults.ModulesInfoFilePath),
+                fileProvider.MapPath(PluginDefaults.PluginsInfoFilePath),
                 fileProvider.MapPath(NI2SConfigurationDefaults.NI2SSettingsFilePath)
             };
         }

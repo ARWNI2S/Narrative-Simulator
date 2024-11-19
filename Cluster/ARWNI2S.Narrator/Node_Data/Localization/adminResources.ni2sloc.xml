@@ -3144,7 +3144,7 @@
     <Value>Select a reCAPTCHA v3 score threshold (1.0 is very likely a good interaction, 0.0 is very likely a bot). By default, you can use a threshold of 0.5.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.RobotsAdditionsInstruction">
-    <Value><![CDATA[You also may extend the robots.txt data by adding the {0} file to the wwwroot directory of your site.]]></Value>
+    <Value><![CDATA[You also may extend the robots.txt data by adding the {0} file to the Content directory of your site.]]></Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.RobotsAdditionsRules">
     <Value>Additions rules</Value>

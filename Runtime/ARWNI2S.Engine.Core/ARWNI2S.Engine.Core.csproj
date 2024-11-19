@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Dispatching\EntityProxy.cs" />
     <Compile Remove="Hosting\HostingFrameStartingLog.cs" />
     <Compile Remove="Simulation\Resolution.cs" />
   </ItemGroup>

@@ -45,7 +45,7 @@ namespace ARWNI2S.Portal.Infrastructure
             //services.AddScoped<IMultiFactorAuthenticationMethodModelFactory, MultiFactorAuthenticationMethodModelFactory>();
             //services.AddScoped<INewsletterSubscriptionModelFactory, NewsletterSubscriptionModelFactory>();
             //services.AddScoped<INewsModelFactory, NewsModelFactory>();
-            //services.AddScoped<IModuleModelFactory, ModuleModelFactory>();
+            //services.AddScoped<IPluginModelFactory, PluginModelFactory>();
             //services.AddScoped<IPollModelFactory, PollModelFactory>();
             //services.AddScoped<IReportModelFactory, ReportModelFactory>();
             //services.AddScoped<IQueuedEmailModelFactory, QueuedEmailModelFactory>();

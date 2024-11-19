@@ -85,11 +85,11 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             //add accessor to HttpContext
             services.AddContextAccessor();
 
-            //initialize modules
+            //initialize plugins
             var mvcCoreBuilder = services.AddMvcCore();
-            var moduleConfig = new ModuleConfig();
-            builder.Configuration.GetSection(nameof(ModuleConfig)).Bind(moduleConfig, options => options.BindNonPublicProperties = true);
-            mvcCoreBuilder.PartManager.InitializeModules(moduleConfig);
+            var pluginConfig = new PluginConfig();
+            builder.Configuration.GetSection(nameof(PluginConfig)).Bind(pluginConfig, options => options.BindNonPublicProperties = true);
+            mvcCoreBuilder.PartManager.InitializePlugins(pluginConfig);
 
             //create engine and configure service provider
             Singleton<INodeEngine>.Instance = new WebNodeEngine();
@@ -259,7 +259,7 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             //    options.AccessDeniedPath = AuthenticationServicesDefaults.AccessDeniedPath;
             //});
 
-            //register and configure external authentication modules now
+            //register and configure external authentication plugins now
             var typeFinder = Singleton<ITypeFinder>.Instance;
             var externalAuthConfigurations = typeFinder.FindClassesOfType<IExternalAuthenticationRegistrar>();
             var externalAuthInstances = externalAuthConfigurations

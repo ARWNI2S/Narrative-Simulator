@@ -38,10 +38,10 @@ namespace ARWNI2S.Engine.Hosting.Extensions
             //further actions are performed only when the database is installed
             if (DataSettingsManager.IsDatabaseInstalled())
             {
-                //install and update modules
-                var moduleService = engine.Resolve<IModuleService>();
-                await moduleService.InstallModulesAsync();
-                await moduleService.UpdateModulesAsync();
+                //install and update plugins
+                var pluginService = engine.Resolve<IPluginService>();
+                await pluginService.InstallPluginsAsync();
+                await pluginService.UpdatePluginsAsync();
 
                 //update dragonCorp core and db
                 var migrationManager = engine.Resolve<IMigrationManager>();

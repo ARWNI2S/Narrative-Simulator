@@ -49,7 +49,7 @@ namespace ARWNI2S.Portal.Services.Security
         public static readonly PermissionRecord ManageAcl = new() { Name = "Admin area. Manage ACL", SystemName = "ManageACL", Category = "Configuration" };
         public static readonly PermissionRecord ManageEmailAccounts = new() { Name = "Admin area. Manage Email Accounts", SystemName = "ManageEmailAccounts", Category = "Configuration" };
         public static readonly PermissionRecord ManageNodes = new() { Name = "Admin area. Manage Nodes", SystemName = "ManageNodes", Category = "Configuration" };
-        public static readonly PermissionRecord ManageModules = new() { Name = "Admin area. Manage Modules", SystemName = "ManageModules", Category = "Configuration" };
+        public static readonly PermissionRecord ManagePlugins = new() { Name = "Admin area. Manage Plugins", SystemName = "ManagePlugins", Category = "Configuration" };
         public static readonly PermissionRecord ManageSystemLog = new() { Name = "Admin area. Manage System Log", SystemName = "ManageSystemLog", Category = "Configuration" };
         public static readonly PermissionRecord ManageMessageQueue = new() { Name = "Admin area. Manage Message Queue", SystemName = "ManageMessageQueue", Category = "Configuration" };
         public static readonly PermissionRecord ManageMaintenance = new() { Name = "Admin area. Manage Maintenance", SystemName = "ManageMaintenance", Category = "Configuration" };
@@ -120,7 +120,7 @@ namespace ARWNI2S.Portal.Services.Security
                 ManageAcl,
                 ManageEmailAccounts,
                 ManageNodes,
-                ManageModules,
+                ManagePlugins,
                 ManageSystemLog,
                 ManageMessageQueue,
                 ManageMaintenance,
@@ -181,7 +181,7 @@ namespace ARWNI2S.Portal.Services.Security
                         ManageAcl,
                         ManageEmailAccounts,
                         ManageNodes,
-                        ManageModules,
+                        ManagePlugins,
                         ManageSystemLog,
                         ManageMessageQueue,
                         ManageMaintenance,

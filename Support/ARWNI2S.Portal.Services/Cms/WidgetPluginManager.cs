@@ -7,9 +7,9 @@ using ARWNI2S.Portal.Services.Entities.Cms;
 namespace ARWNI2S.Portal.Services.Cms
 {
     /// <summary>
-    /// Represents a widget module manager implementation
+    /// Represents a widget plugin manager implementation
     /// </summary>
-    public partial class WidgetModuleManager : ModuleManager<IWidgetModule>, IWidgetModuleManager
+    public partial class WidgetPluginManager : PluginManager<IWidgetPlugin>, IWidgetPluginManager
     {
         #region Fields
 
@@ -19,9 +19,9 @@ namespace ARWNI2S.Portal.Services.Cms
 
         #region Ctor
 
-        public WidgetModuleManager(IUserService userService,
-            IModuleService moduleService,
-            WidgetSettings widgetSettings) : base(userService, moduleService)
+        public WidgetPluginManager(IUserService userService,
+            IPluginService pluginService,
+            WidgetSettings widgetSettings) : base(userService, pluginService)
         {
             _widgetSettings = widgetSettings;
         }
@@ -33,16 +33,16 @@ namespace ARWNI2S.Portal.Services.Cms
         /// <summary>
         /// Load active widgets
         /// </summary>
-        /// <param name="user">Filter by user; pass null to load all modules</param>
-        /// <param name="storeId">Filter by store; pass 0 to load all modules</param>
-        /// <param name="widgetZone">Widget zone; pass null to load all modules</param>
+        /// <param name="user">Filter by user; pass null to load all plugins</param>
+        /// <param name="storeId">Filter by store; pass 0 to load all plugins</param>
+        /// <param name="widgetZone">Widget zone; pass null to load all plugins</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the list of active widget
         /// </returns>
-        public virtual async Task<IList<IWidgetModule>> LoadActiveModulesAsync(User user = null, int storeId = 0, string widgetZone = null)
+        public virtual async Task<IList<IWidgetPlugin>> LoadActivePluginsAsync(User user = null, int storeId = 0, string widgetZone = null)
         {
-            var widgets = await LoadActiveModulesAsync(_widgetSettings.ActiveWidgetSystemNames, user, storeId);
+            var widgets = await LoadActivePluginsAsync(_widgetSettings.ActiveWidgetSystemNames, user, storeId);
 
             //filter by widget zone
             if (!string.IsNullOrEmpty(widgetZone))
@@ -57,26 +57,26 @@ namespace ARWNI2S.Portal.Services.Cms
         /// </summary>
         /// <param name="widget">Widget to check</param>
         /// <returns>Result</returns>
-        public virtual bool IsModuleActive(IWidgetModule widget)
+        public virtual bool IsPluginActive(IWidgetPlugin widget)
         {
-            return IsModuleActive(widget, _widgetSettings.ActiveWidgetSystemNames);
+            return IsPluginActive(widget, _widgetSettings.ActiveWidgetSystemNames);
         }
 
         /// <summary>
         /// Check whether the widget with the passed system name is active
         /// </summary>
         /// <param name="systemName">System name of widget to check</param>
-        /// <param name="user">Filter by user; pass null to load all modules</param>
-        /// <param name="storeId">Filter by store; pass 0 to load all modules</param>
+        /// <param name="user">Filter by user; pass null to load all plugins</param>
+        /// <param name="storeId">Filter by store; pass 0 to load all plugins</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the result
         /// </returns>
-        public virtual async Task<bool> IsModuleActiveAsync(string systemName, User user = null, int storeId = 0)
+        public virtual async Task<bool> IsPluginActiveAsync(string systemName, User user = null, int storeId = 0)
         {
-            var widget = await LoadModuleBySystemNameAsync(systemName, user, storeId);
+            var widget = await LoadPluginBySystemNameAsync(systemName, user, storeId);
 
-            return IsModuleActive(widget);
+            return IsPluginActive(widget);
         }
 
         #endregion

@@ -58,10 +58,10 @@ namespace ARWNI2S.Frontline.Framework.Hosting.Extensions
         //    //add core services
         //    var niisCoreBuilder = services.AddNI2SCore();
 
-        //    //initialize modules
-        //    var moduleConfig = new ModuleConfig();
-        //    builder.Configuration.GetSection(nameof(ModuleConfig)).Bind(moduleConfig, options => options.BindNonPublicProperties = true);
-        //    niisCoreBuilder.PartManager.InitializeModules(moduleConfig);
+        //    //initialize plugins
+        //    var pluginConfig = new PluginConfig();
+        //    builder.Configuration.GetSection(nameof(PluginConfig)).Bind(pluginConfig, options => options.BindNonPublicProperties = true);
+        //    niisCoreBuilder.PartManager.InitializePlugins(pluginConfig);
 
         //    //create engine and configure service provider
         //    var engine = NodeEngineContext.Create();

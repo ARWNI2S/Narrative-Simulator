@@ -69,7 +69,7 @@
             //public static readonly string DeleteMessageTemplate = "DeleteMessageTemplate";
             public static readonly string DeleteNews = "DeleteNews";
             public static readonly string DeleteNewsComment = "DeleteNewsComment";
-            //public static readonly string DeleteModule = "DeleteModule";
+            //public static readonly string DeletePlugin = "DeletePlugin";
             //public static readonly string DeleteSetting = "DeleteSetting";
             //public static readonly string DeleteSpecAttribute = "DeleteSpecAttribute";
             //public static readonly string DeleteStateProvince = "DeleteStateProvince";
@@ -117,7 +117,7 @@
             //public static readonly string EditMeasureWeight = "EditMeasureWeight";
             //public static readonly string EditMessageTemplate = "EditMessageTemplate";
             public static readonly string EditNews = "EditNews";
-            //public static readonly string EditModule = "EditModule";
+            //public static readonly string EditPlugin = "EditPlugin";
             //public static readonly string EditSettings = "EditSettings";
             //public static readonly string EditStateProvince = "EditStateProvince";
             //public static readonly string EditNode = "EditNode";
@@ -154,9 +154,9 @@
             //public static readonly string ExportUsers = "ExportUsers";
             //public static readonly string ExportStates = "ExportStates";
             //public static readonly string ExportNewsLetterSubscriptions = "ExportNewsLetterSubscriptions";
-            //public static readonly string InstallNewModule = "InstallNewModule";
-            //public static readonly string UninstallModule = "UninstallModule";
-            //public static readonly string UploadNewModule = "UploadNewModule";
+            //public static readonly string InstallNewPlugin = "InstallNewPlugin";
+            //public static readonly string UninstallPlugin = "UninstallPlugin";
+            //public static readonly string UploadNewPlugin = "UploadNewPlugin";
             //public static readonly string UploadIcons = "UploadIcons";
             //public static readonly string ImpersonationStarted = "Impersonation.Started";
             //public static readonly string ImpersonationFinished = "Impersonation.Finished";

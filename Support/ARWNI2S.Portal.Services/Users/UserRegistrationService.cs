@@ -58,7 +58,7 @@ namespace ARWNI2S.Portal.Services.Users
         private readonly INodeEventPublisher _eventPublisher;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ILocalizationService _localizationService;
-        private readonly IMultiFactorAuthenticationModuleManager _multiFactorAuthenticationModuleManager;
+        private readonly IMultiFactorAuthenticationPluginManager _multiFactorAuthenticationPluginManager;
         private readonly INewsLetterSubscriptionService _newsLetterSubscriptionService;
         private readonly INotificationService _notificationService;
         private readonly IPermissionService _permissionService;
@@ -81,7 +81,7 @@ namespace ARWNI2S.Portal.Services.Users
             INodeEventPublisher eventPublisher,
             IGenericAttributeService genericAttributeService,
             ILocalizationService localizationService,
-            IMultiFactorAuthenticationModuleManager multiFactorAuthenticationModuleManager,
+            IMultiFactorAuthenticationPluginManager multiFactorAuthenticationPluginManager,
             INewsLetterSubscriptionService newsLetterSubscriptionService,
             INotificationService notificationService,
             IPermissionService permissionService,
@@ -101,7 +101,7 @@ namespace ARWNI2S.Portal.Services.Users
             _eventPublisher = eventPublisher;
             _genericAttributeService = genericAttributeService;
             _localizationService = localizationService;
-            _multiFactorAuthenticationModuleManager = multiFactorAuthenticationModuleManager;
+            _multiFactorAuthenticationPluginManager = multiFactorAuthenticationPluginManager;
             _newsLetterSubscriptionService = newsLetterSubscriptionService;
             _notificationService = notificationService;
             _permissionService = permissionService;
@@ -204,7 +204,7 @@ namespace ARWNI2S.Portal.Services.Users
                 ? await _genericAttributeService.GetAttributeAsync<string>(user, UserDefaults.SelectedMultiFactorAuthenticationProviderAttribute)
                 : null;
             var node = await _nodeContext.GetCurrentNodeAsync();
-            var methodIsActive = await _multiFactorAuthenticationModuleManager.IsModuleActiveAsync(selectedProvider, user, node.Id);
+            var methodIsActive = await _multiFactorAuthenticationPluginManager.IsPluginActiveAsync(selectedProvider, user, node.Id);
             if (methodIsActive)
                 return UserLoginResults.MultiFactorAuthenticationRequired;
 

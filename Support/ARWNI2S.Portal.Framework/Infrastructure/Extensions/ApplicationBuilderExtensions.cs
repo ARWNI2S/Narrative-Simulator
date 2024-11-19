@@ -65,10 +65,10 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
                 //log application start
                 await engine.Resolve<ILogService>().InformationAsync("Engine started");
 
-                //install and update modules
-                var moduleService = engine.Resolve<IModuleService>();
-                await moduleService.InstallModulesAsync();
-                await moduleService.UpdateModulesAsync();
+                //install and update plugins
+                var pluginService = engine.Resolve<IPluginService>();
+                await pluginService.InstallPluginsAsync();
+                await pluginService.UpdatePluginsAsync();
 
                 //update dragonCorp core and db
                 var migrationManager = engine.Resolve<IMigrationManager>();
@@ -228,8 +228,8 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             [
                 new FileProviderOptions
                 {
-                    RequestPath =  new PathString("/Modules"),
-                    FileProvider = new PhysicalFileProvider(fileProvider.MapPath(@"Modules"))
+                    RequestPath =  new PathString("/Plugins"),
+                    FileProvider = new PhysicalFileProvider(fileProvider.MapPath(@"Plugins"))
                 }
             ]);
         }
@@ -269,20 +269,20 @@ namespace ARWNI2S.Portal.Framework.Infrastructure.Extensions
             //common static files
             application.UseStaticFiles(new StaticFileOptions { OnPrepareResponse = staticFileResponse });
 
-            //modules static files
+            //plugins static files
             var staticFileOptions = new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(fileProvider.MapPath(@"Modules")),
-                RequestPath = new PathString("/Modules"),
+                FileProvider = new PhysicalFileProvider(fileProvider.MapPath(@"Plugins")),
+                RequestPath = new PathString("/Plugins"),
                 OnPrepareResponse = staticFileResponse
             };
 
             //exclude files in blacklist
-            if (!string.IsNullOrEmpty(ni2sSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist))
+            if (!string.IsNullOrEmpty(ni2sSettings.Get<CommonConfig>().PluginStaticFileExtensionsBlacklist))
             {
                 var fileExtensionContentTypeProvider = new FileExtensionContentTypeProvider();
 
-                foreach (var ext in ni2sSettings.Get<CommonConfig>().ModuleStaticFileExtensionsBlacklist
+                foreach (var ext in ni2sSettings.Get<CommonConfig>().PluginStaticFileExtensionsBlacklist
                     .Split(';', ',')
                     .Select(e => e.Trim().ToLowerInvariant())
                     .Select(e => $"{(e.StartsWith('.') ? string.Empty : ".")}{e}")

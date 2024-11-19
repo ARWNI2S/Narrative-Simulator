@@ -3,9 +3,9 @@
 namespace ARWNI2S.Portal.Framework.Menu
 {
     /// <summary>
-    /// Interface for modules which have some items in the admin area menu
+    /// Interface for plugins which have some items in the admin area menu
     /// </summary>
-    public partial interface IAdminMenuModule : IModule
+    public partial interface IAdminMenuPlugin : IPlugin
     {
         /// <summary>
         /// Manage sitemap. You can use "SystemName" of menu items to manage existing sitemap or add a new menu item.

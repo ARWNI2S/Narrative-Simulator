@@ -32,7 +32,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         private readonly WebUserSettings _userSettings;
         private readonly ExternalAuthenticationSettings _externalAuthenticationSettings;
         private readonly IActionContextAccessor _actionContextAccessor;
-        private readonly IAuthenticationModuleManager _authenticationModuleManager;
+        private readonly IAuthenticationPluginManager _authenticationPluginManager;
         private readonly IUserRegistrationService _userRegistrationService;
         private readonly UserService _userService;
         private readonly INodeEventPublisher _eventPublisher;
@@ -54,7 +54,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
         public ExternalAuthenticationService(WebUserSettings userSettings,
             ExternalAuthenticationSettings externalAuthenticationSettings,
             IActionContextAccessor actionContextAccessor,
-            IAuthenticationModuleManager authenticationModuleManager,
+            IAuthenticationPluginManager authenticationPluginManager,
             IUserRegistrationService userRegistrationService,
             UserService userService,
             INodeEventPublisher eventPublisher,
@@ -71,7 +71,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
             _userSettings = userSettings;
             _externalAuthenticationSettings = externalAuthenticationSettings;
             _actionContextAccessor = actionContextAccessor;
-            _authenticationModuleManager = authenticationModuleManager;
+            _authenticationPluginManager = authenticationPluginManager;
             _userRegistrationService = userRegistrationService;
             _userService = userService;
             _eventPublisher = eventPublisher;
@@ -284,7 +284,7 @@ namespace ARWNI2S.Portal.Services.Authentication.External
 
             var user = await _workContext.GetCurrentUserAsync();
             var node = await _nodeContext.GetCurrentNodeAsync();
-            if (!await _authenticationModuleManager.IsModuleActiveAsync(parameters.ProviderSystemName, user, node.Id))
+            if (!await _authenticationPluginManager.IsPluginActiveAsync(parameters.ProviderSystemName, user, node.Id))
                 return await ErrorAuthenticationAsync([await _localizationService.GetResourceAsync("Account.ExternalAuthenticationMethod.LoadError")], returnUrl);
 
             //get current logged-in user

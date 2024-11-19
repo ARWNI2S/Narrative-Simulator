@@ -1,13 +1,10 @@
-﻿using ARWNI2S.Infrastructure.Engine;
+﻿using ARWNI2S.Engine.Core.Dispatching;
 using ARWNI2S.Infrastructure.Memory;
 
 namespace ARWNI2S.Engine.Memory
 {
-    internal class EventPool : ObjectPool<IEvent>
+    internal class EventPool : ObjectPool<SimEvent>
     {
-        protected override IEvent CreateNewPoolObject()
-        {
-            throw new NotImplementedException();
-        }
+        protected override SimEvent CreateNewPoolObject() => new();
     }
 }

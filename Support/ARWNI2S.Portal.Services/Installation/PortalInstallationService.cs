@@ -2195,9 +2195,9 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Delete a news comment"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.DeleteModule,
+					SystemKeyword = SystemKeywords.AdminArea.DeletePlugin,
 					Enabled = true,
-					Name = "Delete a module"
+					Name = "Delete a plugin"
 				},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.DeleteSetting,
@@ -2430,9 +2430,9 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Edit a news"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.EditModule,
+					SystemKeyword = SystemKeywords.AdminArea.EditPlugin,
 					Enabled = true,
-					Name = "Edit a module"
+					Name = "Edit a plugin"
 				},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.EditSettings,
@@ -2615,19 +2615,19 @@ namespace ARWNI2S.Portal.Services.Installation
 					Name = "Newsletter subscriptions were exported"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.InstallNewModule,
+					SystemKeyword = SystemKeywords.AdminArea.InstallNewPlugin,
 					Enabled = true,
-					Name = "Install a new module"
+					Name = "Install a new plugin"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.UninstallModule,
+					SystemKeyword = SystemKeywords.AdminArea.UninstallPlugin,
 					Enabled = true,
-					Name = "Uninstall a module"
+					Name = "Uninstall a plugin"
 				},
 				new() {
-					SystemKeyword = SystemKeywords.AdminArea.UploadNewModule,
+					SystemKeyword = SystemKeywords.AdminArea.UploadNewPlugin,
 					Enabled = true,
-					Name = "Upload a module"
+					Name = "Upload a plugin"
 				},
 				new() {
 					SystemKeyword = SystemKeywords.AdminArea.UploadIcons,

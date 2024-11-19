@@ -1,9 +1,10 @@
 ﻿using ARWNI2S.Engine.Core.Object;
+using ARWNI2S.Engine.Entities;
 using System.Reflection;
 
 namespace ARWNI2S.Engine.Core.Dispatching
 {
-    public class EntityProxy<T> : DispatchProxy where T : class
+    public class EntityProxy<T> : DispatchProxy where T : EntityBase
     {
         private T _instance;
 
@@ -27,8 +28,8 @@ namespace ARWNI2S.Engine.Core.Dispatching
             if (method.GetCustomAttribute<NiisFunctionAttribute>() != null)
             {
                 // Crear y encolar el evento automáticamente
-                //var simEvent = new SimEvent(_instance, _instance, method, args ?? [], SimulationEngine.CurrentTime + 1000);
-                //SimulationEngine.EnqueueEvent(simEvent);
+                var simEvent = new SimEvent(_instance, _instance, method, args ?? [], SimulationEngine.CurrentTime + 1000);
+                SimulationEngine.EnqueueEvent(simEvent);
 
                 // Devolver Task.CompletedTask si el método es void o async
                 if (method.ReturnType == typeof(void))

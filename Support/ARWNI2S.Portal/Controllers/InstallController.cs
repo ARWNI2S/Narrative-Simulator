@@ -28,7 +28,7 @@ namespace ARWNI2S.Portal.Controllers
         private readonly Lazy<IInstallationService> _installationService;
         private readonly IEngineFileProvider _fileProvider;
         private readonly Lazy<IPermissionService> _permissionService;
-        private readonly Lazy<IModuleService> _moduleService;
+        private readonly Lazy<IPluginService> _pluginService;
         private readonly Lazy<IStaticCacheManager> _staticCacheManager;
         //private readonly Lazy<IUploadService> _uploadService;
         private readonly Lazy<IWebHelper> _webHelper;
@@ -42,7 +42,7 @@ namespace ARWNI2S.Portal.Controllers
             Lazy<IInstallationService> installationService,
             IEngineFileProvider fileProvider,
             Lazy<IPermissionService> permissionService,
-            Lazy<IModuleService> moduleService,
+            Lazy<IPluginService> pluginService,
             Lazy<IStaticCacheManager> staticCacheManager,
             //Lazy<IUploadService> uploadService,
             Lazy<IWebHelper> webHelper)
@@ -52,7 +52,7 @@ namespace ARWNI2S.Portal.Controllers
             _installationService = installationService;
             _fileProvider = fileProvider;
             _permissionService = permissionService;
-            _moduleService = moduleService;
+            _pluginService = pluginService;
             _staticCacheManager = staticCacheManager;
             //_uploadService = uploadService;
             _webHelper = webHelper;
@@ -262,27 +262,27 @@ namespace ARWNI2S.Portal.Controllers
                 //now resolve installation service
                 await _installationService.Value.InstallRequiredDataAsync(model.AdminEmail, model.AdminPassword, languagePackInfo, regionInfo, cultureInfo);
 
-                //prepare modules to install
-                _moduleService.Value.ClearInstalledModulesList();
+                //prepare plugins to install
+                _pluginService.Value.ClearInstalledPluginsList();
 
-                var modulesIgnoredDuringInstallation = new List<string>();
-                if (!string.IsNullOrEmpty(_nI2SSettings.Get<InstallationConfig>().DisabledModules))
+                var pluginsIgnoredDuringInstallation = new List<string>();
+                if (!string.IsNullOrEmpty(_nI2SSettings.Get<InstallationConfig>().DisabledPlugins))
                 {
-                    modulesIgnoredDuringInstallation = _nI2SSettings.Get<InstallationConfig>().DisabledModules
-                        .Split(',', StringSplitOptions.RemoveEmptyEntries).Select(moduleName => moduleName.Trim()).ToList();
+                    pluginsIgnoredDuringInstallation = _nI2SSettings.Get<InstallationConfig>().DisabledPlugins
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries).Select(pluginName => pluginName.Trim()).ToList();
                 }
 
-                var modules = (await _moduleService.Value.GetModuleDescriptorsAsync<IModule>(LoadModulesMode.All))
-                    .Where(moduleDescriptor => !modulesIgnoredDuringInstallation.Contains(moduleDescriptor.SystemName))
-                    .OrderBy(moduleDescriptor => moduleDescriptor.Group).ThenBy(moduleDescriptor => moduleDescriptor.DisplayOrder)
+                var plugins = (await _pluginService.Value.GetPluginDescriptorsAsync<IPlugin>(LoadPluginsMode.All))
+                    .Where(pluginDescriptor => !pluginsIgnoredDuringInstallation.Contains(pluginDescriptor.SystemName))
+                    .OrderBy(pluginDescriptor => pluginDescriptor.Group).ThenBy(pluginDescriptor => pluginDescriptor.DisplayOrder)
                     .ToList();
 
-                if (modulesIgnoredDuringInstallation.Count == 1 && modulesIgnoredDuringInstallation[0] == "*")
-                    modules.Clear();
+                if (pluginsIgnoredDuringInstallation.Count == 1 && pluginsIgnoredDuringInstallation[0] == "*")
+                    plugins.Clear();
 
-                foreach (var module in modules)
+                foreach (var plugin in plugins)
                 {
-                    await _moduleService.Value.PrepareModuleToInstallAsync(module.SystemName, checkDependencies: false);
+                    await _pluginService.Value.PreparePluginToInstallAsync(plugin.SystemName, checkDependencies: false);
                 }
 
                 //register default permissions

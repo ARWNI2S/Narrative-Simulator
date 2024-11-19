@@ -45,8 +45,8 @@ namespace ARWNI2S.Node.Infrastructure
             //node helper
             //services.AddScoped<INI2SHelper, NI2SHelper>();
 
-            //modules
-            services.AddScoped<IModuleService, ModuleService>();
+            //plugins
+            services.AddScoped<IPluginService, PluginService>();
             //services.AddScoped<OfficialFeedManager>();
 
             //static cache manager
@@ -120,13 +120,13 @@ namespace ARWNI2S.Node.Infrastructure
             services.AddSingleton<INodeEventPublisher, EventPublisher>();
             services.AddScoped<ISettingService, SettingService>();
 
-            //module managers
-            services.AddScoped(typeof(IModuleManager<>), typeof(ModuleManager<>));
-            //services.AddScoped<IAuthenticationModuleManager, AuthenticationModuleManager>();
-            //services.AddScoped<IMultiFactorAuthenticationModuleManager, MultiFactorAuthenticationModuleManager>();
-            //services.AddScoped<IWidgetModuleManager, WidgetModuleManager>();
-            //services.AddScoped<IExchangeRateModuleManager, ExchangeRateModuleManager>();
-            //services.AddScoped<ITaxModuleManager, TaxModuleManager>();
+            //plugin managers
+            services.AddScoped(typeof(IPluginManager<>), typeof(PluginManager<>));
+            //services.AddScoped<IAuthenticationPluginManager, AuthenticationPluginManager>();
+            //services.AddScoped<IMultiFactorAuthenticationPluginManager, MultiFactorAuthenticationPluginManager>();
+            //services.AddScoped<IWidgetPluginManager, WidgetPluginManager>();
+            //services.AddScoped<IExchangeRatePluginManager, ExchangeRatePluginManager>();
+            //services.AddScoped<ITaxPluginManager, TaxPluginManager>();
 
             //services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 

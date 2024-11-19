@@ -12,6 +12,7 @@ namespace ARWNI2S.Engine.Internal
     {
         private bool _hasStarted;
         private int _stopping;
+
         private readonly CancellationTokenSource _stopCts = new CancellationTokenSource();
         private readonly TaskCompletionSource _stoppedTcs = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
 
