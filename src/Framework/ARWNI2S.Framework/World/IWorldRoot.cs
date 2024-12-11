@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Entities;
+﻿using ARWNI2S.Engine.Orleans;
 
 namespace ARWNI2S.Framework.World
 {
