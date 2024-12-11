@@ -45,7 +45,7 @@
     <!-- Microsoft.Orleans packages -->
     <PackageVersion Include="Microsoft.Orleans.Client" Version="$(MicrosoftOrleansVersion)" />
     <PackageVersion Include="Microsoft.Orleans.EventSourcing" Version="$(MicrosoftOrleansVersion)" />
-    <PackageVersion Include="Microsoft.Orleans.Server" Version="$(MicrosoftOrleansVersion)" />
+    <PackageVersion Include="Microsoft.Orleans.Server" Version="9.0.1" />
     <PackageVersion Include="Microsoft.Orleans.Clustering.AdoNet" Version="$(MicrosoftOrleansVersion)" />
     <PackageVersion Include="Microsoft.Orleans.Clustering.AzureStorage" Version="$(MicrosoftOrleansVersion)" />
     <PackageVersion Include="Microsoft.Orleans.Clustering.Redis" Version="$(MicrosoftOrleansVersion)" />
