@@ -14,18 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Test", "90 - Test", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91 - Cluster", "91 - Cluster", "{DC32D1C9-A88C-4BA0-9D30-3EC860AEEF01}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontline", "Frontline", "{352F5846-0D40-47BB-B0BF-3749DFF8D4F8}"
-	ProjectSection(SolutionItems) = preProject
-		Frontline\Directory.Build.props = Frontline\Directory.Build.props
-		Frontline\Directory.Build.targets = Frontline\Directory.Build.targets
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portal", "Portal", "{3F9296C9-3381-429E-90FA-E003B64A5F5E}"
-	ProjectSection(SolutionItems) = preProject
-		Support\Directory.Build.props = Support\Directory.Build.props
-		Support\Directory.Build.targets = Support\Directory.Build.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80 - Tools", "80 - Tools", "{095F8A7B-24C6-4535-927E-ADCEE8A67650}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "81 - NI2S Build", "81 - NI2S Build", "{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}"
@@ -38,16 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Node", "Node", "{F913EAE3-E
 		NI2S-Node\nuget.config = NI2S-Node\nuget.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulator", "Simulator", "{3178534B-9558-47C5-96F2-4A581C589EA0}"
-	ProjectSection(SolutionItems) = preProject
-		Cluster\Directory.Build.props = Cluster\Directory.Build.props
-		Cluster\Directory.Build.targets = Cluster\Directory.Build.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{AA6527A5-8CB6-4B12-8A95-548619ECC4E3}"
 	ProjectSection(SolutionItems) = preProject
-		Framework\Directory.Build.props = Framework\Directory.Build.props
-		Framework\Directory.Build.targets = Framework\Directory.Build.targets
+		src\Framework\Directory.Build.props = src\Framework\Directory.Build.props
+		src\Framework\Directory.Build.targets = src\Framework\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE647BA5-9444-40EF-902D-35A0CB20C501}"
@@ -58,14 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE647BA5-944
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameworkAssembliesTasks", "Tools\FrameworkAssembliesTasks\FrameworkAssembliesTasks.csproj", "{E36682EF-80DA-44C9-8594-794FF362FFDE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B701A861-CAE5-405A-8DBB-3E14D14E57C2}"
-	ProjectSection(SolutionItems) = preProject
-		Infrastructure\Directory.Build.props = Infrastructure\Directory.Build.props
-		Infrastructure\Directory.Build.targets = Infrastructure\Directory.Build.targets
-		NI2S-Node\src\Infrastructure\InternalsVisibleTo.cs = NI2S-Node\src\Infrastructure\InternalsVisibleTo.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Runtime", "20 - Runtime", "{AB68B5C8-B19C-482C-B1CB-A5B56690A691}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Framework", "20 - Framework", "{AB68B5C8-B19C-482C-B1CB-A5B56690A691}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Node", "10 - Node", "{5AB55AE4-573F-4354-AC56-726377208AB7}"
 EndProject
@@ -82,6 +57,30 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Node.Hosting", "NI2S-Node\src\ARWNI2S.Node.Hosting\ARWNI2S.Node.Hosting.csproj", "{73783F7B-065B-4858-94C4-9B81347D57C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Framework", "src\Framework\ARWNI2S.Framework\ARWNI2S.Framework.csproj", "{906E45F6-21E0-45D4-BEF5-FDE6EB86D7B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31B52109-8B0B-4811-9B2D-4C20E7DC2C68}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 - Narrator", "30 - Narrator", "{77C65F37-A0DC-46BF-BAA3-80F78A771CC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Frontline", "40 - Frontline", "{508B3514-BD2E-4A16-A9B8-FE15DCAE97D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.EmptyNode", "Tools\ARWNI2S.EmptyNode\ARWNI2S.EmptyNode.csproj", "{F9F4B035-1B74-4F4E-B10D-D44627AFCF88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Narrator", "src\Narrator\ARWNI2S.Narrator\ARWNI2S.Narrator.csproj", "{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Frontline", "src\Frontline\ARWNI2S.Frontline\ARWNI2S.Frontline.csproj", "{2BC42F52-3F3D-475D-9CE3-93AC3D92232D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Sdk", "src\Sdk\ARWNI2S.Sdk\ARWNI2S.Sdk.csproj", "{3F3816B1-6851-49FD-8291-FEEC321DB6DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50 - Sdk", "50 - Sdk", "{5DB4AAA1-BDB1-4B11-BD21-E4E447C12BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Build", "src\Sdk\ARWNI2S.Build\ARWNI2S.Build.csproj", "{87A6D057-1173-49E2-A4D8-E30615E2BE34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "60 - Plugins", "60 - Plugins", "{8492258A-AAFF-4ACA-A0E1-BD9A5A1912ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,21 +118,35 @@ Global
 		{906E45F6-21E0-45D4-BEF5-FDE6EB86D7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{906E45F6-21E0-45D4-BEF5-FDE6EB86D7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{906E45F6-21E0-45D4-BEF5-FDE6EB86D7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F4B035-1B74-4F4E-B10D-D44627AFCF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F4B035-1B74-4F4E-B10D-D44627AFCF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC42F52-3F3D-475D-9CE3-93AC3D92232D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC42F52-3F3D-475D-9CE3-93AC3D92232D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC42F52-3F3D-475D-9CE3-93AC3D92232D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC42F52-3F3D-475D-9CE3-93AC3D92232D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3816B1-6851-49FD-8291-FEEC321DB6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3816B1-6851-49FD-8291-FEEC321DB6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3816B1-6851-49FD-8291-FEEC321DB6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3816B1-6851-49FD-8291-FEEC321DB6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A6D057-1173-49E2-A4D8-E30615E2BE34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A6D057-1173-49E2-A4D8-E30615E2BE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A6D057-1173-49E2-A4D8-E30615E2BE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A6D057-1173-49E2-A4D8-E30615E2BE34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DC32D1C9-A88C-4BA0-9D30-3EC860AEEF01} = {219517EE-98C2-46CC-9F5C-327DB764EABE}
-		{352F5846-0D40-47BB-B0BF-3749DFF8D4F8} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
-		{3F9296C9-3381-429E-90FA-E003B64A5F5E} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
 		{B52CFD3F-D489-4D09-AA4E-4C71C5251DF2} = {095F8A7B-24C6-4535-927E-ADCEE8A67650}
 		{F913EAE3-EF55-4332-BE88-7B2488939ECA} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
-		{3178534B-9558-47C5-96F2-4A581C589EA0} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
-		{AA6527A5-8CB6-4B12-8A95-548619ECC4E3} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{AA6527A5-8CB6-4B12-8A95-548619ECC4E3} = {31B52109-8B0B-4811-9B2D-4C20E7DC2C68}
 		{CE647BA5-9444-40EF-902D-35A0CB20C501} = {F913EAE3-EF55-4332-BE88-7B2488939ECA}
 		{E36682EF-80DA-44C9-8594-794FF362FFDE} = {B52CFD3F-D489-4D09-AA4E-4C71C5251DF2}
-		{B701A861-CAE5-405A-8DBB-3E14D14E57C2} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
 		{C87AFB22-01AE-4FF9-A824-4F9ECDDF8800} = {5AB55AE4-573F-4354-AC56-726377208AB7}
 		{7B77E9B2-62A7-441B-9982-406C10034310} = {5AB55AE4-573F-4354-AC56-726377208AB7}
 		{454258EE-1DD3-4CBD-BBD6-E3844B28E0D5} = {5AB55AE4-573F-4354-AC56-726377208AB7}
@@ -141,6 +154,12 @@ Global
 		{4F7E3FA6-342F-4A8C-9FDF-644FECFA221F} = {5AB55AE4-573F-4354-AC56-726377208AB7}
 		{73783F7B-065B-4858-94C4-9B81347D57C9} = {5AB55AE4-573F-4354-AC56-726377208AB7}
 		{906E45F6-21E0-45D4-BEF5-FDE6EB86D7B5} = {AB68B5C8-B19C-482C-B1CB-A5B56690A691}
+		{31B52109-8B0B-4811-9B2D-4C20E7DC2C68} = {8A3C0934-929E-4F45-9398-EC1198B21CCB}
+		{F9F4B035-1B74-4F4E-B10D-D44627AFCF88} = {095F8A7B-24C6-4535-927E-ADCEE8A67650}
+		{893F5A97-CF03-4CF3-BD78-EC7A73E1F69D} = {77C65F37-A0DC-46BF-BAA3-80F78A771CC4}
+		{2BC42F52-3F3D-475D-9CE3-93AC3D92232D} = {508B3514-BD2E-4A16-A9B8-FE15DCAE97D1}
+		{3F3816B1-6851-49FD-8291-FEEC321DB6DD} = {5DB4AAA1-BDB1-4B11-BD21-E4E447C12BB5}
+		{87A6D057-1173-49E2-A4D8-E30615E2BE34} = {5DB4AAA1-BDB1-4B11-BD21-E4E447C12BB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65605281-5AFC-48F1-A1E0-D1648E0CBA35}
