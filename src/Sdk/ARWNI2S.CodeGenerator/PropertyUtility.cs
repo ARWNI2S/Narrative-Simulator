@@ -1,0 +1,74 @@
+#nullable enable
+using Microsoft.CodeAnalysis;
+using System.Text.RegularExpressions;
+
+namespace ARWNI2S.CodeGenerator
+{
+    public static class PropertyUtility
+    {
+        private static readonly Regex PropertyMatchRegex = new("^<([^>]+)>.*$", RegexOptions.Compiled);
+
+        public static IPropertySymbol? GetMatchingProperty(IFieldSymbol field)
+        {
+            if (field.ContainingType is null)
+                return null;
+            return GetMatchingProperty(field, field.ContainingType.GetMembers());
+        }
+
+        public static bool IsCompilerGenerated(this ISymbol? symbol)
+            => symbol?.GetAttributes().Any(a => a.AttributeClass?.Name == "CompilerGeneratedAttribute") == true;
+
+        public static bool IsCompilerGenerated(this IPropertySymbol? property)
+            => property?.GetMethod.IsCompilerGenerated() == true && property.SetMethod.IsCompilerGenerated();
+
+        public static IParameterSymbol? GetMatchingPrimaryConstructorParameter(IPropertySymbol property, IEnumerable<IParameterSymbol> constructorParameters)
+        {
+            if (!property.IsCompilerGenerated())
+                return null;
+
+            return constructorParameters.FirstOrDefault(p =>
+                string.Equals(p.Name, property.Name, StringComparison.Ordinal) &&
+                SymbolEqualityComparer.Default.Equals(p.Type, property.Type));
+        }
+
+        public static IPropertySymbol? GetMatchingProperty(IFieldSymbol field, IEnumerable<ISymbol> memberSymbols)
+        {
+            var propertyName = PropertyMatchRegex.Match(field.Name);
+            if (!propertyName.Success)
+            {
+                return null;
+            }
+
+            var name = propertyName.Groups[1].Value;
+            var candidates = memberSymbols.OfType<IPropertySymbol>()
+                .Where(property => string.Equals(name, property.Name, StringComparison.Ordinal)
+                                   && SymbolEqualityComparer.Default.Equals(field.Type, property.Type)).ToArray();
+            return candidates.Length == 1 ? candidates[0] : null;
+        }
+
+        public static IFieldSymbol? GetMatchingField(IPropertySymbol property)
+        {
+            if (property.ContainingType is null)
+                return null;
+            return GetMatchingField(property, property.ContainingType.GetMembers());
+        }
+
+        public static IFieldSymbol? GetMatchingField(IPropertySymbol property, IEnumerable<ISymbol> memberSymbols)
+        {
+            var backingFieldName = $"<{property.Name}>k__BackingField";
+            var candidates = (from field in memberSymbols.OfType<IFieldSymbol>()
+                              where SymbolEqualityComparer.Default.Equals(field.Type, property.Type)
+                              where field.Name == backingFieldName || GetCanonicalName(field.Name) == GetCanonicalName(property.Name)
+                              select field).ToArray();
+            return candidates.Length == 1 ? candidates[0] : null;
+        }
+
+        public static string GetCanonicalName(string name)
+        {
+            name = name.TrimStart('_');
+            if (name.Length > 0 && char.IsUpper(name[0]))
+                name = $"{char.ToLowerInvariant(name[0])}{name.Substring(1)}";
+            return name;
+        }
+    }
+}

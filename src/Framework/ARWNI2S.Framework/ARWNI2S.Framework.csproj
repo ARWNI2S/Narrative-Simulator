@@ -1,16 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj" />
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Engine.Modules\ARWNI2S.Engine.Modules.csproj" />
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Clustering\ARWNI2S.Node.Clustering.csproj" />
-    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Hosting\ARWNI2S.Node.Hosting.csproj" />
+    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node\ARWNI2S.Node.csproj" />
   </ItemGroup>
 
 </Project>

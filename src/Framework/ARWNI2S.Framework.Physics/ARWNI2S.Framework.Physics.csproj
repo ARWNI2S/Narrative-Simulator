@@ -4,4 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ARWNI2S.Framework\ARWNI2S.Framework.csproj" />
+  </ItemGroup>
+
 </Project>
