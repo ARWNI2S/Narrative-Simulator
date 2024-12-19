@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Engine.Scenes\ARWNI2S.Engine.Scenes.csproj" />
     <ProjectReference Include="..\..\ARWNI2S.Framework\ARWNI2S.Framework.csproj" />
   </ItemGroup>
 

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Engine.Orleans\ARWNI2S.Engine.Orleans.csproj" />
     <ProjectReference Include="..\..\ARWNI2S.Framework\ARWNI2S.Framework.csproj" />
   </ItemGroup>
 
