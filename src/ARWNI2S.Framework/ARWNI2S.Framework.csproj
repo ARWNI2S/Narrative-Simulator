@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Engine\ARWNI2S.Engine.csproj" />
+    <ProjectReference Include="..\..\NI2S-Node\src\ARWNI2S.Node\ARWNI2S.Node.csproj" />
+  </ItemGroup>
+
+</Project>

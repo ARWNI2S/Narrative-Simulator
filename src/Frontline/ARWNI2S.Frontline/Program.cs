@@ -1,4 +1,4 @@
-using ARWNI2S.Hosting;
+using ARWNI2S.Node;
 
 namespace ARWNI2S.Frontline
 {
@@ -6,7 +6,17 @@ namespace ARWNI2S.Frontline
     {
         public static async Task Main(string[] args)
         {
-            await NI2SHost.Create(args).RunAsync();
+            //await NI2SNode.Create(args).RunAsync();
+
+
+
+            var builder = NI2SNode.CreateBuilder(args);
+
+            builder.UseOrleansClient();
+
+            var engine = builder.Build();
+
+            await engine.RunAsync();
         }
     }
 }

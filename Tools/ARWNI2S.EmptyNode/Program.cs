@@ -1,5 +1,3 @@
-using ARWNI2S.Hosting;
-
 namespace ARWNI2S.EmptyNode
 {
     public class Program

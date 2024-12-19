@@ -1,5 +1,5 @@
-﻿using ARWNI2S.Configuration;
-using ARWNI2S.Infrastructure;
+﻿using ARWNI2S.Engine.Configuration;
+using ARWNI2S.Engine.Infrastructure;
 
 namespace ARWNI2S.Narrator.Framework.Orleans
 {

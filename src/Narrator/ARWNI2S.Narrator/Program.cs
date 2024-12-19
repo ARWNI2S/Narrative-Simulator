@@ -1,4 +1,4 @@
-using ARWNI2S.Hosting;
+using ARWNI2S.Node;
 
 namespace ARWNI2S.Narrator
 {
@@ -6,7 +6,7 @@ namespace ARWNI2S.Narrator
     {
         public static async Task Main(string[] args)
         {
-            await NI2SHost.Create(args).RunAsync();
+            await NI2SNode.Create(args).RunAsync();
         }
     }
 }
