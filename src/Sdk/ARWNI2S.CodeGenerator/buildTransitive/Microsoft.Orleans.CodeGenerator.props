@@ -1,3 +1,0 @@
-<Project>
-  <Import Project="..\build\Microsoft.ARWNI2S.CodeGenerator.props" />
-</Project>
