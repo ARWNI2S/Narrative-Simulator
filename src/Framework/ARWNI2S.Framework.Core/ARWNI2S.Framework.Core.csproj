@@ -12,9 +12,52 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <LangVersion>13.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <OutputPath>$(BinariesFolder)\Framework\$(MSBuildProjectName)</OutputPath>
+    <OutputPath>$(BinariesFolder)\Framework\$(MSBuildProjectName)\$(Configuration)\$(TargetFramework)</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
+    <RootNamespace>ARWNI2S.Framework</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Security\Caching\**" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Security\Caching\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Security\Caching\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\ExchangeRatePluginManager.cs" />
+    <Compile Remove="Common\GeoLookupService.cs" />
+    <Compile Remove="Common\IExchangeRatePluginManager.cs" />
+    <Compile Remove="Common\IExchangeRateProvider.cs" />
+    <Compile Remove="Common\KeepAliveMiddleware.cs" />
+    <Compile Remove="Common\KeepAliveTask.cs" />
+    <Compile Remove="Common\NopHttpClient.cs" />
+    <Compile Remove="Common\ResetLicenseCheckTask.cs" />
+    <Compile Remove="Common\StoreHttpClient.cs" />
+    <Compile Remove="Common\UpdateExchangeRateTask.cs" />
+    <Compile Remove="Localization\LocalizedUrlExtenstions.cs" />
+    <Compile Remove="Security\AclService.cs" />
+    <Compile Remove="Security\DefaultPermissionConfigManager.cs" />
+    <Compile Remove="Security\Entities\AclRecord.cs" />
+    <Compile Remove="Security\Entities\CaptchaSettings.cs" />
+    <Compile Remove="Security\Entities\CaptchaType.cs" />
+    <Compile Remove="Security\Entities\IAclSupported.cs" />
+    <Compile Remove="Security\Entities\PermissionRecord.cs" />
+    <Compile Remove="Security\Entities\PermissionRecordCustomerRoleMapping.cs" />
+    <Compile Remove="Security\Entities\ProxySettings.cs" />
+    <Compile Remove="Security\Entities\RobotsTxtDefaults.cs" />
+    <Compile Remove="Security\Entities\RobotsTxtSettings.cs" />
+    <Compile Remove="Security\Entities\SecuritySettingsChangedEvent.cs" />
+    <Compile Remove="Security\IAclService.cs" />
+    <Compile Remove="Security\IPermissionConfigManager.cs" />
+    <Compile Remove="Security\IPermissionService.cs" />
+    <Compile Remove="Security\PermissionConfig.cs" />
+    <Compile Remove="Security\PermissionService.cs" />
+    <Compile Remove="Security\SecurityDefaults.cs" />
+    <Compile Remove="Security\StandardPermission.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <FrameworkAssembliesTasks Include="$(SourceRoot)\Tools\FrameworkAssembliesTasks\FrameworkAssembliesTasks.proj" />
@@ -37,6 +80,11 @@
 
   <ItemGroup>
     <Compile Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" Link="Metadata\FrameworkPartAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Directory\" />
+    <Folder Include="Players\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->
