@@ -2,6 +2,7 @@
   <!-- Set the repository root into a variable -->
   <PropertyGroup>
     <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
+    <BinariesFolder>$(SourceRoot)\Binaries</BinariesFolder>
   </PropertyGroup>
 
   <!-- Set common properties regarding assembly information -->

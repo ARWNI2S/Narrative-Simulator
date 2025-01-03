@@ -12,14 +12,12 @@ namespace FrameworkAssembliesTasks
         public bool SaveLocalesFolders { get; set; } = true;
 
         protected const string FILES_TO_DELETE = "dotnet-bundle.exe;" +
-    "ARWNI2S.Infrastructure.pdb;ARWNI2S.Infrastructure.dll;ARWNI2S.Infrastructure.xml;" +
-    "ARWNI2S.Infrastructure.Abstractions.pdb;ARWNI2S.Infrastructure.Abstractions.dll;ARWNI2S.Infrastructure.Abstractions.xml;" +
-    "ARWNI2S.Infrastructure.Collections.pdb;ARWNI2S.Infrastructure.Collections.dll;ARWNI2S.Infrastructure.Collections.xml;" +
-    "ARWNI2S.Infrastructure.Commons.pdb;ARWNI2S.Infrastructure.Commons.dll;ARWNI2S.Infrastructure.Commons.xml;" +
-    "ARWNI2S.Infrastructure.Extensions.pdb;ARWNI2S.Infrastructure.Extensions.dll;ARWNI2S.Infrastructure.Extensions.xml;" +
-    "ARWNI2S.Node.Core.pdb;ARWNI2S.Node.Core.dll;ARWNI2S.Node.Core.xml;" +
-    "ARWNI2S.Node.Data.pdb;ARWNI2S.Node.Data.dll;ARWNI2S.Node.Data.xml;" +
-    "ARWNI2S.Node.Services.pdb;ARWNI2S.Node.Services.dll;ARWNI2S.Node.Services.xml";
+    "ARWNI2S.Abstractions.pdb;ARWNI2S.Abstractions.dll;ARWNI2S.Abstractions.xml;" +
+    "ARWNI2S.Engine.Core.pdb;ARWNI2S.Engine.Core.dll;ARWNI2S.Engine.Core.xml;" +
+    "ARWNI2S.Engine.Data.pdb;ARWNI2S.Engine.Data.dll;ARWNI2S.Engine.Data.xml;" +
+    "ARWNI2S.Engine.Cluster.pdb;ARWNI2S.Engine.Cluster.dll;ARWNI2S.Engine.Cluster.xml;" +
+    "ARWNI2S.Node.Runtime.pdb;ARWNI2S.Node.Runtime.dll;ARWNI2S.Node.Runtime.xml;" +
+    "ARWNI2S.Node.pdb;ARWNI2S.Node.dll;ARWNI2S.Node.xml";
 
         protected void Clear(string paths, IList<string> fileNames, bool saveLocalesFolders)
         {
@@ -84,7 +82,7 @@ namespace FrameworkAssembliesTasks
 
                 var di = new DirectoryInfo(OutputPath);
                 var separator = Path.DirectorySeparatorChar;
-                var folderToIgnore = string.Concat(separator, "Modules", separator);
+                var folderToIgnore = string.Concat(separator, "Plugins", separator);
                 var fileNames = di.GetFiles("*.dll", SearchOption.AllDirectories)
                     .Where(fi => !fi.FullName.Contains(folderToIgnore))
                     .Select(fi => fi.Name.Replace(fi.Extension, "")).ToList();

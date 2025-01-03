@@ -1,0 +1,10 @@
+{
+  "Logging": {
+    "LogLevel": { // No provider, LogLevel applies to all the enabled providers.
+      "Default": "Information", // Default, application level if no other level applies
+      "ARWNI2S": "Debug", // Default, application level if no other level applies
+      "Microsoft": "Warning", // Log level for log category which starts with text 'Microsoft' (i.e. 'Microsoft.*')
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  }
+}

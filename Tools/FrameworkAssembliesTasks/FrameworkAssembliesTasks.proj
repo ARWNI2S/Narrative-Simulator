@@ -7,10 +7,10 @@
     <Authors>ManOguaR</Authors>
     <PackageLicenseUrl>http://www.dragoncorp.org/licensev3.aspx</PackageLicenseUrl> 
     <PackageProjectUrl>http://www.dragoncorp.org/</PackageProjectUrl> 
-    <RepositoryUrl>https://github.com/ARWNI2S/NI2S-Node</RepositoryUrl> 
+    <RepositoryUrl>https://github.com/ARWNI2S/Narrative-Simulator</RepositoryUrl> 
     <RepositoryType>Git</RepositoryType>
 
-    <OutputPath>$(MSBuildProjectDirectory)\..\..\ARWNI2S.Node\bin\$(Configuration)</OutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\..\EmptyNode\bin\$(Configuration)</OutputPath>
   </PropertyGroup>
 
   <UsingTask TaskName="ClearModuleAssembliesTask" AssemblyFile="FrameworkAssembliesTasks.dll" />
@@ -21,6 +21,6 @@
     For modules it creates too many unnecessary files that just take up space.
     At the moment you can't disable this behavior. That's why we have to manually delete all unnecessary libraries from module output directories.   
     <Exec Command='dotnet "FrameworkAssembliesTasks.dll" "OutputPath=$(OutputPath)|ModulePath=$(ModulePath)|SaveLocalesFolders=$(SaveLocalesFolders)"' />-->
-  </Target> 
-      
+  </Target>
+  
 </Project>
