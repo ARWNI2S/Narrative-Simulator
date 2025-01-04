@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <IsFrameworkPart>false</IsFrameworkPart>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\ARWNI2S.Connector\ARWNI2S.Connector.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <IsFrameworkPart>false</IsFrameworkPart>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
+    <ProjectReference Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Engine.Cluster\ARWNI2S.Engine.Cluster.csproj" />
+    <ProjectReference Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Engine.Core\ARWNI2S.Engine.Core.csproj" />
+    <ProjectReference Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Engine.Data\ARWNI2S.Engine.Data.csproj" />
+    <ProjectReference Include="$(SourceRoot)\src\Framework\ARWNI2S.Framework.Core\ARWNI2S.Framework.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="build\" />
+    <Folder Include="frontline\" />
+    <Folder Include="narrator\" />
+  </ItemGroup>
+
+</Project>

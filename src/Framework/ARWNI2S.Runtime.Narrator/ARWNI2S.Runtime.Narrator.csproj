@@ -4,4 +4,8 @@
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
+  </ItemGroup>
+
 </Project>
