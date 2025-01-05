@@ -18,45 +18,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Security\Caching\**" />
-    <Compile Remove="Users\**" />
-    <EmbeddedResource Remove="Security\Caching\**" />
-    <EmbeddedResource Remove="Users\**" />
-    <None Remove="Security\Caching\**" />
-    <None Remove="Users\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Common\ExchangeRatePluginManager.cs" />
-    <Compile Remove="Common\GeoLookupService.cs" />
-    <Compile Remove="Common\IExchangeRatePluginManager.cs" />
-    <Compile Remove="Common\IExchangeRateProvider.cs" />
-    <Compile Remove="Common\KeepAliveMiddleware.cs" />
-    <Compile Remove="Common\KeepAliveTask.cs" />
-    <Compile Remove="Common\NopHttpClient.cs" />
-    <Compile Remove="Common\ResetLicenseCheckTask.cs" />
-    <Compile Remove="Common\StoreHttpClient.cs" />
-    <Compile Remove="Common\UpdateExchangeRateTask.cs" />
-    <Compile Remove="Localization\LocalizedUrlExtenstions.cs" />
-    <Compile Remove="Security\AclService.cs" />
-    <Compile Remove="Security\DefaultPermissionConfigManager.cs" />
-    <Compile Remove="Security\Entities\AclRecord.cs" />
-    <Compile Remove="Security\Entities\CaptchaSettings.cs" />
-    <Compile Remove="Security\Entities\CaptchaType.cs" />
-    <Compile Remove="Security\Entities\IAclSupported.cs" />
-    <Compile Remove="Security\Entities\PermissionRecord.cs" />
-    <Compile Remove="Security\Entities\PermissionRecordCustomerRoleMapping.cs" />
-    <Compile Remove="Security\Entities\ProxySettings.cs" />
-    <Compile Remove="Security\Entities\RobotsTxtDefaults.cs" />
-    <Compile Remove="Security\Entities\RobotsTxtSettings.cs" />
-    <Compile Remove="Security\Entities\SecuritySettingsChangedEvent.cs" />
-    <Compile Remove="Security\IAclService.cs" />
-    <Compile Remove="Security\IPermissionConfigManager.cs" />
-    <Compile Remove="Security\IPermissionService.cs" />
-    <Compile Remove="Security\PermissionConfig.cs" />
-    <Compile Remove="Security\PermissionService.cs" />
-    <Compile Remove="Security\SecurityDefaults.cs" />
-    <Compile Remove="Security\StandardPermission.cs" />
+    <Compile Remove="Attributes\**" />
+    <Compile Remove="Common\**" />
+    <Compile Remove="Configuration\**" />
+    <Compile Remove="ExportImport\**" />
+    <Compile Remove="Localization\**" />
+    <Compile Remove="Logging\**" />
+    <Compile Remove="Metadata\**" />
+    <Compile Remove="Plugins\**" />
+    <Compile Remove="Security\**" />
+    <EmbeddedResource Remove="Attributes\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <EmbeddedResource Remove="ExportImport\**" />
+    <EmbeddedResource Remove="Localization\**" />
+    <EmbeddedResource Remove="Logging\**" />
+    <EmbeddedResource Remove="Metadata\**" />
+    <EmbeddedResource Remove="Plugins\**" />
+    <EmbeddedResource Remove="Security\**" />
+    <None Remove="Attributes\**" />
+    <None Remove="Common\**" />
+    <None Remove="Configuration\**" />
+    <None Remove="ExportImport\**" />
+    <None Remove="Localization\**" />
+    <None Remove="Logging\**" />
+    <None Remove="Metadata\**" />
+    <None Remove="Plugins\**" />
+    <None Remove="Security\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,11 +67,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="D:\ARWNI2S\Narrative-Simulator\\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" Link="Metadata\FrameworkPartAttribute.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Players\" />
+    <Folder Include="World\Partition\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->

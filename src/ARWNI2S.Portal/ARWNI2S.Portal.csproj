@@ -5,8 +5,4 @@
     <IsFrameworkPart>false</IsFrameworkPart>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="$(SourceRoot)\src\ARWNI2S.Connector\ARWNI2S.Connector.csproj" />
-  </ItemGroup>
-
 </Project>

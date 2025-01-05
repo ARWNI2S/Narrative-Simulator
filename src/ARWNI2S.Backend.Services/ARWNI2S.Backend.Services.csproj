@@ -5,4 +5,26 @@
     <IsFrameworkPart>false</IsFrameworkPart>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Authentication\**" />
+    <Compile Remove="Security\**" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Authentication\**" />
+    <EmbeddedResource Remove="Security\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Authentication\**" />
+    <None Remove="Security\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ARWNI2S.Backend.Data\ARWNI2S.Backend.Data.csproj" />
+    <ProjectReference Include="..\Framework\ARWNI2S.Framework.Core\ARWNI2S.Framework.Core.csproj" />
+  </ItemGroup>
+
 </Project>

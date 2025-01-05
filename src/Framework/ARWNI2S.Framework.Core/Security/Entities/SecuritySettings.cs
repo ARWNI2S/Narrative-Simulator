@@ -43,7 +43,7 @@ namespace ARWNI2S.Framework.Security.Entities
         public bool UseAesEncryptionAlgorithm { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to allow export and import customers with hashed password
+        /// Gets or sets a value indicating whether to allow export and import users with hashed password
         /// </summary>
         public bool AllowStoreOwnerExportImportUsersWithHashedPassword { get; set; }
     }

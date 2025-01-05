@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.Framework.Users.Security.Entities
+﻿namespace ARWNI2S.Framework.Security.Entities
 {
     /// <summary>
     /// Security setting changed event
