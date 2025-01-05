@@ -68,6 +68,7 @@
 
   <ItemGroup>
     <Compile Remove="D:\ARWNI2S\Narrative-Simulator\\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" />
+    <Compile Remove="Factories\CharacterFactory.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +76,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Factories\" />
     <Folder Include="World\Partition\" />
   </ItemGroup>
 

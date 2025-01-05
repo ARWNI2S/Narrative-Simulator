@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Engine.Data.Entities;
+﻿using ARWNI2S.Engine.Data;
 
 namespace ARWNI2S.Framework.Actors.Data
 {
