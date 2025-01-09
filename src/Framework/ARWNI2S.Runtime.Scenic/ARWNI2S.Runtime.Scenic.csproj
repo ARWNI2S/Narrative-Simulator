@@ -8,4 +8,8 @@
     <ProjectReference Include="..\..\..\NI2S-Node\src\ARWNI2S.Node.Runtime\ARWNI2S.Node.Runtime.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Node\" />
+  </ItemGroup>
+
 </Project>

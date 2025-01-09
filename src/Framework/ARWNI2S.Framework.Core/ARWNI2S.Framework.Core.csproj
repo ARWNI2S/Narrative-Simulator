@@ -18,33 +18,45 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Actors\**" />
     <Compile Remove="Attributes\**" />
+    <Compile Remove="Character\**" />
     <Compile Remove="Common\**" />
     <Compile Remove="Configuration\**" />
     <Compile Remove="ExportImport\**" />
+    <Compile Remove="Factories\**" />
     <Compile Remove="Localization\**" />
     <Compile Remove="Logging\**" />
     <Compile Remove="Metadata\**" />
     <Compile Remove="Plugins\**" />
     <Compile Remove="Security\**" />
+    <Compile Remove="World\**" />
+    <EmbeddedResource Remove="Actors\**" />
     <EmbeddedResource Remove="Attributes\**" />
+    <EmbeddedResource Remove="Character\**" />
     <EmbeddedResource Remove="Common\**" />
     <EmbeddedResource Remove="Configuration\**" />
     <EmbeddedResource Remove="ExportImport\**" />
+    <EmbeddedResource Remove="Factories\**" />
     <EmbeddedResource Remove="Localization\**" />
     <EmbeddedResource Remove="Logging\**" />
     <EmbeddedResource Remove="Metadata\**" />
     <EmbeddedResource Remove="Plugins\**" />
     <EmbeddedResource Remove="Security\**" />
+    <EmbeddedResource Remove="World\**" />
+    <None Remove="Actors\**" />
     <None Remove="Attributes\**" />
+    <None Remove="Character\**" />
     <None Remove="Common\**" />
     <None Remove="Configuration\**" />
     <None Remove="ExportImport\**" />
+    <None Remove="Factories\**" />
     <None Remove="Localization\**" />
     <None Remove="Logging\**" />
     <None Remove="Metadata\**" />
     <None Remove="Plugins\**" />
     <None Remove="Security\**" />
+    <None Remove="World\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,16 +80,10 @@
 
   <ItemGroup>
     <Compile Remove="D:\ARWNI2S\Narrative-Simulator\\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" />
-    <Compile Remove="Factories\CharacterFactory.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="$(SourceRoot)\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" Link="Metadata\FrameworkPartAttribute.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="World\Partition\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->
