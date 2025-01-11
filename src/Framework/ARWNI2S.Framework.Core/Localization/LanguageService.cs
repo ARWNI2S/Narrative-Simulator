@@ -2,7 +2,6 @@
 using ARWNI2S.Engine.Caching;
 using ARWNI2S.Engine.Data;
 using ARWNI2S.Framework.Configuration;
-using ARWNI2S.Framework.Localization.Entities;
 using System.Globalization;
 
 namespace ARWNI2S.Framework.Localization

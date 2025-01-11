@@ -1,7 +1,7 @@
-using ARWNI2S.Engine.Data.Entities;
-using ARWNI2S.Framework.Localization.Entities;
+using ARWNI2S.Engine.Data;
+using ARWNI2S.Framework.Localization;
 
-namespace ARWNI2S.Framework.Configuration.Entities
+namespace ARWNI2S.Framework.Configuration
 {
     /// <summary>
     /// Represents a setting

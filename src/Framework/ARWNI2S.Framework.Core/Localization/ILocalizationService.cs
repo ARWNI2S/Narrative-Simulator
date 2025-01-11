@@ -1,8 +1,7 @@
-﻿using System.Linq.Expressions;
-using ARWNI2S.Configuration;
-using ARWNI2S.Engine.Data.Entities;
+﻿using ARWNI2S.Engine.Data;
 using ARWNI2S.Engine.Plugins;
-using ARWNI2S.Framework.Localization.Entities;
+using ARWNI2S.Framework.Configuration;
+using System.Linq.Expressions;
 
 namespace ARWNI2S.Framework.Localization
 {

@@ -1,6 +1,4 @@
-﻿using ARWNI2S.Framework.Localization.Entities;
-
-namespace ARWNI2S.Framework.Localization
+﻿namespace ARWNI2S.Framework.Localization
 {
     /// <summary>
     /// Language service interface

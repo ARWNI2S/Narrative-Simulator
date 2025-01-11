@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Engine;
 using ARWNI2S.Environment;
-using ARWNI2S.Framework.Localization.Entities;
 using System.Globalization;
 
 namespace ARWNI2S.Framework.Localization

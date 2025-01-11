@@ -1,21 +1,18 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Xml;
-using ARWNI2S.Caching;
-using ARWNI2S.Configuration;
+﻿using ARWNI2S.Caching;
 using ARWNI2S.Engine.Caching;
 using ARWNI2S.Engine.Data;
-using ARWNI2S.Engine.Data.Entities;
 using ARWNI2S.Engine.Infrastructure;
 using ARWNI2S.Engine.Plugins;
 using ARWNI2S.Environment;
 using ARWNI2S.Framework.Configuration;
 using ARWNI2S.Framework.ExportImport;
-using ARWNI2S.Framework.Localization.Entities;
 using ARWNI2S.Framework.Logging;
 using LinqToDB;
 using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Text;
+using System.Xml;
 
 namespace ARWNI2S.Framework.Localization
 {
@@ -945,7 +942,7 @@ namespace ARWNI2S.Framework.Localization
 
             //set default value if required
             if (string.IsNullOrEmpty(result) && returnDefaultValue)
-                result = plugin.PluginDescriptor.FriendlyName;
+                result = plugin.PluginDescriptor.DisplayName;
 
             return result;
         }

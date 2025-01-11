@@ -22,4 +22,8 @@
     <Folder Include="Node\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Runtime" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Engine.Data.Entities;
+﻿using ARWNI2S.Engine.Data;
 
-namespace ARWNI2S.Framework.Localization.Entities
+namespace ARWNI2S.Framework.Localization
 {
     /// <summary>
     /// Represents a localized property

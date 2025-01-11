@@ -1,6 +1,6 @@
-﻿using ARWNI2S.Configuration;
+﻿using ARWNI2S.Framework.Configuration;
 
-namespace ARWNI2S.Framework.Localization.Entities
+namespace ARWNI2S.Framework.Localization
 {
     /// <summary>
     /// Localization settings

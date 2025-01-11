@@ -1,5 +1,4 @@
 ﻿using ARWNI2S.Engine.Data.Events;
-using ARWNI2S.Framework.Localization.Entities;
 
 namespace ARWNI2S.Framework.Localization.Caching
 {

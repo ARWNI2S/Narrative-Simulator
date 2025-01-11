@@ -1,6 +1,5 @@
 ﻿using ARWNI2S.Caching;
 using ARWNI2S.Engine.Caching;
-using ARWNI2S.Framework.Configuration.Entities;
 
 namespace ARWNI2S.Framework.Configuration
 {

@@ -22,11 +22,7 @@
     <Compile Remove="Attributes\**" />
     <Compile Remove="Character\**" />
     <Compile Remove="Common\**" />
-    <Compile Remove="Configuration\**" />
-    <Compile Remove="ExportImport\**" />
     <Compile Remove="Factories\**" />
-    <Compile Remove="Localization\**" />
-    <Compile Remove="Logging\**" />
     <Compile Remove="Metadata\**" />
     <Compile Remove="Plugins\**" />
     <Compile Remove="Security\**" />
@@ -35,11 +31,7 @@
     <EmbeddedResource Remove="Attributes\**" />
     <EmbeddedResource Remove="Character\**" />
     <EmbeddedResource Remove="Common\**" />
-    <EmbeddedResource Remove="Configuration\**" />
-    <EmbeddedResource Remove="ExportImport\**" />
     <EmbeddedResource Remove="Factories\**" />
-    <EmbeddedResource Remove="Localization\**" />
-    <EmbeddedResource Remove="Logging\**" />
     <EmbeddedResource Remove="Metadata\**" />
     <EmbeddedResource Remove="Plugins\**" />
     <EmbeddedResource Remove="Security\**" />
@@ -48,11 +40,7 @@
     <None Remove="Attributes\**" />
     <None Remove="Character\**" />
     <None Remove="Common\**" />
-    <None Remove="Configuration\**" />
-    <None Remove="ExportImport\**" />
     <None Remove="Factories\**" />
-    <None Remove="Localization\**" />
-    <None Remove="Logging\**" />
     <None Remove="Metadata\**" />
     <None Remove="Plugins\**" />
     <None Remove="Security\**" />
@@ -80,6 +68,11 @@
 
   <ItemGroup>
     <Compile Remove="D:\ARWNI2S\Narrative-Simulator\\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" />
+    <Compile Remove="Localization\LocalizedUrlExtenstions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Configuration\iqqygvea.iw0~" />
   </ItemGroup>
 
   <ItemGroup>

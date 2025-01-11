@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using ARWNI2S.Framework.Localization.Entities;
 
 namespace ARWNI2S.Framework.Localization
 {
