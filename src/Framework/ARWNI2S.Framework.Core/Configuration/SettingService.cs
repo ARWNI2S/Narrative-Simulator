@@ -55,7 +55,7 @@ namespace ARWNI2S.Framework.Configuration
                         Id = s.Id,
                         Name = s.Name,
                         Value = s.Value,
-                        StoreId = s.StoreId
+                        NodeId = s.NodeId
                     };
                     if (!dictionary.TryGetValue(resourceName, out var value))
                         //first setting
@@ -65,7 +65,7 @@ namespace ARWNI2S.Framework.Configuration
                         });
                     else
                         //already added
-                        //most probably it's the setting with the same name but for some certain store (storeId > 0)
+                        //most probably it's the setting with the same name but for some certain node (nodeId > 0)
                         value.Add(settingForCaching);
                 }
 
@@ -94,7 +94,7 @@ namespace ARWNI2S.Framework.Configuration
                         Id = s.Id,
                         Name = s.Name,
                         Value = s.Value,
-                        StoreId = s.StoreId
+                        NodeId = s.NodeId
                     };
                     if (!dictionary.TryGetValue(resourceName, out var value))
                         //first setting
@@ -104,7 +104,7 @@ namespace ARWNI2S.Framework.Configuration
                         });
                     else
                         //already added
-                        //most probably it's the setting with the same name but for some certain store (storeId > 0)
+                        //most probably it's the setting with the same name but for some certain node (nodeId > 0)
                         value.Add(settingForCaching);
                 }
 
@@ -118,10 +118,10 @@ namespace ARWNI2S.Framework.Configuration
         /// <param name="type">Type</param>
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        protected virtual async Task SetSettingAsync(Type type, string key, object value, int storeId = 0, bool clearCache = true)
+        protected virtual async Task SetSettingAsync(Type type, string key, object value, int nodeId = 0, bool clearCache = true)
         {
             ArgumentNullException.ThrowIfNull(key);
             key = key.Trim().ToLowerInvariant();
@@ -129,7 +129,7 @@ namespace ARWNI2S.Framework.Configuration
 
             var allSettings = await GetAllSettingsDictionaryAsync();
             var settingForCaching = allSettings.TryGetValue(key, out var settings) ?
-                settings.FirstOrDefault(x => x.StoreId == storeId) : null;
+                settings.FirstOrDefault(x => x.NodeId == nodeId) : null;
             if (settingForCaching != null)
             {
                 //update
@@ -144,7 +144,7 @@ namespace ARWNI2S.Framework.Configuration
                 {
                     Name = key,
                     Value = valueStr,
-                    StoreId = storeId
+                    NodeId = nodeId
                 };
                 await InsertSettingAsync(setting, clearCache);
             }
@@ -156,9 +156,9 @@ namespace ARWNI2S.Framework.Configuration
         /// <param name="type">Type</param>
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
-        protected virtual void SetSetting(Type type, string key, object value, int storeId = 0, bool clearCache = true)
+        protected virtual void SetSetting(Type type, string key, object value, int nodeId = 0, bool clearCache = true)
         {
             ArgumentNullException.ThrowIfNull(key);
             key = key.Trim().ToLowerInvariant();
@@ -166,7 +166,7 @@ namespace ARWNI2S.Framework.Configuration
 
             var allSettings = GetAllSettingsDictionary();
             var settingForCaching = allSettings.TryGetValue(key, out var settings) ?
-                settings.FirstOrDefault(x => x.StoreId == storeId) : null;
+                settings.FirstOrDefault(x => x.NodeId == nodeId) : null;
             if (settingForCaching != null)
             {
                 //update
@@ -181,7 +181,7 @@ namespace ARWNI2S.Framework.Configuration
                 {
                     Name = key,
                     Value = valueStr,
-                    StoreId = storeId
+                    NodeId = nodeId
                 };
                 InsertSetting(setting, clearCache);
             }
@@ -320,13 +320,13 @@ namespace ARWNI2S.Framework.Configuration
         /// Get setting by key
         /// </summary>
         /// <param name="key">Key</param>
-        /// <param name="storeId">Store identifier</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
+        /// <param name="nodeId">Node identifier</param>
+        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all nodes) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the setting
         /// </returns>
-        public virtual async Task<Setting> GetSettingAsync(string key, int storeId = 0, bool loadSharedValueIfNotFound = false)
+        public virtual async Task<Setting> GetSettingAsync(string key, int nodeId = 0, bool loadSharedValueIfNotFound = false)
         {
             if (string.IsNullOrEmpty(key))
                 return null;
@@ -337,11 +337,11 @@ namespace ARWNI2S.Framework.Configuration
                 return null;
 
             var settingsByKey = value;
-            var setting = settingsByKey.FirstOrDefault(x => x.StoreId == storeId);
+            var setting = settingsByKey.FirstOrDefault(x => x.NodeId == nodeId);
 
             //load shared value?
-            if (setting == null && storeId > 0 && loadSharedValueIfNotFound)
-                setting = settingsByKey.FirstOrDefault(x => x.StoreId == 0);
+            if (setting == null && nodeId > 0 && loadSharedValueIfNotFound)
+                setting = settingsByKey.FirstOrDefault(x => x.NodeId == 0);
 
             return setting != null ? await GetSettingByIdAsync(setting.Id) : null;
         }
@@ -350,12 +350,12 @@ namespace ARWNI2S.Framework.Configuration
         /// Get setting by key
         /// </summary>
         /// <param name="key">Key</param>
-        /// <param name="storeId">Store identifier</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
+        /// <param name="nodeId">Node identifier</param>
+        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all nodes) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>
         /// The setting
         /// </returns>
-        public virtual Setting GetSetting(string key, int storeId = 0, bool loadSharedValueIfNotFound = false)
+        public virtual Setting GetSetting(string key, int nodeId = 0, bool loadSharedValueIfNotFound = false)
         {
             if (string.IsNullOrEmpty(key))
                 return null;
@@ -366,11 +366,11 @@ namespace ARWNI2S.Framework.Configuration
                 return null;
 
             var settingsByKey = value;
-            var setting = settingsByKey.FirstOrDefault(x => x.StoreId == storeId);
+            var setting = settingsByKey.FirstOrDefault(x => x.NodeId == nodeId);
 
             //load shared value?
-            if (setting == null && storeId > 0 && loadSharedValueIfNotFound)
-                setting = settingsByKey.FirstOrDefault(x => x.StoreId == 0);
+            if (setting == null && nodeId > 0 && loadSharedValueIfNotFound)
+                setting = settingsByKey.FirstOrDefault(x => x.NodeId == 0);
 
             return setting != null ? GetSettingById(setting.Id) : null;
         }
@@ -381,14 +381,14 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="T">Type</typeparam>
         /// <param name="key">Key</param>
         /// <param name="defaultValue">Default value</param>
-        /// <param name="storeId">Store identifier</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
+        /// <param name="nodeId">Node identifier</param>
+        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all nodes) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the setting value
         /// </returns>
         public virtual async Task<T> GetSettingByKeyAsync<T>(string key, T defaultValue = default,
-            int storeId = 0, bool loadSharedValueIfNotFound = false)
+            int nodeId = 0, bool loadSharedValueIfNotFound = false)
         {
             if (string.IsNullOrEmpty(key))
                 return defaultValue;
@@ -399,11 +399,11 @@ namespace ARWNI2S.Framework.Configuration
                 return defaultValue;
 
             var settingsByKey = value;
-            var setting = settingsByKey.FirstOrDefault(x => x.StoreId == storeId);
+            var setting = settingsByKey.FirstOrDefault(x => x.NodeId == nodeId);
 
             //load shared value?
-            if (setting == null && storeId > 0 && loadSharedValueIfNotFound)
-                setting = settingsByKey.FirstOrDefault(x => x.StoreId == 0);
+            if (setting == null && nodeId > 0 && loadSharedValueIfNotFound)
+                setting = settingsByKey.FirstOrDefault(x => x.NodeId == 0);
 
             return setting != null ? CommonHelper.To<T>(setting.Value) : defaultValue;
         }
@@ -414,13 +414,13 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="T">Type</typeparam>
         /// <param name="key">Key</param>
         /// <param name="defaultValue">Default value</param>
-        /// <param name="storeId">Store identifier</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
+        /// <param name="nodeId">Node identifier</param>
+        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all nodes) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>
         /// Setting value
         /// </returns>
         public virtual T GetSettingByKey<T>(string key, T defaultValue = default,
-            int storeId = 0, bool loadSharedValueIfNotFound = false)
+            int nodeId = 0, bool loadSharedValueIfNotFound = false)
         {
             if (string.IsNullOrEmpty(key))
                 return defaultValue;
@@ -431,11 +431,11 @@ namespace ARWNI2S.Framework.Configuration
                 return defaultValue;
 
             var settingsByKey = value;
-            var setting = settingsByKey.FirstOrDefault(x => x.StoreId == storeId);
+            var setting = settingsByKey.FirstOrDefault(x => x.NodeId == nodeId);
 
             //load shared value?
-            if (setting == null && storeId > 0 && loadSharedValueIfNotFound)
-                setting = settingsByKey.FirstOrDefault(x => x.StoreId == 0);
+            if (setting == null && nodeId > 0 && loadSharedValueIfNotFound)
+                setting = settingsByKey.FirstOrDefault(x => x.NodeId == 0);
 
             return setting != null ? CommonHelper.To<T>(setting.Value) : defaultValue;
         }
@@ -446,12 +446,12 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="T">Type</typeparam>
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task SetSettingAsync<T>(string key, T value, int storeId = 0, bool clearCache = true)
+        public virtual async Task SetSettingAsync<T>(string key, T value, int nodeId = 0, bool clearCache = true)
         {
-            await SetSettingAsync(typeof(T), key, value, storeId, clearCache);
+            await SetSettingAsync(typeof(T), key, value, nodeId, clearCache);
         }
 
         /// <summary>
@@ -460,11 +460,11 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="T">Type</typeparam>
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
-        public virtual void SetSetting<T>(string key, T value, int storeId = 0, bool clearCache = true)
+        public virtual void SetSetting<T>(string key, T value, int nodeId = 0, bool clearCache = true)
         {
-            SetSetting(typeof(T), key, value, storeId, clearCache);
+            SetSetting(typeof(T), key, value, nodeId, clearCache);
         }
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace ARWNI2S.Framework.Configuration
             var settings = await _settingRepository.GetAllAsync(query =>
             {
                 return from s in query
-                       orderby s.Name, s.StoreId
+                       orderby s.Name, s.NodeId
                        select s;
             }, cache => default);
 
@@ -495,7 +495,7 @@ namespace ARWNI2S.Framework.Configuration
         public virtual IList<Setting> GetAllSettings()
         {
             var settings = _settingRepository.GetAll(query => from s in query
-                                                              orderby s.Name, s.StoreId
+                                                              orderby s.Name, s.NodeId
                                                               select s, cache => default);
 
             return settings;
@@ -508,18 +508,18 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Entity</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the true -setting exists; false - does not exist
         /// </returns>
         public virtual async Task<bool> SettingExistsAsync<T, TPropType>(T settings,
-            Expression<Func<T, TPropType>> keySelector, int storeId = 0)
+            Expression<Func<T, TPropType>> keySelector, int nodeId = 0)
             where T : ISettings, new()
         {
             var key = GetSettingKey(settings, keySelector);
 
-            var setting = await GetSettingByKeyAsync<string>(key, storeId: storeId);
+            var setting = await GetSettingByKeyAsync<string>(key, nodeId: nodeId);
             return setting != null;
         }
 
@@ -530,17 +530,17 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Entity</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <returns>
         /// The true -setting exists; false - does not exist
         /// </returns>
         public virtual bool SettingExists<T, TPropType>(T settings,
-            Expression<Func<T, TPropType>> keySelector, int storeId = 0)
+            Expression<Func<T, TPropType>> keySelector, int nodeId = 0)
             where T : ISettings, new()
         {
             var key = GetSettingKey(settings, keySelector);
 
-            var setting = GetSettingByKey<string>(key, storeId: storeId);
+            var setting = GetSettingByKey<string>(key, nodeId: nodeId);
             return setting != null;
         }
 
@@ -548,30 +548,30 @@ namespace ARWNI2S.Framework.Configuration
         /// Load settings
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="storeId">Store identifier for which settings should be loaded</param>
+        /// <param name="nodeId">Node identifier for which settings should be loaded</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task<T> LoadSettingAsync<T>(int storeId = 0) where T : ISettings, new()
+        public virtual async Task<T> LoadSettingAsync<T>(int nodeId = 0) where T : ISettings, new()
         {
-            return (T)await LoadSettingAsync(typeof(T), storeId);
+            return (T)await LoadSettingAsync(typeof(T), nodeId);
         }
 
         /// <summary>
         /// Load settings
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="storeId">Store identifier for which settings should be loaded</param>
-        public virtual T LoadSetting<T>(int storeId = 0) where T : ISettings, new()
+        /// <param name="nodeId">Node identifier for which settings should be loaded</param>
+        public virtual T LoadSetting<T>(int nodeId = 0) where T : ISettings, new()
         {
-            return (T)LoadSetting(typeof(T), storeId);
+            return (T)LoadSetting(typeof(T), nodeId);
         }
 
         /// <summary>
         /// Load settings
         /// </summary>
         /// <param name="type">Type</param>
-        /// <param name="storeId">Store identifier for which settings should be loaded</param>
+        /// <param name="nodeId">Node identifier for which settings should be loaded</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task<ISettings> LoadSettingAsync(Type type, int storeId = 0)
+        public virtual async Task<ISettings> LoadSettingAsync(Type type, int nodeId = 0)
         {
             var settings = Activator.CreateInstance(type);
 
@@ -585,8 +585,8 @@ namespace ARWNI2S.Framework.Configuration
                     continue;
 
                 var key = type.Name + "." + prop.Name;
-                //load by store
-                var setting = await GetSettingByKeyAsync<string>(key, storeId: storeId, loadSharedValueIfNotFound: true);
+                //load by node
+                var setting = await GetSettingByKeyAsync<string>(key, nodeId: nodeId, loadSharedValueIfNotFound: true);
                 if (setting == null)
                     continue;
 
@@ -609,9 +609,9 @@ namespace ARWNI2S.Framework.Configuration
         /// Load settings
         /// </summary>
         /// <param name="type">Type</param>
-        /// <param name="storeId">Store identifier for which settings should be loaded</param>
+        /// <param name="nodeId">Node identifier for which settings should be loaded</param>
         /// <returns>Settings</returns>
-        public virtual ISettings LoadSetting(Type type, int storeId = 0)
+        public virtual ISettings LoadSetting(Type type, int nodeId = 0)
         {
             var settings = Activator.CreateInstance(type);
 
@@ -625,8 +625,8 @@ namespace ARWNI2S.Framework.Configuration
                     continue;
 
                 var key = type.Name + "." + prop.Name;
-                //load by store
-                var setting = GetSettingByKey<string>(key, storeId: storeId, loadSharedValueIfNotFound: true);
+                //load by node
+                var setting = GetSettingByKey<string>(key, nodeId: nodeId, loadSharedValueIfNotFound: true);
                 if (setting == null)
                     continue;
 
@@ -649,10 +649,10 @@ namespace ARWNI2S.Framework.Configuration
         /// Save settings object
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="settings">Setting instance</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task SaveSettingAsync<T>(T settings, int storeId = 0) where T : ISettings, new()
+        public virtual async Task SaveSettingAsync<T>(T settings, int nodeId = 0) where T : ISettings, new()
         {
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
@@ -669,9 +669,9 @@ namespace ARWNI2S.Framework.Configuration
                 var key = typeof(T).Name + "." + prop.Name;
                 var value = prop.GetValue(settings, null);
                 if (value != null)
-                    await SetSettingAsync(prop.PropertyType, key, value, storeId, false);
+                    await SetSettingAsync(prop.PropertyType, key, value, nodeId, false);
                 else
-                    await SetSettingAsync(key, string.Empty, storeId, false);
+                    await SetSettingAsync(key, string.Empty, nodeId, false);
             }
 
             //and now clear cache
@@ -682,9 +682,9 @@ namespace ARWNI2S.Framework.Configuration
         /// Save settings object
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="settings">Setting instance</param>
-        public virtual void SaveSetting<T>(T settings, int storeId = 0) where T : ISettings, new()
+        public virtual void SaveSetting<T>(T settings, int nodeId = 0) where T : ISettings, new()
         {
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
@@ -701,9 +701,9 @@ namespace ARWNI2S.Framework.Configuration
                 var key = typeof(T).Name + "." + prop.Name;
                 var value = prop.GetValue(settings, null);
                 if (value != null)
-                    SetSetting(prop.PropertyType, key, value, storeId, false);
+                    SetSetting(prop.PropertyType, key, value, nodeId, false);
                 else
-                    SetSetting(key, string.Empty, storeId, false);
+                    SetSetting(key, string.Empty, nodeId, false);
             }
 
             //and now clear cache
@@ -717,12 +717,12 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="storeId">Store ID</param>
+        /// <param name="nodeId">Node ID</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
         /// <returns>A task that represents the asynchronous operation</returns>
         public virtual async Task SaveSettingAsync<T, TPropType>(T settings,
             Expression<Func<T, TPropType>> keySelector,
-            int storeId = 0, bool clearCache = true) where T : ISettings, new()
+            int nodeId = 0, bool clearCache = true) where T : ISettings, new()
         {
             if (keySelector.Body is not MemberExpression member)
                 throw new ArgumentException($"Expression '{keySelector}' refers to a method, not a property.");
@@ -733,9 +733,9 @@ namespace ARWNI2S.Framework.Configuration
             var key = GetSettingKey(settings, keySelector);
             var value = (TPropType)propInfo.GetValue(settings, null);
             if (value != null)
-                await SetSettingAsync(key, value, storeId, clearCache);
+                await SetSettingAsync(key, value, nodeId, clearCache);
             else
-                await SetSettingAsync(key, string.Empty, storeId, clearCache);
+                await SetSettingAsync(key, string.Empty, nodeId, clearCache);
         }
 
         /// <summary>
@@ -745,11 +745,11 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="storeId">Store ID</param>
+        /// <param name="nodeId">Node ID</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
         public virtual void SaveSetting<T, TPropType>(T settings,
             Expression<Func<T, TPropType>> keySelector,
-            int storeId = 0, bool clearCache = true) where T : ISettings, new()
+            int nodeId = 0, bool clearCache = true) where T : ISettings, new()
         {
             if (keySelector.Body is not MemberExpression member)
                 throw new ArgumentException($"Expression '{keySelector}' refers to a method, not a property.");
@@ -760,30 +760,30 @@ namespace ARWNI2S.Framework.Configuration
             var key = GetSettingKey(settings, keySelector);
             var value = (TPropType)propInfo.GetValue(settings, null);
             if (value != null)
-                SetSetting(key, value, storeId, clearCache);
+                SetSetting(key, value, nodeId, clearCache);
             else
-                SetSetting(key, string.Empty, storeId, clearCache);
+                SetSetting(key, string.Empty, nodeId, clearCache);
         }
 
         /// <summary>
-        /// Save settings object (per store). If the setting is not overridden per store then it'll be delete
+        /// Save settings object (per node). If the setting is not overridden per node then it'll be delete
         /// </summary>
         /// <typeparam name="T">Entity type</typeparam>
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="overrideForStore">A value indicating whether to setting is overridden in some store</param>
-        /// <param name="storeId">Store ID</param>
+        /// <param name="overrideForNode">A value indicating whether to setting is overridden in some node</param>
+        /// <param name="nodeId">Node ID</param>
         /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        public virtual async Task SaveSettingOverridablePerStoreAsync<T, TPropType>(T settings,
+        public virtual async Task SaveSettingOverridablePerNodeAsync<T, TPropType>(T settings,
             Expression<Func<T, TPropType>> keySelector,
-            bool overrideForStore, int storeId = 0, bool clearCache = true) where T : ISettings, new()
+            bool overrideForNode, int nodeId = 0, bool clearCache = true) where T : ISettings, new()
         {
-            if (overrideForStore || storeId == 0)
-                await SaveSettingAsync(settings, keySelector, storeId, clearCache);
-            else if (storeId > 0)
-                await DeleteSettingAsync(settings, keySelector, storeId);
+            if (overrideForNode || nodeId == 0)
+                await SaveSettingAsync(settings, keySelector, nodeId, clearCache);
+            else if (nodeId > 0)
+                await DeleteSettingAsync(settings, keySelector, nodeId);
         }
 
         /// <summary>
@@ -811,17 +811,17 @@ namespace ARWNI2S.Framework.Configuration
         /// <typeparam name="TPropType">Property type</typeparam>
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
-        /// <param name="storeId">Store ID</param>
+        /// <param name="nodeId">Node ID</param>
         /// <returns>A task that represents the asynchronous operation</returns>
         public virtual async Task DeleteSettingAsync<T, TPropType>(T settings,
-            Expression<Func<T, TPropType>> keySelector, int storeId = 0) where T : ISettings, new()
+            Expression<Func<T, TPropType>> keySelector, int nodeId = 0) where T : ISettings, new()
         {
             var key = GetSettingKey(settings, keySelector);
             key = key.Trim().ToLowerInvariant();
 
             var allSettings = await GetAllSettingsDictionaryAsync();
             var settingForCaching = allSettings.TryGetValue(key, out var settings_) ?
-                settings_.FirstOrDefault(x => x.StoreId == storeId) : null;
+                settings_.FirstOrDefault(x => x.NodeId == nodeId) : null;
             if (settingForCaching == null)
                 return;
 
@@ -848,7 +848,7 @@ namespace ARWNI2S.Framework.Configuration
         }
 
         /// <summary>
-        /// Get setting key (stored into database)
+        /// Get setting key (noded into database)
         /// </summary>
         /// <typeparam name="TSettings">Type of settings</typeparam>
         /// <typeparam name="T">Property type</typeparam>
@@ -868,6 +868,34 @@ namespace ARWNI2S.Framework.Configuration
 
             return key;
         }
+
         #endregion
+
+        async Task<ISetting> ISettingService.GetSettingByIdAsync(int settingId) => await GetSettingByIdAsync(settingId);
+
+        ISetting ISettingService.GetSettingById(int settingId) => GetSettingById(settingId);
+
+        async Task ISettingService.DeleteSettingAsync(ISetting setting) => await DeleteSettingAsync((Setting)setting);
+
+        void ISettingService.DeleteSetting(ISetting setting) => DeleteSetting((Setting)setting);
+
+        async Task ISettingService.DeleteSettingsAsync(IList<ISetting> settings) => await DeleteSettingsAsync((IList<Setting>)settings);
+
+        async Task<ISetting> ISettingService.GetSettingAsync(string key, int nodeId, bool loadSharedValueIfNotFound) => await GetSettingAsync(key, nodeId, loadSharedValueIfNotFound);
+
+        ISetting ISettingService.GetSetting(string key, int nodeId, bool loadSharedValueIfNotFound) => GetSetting(key, nodeId, loadSharedValueIfNotFound);
+
+        async Task<IList<ISetting>> ISettingService.GetAllSettingsAsync() => (IList<ISetting>)await GetAllSettingsAsync();
+
+        IList<ISetting> ISettingService.GetAllSettings() => (IList<ISetting>)GetAllSettingsAsync();
+
+        async Task ISettingService.InsertSettingAsync(ISetting setting, bool clearCache) => await InsertSettingAsync((Setting)setting, clearCache);
+
+        void ISettingService.InsertSetting(ISetting setting, bool clearCache) => InsertSetting((Setting)setting, clearCache);
+
+        async Task ISettingService.UpdateSettingAsync(ISetting setting, bool clearCache) => await UpdateSettingAsync((Setting)setting, clearCache);
+
+        void ISettingService.UpdateSetting(ISetting setting, bool clearCache) => UpdateSetting((Setting)setting, clearCache);
+
     }
 }

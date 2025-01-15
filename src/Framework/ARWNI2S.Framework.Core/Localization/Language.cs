@@ -5,7 +5,7 @@ namespace ARWNI2S.Framework.Localization
     /// <summary>
     /// Represents a language
     /// </summary>
-    public partial class Language : DataEntity//, IStoreMappingSupported
+    public partial class Language : DataEntity//, INodeMappingSupported
     {
         /// <summary>
         /// Gets or sets the name
@@ -33,9 +33,9 @@ namespace ARWNI2S.Framework.Localization
         public bool Rtl { get; set; }
 
         ///// <summary>
-        ///// Gets or sets a value indicating whether the entity is limited/restricted to certain stores
+        ///// Gets or sets a value indicating whether the entity is limited/restricted to certain nodes
         ///// </summary>
-        //public bool LimitedToStores { get; set; }
+        //public bool LimitedToNodes { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier of the default currency for this language; 0 is set when we use the default currency display order

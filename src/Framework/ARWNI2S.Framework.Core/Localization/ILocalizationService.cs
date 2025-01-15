@@ -82,7 +82,7 @@ namespace ARWNI2S.Framework.Localization
         /// Gets all locale string resources by language identifier
         /// </summary>
         /// <param name="languageId">Language identifier</param>
-        /// <param name="loadPublicLocales">A value indicating whether to load data for the public store only (if "false", then for admin area only. If null, then load all locales. We use it for performance optimization of the site startup</param>
+        /// <param name="loadPublicLocales">A value indicating whether to load data for the public node only (if "false", then for admin area only. If null, then load all locales. We use it for performance optimization of the site startup</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the locale string resources
@@ -158,7 +158,7 @@ namespace ARWNI2S.Framework.Localization
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
         /// <param name="languageId">Language identifier</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="returnDefaultValue">A value indicating whether to return default value (if localized is not found)</param>
         /// <param name="ensureTwoPublishedLanguages">A value indicating whether to ensure that we have at least two published languages; otherwise, load only default value</param>
         /// <returns>
@@ -166,7 +166,7 @@ namespace ARWNI2S.Framework.Localization
         /// The task result contains the localized property
         /// </returns>
         Task<string> GetLocalizedSettingAsync<TSettings>(TSettings settings, Expression<Func<TSettings, string>> keySelector,
-            int languageId, int storeId, bool returnDefaultValue = true, bool ensureTwoPublishedLanguages = true)
+            int languageId, int nodeId, bool returnDefaultValue = true, bool ensureTwoPublishedLanguages = true)
             where TSettings : ISettings, new();
 
         /// <summary>

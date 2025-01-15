@@ -240,7 +240,7 @@ namespace ARWNI2S.Framework.Localization
         {
             var query = from lsr in _lsrRepository.Table
                         orderby lsr.ResourceName
-                        where lsr.LanguageId == languageId && lsr.ResourceName == resourceName.ToLowerInvariant()
+                        where lsr.LanguageId == languageId && lsr.ResourceName.Equals(resourceName, StringComparison.InvariantCultureIgnoreCase)
                         select lsr;
 
             var localeStringResource = await query.FirstOrDefaultAsync();
@@ -265,7 +265,7 @@ namespace ARWNI2S.Framework.Localization
         {
             var query = from lsr in _lsrRepository.Table
                         orderby lsr.ResourceName
-                        where lsr.LanguageId == languageId && lsr.ResourceName == resourceName.ToLowerInvariant()
+                        where lsr.LanguageId == languageId && lsr.ResourceName.Equals(resourceName, StringComparison.InvariantCultureIgnoreCase)
                         select lsr;
 
             var localeStringResource = query.FirstOrDefault();
@@ -312,7 +312,7 @@ namespace ARWNI2S.Framework.Localization
         /// Gets all locale string resources by language identifier
         /// </summary>
         /// <param name="languageId">Language identifier</param>
-        /// <param name="loadPublicLocales">A value indicating whether to load data for the public store only (if "false", then for admin area only. If null, then load all locales. We use it for performance optimization of the site startup</param>
+        /// <param name="loadPublicLocales">A value indicating whether to load data for the public node only (if "false", then for admin area only. If null, then load all locales. We use it for performance optimization of the site startup</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the locale string resources
@@ -532,7 +532,7 @@ namespace ARWNI2S.Framework.Localization
             }
 
             await _lsrRepository.UpdateAsync(lrsToUpdateList, false);
-            await _lsrRepository.InsertAsync(lrsToInsertList.Values.ToList(), false);
+            await _lsrRepository.InsertAsync([.. lrsToInsertList.Values], false);
 
             //clear cache
             await _staticCacheManager.RemoveByPrefixAsync(EntityCacheDefaults<LocaleStringResource>.Prefix);
@@ -611,7 +611,7 @@ namespace ARWNI2S.Framework.Localization
         /// <param name="settings">Settings</param>
         /// <param name="keySelector">Key selector</param>
         /// <param name="languageId">Language identifier</param>
-        /// <param name="storeId">Store identifier</param>
+        /// <param name="nodeId">Node identifier</param>
         /// <param name="returnDefaultValue">A value indicating whether to return default value (if localized is not found)</param>
         /// <param name="ensureTwoPublishedLanguages">A value indicating whether to ensure that we have at least two published languages; otherwise, load only default value</param>
         /// <returns>
@@ -619,17 +619,17 @@ namespace ARWNI2S.Framework.Localization
         /// The task result contains the localized property
         /// </returns>
         public virtual async Task<string> GetLocalizedSettingAsync<TSettings>(TSettings settings, Expression<Func<TSettings, string>> keySelector,
-            int languageId, int storeId, bool returnDefaultValue = true, bool ensureTwoPublishedLanguages = true)
+            int languageId, int nodeId, bool returnDefaultValue = true, bool ensureTwoPublishedLanguages = true)
             where TSettings : ISettings, new()
         {
             var key = _settingService.GetSettingKey(settings, keySelector);
 
-            //we do not support localized settings per store (overridden store settings)
-            var setting = await _settingService.GetSettingAsync(key, storeId: storeId, loadSharedValueIfNotFound: true);
+            //we do not support localized settings per node (overridden node settings)
+            var setting = await _settingService.GetSettingAsync(key, nodeId: nodeId, loadSharedValueIfNotFound: true);
             if (setting == null)
                 return null;
 
-            return await GetLocalizedAsync(setting, x => x.Value, languageId, returnDefaultValue, ensureTwoPublishedLanguages);
+            return await GetLocalizedAsync((Setting)setting, x => x.Value, languageId, returnDefaultValue, ensureTwoPublishedLanguages);
         }
 
         /// <summary>
@@ -649,12 +649,12 @@ namespace ARWNI2S.Framework.Localization
         {
             var key = _settingService.GetSettingKey(settings, keySelector);
 
-            //we do not support localized settings per store (overridden store settings)
+            //we do not support localized settings per node (overridden node settings)
             var setting = await _settingService.GetSettingAsync(key);
             if (setting == null)
                 return;
 
-            await _localizedEntityService.SaveLocalizedValueAsync(setting, x => x.Value, value, languageId);
+            await _localizedEntityService.SaveLocalizedValueAsync((Setting)setting, x => x.Value, value, languageId);
         }
 
         /// <summary>

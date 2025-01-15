@@ -40,18 +40,18 @@ namespace ARWNI2S.Framework.Localization
         /// Gets a key for caching
         /// </summary>
         /// <remarks>
-        /// {0} : store ID
+        /// {0} : node ID
         /// {1} : show hidden records?
         /// </remarks>
-        public static CacheKey LanguagesAllCacheKey => new("NI2S.language.all.{0}-{1}", LanguagesByStorePrefix, EntityCacheDefaults<Language>.AllPrefix);
+        public static CacheKey LanguagesAllCacheKey => new("NI2S.language.all.{0}-{1}", LanguagesByNodePrefix, EntityCacheDefaults<Language>.AllPrefix);
 
         /// <summary>
         /// Gets a key pattern to clear cache
         /// </summary>
         /// <remarks>
-        /// {0} : store ID
+        /// {0} : node ID
         /// </remarks>
-        public static string LanguagesByStorePrefix => "NI2S.language.all.{0}";
+        public static string LanguagesByNodePrefix => "NI2S.language.all.{0}";
 
         #endregion
 

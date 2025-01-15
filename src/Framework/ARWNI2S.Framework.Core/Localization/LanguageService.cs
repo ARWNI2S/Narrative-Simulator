@@ -16,7 +16,7 @@ namespace ARWNI2S.Framework.Localization
         protected readonly IRepository<Language> _languageRepository;
         protected readonly ISettingService _settingService;
         protected readonly IStaticCacheManager _staticCacheManager;
-        //protected readonly IStoreMappingService _storeMappingService;
+        //protected readonly INodeMappingService _nodeMappingService;
         protected readonly LocalizationSettings _localizationSettings;
 
         #endregion
@@ -26,13 +26,13 @@ namespace ARWNI2S.Framework.Localization
         public LanguageService(IRepository<Language> languageRepository,
             ISettingService settingService,
             IStaticCacheManager staticCacheManager,
-            //IStoreMappingService storeMappingService,
+            //INodeMappingService nodeMappingService,
             LocalizationSettings localizationSettings)
         {
             _languageRepository = languageRepository;
             _settingService = settingService;
             _staticCacheManager = staticCacheManager;
-            //_storeMappingService = storeMappingService;
+            //_nodeMappingService = nodeMappingService;
             _localizationSettings = localizationSettings;
         }
 
@@ -67,16 +67,16 @@ namespace ARWNI2S.Framework.Localization
         /// <summary>
         /// Gets all languages
         /// </summary>
-        /// <param name="storeId">Load records allowed only in a specified store; pass 0 to load all records</param>
+        /// <param name="nodeId">Load records allowed only in a specified node; pass 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>
         /// A task that represents the asynchronous operation
         /// The task result contains the languages
         /// </returns>
-        public virtual async Task<IList<Language>> GetAllLanguagesAsync(bool showHidden = false, int storeId = 0)
+        public virtual async Task<IList<Language>> GetAllLanguagesAsync(bool showHidden = false, int nodeId = 0)
         {
             //cacheable copy
-            var key = _staticCacheManager.PrepareKeyForDefaultCache(LocalizationDefaults.LanguagesAllCacheKey, storeId, showHidden);
+            var key = _staticCacheManager.PrepareKeyForDefaultCache(LocalizationDefaults.LanguagesAllCacheKey, nodeId, showHidden);
 
             var languages = await _staticCacheManager.GetAsync(key, async () =>
             {
@@ -89,10 +89,10 @@ namespace ARWNI2S.Framework.Localization
                     return query;
                 });
 
-                ////store mapping
-                //if (storeId > 0)
+                ////node mapping
+                //if (nodeId > 0)
                 //    allLanguages = await allLanguages
-                //        .WhereAwait(async l => await _storeMappingService.AuthorizeAsync(l, storeId))
+                //        .WhereAwait(async l => await _nodeMappingService.AuthorizeAsync(l, nodeId))
                 //        .ToListAsync();
 
                 return allLanguages;
@@ -104,15 +104,15 @@ namespace ARWNI2S.Framework.Localization
         /// <summary>
         /// Gets all languages
         /// </summary>
-        /// <param name="storeId">Load records allowed only in a specified store; pass 0 to load all records</param>
+        /// <param name="nodeId">Load records allowed only in a specified node; pass 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>
         /// The languages
         /// </returns>
-        public virtual IList<Language> GetAllLanguages(bool showHidden = false, int storeId = 0)
+        public virtual IList<Language> GetAllLanguages(bool showHidden = false, int nodeId = 0)
         {
             //cacheable copy
-            var key = _staticCacheManager.PrepareKeyForDefaultCache(LocalizationDefaults.LanguagesAllCacheKey, storeId, showHidden);
+            var key = _staticCacheManager.PrepareKeyForDefaultCache(LocalizationDefaults.LanguagesAllCacheKey, nodeId, showHidden);
 
             var languages = _staticCacheManager.Get(key, () =>
             {
@@ -125,10 +125,10 @@ namespace ARWNI2S.Framework.Localization
                     return query;
                 });
 
-                ////store mapping
-                //if (storeId > 0)
+                ////node mapping
+                //if (nodeId > 0)
                 //    allLanguages = allLanguages
-                //        .Where(l => _storeMappingService.Authorize(l, storeId))
+                //        .Where(l => _nodeMappingService.Authorize(l, nodeId))
                 //        .ToList();
 
                 return allLanguages;

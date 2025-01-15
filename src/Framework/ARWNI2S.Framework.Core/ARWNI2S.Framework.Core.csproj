@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Remove="D:\ARWNI2S\Narrative-Simulator\\NI2S-Node\src\ARWNI2S.Abstractions\Metadata\FrameworkPartAttribute.cs" />
     <Compile Remove="Localization\LocalizedUrlExtenstions.cs" />
+    <Compile Remove="WebWorkContext.cs" />
   </ItemGroup>
 
   <ItemGroup>
