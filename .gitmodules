@@ -1,3 +1,6 @@
+[submodule "NI2S-Core"]
+	path = NI2S-Core
+	url = https://github.com/ARWNI2S/NI2S-Core.git
 [submodule "NI2S-Node"]
 	path = NI2S-Node
 	url = https://github.com/ARWNI2S/NI2S-Node.git
