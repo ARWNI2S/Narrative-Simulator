@@ -7,9 +7,9 @@
 
   <!-- Set common properties regarding assembly information -->
   <PropertyGroup>
-    <Authors>ManOguaR and the Dragon Corp. Games Team</Authors>
+    <Authors>ManOguaR and the Alternate Reallity Worlds Team</Authors>
     <Product>Narrative Interactive Intelligent Simulator</Product>
-    <Copyright>© Dragon Corp. Games All rights reserved.</Copyright>
+    <Copyright>© Alternate Reallity Worlds All rights reserved.</Copyright>
     <PublicRepositoryUrl>https://github.com/ARWNI2S/NI2S-Node</PublicRepositoryUrl>
     <PrivateRepositoryUrl>$(RepositoryUrl)</PrivateRepositoryUrl>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>

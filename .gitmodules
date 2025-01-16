@@ -10,3 +10,6 @@
 [submodule "NI2S-Unreal"]
 	path = NI2S-Unreal
 	url = https://github.com/ARWNI2S/NI2S-Unreal.git
+[submodule "NI2S-Serialization"]
+	path = NI2S-Serialization
+	url = https://github.com/ARWNI2S/NI2S-Serialization.git
