@@ -52,6 +52,11 @@
 
   <!-- <Import Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Node.CodeGenerator/build/ARWNI2S.Node.CodeGenerator.props" /> -->
 
+  <!-- Set output folder for created NuGet packages -->
+  <PropertyGroup>
+    <PackageOutputPath Condition=" '$(PackageOutputPath)'=='' ">$(SourceRoot)/Artifacts/$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
   <!-- Set output folder for distributed test apps -->
   <!-- <PropertyGroup>
     <DistributedTestsOutputPath Condition=" '$(DistributedODistributedTestsOutputPathutputPath)'=='' ">$(SourceRoot)/Artifacts/DistributedTests</DistributedTestsOutputPath>
