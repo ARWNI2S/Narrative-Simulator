@@ -1,8 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
-    <IsFrameworkPart>false</IsFrameworkPart>
-  </PropertyGroup>
-
-</Project>
