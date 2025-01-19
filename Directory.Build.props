@@ -10,7 +10,7 @@
     <Authors>ManOguaR and the Alternate Reallity Worlds Team</Authors>
     <Product>Narrative Interactive Intelligent Simulator</Product>
     <Copyright>© Alternate Reallity Worlds All rights reserved.</Copyright>
-    <PublicRepositoryUrl>https://github.com/ARWNI2S/NI2S-Node</PublicRepositoryUrl>
+    <PublicRepositoryUrl>https://github.com/ARWNI2S/Narrative-Simulator</PublicRepositoryUrl>
     <PrivateRepositoryUrl>$(RepositoryUrl)</PrivateRepositoryUrl>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
