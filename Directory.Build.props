@@ -1,30 +1,47 @@
 <Project>
+  <!-- We are full building the entire solution -->
+  <PropertyGroup>
+    <NI2SFullBuild>true</NI2SFullBuild>
+  </PropertyGroup>
   <!-- Set the repository root into a variable -->
   <PropertyGroup>
     <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
-    <BinariesFolder>$(SourceRoot)\Binaries</BinariesFolder>
+    <SelializationSourceRoot>$(MSBuildThisFileDirectory)NI2S-Serialization\</SelializationSourceRoot>
+    <CoreSourceRoot>$(MSBuildThisFileDirectory)NI2S-Core\</CoreSourceRoot>
+    <NodeSourceRoot>$(MSBuildThisFileDirectory)NI2S-Node\</NodeSourceRoot>
   </PropertyGroup>
 
   <!-- Set common properties regarding assembly information -->
   <PropertyGroup>
-    <Authors>ManOguaR and the Alternate Reallity Worlds Team</Authors>
+    <Authors>ManOguaR and the Alternate Reallity Worlds team</Authors>
     <Product>Narrative Interactive Intelligent Simulator</Product>
     <Copyright>© Alternate Reallity Worlds All rights reserved.</Copyright>
+    <PackageLicenseExpression>BSD-Protection</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ARWNI2S/Narrative-Simulator</PackageProjectUrl>
+    <PackageIcon>logo_128.png</PackageIcon>
+    <PackageTags>NI2S Cloud-Computing Distributed-Simulation NI2S C# .NET</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PublicRepositoryUrl>https://github.com/ARWNI2S/Narrative-Simulator</PublicRepositoryUrl>
     <PrivateRepositoryUrl>$(RepositoryUrl)</PrivateRepositoryUrl>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <LangVersion>12</LangVersion>
+    <LangVersion>13</LangVersion>
     <Features>strict</Features>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <DebugType>embedded</DebugType>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSource>false</IncludeSource>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(SourceRoot)assets/logo_128.png" Pack="true" Visible="false" PackagePath="/" />
+  </ItemGroup>
 
   <!-- Common compile parameters -->
   <PropertyGroup>
@@ -50,7 +67,7 @@
     <VersionSuffix Condition=" '$(VersionDateSuffix)'!='' ">$(VersionSuffix)-$(VersionDateSuffix)</VersionSuffix>
   </PropertyGroup>
 
-  <!-- <Import Condition=" '$(NI2SNodeBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Node.CodeGenerator/build/ARWNI2S.Node.CodeGenerator.props" /> -->
+  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' " Project="$(CoreSourceRoot)src/ARWNI2S.CodeGenerator/build/ARWNI2S.CodeGenerator.props" />
 
   <!-- Set output folder for created NuGet packages -->
   <PropertyGroup>
@@ -58,9 +75,9 @@
   </PropertyGroup>
 
   <!-- Set output folder for distributed test apps -->
-  <!-- <PropertyGroup>
+  <PropertyGroup>
     <DistributedTestsOutputPath Condition=" '$(DistributedODistributedTestsOutputPathutputPath)'=='' ">$(SourceRoot)/Artifacts/DistributedTests</DistributedTestsOutputPath>
-  </PropertyGroup> -->
+  </PropertyGroup>
 
   <Choose>
     <When Condition="'$(OfficialBuild)' != 'true'">
