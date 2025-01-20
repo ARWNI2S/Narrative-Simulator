@@ -8,6 +8,7 @@
     <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
     <SelializationSourceRoot>$(MSBuildThisFileDirectory)NI2S-Serialization\</SelializationSourceRoot>
     <CoreSourceRoot>$(MSBuildThisFileDirectory)NI2S-Core\</CoreSourceRoot>
+    <RuntimeSourceRoot>$(MSBuildThisFileDirectory)NI2S-Runtime\</RuntimeSourceRoot>
     <NodeSourceRoot>$(MSBuildThisFileDirectory)NI2S-Node\</NodeSourceRoot>
   </PropertyGroup>
 
