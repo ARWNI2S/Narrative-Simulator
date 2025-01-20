@@ -13,6 +13,3 @@
 [submodule "NI2S-Serialization"]
 	path = NI2S-Serialization
 	url = https://github.com/ARWNI2S/NI2S-Serialization.git
-[submodule "NI2S-Runtime"]
-	path = NI2S-Runtime
-	url = https://github.com/ARWNI2S/NI2S-Runtime.git
